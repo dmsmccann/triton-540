@@ -1,0 +1,54 @@
+* Syntax and five-position DC validation for SW_Rotary_1x5.sub.
+.include "../models/SW_Rotary_1x5.sub"
+.param S4_POS=1
+
+V1 c1 0 1
+X1 p11 p12 p13 p14 p15 c1 SW_ROTARY_1X5 params: POS={S4_POS}
+R11 p11 0 1k
+R12 p12 0 1k
+R13 p13 0 1k
+R14 p14 0 1k
+R15 p15 0 1k
+
+V2 c2 0 1
+X2 p21 p22 p23 p24 p25 c2 SW_ROTARY_1X5 params: POS=2
+R21 p21 0 1k
+R22 p22 0 1k
+R23 p23 0 1k
+R24 p24 0 1k
+R25 p25 0 1k
+
+V3 c3 0 1
+X3 p31 p32 p33 p34 p35 c3 SW_ROTARY_1X5 params: POS=3
+R31 p31 0 1k
+R32 p32 0 1k
+R33 p33 0 1k
+R34 p34 0 1k
+R35 p35 0 1k
+
+V4 c4 0 1
+X4 p41 p42 p43 p44 p45 c4 SW_ROTARY_1X5 params: POS=4
+R41 p41 0 1k
+R42 p42 0 1k
+R43 p43 0 1k
+R44 p44 0 1k
+R45 p45 0 1k
+
+V5 c5 0 1
+X5 p51 p52 p53 p54 p55 c5 SW_ROTARY_1X5 params: POS=5
+R51 p51 0 1k
+R52 p52 0 1k
+R53 p53 0 1k
+R54 p54 0 1k
+R55 p55 0 1k
+
+.op
+.control
+run
+print v(p11) v(p12) v(p13) v(p14) v(p15)
+print v(p21) v(p22) v(p23) v(p24) v(p25)
+print v(p31) v(p32) v(p33) v(p34) v(p35)
+print v(p41) v(p42) v(p43) v(p44) v(p45)
+print v(p51) v(p52) v(p53) v(p54) v(p55)
+.endc
+.end

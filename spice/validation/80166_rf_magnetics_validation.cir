@@ -1,0 +1,33 @@
+* Standalone AC checks for the estimated Triton 540 assembly 80166 RF magnetics.
+.include "../models/80166_rf_magnetics.lib"
+
+* L1 full winding, with high-impedance terminations on both taps.
+V_L1 SRC_L1 0 AC 1
+R_L1_SRC SRC_L1 L1_TOP 50
+X_L1 L1_TOP 0 L1_ANT L1_G1 80166_L1
+R_L1_G1 L1_G1 0 1G
+R_L1_ANT L1_ANT 0 1G
+
+* L2 full winding, with high-impedance terminations on both taps.
+V_L2 SRC_L2 0 AC 1
+R_L2_SRC SRC_L2 L2_TOP 50
+X_L2 0 L2_TOP L2_OUT L2_DRAIN 80166_L2
+R_L2_OUT L2_OUT 0 1G
+R_L2_DRAIN L2_DRAIN 0 1G
+
+* 50-ohm fixture for the T1/C7 trap.  C7=20 pF plus the model's estimated
+* 5 pF secondary/wiring capacitance tunes the default 12.5 uH near 9 MHz.
+V_T1 SRC_T1 0 AC 1
+R_T1_SRC SRC_T1 T1_PRI_IN 50
+X_T1 T1_OUT T1_PRI_IN T1_SEC 0 80166_T1_9MHZ
+R_T1_LOAD T1_OUT 0 50
+C7_TEST T1_SEC 0 20p
+
+.control
+set wr_singlescale
+set wr_vecnames
+ac dec 400 1Meg 30Meg
+wrdata ../generated/validation/rf_magnetics_validation.csv vdb(T1_OUT) vp(T1_OUT)
+.endc
+
+.end

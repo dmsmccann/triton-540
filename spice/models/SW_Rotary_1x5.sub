@@ -1,0 +1,21 @@
+* Parameter-selected SP5T rotary switch for the Triton 540 bandswitch.
+*
+* Pin order:
+*   1  throw 1
+*   2  throw 2
+*   3  throw 3
+*   4  throw 4
+*   5  throw 5
+*   6  common/wiper
+*
+* POS is an integer from 1 through 5.  Exactly one branch is set to RON;
+* the other four branches are set to ROFF.  This is a simulation aid, not
+* a measured model of the original Ten-Tec switch.
+
+.subckt SW_ROTARY_1X5 1 2 3 4 5 6 params: POS=1 RON=20m ROFF=1T
+RPOS1 6 1 R={(POS==1) ? RON : ROFF}
+RPOS2 6 2 R={(POS==2) ? RON : ROFF}
+RPOS3 6 3 R={(POS==3) ? RON : ROFF}
+RPOS4 6 4 R={(POS==4) ? RON : ROFF}
+RPOS5 6 5 R={(POS==5) ? RON : ROFF}
+.ends SW_ROTARY_1X5

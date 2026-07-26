@@ -1,0 +1,35 @@
+* Standalone ngspice checks for the empirical RCA40823 model.
+.include "../models/40823.sub"
+
+VD  D  0 15
+VG2 G2 0 4
+VG1 G1 0 0
+VS  S  0 0
+XQ D G2 G1 S RCA40823
+
+.control
+op
+print -i(VD)
+
+* Gate-1 transfer sweep at the published VDS/VG2 bias.
+dc VG1 -4 1 0.05
+let idrain = -i(VD)
+wrdata ../generated/validation/40823_gate1_transfer.csv idrain
+
+* Gate-2 gain-control sweep with gate 1 at 0 V.
+alter VG1 0
+dc VG2 -4 4 0.05
+let idrain = -i(VD)
+wrdata ../generated/validation/40823_gate2_transfer.csv idrain
+
+* Documented Triton 540 receive voltages (manual PDF p.25 / printed p.3-9).
+alter VD 11.4
+alter VG2 3.9
+alter VG1 1.1
+alter VS 1.6
+op
+print -i(VD)
+quit
+.endc
+
+.end

@@ -1,0 +1,54 @@
+* RCA 40823 dual-gate N-channel depletion MOSFET
+* Empirical ngspice/KiCad macro-model -- not an RCA factory model.
+*
+* External node order follows the physical TO-72 lead order:
+*   1 = D, 2 = G2, 3 = G1, 4 = S/case
+*
+* Calibrated nominal targets (closest documented replacement family):
+*   IDSS  ~= 18 mA at VDS=15 V, VG1S=0 V, VG2S=4 V
+*   |Yfs| ~= 18 mS at the same bias
+*   Ciss  ~= 3.3 pF, Crss ~= 0.015 pF, Coss ~= 1.4 pF
+*   Gate cutoff is device-dependent; this nominal model is centered near
+*   VG1S=-2 V and VG2S=-1.5 V.
+*
+* Intended use: bias, gain-control trends, and 2-30 MHz small-signal work.
+* Limitations: production spread, noise figure, distortion/intermodulation,
+* temperature behavior, and VHF/UHF S-parameters are not characterized.
+*
+*              D  G2 G1 S
+.SUBCKT RCA40823 1  2  3  4
+
+* Small lead/gate resistance improves RF and transient convergence.
+RG1 3 G1I 5
+RG2 2 G2I 5
+
+* Two channel sections approximate the electrostatic action of the two gates.
+* MCH1 sets the nominal IDSS and gate-1 transconductance.
+* MCH2 provides gate-2 gain control and cascode isolation.
+MCH1 NX G1I 4 4 RCA40823_G1 L=1u W=1u
+MCH2 1  G2I NX 4 RCA40823_G2 L=1u W=1u
+
+.MODEL RCA40823_G1 NMOS LEVEL=1 VTO=-2.0 KP=9m LAMBDA=8m
+.MODEL RCA40823_G2 NMOS LEVEL=1 VTO=-1.5 KP=20m LAMBDA=5m
+
+* Explicit package/device capacitances.  Gate-2 capacitances are estimates;
+* the G1/D/S values are chosen to reproduce the published replacement data.
+CG1S G1I 4 3.285p
+CG1D G1I 1 0.015p
+CG2S G2I 4 2.0p
+CG2D G2I 1 0.08p
+CDS  1   4 1.305p
+
+* Finite insulation leakage (comfortably below the published 10 nA maximum
+* at 5 V) and approximate bidirectional protected-gate limiting.
+RLG1 G1I 4 10G
+RLG2 G2I 4 10G
+D1P G1I G1CL RCA40823_GCLAMP
+D1N 4   G1CL RCA40823_GCLAMP
+D2P G2I G2CL RCA40823_GCLAMP
+D2N 4   G2CL RCA40823_GCLAMP
+RCL1 G1CL 4 100G
+RCL2 G2CL 4 100G
+.MODEL RCA40823_GCLAMP D IS=1f N=1.2 BV=6 IBV=10m RS=2
+
+.ENDS RCA40823

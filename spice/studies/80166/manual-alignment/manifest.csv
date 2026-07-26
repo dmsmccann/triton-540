@@ -1,0 +1,23 @@
+run_id,manual_step,target_hz,s4_pos,l_rack_uH,l2_adjustment,c99,status,source,data_file,notes
+3p5_l1_bypassed,3,3500000,1,17.2,C19=30p,10n,bypassed,KiCad Simulator,data/final/3p5_l1-bypassed.csv,L2 resonance suppressed
+3p5_aligned,6,3500000,1,17.2,C19=36p and tracking fit,removed,final,KiCad Simulator,data/final/3p5_aligned.csv,Low-band tracking check
+4p0_l1_bypassed,5,4000000,1,7.7,C19=36p,10n,bypassed,KiCad Simulator,data/final/4p0_l1-bypassed.csv,L2 resonance suppressed
+4p0_aligned,6,4000000,1,7.7,L2 tracking fit,removed,final,KiCad Simulator,data/final/4p0_aligned.csv,High endpoint of low-band tracking
+7p0_l1_bypassed,7,7000000,2,3.43,C17=60p,10n,bypassed,KiCad Simulator,data/final/7p0_l1-bypassed.csv,L2 resonance suppressed
+7p0_aligned,7,7000000,2,3.43,C17 about 68p effective,removed,final,KiCad Simulator,data/final/7p0_aligned.csv,Includes about 8p inferred parasitic capacitance
+14p2_l1_bypassed,8,14200000,3,2.84,C16=30p,10n,bypassed,KiCad Simulator,data/final/14p2_l1-bypassed.csv,L2 resonance suppressed
+14p2_aligned,8,14200000,3,2.84,C16=47.2p,removed,final,KiCad Simulator,data/final/14p2_aligned.csv,Corrected pF-valued rerun
+21p2_l1_bypassed,8,21200000,4,2.06,C15=30p,10n,bypassed,KiCad Simulator,data/final/21p2_l1-bypassed.csv,L2 resonance suppressed
+21p2_aligned,8,21200000,4,2.06,C15=16.94p,removed,final,KiCad Simulator,data/final/21p2_aligned.csv,Centered retained result
+29p0_l1_bypassed,8,29000000,5,1.4253,C13=24p with C14=30p,10n,bypassed,ngspice 46 from KiCad export,data/final/29p0_l1-bypassed.csv,L2 resonance suppressed
+29p0_aligned,8,29000000,5,1.4253,C13=5.787p with C14=30p,removed,final,ngspice 46 from KiCad export,data/final/29p0_aligned.csv,Peak at 28.999365 MHz
+29p0_saved_schematic_validation,8,29000000,5,1.4253,C13=5.787p with C14=30p,removed,validation,ngspice 46 from fresh KiCad export,data/final/29p0_saved-schematic-validation.csv,Reproduces final fitted result
+29p0_c13_24p,8,29000000,5,1.4253,C13=24p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-24p.csv,Initial output-network setting
+29p0_c13_8p07,8,29000000,5,1.4253,C13=8.07p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-8p07.csv,
+29p0_c13_6p70,8,29000000,5,1.4253,C13=6.70p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-6p70.csv,
+29p0_c13_6p35,8,29000000,5,1.4253,C13=6.35p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-6p35.csv,
+29p0_c13_6p21,8,29000000,5,1.4253,C13=6.21p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-6p21.csv,
+29p0_c13_6p13,8,29000000,5,1.4253,C13=6.13p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-6p13.csv,
+29p0_c13_5p95,8,29000000,5,1.4253,C13=5.95p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-5p95.csv,
+29p0_c13_5p865,8,29000000,5,1.4253,C13=5.865p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-5p865.csv,
+29p0_c13_5p81,8,29000000,5,1.4253,C13=5.81p with C14=30p,removed,iteration,ngspice 46 from KiCad export,data/29mhz-iterations/29p0_c13-5p81.csv,

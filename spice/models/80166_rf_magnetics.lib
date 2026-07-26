@@ -1,0 +1,126 @@
+* Ten-Tec Triton IV Model 540, RF amplifier assembly 80166 magnetics.
+*
+* Evidence:
+* - Owner's Manual PDF p.24 / printed p.3-8: L1 and L2 are mechanically
+*   ganged, slug-tuned coils; T1/C7 is the 9 MHz antenna trap.
+* - Owner's Manual PDF p.25 / printed p.3-9: L1 is one double-tapped
+*   winding, L2 is one tapped winding, and T1 has isolated windings.
+*
+* IMPORTANT: The manual does not specify turns, inductance, tap ratios,
+* coupling, Q, or winding capacitance.  All numeric defaults below are
+* engineering estimates intended as adjustable starting values.
+*
+* Coupled winding sections are used for L1 and L2 so that each component
+* behaves as one continuous tapped winding.  With KCOIL close to one and
+* section inductances proportional to turns squared, the series combination
+* is approximately LT.
+
+
+* L1 receiver input coil -- continuous double-tapped winding.
+*
+* Pin order matches the project L_DoubleTapped_Variable symbol:
+*   1 BAND_END  end connected to the S4A switched capacitor bank
+*   2 RF_GND    grounded end
+*   3 ANT_TAP   lower tap connected to the antenna/9 MHz trap
+*   4 G1_TAP    upper tap coupled through C2 (22 pF) to Q1 gate 1
+*
+* Adjustable parameters:
+*   LT       full-winding inductance; nominal 2.2 uH, likely 1.7-3.3 uH
+*   FANT     fraction of total turns from RF_GND to ANT_TAP
+*   FG1      fraction of total turns from RF_GND to G1_TAP
+*   KCOIL    coupling between sections of the continuous winding
+*   QREF     unloaded-Q estimate at FREF
+*   CPAR     full-winding self/wiring capacitance estimate
+*
+* Defaults FANT=0.25 and FG1=0.70 are schematic-based estimates only.
+.subckt 80166_L1 BAND_END RF_GND ANT_TAP G1_TAP
++ params: LT=2.2u FANT=0.25 FG1=0.70 KCOIL=0.999
++ QREF=70 FREF=14.2Meg CPAR=6p
+
+.param F_L1_TG1 = {1-FG1}
+.param F_L1_G1A = {FG1-FANT}
+.param F_L1_AG  = {FANT}
+.param R_L1_TOT = {6.283185307179586*FREF*LT/QREF}
+
+R_L1_TG1 BAND_END N_L1_TG1 {R_L1_TOT*F_L1_TG1}
+L_L1_TG1 N_L1_TG1 G1_TAP {LT*F_L1_TG1*F_L1_TG1}
+
+R_L1_G1A G1_TAP N_L1_G1A {R_L1_TOT*F_L1_G1A}
+L_L1_G1A N_L1_G1A ANT_TAP {LT*F_L1_G1A*F_L1_G1A}
+
+R_L1_AG ANT_TAP N_L1_AG {R_L1_TOT*F_L1_AG}
+L_L1_AG N_L1_AG RF_GND {LT*F_L1_AG*F_L1_AG}
+
+K_L1_12 L_L1_TG1 L_L1_G1A {KCOIL}
+K_L1_13 L_L1_TG1 L_L1_AG  {KCOIL}
+K_L1_23 L_L1_G1A L_L1_AG  {KCOIL}
+C_L1_PAR BAND_END RF_GND {CPAR}
+.ends 80166_L1
+
+
+* L2 receiver output coil -- continuous double-tapped winding.
+*
+* Pin order matches the rotated project L_DoubleTapped_Variable symbol:
+*   1 DC_END     DC-fed end, RF-grounded by C6 (0.1 uF)
+*   2 BAND_END   end connected to the S4B/trimmer tuning network
+*   3 OUT_TAP    receiver output tap
+*   4 DRAIN_TAP  lower tap coupled to Q1 drain by the gimmick capacitor
+*
+* FDRN and FOUT are turn fractions measured from DC_END.  Their default
+* values are schematic-based estimates only.
+.subckt 80166_L2 DC_END BAND_END OUT_TAP DRAIN_TAP
++ params: LT=2.2u FDRN=0.45 FOUT=0.75 KCOIL=0.999
++ QREF=70 FREF=14.2Meg CPAR=6p
+
+.param F_L2_TO = {1-FOUT}
+.param F_L2_OD = {FOUT-FDRN}
+.param F_L2_DD = {FDRN}
+.param R_L2_TOT = {6.283185307179586*FREF*LT/QREF}
+
+R_L2_TO BAND_END N_L2_TO {R_L2_TOT*F_L2_TO}
+L_L2_TO N_L2_TO OUT_TAP {LT*F_L2_TO*F_L2_TO}
+
+R_L2_OD OUT_TAP N_L2_OD {R_L2_TOT*F_L2_OD}
+L_L2_OD N_L2_OD DRAIN_TAP {LT*F_L2_OD*F_L2_OD}
+
+R_L2_DD DRAIN_TAP N_L2_DD {R_L2_TOT*F_L2_DD}
+L_L2_DD N_L2_DD DC_END {LT*F_L2_DD*F_L2_DD}
+
+K_L2_12 L_L2_TO L_L2_OD {KCOIL}
+K_L2_13 L_L2_TO L_L2_DD {KCOIL}
+K_L2_23 L_L2_OD L_L2_DD {KCOIL}
+C_L2_PAR BAND_END DC_END {CPAR}
+.ends 80166_L2
+
+
+* T1 isolated transformer used with external C7 as the 9 MHz antenna trap.
+*
+* Pin order matches Device:Transformer_1P_1S:
+*   1 PRI_A   L1 antenna-tap side of the series primary
+*   2 PRI_B   antenna connector side of the series primary
+*   3 SEC_A   one secondary/C7 end
+*   4 SEC_B   the other secondary/C7 end
+*
+* Defaults give:
+*   LP = 0.35 uH, LS = 12.5 uH, turns ratio sqrt(LS/LP) about 6:1
+*   K = 0.35 (loose/moderate coupling)
+*   Secondary resonance about 9.0 MHz with C7=20 pF and CPS=5 pF
+*
+* LP, LS, K, QP, QS, and capacitances are all inferred starting values.
+.subckt 80166_T1_9MHZ PRI_A PRI_B SEC_A SEC_B
++ params: LP=350n LS=12.5u KTRAP=0.35
++ QP=50 QS=80 FREF=9Meg CPP=0.5p CPS=5p
+
+.param RP_T1 = {6.283185307179586*FREF*LP/QP}
+.param RS_T1 = {6.283185307179586*FREF*LS/QS}
+
+R_T1_P PRI_A N_T1_P {RP_T1}
+L_T1_P N_T1_P PRI_B {LP}
+
+R_T1_S SEC_A N_T1_S {RS_T1}
+L_T1_S N_T1_S SEC_B {LS}
+
+K_T1 L_T1_P L_T1_S {KTRAP}
+C_T1_P PRI_A PRI_B {CPP}
+C_T1_S SEC_A SEC_B {CPS}
+.ends 80166_T1_9MHZ

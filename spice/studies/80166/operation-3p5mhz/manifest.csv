@@ -1,0 +1,10 @@
+artifact,type,provenance,description
+data/ac/rack-15p4u.csv,AC response,ngspice 46 from fresh KiCad export,OUT/ANT and internal voltage ratios with L_RACK=15.4u
+data/ac/rack-17p2u.csv,AC response,ngspice 46 from fresh KiCad export,Manual-aligned 3.5 MHz response with L_RACK=17.2u
+data/ac/rack-19p4u.csv,AC response,ngspice 46 from fresh KiCad export,OUT/ANT and internal voltage ratios with L_RACK=19.4u
+data/ac/rack-gain-at-3p5.csv,rack sweep summary,calculated from ngspice AC runs,Gain at 3.500 MHz and peak data versus L_RACK
+data/transient/envelope.csv,transient envelope,calculated from ngspice transient run,Per-cycle half peak-to-peak amplitudes during startup
+data/transient/steady-state.csv,transient waveform,calculated from ngspice transient run,Final six cycles with each node's DC level removed
+data/transient/measurements.csv,transient summary,calculated from steady-state.csv,DC levels RF peak amplitudes ratios and gains
+figures/rack-tuning.png,figure,generated from retained AC CSVs,Passband motion and gain at 3.500 MHz versus rack setting
+figures/signal-walk.png,figure,generated from retained transient CSVs,Startup envelope and final ANT gate drain and OUT waveforms

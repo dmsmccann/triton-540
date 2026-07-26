@@ -1,0 +1,4 @@
+(sym_lib_table
+	(version 7)
+	(lib (name "triton_iv") (type "KiCad") (uri "${KIPRJMOD}/triton_iv.kicad_sym") (options "") (descr ""))
+)
