@@ -1,5 +1,69 @@
 # SPICE model reference
 
+## MC1496P balanced modulator
+
+`MC1496P.sub` is a nominal transistor-level model for the MC1496P
+double-balanced mixer used as U89-1 in the Triton 540 VFO assembly 80289.
+It implements the onsemi internal topology: a four-transistor upper switching
+quad, a two-transistor signal stage, and a three-transistor current mirror with
+three internal 500 ohm emitter resistors.
+
+The subcircuit exposes all fourteen physical package pins:
+
+```spice
+XU signal+ gain1 gain2 signal- bias output+ nc carrier+ nc carrier- nc output- nc vee MC1496P
+```
+
+Use a one-to-one physical-pin mapping in KiCad:
+
+| Pin | Function | Pin | Function |
+|---:|---|---:|---|
+| 1 | Signal input + | 8 | Carrier input + |
+| 2 | Gain adjust | 9 | NC |
+| 3 | Gain adjust | 10 | Carrier input - |
+| 4 | Signal input - | 11 | NC |
+| 5 | Bias | 12 | Output - |
+| 6 | Output + | 13 | NC |
+| 7 | NC | 14 | VEE |
+
+In KiCad Simulator, associate U89-1 with a **Subcircuit** model, browse to
+`${KIPRJMOD}/spice/models/MC1496P.sub`, select `MC1496P`, and map physical
+pins 1 through 14 one-to-one. The four NC pins are accepted by the subcircuit
+but intentionally unused internally.
+
+### Model basis and limits
+
+- The topology and internal 500 ohm resistors are documented in onsemi
+  MC1496/D Figure 23.
+- The transistor beta, Early voltage, and capacitance terms are engineering
+  fits to the data sheet's typical 12 uA input bias current, 40 kohm output
+  resistance, 5 pF output capacitance, and published RF response. They are not
+  a recovered Motorola semiconductor-process model.
+- A fixed 0.2 percent mismatch in one switching transistor makes the external
+  mixer-balance control produce a finite null. This is a nominal simulation
+  device mismatch, not a measured value for U89-1.
+
+The model is intended for DC bias, conversion-gain trends, carrier balance,
+injection-level studies, wanted/unwanted mixing products, and loading of the
+80289 output filters from 5 to 21 MHz. It is not validated for absolute noise,
+unit-to-unit spread, temperature drift, exact intercept points, or carrier
+feedthrough caused by physical PCB coupling.
+
+`../validation/MC1496P_validation.cir` checks DC operating current and
+5 MHz by 8 MHz mixer action with 3 MHz and 13 MHz differential outputs, then
+repeats at a 15 MHz carrier to check 10 MHz and 20 MHz products near the top
+of the 80289 operating range.
+
+### References
+
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, local PDF page 29 / printed
+  page 3-13: U89-1 circuit connections and external bias network.
+- Same manual, local PDF pages 27-28 / printed pages 3-11 to 3-12:
+  mixer-balance, crystal-injection, and output-filter alignment.
+- onsemi, [MC1496/MC1496B data sheet](https://www.onsemi.com/download/data-sheet/pdf/mc1496-d.pdf):
+  pinout, internal circuit, operating equations, test circuits, impedance,
+  frequency response, and mixer applications.
+
 ## RCA 40823 dual-gate MOSFET
 
 `40823.sub` is an empirical four-terminal macro-model for the RCA 40823

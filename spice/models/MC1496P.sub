@@ -1,0 +1,64 @@
+* MC1496 / MC1496P balanced modulator-demodulator
+* Nominal ngspice-compatible transistor-level model for the Ten-Tec 80289 VFO.
+*
+* Physical DIP-14 pin order:
+*   1 signal+, 2 gain adjust, 3 gain adjust, 4 signal-, 5 bias,
+*   6 output+, 7 NC, 8 carrier+, 9 NC, 10 carrier-, 11 NC,
+*   12 output-, 13 NC, 14 VEE.
+*
+* Topology follows onsemi MC1496/D Figure 23:
+*   - four-transistor upper switching quad
+*   - two-transistor lower signal differential stage
+*   - three-transistor, emitter-degenerated current mirror
+*
+* Pins 7, 9, 11, and 13 are intentionally unused. The model includes a
+* nominal 0.2 percent mismatch in one switching transistor so an external
+* carrier-balance adjustment has a finite, observable null.
+
+.SUBCKT MC1496P 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+
+* Upper carrier-switching quad. Collectors are cross-coupled.
+QSW1 6  8  NUP_A MC1496_NPN
+QSW2 12 10 NUP_A MC1496_NPN
+QSW3 12 8  NUP_B MC1496_NPN
+QSW4 6  10 NUP_B MC1496_NPN_MISMATCH
+
+* Lower signal-input stage; its emitters are brought out at pins 2 and 3.
+QSIG1 NUP_A 1 2 MC1496_NPN
+QSIG2 NUP_B 4 3 MC1496_NPN
+
+* Internal three-device current mirror and the three nominal 500 ohm
+* emitter resistors shown in the manufacturer internal schematic.
+QTAIL1 2 5 NTAIL1 MC1496_NPN
+QTAIL2 3 5 NTAIL2 MC1496_NPN
+QREF   5 5 NREF   MC1496_NPN
+RTAIL1 NTAIL1 14 500
+RTAIL2 NTAIL2 14 500
+RREF   NREF   14 500
+
+* Package/device output capacitance. Combined with transistor CJC this
+* gives approximately the 5 pF typical single-ended output capacitance.
+COUT6  6  14 3.2p
+COUT12 12 14 3.2p
+
+* Nominal integrated NPN fit. BF targets the approximately 12 uA typical
+* input bias current at I5 = 1 mA; VAF and capacitances target the published
+* 40 kohm / 5 pF typical output impedance. Transit-time terms provide
+* useful 5-21 MHz behavior but are not a measured semiconductor-process fit.
+.MODEL MC1496_NPN NPN (
++ IS=1e-16 BF=90 NF=1 VAF=40 IKF=10m
++ ISE=1e-18 NE=1.5 BR=5 VAR=10 IKR=5m
++ RB=80 RE=1 RC=10
++ CJE=1.5p VJE=0.75 MJE=0.33
++ CJC=0.8p VJC=0.55 MJC=0.33 XCJC=1
++ TF=0.35n TR=10n XTB=1.5 )
+
+.MODEL MC1496_NPN_MISMATCH NPN (
++ IS=1.002e-16 BF=90 NF=1 VAF=40 IKF=10m
++ ISE=1e-18 NE=1.5 BR=5 VAR=10 IKR=5m
++ RB=80 RE=1 RC=10
++ CJE=1.5p VJE=0.75 MJE=0.33
++ CJC=0.8p VJC=0.55 MJC=0.33 XCJC=1
++ TF=0.35n TR=10n XTB=1.5 )
+
+.ENDS MC1496P

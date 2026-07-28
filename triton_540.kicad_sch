@@ -7,7 +7,7 @@
 	(title_block
 		(title "Ten Tec Triton IV Model 540 Transceiver")
 		(date "2026-07-26")
-		(rev "0.1")
+		(rev "0.2")
 		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
 	)
 	(lib_symbols
@@ -1707,6 +1707,16 @@
 			(justify right)
 		)
 		(uuid "dc6021c1-899a-4d8d-8ee8-ae9a4251b264")
+	)
+	(text "VFO\n80289"
+		(exclude_from_sim no)
+		(at 166.116 122.174 0)
+		(effects
+			(font
+				(size 2.54 2.54)
+			)
+		)
+		(uuid "ed62033f-c2ba-411d-9ad4-63d050993a5f")
 	)
 	(junction
 		(at 123.19 80.01)
@@ -5878,6 +5888,104 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
 					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 146.05 110.49)
+		(size 40.64 22.86)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0)
+		)
+		(uuid "818ce5bb-55e6-4013-915b-e8afd4640f1a")
+		(property "Sheetname" "VFO-80289"
+			(at 146.05 109.7784 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "VFO_80289.kicad_sch"
+			(at 146.05 133.9346 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left top)
+			)
+		)
+		(pin "+12" input
+			(at 151.13 110.49 90)
+			(uuid "8bbb1bbd-a6a5-45d4-888c-14e67a88eee4")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "+REG" input
+			(at 166.37 110.49 90)
+			(uuid "c27bafcc-42a6-431f-8cb9-bb77552cbd1b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "OFFSET" input
+			(at 179.07 133.35 270)
+			(uuid "712e10d9-5725-4107-88cc-d0e867738842")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "OUT" input
+			(at 186.69 115.57 0)
+			(uuid "89f31b0e-899d-4def-9d4b-a29461e3f58a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "S5" input
+			(at 166.37 133.35 270)
+			(uuid "0de9bddd-bed8-41a7-92d4-bce05e5bf0dc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(page "3")
 				)
 			)
 		)

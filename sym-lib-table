@@ -1,4 +1,5 @@
 (sym_lib_table
 	(version 7)
 	(lib (name "triton_iv") (type "KiCad") (uri "${KIPRJMOD}/triton_iv.kicad_sym") (options "") (descr ""))
+	(lib (name "VFO_80289") (type "KiCad") (uri "${KIPRJMOD}/VFO_80289.kicad_sym") (options "") (descr "VFO 80289 custom symbols"))
 )

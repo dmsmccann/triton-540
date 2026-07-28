@@ -1,0 +1,74 @@
+* MC1496P model regression fixture.
+* This is a model-level ngspice check; VFO_80289.kicad_sch remains the
+* source schematic for the complete Ten-Tec simulation.
+
+.include ../models/MC1496P.sub
+.param FS=5Meg FC=8Meg
+
+* Single-supply bias chosen to preserve the data-sheet-required hierarchy:
+* outputs > carrier common mode > signal common mode > bias > VEE.
+VSUP VCC 0 12
+RLOAD6 VCC OUTP 3.9k
+RLOAD12 VCC OUTN 3.9k
+
+* Approximately 1 mA nominal internal current.
+RBIAS VCC BIAS 10.7k
+
+* Signal common mode at 3.0 V. Differential input is 100 mV peak at 5 MHz.
+VSIGCM SIGCM 0 3
+VSIGP SIGP SIGCM SIN(0 50m {FS})
+VSIGN SIGN SIGCM SIN(0 50m {FS} 0 0 180)
+RSIGP SIGP SPLUS 51
+RSIGN SIGN SMINUS 51
+
+* Carrier common mode at 6.0 V. Differential input is 120 mV peak at 8 MHz.
+VCARCM CARCM 0 6
+VCARP CARP CARCM SIN(0 60m {FC})
+VCARN CARN CARCM SIN(0 60m {FC} 0 0 180)
+RCARP CARP CPLUS 51
+RCARN CARN CMINUS 51
+
+* External gain-setting resistor.
+REXT GAINP GAINN 1k
+
+XU1 SPLUS GAINP GAINN SMINUS BIAS OUTP NC7 CPLUS NC9 CMINUS NC11 OUTN NC13 0 MC1496P
+
+.options reltol=1e-4 abstol=1e-12 vntol=1e-8
+
+.control
+set noaskquit
+op
+print v(bias) v(outp) v(outn) @rload6[i] @rload12[i]
+
+tran 1n 8u 4u
+let VDIFF = v(outp)-v(outn)
+meas tran VOUT_DIFF_PP PP VDIFF from=6u to=8u
+
+* The wanted mixer products are 3 MHz and 13 MHz. This coarse FFT is a
+* regression indicator, not a production spectrum measurement.
+linearize VDIFF
+fft VDIFF
+let VDIFF_MAG = mag(VDIFF)
+meas sp WANTED_3M find VDIFF_MAG at=3Meg
+meas sp WANTED_13M find VDIFF_MAG at=13Meg
+meas sp CARRIER_8M find VDIFF_MAG at=8Meg
+
+* Repeat near the top of the 80289 operating range: 5 MHz by 15 MHz,
+* producing 10 MHz and 20 MHz.
+alterparam FC=15Meg
+reset
+tran 1n 8u 4u
+let VDIFF_HI = v(outp)-v(outn)
+meas tran VOUT_HI_DIFF_PP PP VDIFF_HI from=6u to=8u
+linearize VDIFF_HI
+fft VDIFF_HI
+let VDIFF_HI_MAG = mag(VDIFF_HI)
+meas sp WANTED_10M find VDIFF_HI_MAG at=10Meg
+meas sp WANTED_20M find VDIFF_HI_MAG at=20Meg
+meas sp CARRIER_15M find VDIFF_HI_MAG at=15Meg
+
+echo MC1496P_VALIDATION_COMPLETE
+quit
+.endc
+
+.end

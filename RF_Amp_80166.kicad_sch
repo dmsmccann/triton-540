@@ -7,7 +7,7 @@
 	(title_block
 		(title "RF_Amp_80166")
 		(date "2026-07-26")
-		(rev "0.1")
+		(rev "0.2")
 		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
 	)
 	(lib_symbols
