@@ -1,0 +1,30 @@
+* 2N5486 DC transfer and Triton VFO bias validation.
+.include "../models/2N5486.lib"
+
+* IDSS-family check at VDS=15 V, VGS=0 V.
+VIDSS didss 0 15
+JIDSS didss 0 0 2N5486
+
+* Gate cutoff trend at VGS=-4 V.
+VCUT dcut 0 15
+VGCUT gcut 0 -4
+JCUT dcut gcut 0 2N5486
+
+* Q89-1 manual bias approximation:
+* manual PDF page 28 / printed page 3-12 gives D=12.8 V, G=6.8 V,
+* S=7.1 V.  The real source node also drives Q89-2, omitted here.
+VQD qd 0 12.8
+VQG qg 0 6.8
+JQ1 qd qg qs 2N5486
+RQS qs 0 1k
+
+.control
+op
+let idss = -i(VIDSS)
+let id_cutoff = -i(VCUT)
+let iq1 = -i(VQD)
+print idss id_cutoff v(qs) iq1
+echo 2N5486_VALIDATION_COMPLETE
+quit
+.endc
+.end

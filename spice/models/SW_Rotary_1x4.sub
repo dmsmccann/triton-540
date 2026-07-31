@@ -1,0 +1,19 @@
+* Parameter-selected SP4T rotary switch for the Triton 540 ten-meter
+* segment selector S5.
+*
+* Pin order:
+*   1-4  stationary contacts for the four 500 kHz ten-meter segments
+*   5    common/wiper to the VFO sheet S5 input
+*
+* POS is an integer from 1 through 4.  RON and ROFF are stable simulation
+* defaults, not measurements of the original switch.  Contact parasitics,
+* break-before-make motion, and contact bounce are omitted.
+
+.subckt SW_ROTARY_1X4 1 2 3 4 5 params: POS=1 RON=20m ROFF=1T
+
+RPOS1 5 1 R={(POS==1) ? RON : ROFF}
+RPOS2 5 2 R={(POS==2) ? RON : ROFF}
+RPOS3 5 3 R={(POS==3) ? RON : ROFF}
+RPOS4 5 4 R={(POS==4) ? RON : ROFF}
+
+.ends SW_ROTARY_1X4

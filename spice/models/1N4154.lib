@@ -1,0 +1,14 @@
+* 1N4154 silicon switching-diode model used by D89-1 in VFO S/A 80289.
+*
+* Electrical parameters copied from:
+*   C:\Ham Radio\KiCad-Spice-Library\Models\uncategorized\
+*   spice_complete\DIODE.LIB
+*
+* The source entry identifies this as a Unitrode 35 V, 0.20 A, 2 ns
+* switching-diode model dated 1990-07-01.  The source model name DN4154 has
+* been changed to 1N4154 for direct use by KiCad; parameters are unchanged.
+
+.model 1N4154 D(
++ Is=4.77e-10 N=1.67 Bv=46.6 Ibv=10u
++ Rs=0.295 Cjo=4p Vj=0.75 M=0.333 Tt=2.88n
++)

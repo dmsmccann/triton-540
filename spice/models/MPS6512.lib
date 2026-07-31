@@ -1,0 +1,22 @@
+* MPS6512 NPN model used by Q89-5 in VFO S/A 80289.
+*
+* No usable manufacturer SPICE model was located in the project library or
+* current web search.  This is a nominal, datasheet-derived model intended for
+* functional radio simulation, not device characterization.
+*
+* Fairchild 1971 data-sheet targets used:
+*   VCEO >= 30 V; hFE = 50..100 at IC=2 mA, VCE=10 V
+*   hFE >= 30 at IC=100 mA, VCE=10 V; Cob <= 3.5 pF
+*   fT >= 250 MHz at IC=2 mA, VCE=10 V
+*
+* BF and IKF set nominal gain and high-current rolloff.  Junction capacitance
+* and transit-time values are engineering approximations consistent with the
+* published Cob and fT limits.
+
+.model MPS6512 NPN(
++ Is=6.7f Xti=3 Eg=1.11 Vaf=75 Bf=70 Ikf=100m Xtb=1.5
++ Br=1 Rc=1 Rb=10 Re=0.2
++ Cjc=3.1p Mjc=.31 Vjc=.75 Fc=.5
++ Cje=5p Mje=.26 Vje=.75
++ Tf=.5n Tr=200n
++)

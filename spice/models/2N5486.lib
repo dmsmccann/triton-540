@@ -1,0 +1,28 @@
+* 2N5486 N-channel JFET model used by Q89-1 and Q89-3 in VFO S/A 80289.
+*
+* Electrical parameters copied from:
+*   C:\Ham Radio\KiCad-Spice-Library\Models\uncategorized\
+*   spice_complete\phil_fet.lib
+*
+* The source model name is 2N5486/PLP.  It is renamed 2N5486 here because
+* the slash is not portable in every SPICE/KiCad model-name parser.
+* No electrical parameters were changed.
+*
+* This model predicts about 12.3 mA at VGS=0 before series-resistance and
+* finite-VDS effects.  That is substantially more plausible for this VFO
+* than the library's separate Siliconix model with BETA=4m and VTO=-4 V.
+* Model provenance as an original Philips factory characterization has not
+* been independently established.
+
+.model 2N5486 NJF(
++ VTO=-3.847
++ BETA=832.666u
++ LAMBDA=19.1513m
++ RD=5.71667
++ RS=5.71667
++ IS=203.601a
++ CGS=2.5p
++ CGD=2.38p
++ PB=1.48032
++ FC=0.5
++)

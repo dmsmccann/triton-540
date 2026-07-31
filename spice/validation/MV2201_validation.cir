@@ -1,0 +1,25 @@
+* MV2201 reverse-bias capacitance validation.
+.include "../models/MV2201.lib"
+
+* SPICE diode order is anode, cathode.  Each cathode is driven positive so
+* the device is reverse biased, matching the VFO varactor application.
+V0  k0  0 DC 0  AC 1
+V2  k2  0 DC 2  AC 1
+V8  k8  0 DC 8  AC 1
+V12 k12 0 DC 12 AC 1
+D0  0 k0  MV2201
+D2  0 k2  MV2201
+D8  0 k8  MV2201
+D12 0 k12 MV2201
+
+.control
+ac lin 1 1Meg 1Meg
+let c_0v  = -imag(i(V0))/(2*3.141592653589793*frequency)
+let c_2v  = -imag(i(V2))/(2*3.141592653589793*frequency)
+let c_8v  = -imag(i(V8))/(2*3.141592653589793*frequency)
+let c_12v = -imag(i(V12))/(2*3.141592653589793*frequency)
+print c_0v c_2v c_8v c_12v
+echo MV2201_VALIDATION_COMPLETE
+quit
+.endc
+.end

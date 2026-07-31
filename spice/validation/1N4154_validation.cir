@@ -1,0 +1,45 @@
+* 1N4154 gate-clamp validation for D89-1 in the crystal oscillator.
+.include "../models/1N4154.lib"
+
+* Forward-bias points representative of light clamp conduction.
+IF100U 0 a100u 100u
+D100U a100u 0 1N4154
+IF1M 0 a1m 1m
+D1M a1m 0 1N4154
+
+* Reverse-bias test also supplies the AC stimulus used to derive capacitance.
+VREV arev 0 DC -5 AC 1
+DREV arev 0 1N4154
+
+.control
+op
+let vf100u = v(a100u)
+let vf1m = v(a1m)
+let ileak5v = i(VREV)
+print vf100u vf1m ileak5v
+
+if vf100u < 0.4
+  echo ERROR_1N4154_FORWARD_VOLTAGE_TOO_LOW
+  quit 1
+end
+if vf100u > 0.8
+  echo ERROR_1N4154_FORWARD_VOLTAGE_TOO_HIGH
+  quit 1
+end
+if vf1m < vf100u
+  echo ERROR_1N4154_FORWARD_CURVE_NOT_MONOTONIC
+  quit 1
+end
+
+ac lin 1 1Meg 1Meg
+let c_5v = -imag(i(VREV))/(2*3.141592653589793*frequency)
+print c_5v
+if c_5v > 4p
+  echo ERROR_1N4154_REVERSE_CAPACITANCE_TOO_HIGH
+  quit 1
+end
+
+echo 1N4154_VALIDATION_COMPLETE
+quit
+.endc
+.end

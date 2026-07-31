@@ -1,0 +1,42 @@
+* Four-position DC validation for the S5 SW_Rotary_1x4 model.
+.include "../models/SW_Rotary_1x4.sub"
+
+* Four instances exercise all four positions.  Each common is driven from
+* 1 V and every throw has a 1 kohm load to ground.
+X1 a11 a12 a13 a14 ac SW_ROTARY_1X4 params: POS=1
+X2 b11 b12 b13 b14 bc SW_ROTARY_1X4 params: POS=2
+X3 c11 c12 c13 c14 cc SW_ROTARY_1X4 params: POS=3
+X4 d11 d12 d13 d14 dc SW_ROTARY_1X4 params: POS=4
+
+Vac ac 0 1
+Vbc bc 0 1
+Vcc cc 0 1
+Vdc dc 0 1
+
+Ra11 a11 0 1k
+Ra12 a12 0 1k
+Ra13 a13 0 1k
+Ra14 a14 0 1k
+Rb11 b11 0 1k
+Rb12 b12 0 1k
+Rb13 b13 0 1k
+Rb14 b14 0 1k
+Rc11 c11 0 1k
+Rc12 c12 0 1k
+Rc13 c13 0 1k
+Rc14 c14 0 1k
+Rd11 d11 0 1k
+Rd12 d12 0 1k
+Rd13 d13 0 1k
+Rd14 d14 0 1k
+
+.control
+op
+print v(a11) v(a12) v(a13) v(a14)
+print v(b11) v(b12) v(b13) v(b14)
+print v(c11) v(c12) v(c13) v(c14)
+print v(d11) v(d12) v(d13) v(d14)
+echo SW_ROTARY_1X4_VALIDATION_COMPLETE
+quit
+.endc
+.end

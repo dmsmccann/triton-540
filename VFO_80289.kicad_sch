@@ -9,6 +9,8 @@
 		(date "2026-07-26")
 		(rev "0.2")
 		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
+		(comment 2 "Original Design: Ten-Tec")
+		(comment 3 "Triton IV (Model 540)")
 	)
 	(lib_symbols
 		(symbol "Device:C_Small_US"
@@ -1703,6 +1705,229 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Simulation_SPICE:VDC"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0.0254)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "V"
+				(at 2.54 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "1"
+				(at 2.54 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Voltage source, DC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=+ 2=-"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Type" "DC"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "simulation"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "VDC_0_0"
+				(polyline
+					(pts
+						(xy -1.27 0.254) (xy 1.27 0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.762 -0.254) (xy -1.27 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 -0.254) (xy -0.254 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -0.254) (xy 0.762 -0.254)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "+"
+					(at 0 1.905 0)
+					(effects
+						(font
+							(size 1.27 1.27)
+						)
+					)
+				)
+			)
+			(symbol "VDC_0_1"
+				(circle
+					(center 0 0)
+					(radius 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "VDC_1_1"
+				(pin passive line
+					(at 0 5.08 270)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Transistor_BJT:Q_NPN_EBC"
 			(pin_names
 				(offset 0)
@@ -2746,6 +2971,50 @@
 					)
 				)
 			)
+			(property "Sim.Library" "spice\\models\\MC1496P.sub"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Name" "MC1496P"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "SUBCKT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
 			(symbol "MC1496P_0_0"
 				(pin input line
 					(at -16.51 10.16 0)
@@ -2945,24 +3214,6 @@
 						)
 					)
 				)
-				(pin no_connect line
-					(at 15.24 6.35 180)
-					(length 2.54)
-					(name "NC"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 				(pin power_in line
 					(at 15.24 10.16 180)
 					(length 2.54)
@@ -3007,6 +3258,24 @@
 						)
 					)
 					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 15.24 6.35 180)
+					(length 2.54)
+					(name "NC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "13"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4086,11 +4355,24 @@
 		(uuid "6ff8ffaa-a9eb-4b1f-ab44-dacbfc55b423")
 	)
 	(rectangle
+		(start 57.15 232.41)
+		(end 228.6 264.16)
+		(stroke
+			(width 0)
+			(type dash)
+			(color 255 0 0 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "8d6a768b-3e36-4610-9a99-79cff5b7ea2f")
+	)
+	(rectangle
 		(start 22.8346 14.605)
 		(end 22.86 229.235)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(fill
 			(type none)
@@ -4208,6 +4490,17 @@
 			)
 		)
 		(uuid "beb5274a-26e8-4c62-be7b-bce3c8400e47")
+	)
+	(text "* VFO magnetic, trimmer, and alignment-control values below are inferred simulation-aligned values, not factory specifications\n.param PTO_L1=0.8u\n.param PTO_L2=10u\n.param PTO_L3=13u\n.param VFO_R2_POS=0.760\n.param VFO_R27_POS=0.100\n.param VFO_T1_L1=5.221u\n.param VFO_T1_L2=4.567u\n.param VFO_T1_K=0.2463\n.param VFO_C7=25.73p\n.param VFO_C8=6.697p\n.param VFO_C9=31.28p\n.param VFO_C10=20.35p\n.param VFO_C11=7.050p\n.param VFO_C12=13.93p\nK89_T1 L89-101 L89-102 {VFO_T1_K}\n.options rshunt=1e12\n* System-level PTO substitute: 5.25 MHz at the documented Q89-5 emitter bias\nV_PTO_IDEAL net-_Q89-5-E_ 0 DC 1.7 SIN(1.7 300m 5.25Meg)"
+		(exclude_from_sim no)
+		(at 66.04 249.682 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "c7e36583-784e-4894-b692-cce458b6a037")
 	)
 	(text "80"
 		(exclude_from_sim no)
@@ -4893,7 +5186,7 @@
 		)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(uuid "0c004875-95b7-4cfc-8668-120952331a30")
 	)
@@ -4946,6 +5239,16 @@
 			(type default)
 		)
 		(uuid "0f55a5f0-b2b7-4b5f-959f-85c0b6a71fbc")
+	)
+	(wire
+		(pts
+			(xy 180.34 241.3) (xy 180.34 243.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0fc682c5-2a97-4b2e-a3ec-6b90a09caee2")
 	)
 	(wire
 		(pts
@@ -5176,6 +5479,16 @@
 			(type default)
 		)
 		(uuid "1e4c6f01-90d1-4185-b524-c594578e4600")
+	)
+	(wire
+		(pts
+			(xy 217.17 248.92) (xy 218.44 248.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e8bc561-9e42-4ce5-82bd-d191a5dbed3e")
 	)
 	(wire
 		(pts
@@ -5429,6 +5742,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 241.3) (xy 168.91 243.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "31e3c0c0-58bd-48e6-b665-011d5aee5092")
+	)
+	(wire
+		(pts
 			(xy 203.2 59.69) (xy 203.2 54.61)
 		)
 		(stroke
@@ -5463,7 +5786,7 @@
 		)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(uuid "3522d24e-1cce-40f8-8880-e0eb4ec8b695")
 	)
@@ -5573,7 +5896,7 @@
 		)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(uuid "3de1c15e-e569-4920-a7c8-aff0458f2ac6")
 	)
@@ -5953,7 +6276,7 @@
 		)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(uuid "56e67a88-862b-4eb2-bde9-d43579434a16")
 	)
@@ -5963,7 +6286,7 @@
 		)
 		(stroke
 			(width 0)
-			(type default)
+			(type dash)
 		)
 		(uuid "57b2c259-0387-4112-ad11-3fad7cdd3c61")
 	)
@@ -6066,6 +6389,16 @@
 			(type default)
 		)
 		(uuid "5e885694-c77e-4c5f-a020-c3371ae03b49")
+	)
+	(wire
+		(pts
+			(xy 198.12 248.92) (xy 212.09 248.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f2167d8-5cce-4f42-9c5b-101be478db93")
 	)
 	(wire
 		(pts
@@ -6316,6 +6649,16 @@
 			(type default)
 		)
 		(uuid "75714f19-53c2-4ec6-9743-6db30705da3f")
+	)
+	(wire
+		(pts
+			(xy 156.21 241.3) (xy 156.21 243.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7587cfc4-0fc3-4f3d-91ed-1824cb6b05b7")
 	)
 	(wire
 		(pts
@@ -7059,6 +7402,16 @@
 	)
 	(wire
 		(pts
+			(xy 218.44 248.92) (xy 218.44 252.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b1d38017-0283-4f39-8ea6-ca3b6090ad7e")
+	)
+	(wire
+		(pts
 			(xy 254 157.48) (xy 254 163.83)
 		)
 		(stroke
@@ -7116,6 +7469,16 @@
 			(type default)
 		)
 		(uuid "b5a850a2-2ab3-4ee8-9b51-da85d6af4324")
+	)
+	(wire
+		(pts
+			(xy 22.86 95.25) (xy 25.4 95.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b64e3235-c56d-4d53-8cad-de0dccc195d2")
 	)
 	(wire
 		(pts
@@ -8007,6 +8370,46 @@
 		)
 		(uuid "ff980027-e796-433f-aa79-b9233e698128")
 	)
+	(label "+12"
+		(at 156.21 241.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "04572672-751f-45a7-b19a-01ae9f99e4b8")
+	)
+	(label "+REG"
+		(at 168.91 241.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3b899d5c-5895-46fd-82a6-a1b1706a30e9")
+	)
+	(label "OFFSET"
+		(at 180.34 241.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8c80309b-9bfa-4b17-a27d-2c68bda89f56")
+	)
+	(label "OUT"
+		(at 198.12 248.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b17e20e4-27a2-48eb-873b-c6cff64a4f46")
+	)
 	(hierarchical_label "+12"
 		(shape input)
 		(at 393.7 27.94 0)
@@ -8029,6 +8432,17 @@
 		)
 		(uuid "9f0ea32f-6c3c-4a6e-bff0-10a0628b8e60")
 	)
+	(hierarchical_label "GND"
+		(shape input)
+		(at 22.86 95.25 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c987e3bb-06a5-43dc-85de-46fd42c6e9dd")
+	)
 	(hierarchical_label "OFFSET"
 		(shape input)
 		(at 393.7 137.16 0)
@@ -8041,7 +8455,7 @@
 		(uuid "ce91a4d6-d2ca-4411-be9b-c192408bb359")
 	)
 	(hierarchical_label "OUT"
-		(shape input)
+		(shape output)
 		(at 393.7 127 0)
 		(effects
 			(font
@@ -8086,7 +8500,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5-60p"
+		(property "Value" "{VFO_C11}"
 			(at 270.51 107.8229 0)
 			(hide yes)
 			(show_name no)
@@ -8120,7 +8534,7 @@
 				)
 			)
 		)
-		(property "Description" "Trimmable capacitor, small symbol"
+		(property "Description" "5-60 pF physical trimmer; Value is a proposed SPICE starting setting"
 			(at 267.97 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -8213,6 +8627,50 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 115.57 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80289_RFC_1MH"
+			(at 115.57 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 115.57 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 115.57 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "da944414-39ae-4aa1-8368-c71b0f13ab4b")
 		)
@@ -8233,7 +8691,7 @@
 		(at 299.72 190.5 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -8285,6 +8743,28 @@
 			)
 		)
 		(property "Description" "NPN transistor, emitter/base/collector"
+			(at 299.72 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\MPS6512.lib"
+			(at 299.72 190.5 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "MPS6512"
 			(at 299.72 190.5 0)
 			(hide yes)
 			(show_name no)
@@ -8429,7 +8909,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "04258776-2be0-4746-a170-6f2c83fd18e2")
-		(property "Reference" "#PWR03"
+		(property "Reference" "#PWR068"
 			(at 39.37 71.12 0)
 			(hide yes)
 			(show_name no)
@@ -8489,7 +8969,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "#PWR03")
+					(reference "#PWR068")
 					(unit 1)
 				)
 			)
@@ -8721,6 +9201,61 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 358.14 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80278_PTO_L2"
+			(at 358.14 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 358.14 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 358.14 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "L={PTO_L2}"
+			(at 358.14 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "2fdf6c4f-bf7d-440a-9d9b-1b812c80298a")
 		)
@@ -8747,7 +9282,7 @@
 		(in_pos_files yes)
 		(dnp no)
 		(uuid "0ab3e728-f01e-4018-8bef-0eeb114bd650")
-		(property "Reference" "#PWR06"
+		(property "Reference" "#PWR071"
 			(at 95.25 114.3 0)
 			(hide yes)
 			(show_name no)
@@ -8807,7 +9342,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "#PWR06")
+					(reference "#PWR071")
 					(unit 1)
 				)
 			)
@@ -8836,7 +9371,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "L_Trim"
+		(property "Value" "{VFO_T1_L1}"
 			(at 219.71 63.4999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9033,6 +9568,28 @@
 			)
 		)
 		(property "Description" "NPN transistor, emitter/base/collector"
+			(at 331.47 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\MPS6514.lib"
+			(at 331.47 81.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "MPS6514"
 			(at 331.47 81.28 0)
 			(hide yes)
 			(show_name no)
@@ -9686,7 +10243,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Selected in production"
+		(property "Value" "3p"
 			(at 373.38 193.1669 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -9719,7 +10276,7 @@
 				)
 			)
 		)
-		(property "Description" "capacitor, small US symbol"
+		(property "Description" "Production-selected capacitor; 3 pF is a proposed SPICE starting estimate"
 			(at 370.84 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -10048,6 +10605,28 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\MV2201.lib"
+			(at 368.3 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "MV2201"
+			(at 368.3 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Sim.Device" "D"
 			(at 368.3 173.99 0)
 			(hide yes)
@@ -10080,6 +10659,122 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
 					(reference "D89-3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Simulation_SPICE:VDC")
+		(at 180.34 248.92 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2b0ab1d4-3d3b-4250-ae76-bc59d8d54bca")
+		(property "Reference" "V89-3"
+			(at 184.15 247.5201 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "3.1"
+			(at 184.15 250.0601 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
+			(at 180.34 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Voltage source, DC"
+			(at 180.34 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 180.34 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "DC"
+			(at 180.34 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "V"
+			(at 180.34 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "2"
+			(uuid "fb4cdad3-a206-4ce1-ad9d-acfb28f9b879")
+		)
+		(pin "1"
+			(uuid "9a5df2a2-972d-496a-9e85-1d42ae4301b3")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "V89-3")
 					(unit 1)
 				)
 			)
@@ -10236,6 +10931,83 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
 					(reference "#PWR038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 25.4 95.25 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "3097d747-d4a0-4408-b020-f3c2e0b026f7")
+		(property "Reference" "#PWR063"
+			(at 25.4 101.6 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 29.718 97.282 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 25.4 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 25.4 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 25.4 95.25 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "8d024e57-0ac9-48e3-a3e1-4c9f409433f8")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "#PWR063")
 					(unit 1)
 				)
 			)
@@ -10424,7 +11196,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5-60p"
+		(property "Value" "{VFO_C8}"
 			(at 191.77 107.8229 0)
 			(hide yes)
 			(show_name no)
@@ -10458,7 +11230,7 @@
 				)
 			)
 		)
-		(property "Description" "Trimmable capacitor, small symbol"
+		(property "Description" "5-60 pF physical trimmer; Value is a proposed SPICE starting setting"
 			(at 189.23 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -10647,6 +11419,84 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 156.21 254 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "39a99d28-edb1-4c4c-a6e7-1d697204c9ed")
+		(property "Reference" "#PWR076"
+			(at 156.21 260.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 156.21 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 156.21 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 156.21 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 156.21 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "91e32500-328f-44d5-9ecd-6034f69e56d4")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "#PWR076")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "VFO_80289:SW_Rotary_4x5")
 		(at 266.7 92.71 270)
 		(unit 4)
@@ -10702,7 +11552,62 @@
 				)
 			)
 		)
-		(property "Description" "Rotary switch 1x5, SP5T with mount point"
+		(property "Description" "Four-wafer, five-position rotary switch; unique pins per wafer"
+			(at 266.7 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\SW_Rotary_4x5.sub"
+			(at 266.7 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SW_ROTARY_4X5"
+			(at 266.7 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 266.7 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16 17=17 18=18 19=19 20=20 21=21 22=22 23=23 24=24"
+			(at 266.7 92.71 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POS={S4_POS}"
 			(at 266.7 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -11056,7 +11961,7 @@
 				)
 			)
 		)
-		(property "Value" ".01"
+		(property "Value" ".01u"
 			(at 282.067 71.12 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -11191,6 +12096,84 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
 					(reference "R89-26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 218.44 252.73 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48ece985-a7d0-48a8-b151-fba2e165f1b3")
+		(property "Reference" "#PWR072"
+			(at 218.44 259.08 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 218.44 257.81 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 218.44 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 218.44 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 218.44 252.73 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "0b43fdb5-b7f0-452d-bdd7-ad939489ba7b")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "#PWR072")
 					(unit 1)
 				)
 			)
@@ -11344,6 +12327,28 @@
 			)
 		)
 		(property "Description" "Diode"
+			(at 356.87 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\MV2201.lib"
+			(at 356.87 173.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "MV2201"
 			(at 356.87 173.99 0)
 			(hide yes)
 			(show_name no)
@@ -11667,7 +12672,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5-60p"
+		(property "Value" "{VFO_C12}"
 			(at 274.32 107.8229 0)
 			(hide yes)
 			(show_name no)
@@ -11701,7 +12706,7 @@
 				)
 			)
 		)
-		(property "Description" "Trimmable capacitor, small symbol"
+		(property "Description" "5-60 pF physical trimmer; Value is a proposed SPICE starting setting"
 			(at 271.78 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -11782,6 +12787,50 @@
 			)
 		)
 		(property "Description" "Inductor, small symbol"
+			(at 370.84 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 370.84 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80289_RFC_1MH"
+			(at 370.84 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 370.84 27.94 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
 			(at 370.84 27.94 0)
 			(hide yes)
 			(show_name no)
@@ -11946,6 +12995,61 @@
 			)
 		)
 		(property "Description" "Variable inductor"
+			(at 370.84 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 370.84 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80278_PTO_L3"
+			(at 370.84 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 370.84 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 370.84 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "L={PTO_L3}"
 			(at 370.84 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -12298,7 +13402,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "637048d4-dd8d-4a23-9866-ce90c8ed2b2d")
-		(property "Reference" "#PWR05"
+		(property "Reference" "#PWR070"
 			(at 74.93 43.18 0)
 			(hide yes)
 			(show_name no)
@@ -12358,7 +13462,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "#PWR05")
+					(reference "#PWR070")
 					(unit 1)
 				)
 			)
@@ -12421,6 +13525,28 @@
 			)
 		)
 		(property "Description" "NPN transistor, emitter/base/collector"
+			(at 242.57 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\MPS6514.lib"
+			(at 242.57 179.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "MPS6514"
 			(at 242.57 179.07 0)
 			(hide yes)
 			(show_name no)
@@ -12538,7 +13664,7 @@
 				)
 			)
 		)
-		(property "Sim.Device" "R"
+		(property "Sim.Library" "spice\\models\\Potentiometer_Position.sub"
 			(at 137.16 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -12549,7 +13675,7 @@
 				)
 			)
 		)
-		(property "Sim.Type" "POT"
+		(property "Sim.Device" "SUBCKT"
 			(at 137.16 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -12560,7 +13686,29 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=r0 2=wiper 3=r1"
+		(property "Sim.Name" "POT_POSITION"
+			(at 137.16 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3"
+			(at 137.16 208.28 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "R=1k POS={VFO_R27_POS}"
 			(at 137.16 208.28 0)
 			(hide yes)
 			(show_name no)
@@ -12817,7 +13965,7 @@
 				)
 			)
 		)
-		(property "Sim.Device" "R"
+		(property "Sim.Library" "spice\\models\\Potentiometer_Position.sub"
 			(at 39.37 52.07 0)
 			(hide yes)
 			(show_name no)
@@ -12828,7 +13976,7 @@
 				)
 			)
 		)
-		(property "Sim.Type" "POT"
+		(property "Sim.Device" "SUBCKT"
 			(at 39.37 52.07 0)
 			(hide yes)
 			(show_name no)
@@ -12839,7 +13987,29 @@
 				)
 			)
 		)
-		(property "Sim.Pins" "1=r0 2=wiper 3=r1"
+		(property "Sim.Name" "POT_POSITION"
+			(at 39.37 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3"
+			(at 39.37 52.07 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "R=1k POS={VFO_R2_POS}"
 			(at 39.37 52.07 0)
 			(hide yes)
 			(show_name no)
@@ -12863,6 +14033,122 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
 					(reference "R89-2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Simulation_SPICE:VDC")
+		(at 156.21 248.92 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "6f0261c9-4705-4d95-984f-eda907a86a7e")
+		(property "Reference" "V89-1"
+			(at 160.02 247.5201 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "13.8"
+			(at 160.02 250.0601 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 156.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
+			(at 156.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Voltage source, DC"
+			(at 156.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 156.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "DC"
+			(at 156.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "V"
+			(at 156.21 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "2"
+			(uuid "22583c9b-0eca-4a06-8f45-da7f6bb3d993")
+		)
+		(pin "1"
+			(uuid "99031a3e-0739-47cf-a06a-9b66ec4d6031")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "V89-1")
 					(unit 1)
 				)
 			)
@@ -12922,6 +14208,61 @@
 			)
 		)
 		(property "Description" "Rotary switch 1x5, SP5T with mount point"
+			(at 62.23 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\SW_Rotary_4x5.sub"
+			(at 62.23 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SW_ROTARY_4X5"
+			(at 62.23 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 62.23 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16 17=17 18=18 19=19 20=20 21=21 22=22 23=23 24=24"
+			(at 62.23 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POS={S4_POS}"
 			(at 62.23 195.58 0)
 			(hide yes)
 			(show_name no)
@@ -13037,7 +14378,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5-60p"
+		(property "Value" "{VFO_C9}"
 			(at 195.58 107.8229 0)
 			(hide yes)
 			(show_name no)
@@ -13071,7 +14412,7 @@
 				)
 			)
 		)
-		(property "Description" "Trimmable capacitor, small symbol"
+		(property "Description" "5-60 pF physical trimmer; Value is a proposed SPICE starting setting"
 			(at 193.04 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -13279,7 +14620,7 @@
 				)
 			)
 		)
-		(property "Sim.Params" "dc=0 ampl=84.9m f=7.5Meg"
+		(property "Sim.Params" "dc=2.2 ampl=1 f=7.5Meg"
 			(at 52.07 213.36 0)
 			(hide yes)
 			(show_name no)
@@ -13468,6 +14809,85 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:R_Small_US")
+		(at 214.63 248.92 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7aca1d6c-61bc-43e8-a754-4fe82da9ab23")
+		(property "Reference" "R89-89"
+			(at 214.63 242.57 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "50"
+			(at 214.63 245.11 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 214.63 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 214.63 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Resistor, small US symbol"
+			(at 214.63 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "4105d916-af95-42b1-812e-e3b4f0c5e8a2")
+		)
+		(pin "2"
+			(uuid "4a4afb2e-f1ab-491d-939d-4ffadf660f73")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "R89-89")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 80.01 86.36 0)
 		(unit 1)
@@ -13479,7 +14899,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7bfaac27-63a2-492e-938f-b1012197ceb5")
-		(property "Reference" "#PWR01"
+		(property "Reference" "#PWR066"
 			(at 80.01 92.71 0)
 			(hide yes)
 			(show_name no)
@@ -13539,7 +14959,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "#PWR01")
+					(reference "#PWR066")
 					(unit 1)
 				)
 			)
@@ -14127,7 +15547,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "L_Trim"
+		(property "Value" "{VFO_T1_L2}"
 			(at 233.68 63.4999 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -14686,7 +16106,7 @@
 				)
 			)
 		)
-		(property "Sim.Params" "dc=0 ampl=84.9m f=6.99Meg"
+		(property "Sim.Params" "dc=2.2 ampl=1 f=6.99Meg"
 			(at 25.4 213.36 0)
 			(hide yes)
 			(show_name no)
@@ -14779,6 +16199,50 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 302.26 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80289_RFC_1MH"
+			(at 302.26 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 302.26 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 302.26 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "3cfb64e7-10a2-4d53-8e5b-cab07f11f405")
 		)
@@ -14818,7 +16282,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5-60p"
+		(property "Value" "{VFO_C7}"
 			(at 187.96 107.8229 0)
 			(hide yes)
 			(show_name no)
@@ -14852,7 +16316,7 @@
 				)
 			)
 		)
-		(property "Description" "Trimmable capacitor, small symbol"
+		(property "Description" "5-60 pF physical trimmer; Value is a proposed SPICE starting setting"
 			(at 185.42 106.68 0)
 			(hide yes)
 			(show_name no)
@@ -15015,6 +16479,50 @@
 			)
 		)
 		(property "Description" "Inductor, small symbol"
+			(at 256.54 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 256.54 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80289_RFC_1MH"
+			(at 256.54 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 256.54 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
 			(at 256.54 147.32 0)
 			(hide yes)
 			(show_name no)
@@ -15263,6 +16771,61 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\SW_Rotary_4x5.sub"
+			(at 73.66 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SW_ROTARY_4X5"
+			(at 73.66 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 73.66 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16 17=17 18=18 19=19 20=20 21=21 22=22 23=23 24=24"
+			(at 73.66 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POS={S4_POS}"
+			(at 73.66 130.81 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2726af88-8518-484c-af41-35d74438aad8")
 		)
@@ -15481,6 +17044,61 @@
 			)
 		)
 		(property "Description" "Variable inductor"
+			(at 358.14 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 358.14 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80278_PTO_L1"
+			(at 358.14 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 358.14 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 358.14 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "L={PTO_L1}"
 			(at 358.14 195.58 0)
 			(hide yes)
 			(show_name no)
@@ -15733,6 +17351,50 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\80289_vfo_magnetics.lib"
+			(at 219.71 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "80277_L4"
+			(at 219.71 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 219.71 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 219.71 172.72 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "2d63bae6-7d6a-4639-b32a-bb52e2bab503")
 		)
@@ -15760,7 +17422,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a4104f33-74dc-49a5-b3fb-7de6f0a16285")
-		(property "Reference" "#PWR04"
+		(property "Reference" "#PWR069"
 			(at 62.23 41.91 0)
 			(hide yes)
 			(show_name no)
@@ -15820,7 +17482,85 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "#PWR04")
+					(reference "#PWR069")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 180.34 254 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a8c2e662-78fd-4c6d-8760-39d92932d680")
+		(property "Reference" "#PWR078"
+			(at 180.34 260.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 180.34 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 180.34 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 180.34 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 180.34 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "6eaf8e0c-aa51-404b-8264-fed862edca1c")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "#PWR078")
 					(unit 1)
 				)
 			)
@@ -15965,6 +17705,50 @@
 			)
 		)
 		(property "Description" "N-JFET transistor, drain/source/gate"
+			(at 113.03 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\2N5486.lib"
+			(at 113.03 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "2N5486"
+			(at 113.03 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "NJFET"
+			(at 113.03 195.58 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=D 2=S 3=G"
 			(at 113.03 195.58 0)
 			(hide yes)
 			(show_name no)
@@ -16462,6 +18246,28 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\1N4154.lib"
+			(at 74.93 207.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "1N4154"
+			(at 74.93 207.01 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Sim.Device" "D"
 			(at 74.93 207.01 0)
 			(hide yes)
@@ -16572,6 +18378,84 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
 					(reference "#PWR014")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 168.91 254 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b77b2977-476f-46ca-b8f6-4e4050081707")
+		(property "Reference" "#PWR077"
+			(at 168.91 260.35 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 168.91 259.08 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 168.91 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 168.91 254 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "33332639-f11a-48d2-bded-46db406e07e0")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "#PWR077")
 					(unit 1)
 				)
 			)
@@ -16986,7 +18870,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c33e2307-4dc9-4aa5-8abc-3122ccd811b9")
-		(property "Reference" "#PWR02"
+		(property "Reference" "#PWR067"
 			(at 54.61 66.04 0)
 			(hide yes)
 			(show_name no)
@@ -17046,7 +18930,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "#PWR02")
+					(reference "#PWR067")
 					(unit 1)
 				)
 			)
@@ -17109,6 +18993,50 @@
 			)
 		)
 		(property "Description" "N-JFET transistor, drain/source/gate"
+			(at 302.26 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\2N5486.lib"
+			(at 302.26 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "2N5486"
+			(at 302.26 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "NJFET"
+			(at 302.26 74.93 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=D 2=S 3=G"
 			(at 302.26 74.93 0)
 			(hide yes)
 			(show_name no)
@@ -17237,7 +19165,7 @@
 				)
 			)
 		)
-		(property "Sim.Params" "dc=0 ampl=84.9m f=11Meg"
+		(property "Sim.Params" "dc=2.2 ampl=1 f=11Meg"
 			(at 39.37 213.36 0)
 			(hide yes)
 			(show_name no)
@@ -17445,7 +19373,7 @@
 				)
 			)
 		)
-		(property "Value" ".01"
+		(property "Value" ".01u"
 			(at 346.837 64.77 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -18055,6 +19983,61 @@
 			)
 		)
 		(property "Description" "Rotary switch 1x5, SP5T with mount point"
+			(at 187.96 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\SW_Rotary_4x5.sub"
+			(at 187.96 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SW_ROTARY_4X5"
+			(at 187.96 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 187.96 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16 17=17 18=18 19=19 20=20 21=21 22=22 23=23 24=24"
+			(at 187.96 91.44 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "POS={S4_POS}"
 			(at 187.96 91.44 0)
 			(hide yes)
 			(show_name no)
@@ -18829,6 +20812,122 @@
 		)
 	)
 	(symbol
+		(lib_id "Simulation_SPICE:VDC")
+		(at 168.91 248.92 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ec2e3390-4541-4075-ab40-972834782f99")
+		(property "Reference" "V89-2"
+			(at 172.72 247.5201 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "8.0"
+			(at 172.72 250.0601 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 168.91 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://ngspice.sourceforge.io/docs/ngspice-html-manual/manual.xhtml#sec_Independent_Sources_for"
+			(at 168.91 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Voltage source, DC"
+			(at 168.91 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 168.91 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "DC"
+			(at 168.91 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "V"
+			(at 168.91 248.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "2"
+			(uuid "951d982a-45f8-4ada-ac2d-bbcc0a837768")
+		)
+		(pin "1"
+			(uuid "19ccbaa4-7784-4dd8-b47e-410fd62dfe66")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
+					(reference "V89-2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_Small_US")
 		(at 294.64 157.48 180)
 		(unit 1)
@@ -18932,7 +21031,7 @@
 				)
 			)
 		)
-		(property "Value" ".01"
+		(property "Value" ".01u"
 			(at 346.837 88.9 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -19096,7 +21195,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "5-60p"
+		(property "Value" "{VFO_C10}"
 			(at 266.7 107.8229 0)
 			(hide yes)
 			(show_name no)
@@ -19130,7 +21229,7 @@
 				)
 			)
 		)
-		(property "Description" "Trimmable capacitor, small symbol"
+		(property "Description" "5-60 pF physical trimmer; Value is a proposed SPICE starting setting"
 			(at 264.16 106.68 0)
 			(hide yes)
 			(show_name no)

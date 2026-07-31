@@ -279,6 +279,27 @@
         "via_diameter": 0.6,
         "via_drill": 0.3,
         "wire_width": 6
+      },
+      {
+        "name": "Power",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2,
+        "schematic_color": "rgb(255, 0, 0)",
+        "tuning_profile": ""
+      },
+      {
+        "name": "Rcv",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(255, 255, 255)",
+        "tuning_profile": ""
+      },
+      {
+        "name": "Xmit",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 1,
+        "schematic_color": "rgb(255, 153, 0)",
+        "tuning_profile": ""
       }
     ],
     "meta": {
@@ -286,7 +307,20 @@
     },
     "net_colors": null,
     "netclass_assignments": null,
-    "netclass_patterns": []
+    "netclass_patterns": [
+      {
+        "netclass": "Power",
+        "pattern": "*12"
+      },
+      {
+        "netclass": "Rcv",
+        "pattern": "*R"
+      },
+      {
+        "netclass": "Xmit",
+        "pattern": "*/T"
+      }
+    ]
   },
   "pcbnew": {
     "last_paths": {
@@ -424,7 +458,7 @@
         "uuid": "2d45daab-5f60-4e97-8c02-32b0054eab28"
       }
     ],
-    "used_designators": "C1-6,C13-22,#PWR1-45,T1,L1-4,L89-103,R1,J1,U1,R66\\-6-13,Q1-2,V1-3,C66\\-9-17,SW1-3,L66\\-3-4,RV1,R89\\-2-3,R89\\-5-7,R89\\-9-12,R89\\-16-21,R89\\-25-27,R89\\-29-31,R89\\-36-37,C89\\-2-5,C89\\-8-15,C89\\-20-25,C89\\-27-28,C89\\-36-39,D1,Y1-3",
+    "used_designators": "C1-6,C13-22,#PWR1-65,#PWR72-78,T1,L1-4,L89-103,R1,R99,J1,U1-2,R66\\-6-13,Q1-2,V1-10,C66\\-9-17,SW1-3,L66\\-3-4,RV1,R89\\-2-3,R89\\-5-7,R89\\-9-12,R89\\-16-21,R89\\-25-27,R89\\-29-31,R89\\-36-37,C89\\-2-5,C89\\-8-15,C89\\-20-25,C89\\-27-28,C89\\-36-39,D1,Y1-4,C87\\-3-7,C87\\-12-17,C87\\-20-21,R87\\-6-8,R87\\-20-21,S4B1",
     "variants": []
   },
   "sheets": [
@@ -439,6 +473,10 @@
     [
       "818ce5bb-55e6-4013-915b-e8afd4640f1a",
       "VFO-80289"
+    ],
+    [
+      "9b4fc3e8-2a10-4abe-9446-5255e336fe19",
+      "TX RX Mixer 80287"
     ]
   ],
   "text_variables": {},

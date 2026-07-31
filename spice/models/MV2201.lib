@@ -1,0 +1,13 @@
+* MV2201 silicon varactor model used by D89-2 and D89-3 in VFO S/A 80289.
+*
+* Electrical parameters copied from:
+*   C:\Ham Radio\KiCad-Spice-Library\Models\Diode\DIODE2.lib
+* Original entry:
+*   .model MV2201 D(Is=1.365p Rs=1 Cjo=14.93p M=.4261 Vj=.75
+*   + Isr=16.02p Nr=2 Bv=25 Ibv=10u Vpk=25 mfg=OnSemi type=varactor)
+*
+* Vpk, mfg, and type are library metadata rather than ngspice diode-model
+* parameters, so they are preserved above for provenance but omitted below.
+* This imported model has not been established as an original factory model.
+
+.model MV2201 D(Is=1.365p Rs=1 Cjo=14.93p M=.4261 Vj=.75 Isr=16.02p Nr=2 Bv=25 Ibv=10u)

@@ -223,3 +223,318 @@ study rather than in this model description.
 
 `../validation/SW_Rotary_1x5_validation.cir` instantiates the model in all
 five positions and checks that only the selected throw conducts.
+
+## Ganged S89-1 four-pole, five-position VFO bandswitch
+
+`SW_Rotary_4x5.sub` models the four mechanically linked wafers of S89-1 as
+one 24-pin subcircuit.  Its pins map one-to-one to the project-local symbol:
+
+| Model pins | VFO switch terminals |
+|---:|---|
+| 1-5, 6 | A1-A5, A common |
+| 7-11, 12 | B1-B5, B common |
+| 13-17, 18 | C1-C5, C common |
+| 19-23, 24 | D1-D5, D common |
+
+All four wafers use the same `POS` parameter.  The S89-1 schematic instance
+passes `POS={S4_POS}`, so the root-sheet directive that controls S4A and S4B
+also controls the VFO bandswitch:
+
+| `S4_POS` | Amateur band | Nominal band frequency |
+|---:|---:|---:|
+| 1 | 80 m | 3.5 MHz |
+| 2 | 40 m | 7 MHz |
+| 3 | 20 m | 14 MHz |
+| 4 | 15 m | 21 MHz |
+| 5 | 10 m | 28 MHz |
+
+The model uses the same 20 milliohm selected-contact resistance and 1 teraohm
+unselected-contact resistance as the S4 model.  It does not model contact
+parasitics, break-before-make motion, or contact bounce.
+
+`../validation/SW_Rotary_4x5_validation.cir` checks every wafer in all five
+positions.
+
+## S5 four-position ten-meter segment switch
+
+`SW_Rotary_1x4.sub` models the top-sheet S5 SP4T selector. Model pins 1–4
+map one-to-one to the four crystal contacts and pin 5 is the common/wiper
+connected to the VFO sheet's `S5` input. The schematic instance passes:
+
+```spice
+POS={S5_POS}
+```
+
+The root-sheet directive defaults to `.param S5_POS=1`. Positions 1–4 select
+Y1 through Y4:
+
+| `S5_POS` | Dial segment | Ideal source |
+|---:|:--|--:|
+| 1 | 28.0–28.5 MHz | Y1, 13.99 MHz |
+| 2 | 28.5–29.0 MHz | Y2, 14.49 MHz |
+| 3 | 29.0–29.5 MHz | Y3, 14.99 MHz |
+| 4 | 29.5–30.0 MHz | Y4, 15.49 MHz |
+
+The four frequencies are the documented 10 kHz-low crystal plan combined
+with the band-dependent PTO correction. Y1–Y4 are functional ideal sine
+sources with 2.2 V DC bias and 1 V peak amplitude, matching the ideal-source
+convention used for Y89-1 through Y89-3. They do not model crystal startup,
+motional parameters, loading, or production tolerance.
+
+The switch uses 20 milliohms for the selected contact and 1 teraohm for each
+unselected contact. These are stable simulation defaults, not measurements.
+`../validation/SW_Rotary_1x4_validation.cir` checks all four positions.
+
+## Fixed-position potentiometer
+
+`Potentiometer_Position.sub` represents a three-terminal linear
+potentiometer at a fixed simulation setting. Its model pins are terminal 1,
+wiper 2, and terminal 3. The instance parameters are:
+
+```spice
+R=1k POS=0.5
+```
+
+`POS=0` places the wiper at terminal 1 and `POS=1` places it at terminal 3.
+A 1 milliohm minimum segment resistance avoids a zero-ohm branch at either
+endpoint.
+
+The 80289 schematic uses this model only for the two alignment controls.
+R89-2 has `POS={VFO_R2_POS}`, with the saved
+`.param VFO_R2_POS=0.760`; R89-27 has `POS={VFO_R27_POS}`, with the saved
+`.param VFO_R27_POS=0.100`. The dedicated mixer-balance sweep places the
+R89-2 minimum at 0.760. The crystal-injection sweep retains R89-27 at 0.100
+as an inferred compromise, but the simplified model does not reach the
+manual's 200 mV minimum throughout the T1 range. These are simulation-aligned
+estimates obtained in the manual's adjustment order, not measured production
+settings. The ordinary schematic resistance and three-terminal topology are
+preserved.
+
+`../validation/Potentiometer_Position_validation.cir` checks the wiper at
+positions 0.25, 0.50, and 0.75.
+
+## MV2201 varactors
+
+`MV2201.lib` contains the junction-capacitance diode model used by D89-2 and
+D89-3 in the 80289 PTO.  The electrical parameters were imported from
+`Models/Diode/DIODE2.lib` in the local KiCad-SPICE-Library:
+
+```spice
+.model MV2201 D(Is=1.365p Rs=1 Cjo=14.93p M=.4261 Vj=.75 Isr=16.02p Nr=2 Bv=25 Ibv=10u)
+```
+
+The source library's `Vpk`, `mfg`, and `type` fields are metadata not
+recognized as ngspice diode parameters; the project-local file records them
+in comments but omits them from the active model statement.
+
+Both schematic symbols retain the KiCad pin mapping `1=K 2=A`.  KiCad
+therefore emits the SPICE diode nodes in anode-cathode order.  The model
+captures nominal reverse-bias capacitance and series resistance, but its
+provenance as an original Motorola/OnSemi factory model has not been
+established.  Do not treat it as evidence of production spread, temperature
+drift, package parasitics, or measured behavior of the installed parts.
+
+`../validation/MV2201_validation.cir` checks the nominal small-signal
+capacitance at 0, 2, 8, and 12 V reverse bias.
+
+## 2N5486 N-channel JFETs
+
+`2N5486.lib` contains the model used by Q89-1 and Q89-3 in VFO assembly
+80289.  Its parameters were imported from the `2N5486/PLP` entry in the
+local KiCad-SPICE-Library's `spice_complete/phil_fet.lib`; the model name was
+changed to `2N5486` for portable KiCad/ngspice use, without changing its
+electrical parameters.
+
+The plain `2N5486` and `2N5486X` entries elsewhere in that library use
+`BETA=4m` and `VTO=-4 V`, implying a much higher zero-bias drain current.
+The selected Philips-family entry uses `BETA=832.666u` and `VTO=-3.847 V`,
+giving a nominal IDSS near 12 mA, consistent with the 2N5486 device family
+and the VFO's documented Q89-1 bias.
+
+Both KiCad symbols use `Device:Q_NJFET_DSG`:
+
+| KiCad pin | Function | SPICE JFET node |
+|---:|---|---|
+| 1 | Drain | D |
+| 2 | Source | S |
+| 3 | Gate | G |
+
+The model is useful for nominal DC bias, oscillator startup, buffer loading,
+and RF gain trends.  Its provenance as an original factory model has not
+been independently established, and it does not represent the broad
+production spread normally associated with discrete JFET IDSS and cutoff
+voltage.
+
+`../validation/2N5486_validation.cir` checks IDSS, cutoff trend, and a
+source-follower approximation of the manual's Q89-1 voltage data.
+
+The onsemi 2N5486 data sheet confirms physical pins 1=D, 2=S, 3=G,
+`IDSS=8-20 mA` at `VDS=15 V`, and `VGS(off)=-2` to `-6 V`:
+<https://www.onsemi.com/download/data-sheet/pdf/2n5486-d.pdf>.
+
+## MPS6514 NPN transistors
+
+`MPS6514.lib` contains the model used by Q89-2 and Q89-4 in VFO assembly
+80289.  It was imported from the local KiCad-SPICE-Library's
+`spice_complete/fairch.lib`, which identifies it as a Fairchild TO-92 model
+created on 1988-09-08.
+
+The model includes Early voltage, high-current beta rolloff, base and
+collector resistance, junction capacitances, and forward/reverse transit
+times.  Both KiCad instances retain the stock `Q_NPN_EBC` mapping:
+
+| KiCad pin | Function | SPICE BJT node |
+|---:|---|---|
+| 1 | Emitter | E |
+| 2 | Base | B |
+| 3 | Collector | C |
+
+The historical Fairchild data gives MPS6514 DC gain of 150-300 at 2 mA,
+minimum gain 90 at 100 mA, 25 V minimum collector-emitter breakdown, and
+3.5 pF maximum output capacitance:
+<https://media.digikey.com/pdf/Data%20Sheets/Fairchild%20PDFs/NPN%2C%20PNP%20Amplifiers.pdf>.
+The model's internal `BF=522` is not the same as terminal hFE at every
+collector current.
+
+The model is suitable for nominal bias, follower loading, and RF transient
+work.  It does not establish installed-device gain, temperature behavior,
+or production spread.
+
+`../validation/MPS6514_validation.cir` checks the model against the manual's
+Q89-2 and Q89-4 collector/base/emitter voltage data.
+
+## MPS6512 PTO transistor
+
+`MPS6512.lib` contains the nominal NPN model used by Q89-5 in VFO assembly
+80289.  No usable MPS6512 model was found in the installed
+KiCad-Spice-Library or in the web search performed for this work, so this
+model was developed from the original Fairchild data sheet:
+<https://bitsavers.trailing-edge.com/components/fairchild/_dataBooks/1971_Fairchild_TO92_Plastic_Transistors.pdf>.
+
+The Fairchild data distinguishes the adjacent gain selections: MPS6512 is
+specified for `hFE=50-100` at `IC=2 mA, VCE=10 V`; MPS6513 is the
+`hFE=90-180` part.  MPS6512 also has `VCEO=30 V`, `hFE>=30` at 100 mA,
+`Cob<=3.5 pF`, and `fT>=250 MHz` at 2 mA.  The model uses a nominal gain
+near the middle of the 2 mA bin, high-current rolloff, 3.1 pF
+collector-junction capacitance, and an estimated transit time chosen to
+retain ample gain at the PTO frequency.
+
+Q89-5 retains the stock `Q_NPN_EBC` mapping:
+
+| KiCad pin | Function | SPICE BJT node |
+|---:|---|---|
+| 1 | Emitter | E |
+| 2 | Base | B |
+| 3 | Collector | C |
+
+This model is intended to reproduce bias, oscillator startup, and loading
+well enough to study the radio signal path.  It is not a fitted production
+model and should not be used to predict noise, temperature drift,
+breakdown, device spread, or exact oscillator amplitude.
+
+`../validation/MPS6512_validation.cir` checks the nominal current gain and
+the DC portion of Q89-5's bias network.  The manual voltage table lists
+Q89-5 collector/base/emitter as 8.0/2.2/2.3 V (PDF page 28, printed page
+3-12); the emitter-above-base reading is not a physically consistent NPN
+DC junction voltage, so the model is not forced to match that datum.
+
+## 1N4154 crystal-oscillator clamp diode
+
+`1N4154.lib` contains the model used by D89-1 in VFO assembly 80289.  It
+was imported from the local KiCad-Spice-Library's
+`spice_complete/DIODE.LIB`, where the entry is identified as a Unitrode
+35 V, 0.20 A, 2 ns silicon switching-diode model dated 1990-07-01.  The
+source model name `DN4154` was changed to `1N4154`; its electrical
+parameters were preserved.
+
+D89-1 is connected with its anode at Q89-3's gate and cathode at ground.
+It therefore clamps the positive gate excursion of the selected crystal
+oscillator.  The model includes forward conduction, series resistance,
+reverse leakage and breakdown, 4 pF zero-bias junction capacitance, and
+2.88 ns transit time.  This is sufficient for oscillator startup and
+waveform-limiting studies; it is not evidence of the installed diode's
+exact leakage, capacitance, or switching-time distribution.
+
+The stock KiCad diode symbol maps pin 1 to cathode and pin 2 to anode.
+KiCad consequently emits the SPICE nodes in the required anode-cathode
+order.
+
+`../validation/1N4154_validation.cir` checks light-current forward clamp
+voltages and reverse-biased junction capacitance.
+
+## VFO 80289 magnetics
+
+`80289_vfo_magnetics.lib` supplies four parameterized starting models:
+
+| Model | Physical parts | Default starting values |
+|---|---|---|
+| `80278_PTO_COILS` | PTO L1, L2, L3 | 0.8 uH + (10 uH || 13 uH) |
+| `80277_L4` | Oscillator-board L4 | 12 uH, Q=60, 2 pF parasitic |
+| `80289_T1` | Coupled output-filter windings | 5.221 uH : 4.567 uH, K=0.2463 |
+| `80289_RFC_1MH` | Four documented RF chokes | 1 mH, estimated 10 ohm DCR |
+
+The manual documents the topology but not the tuned inductances, winding
+resistance, Q, coupling, or parasitic capacitance.  The defaults are
+calculated and inferred starting values, not Ten-Tec specifications.
+
+For the PTO, PDF page 26 / printed page 3-10 states that L3 is the main
+permeability-tuned coil, L2 shunts L3, and L1 is in series.  With about
+140-150 pF effective tank capacitance from the surrounding circuit,
+L1=0.8 uH, L2=10 uH, and an L3 sweep of roughly 10-16 uH provide an
+appropriate 5.0-5.5 MHz starting range.  L1 and L2 remain parameters so
+the manual endpoint/linearity alignment can be reproduced.
+
+L4 is calculated from its documented 360 pF and 100 pF shunt capacitors.
+Their 78.3 pF series equivalent requires about 11.7 uH at 5.25 MHz, rounded
+to 12 uH.
+
+The T1 estimate follows the alignment and switched topology on PDF pages
+27 and 29 / printed pages 3-11 and 3-13. On 10 meters no trimmer pair is
+selected. A loaded AC alignment of a fresh KiCad netlist gives 5.221 uH and
+4.567 uH for the independently slug-tuned windings with K=0.2463. The fitted
+trimmer settings are C7=25.73 pF, C10=20.35 pF, C8=6.697 pF, C11=7.050 pF,
+C9=31.28 pF, and C12=13.93 pF. All six are within the documented 5–60 pF
+range. The resulting three trimmer-selected responses are symmetrical and
+the T1 path has a 0.535 dB center dip, consistent with the manual's
+description of an overcoupled, shallow double-peaked response. These are
+simulation-aligned estimates, not measured inductances, trimmer settings, or
+a factory coupling coefficient.
+
+C89-35 is documented only as selected in production.  A 3 pF starting
+estimate is used so the netlist is numeric while adding only a small
+correction to the PTO tank.  It should be swept or fitted during PTO
+linearity work rather than treated as a factory value.
+
+The four RFC values are explicitly marked 1 mH on the schematic.  Their
+10 ohm winding resistance is estimated.  The default model intentionally
+omits parallel capacitance because the original construction and
+self-resonant frequency are unknown.
+
+`../validation/80289_vfo_magnetics_validation.cir` checks the estimated
+PTO endpoint resonances, L4 network, T1 transfer/syntax, and RFC impedance.
+Its simple source and load are not the complete VFO loading, so study 4's
+fresh-netlist AC response is the alignment evidence for T1 and the trimmers.
+
+### System-level VFO transient setup
+
+The complete-radio transient intentionally uses behavioral sources for the
+two undocumented oscillators rather than claiming that the estimated PTO and
+crystal networks reproduce startup:
+
+- Q89-5 remains drawn and retains its validated MPS6512 model, but its
+  schematic instance is excluded from the system simulation.  The root-sheet
+  directive injects a 5.25 MHz, 300 mV-peak source at the Q89-5 emitter node
+  with a 1.7 V DC offset.
+- Y89-1, Y89-2, and Y89-3 act as ideal 7.5, 11, and 6.99 MHz sources.  Their
+  1 V-peak amplitude is a behavioral calibration and their source polarity
+  establishes the manual's approximately -2.2 V Q89-3 gate bias.
+- `.options rshunt=1e12` supplies negligible DC paths for capacitively isolated
+  nodes so ngspice can calculate a stable operating point.
+
+With `S4_POS=1`, the saved 5.25 MHz PTO and 7.5 MHz crystal sources produce a
+12.75 MHz wanted component of about 42.5 mV peak-to-peak into the schematic's
+50 ohm load, or about 68.7 mV peak-to-peak with a 1 Mohm instrument load.
+The model demonstrates frequency conversion and selection but does not match
+the manual's absolute 200–300 mV alignment range on every band. It therefore
+does not validate oscillator amplitude, phase noise, startup margin, pulling,
+transformer loss/turns ratio, or production output level.

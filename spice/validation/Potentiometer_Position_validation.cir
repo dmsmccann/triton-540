@@ -1,0 +1,15 @@
+* DC validation for the fixed-position linear potentiometer.
+.include "../models/Potentiometer_Position.sub"
+
+V1 top 0 1
+X25 0 w25 top POT_POSITION params: R=1k POS=0.25
+X50 0 w50 top POT_POSITION params: R=1k POS=0.50
+X75 0 w75 top POT_POSITION params: R=1k POS=0.75
+
+.control
+op
+print v(w25) v(w50) v(w75)
+echo POTENTIOMETER_POSITION_VALIDATION_COMPLETE
+quit
+.endc
+.end

@@ -1,0 +1,148 @@
+* Five-position, four-wafer DC validation for SW_Rotary_4x5.sub.
+.include "../models/SW_Rotary_4x5.sub"
+
+* Each instance exercises one position.  Its four commons are driven at
+* distinct voltages; every throw has a 1 kohm load to ground.
+XA a11 a12 a13 a14 a15 ac a21 a22 a23 a24 a25 bc a31 a32 a33 a34 a35 cc a41 a42 a43 a44 a45 dc SW_ROTARY_4X5 params: POS=1
+XB b11 b12 b13 b14 b15 ae b21 b22 b23 b24 b25 be b31 b32 b33 b34 b35 ce b41 b42 b43 b44 b45 de SW_ROTARY_4X5 params: POS=2
+XC c11 c12 c13 c14 c15 af c21 c22 c23 c24 c25 bf c31 c32 c33 c34 c35 cf c41 c42 c43 c44 c45 df SW_ROTARY_4X5 params: POS=3
+XD d11 d12 d13 d14 d15 ag d21 d22 d23 d24 d25 bg d31 d32 d33 d34 d35 cg d41 d42 d43 d44 d45 dg SW_ROTARY_4X5 params: POS=4
+XE e11 e12 e13 e14 e15 ah e21 e22 e23 e24 e25 bh e31 e32 e33 e34 e35 ch e41 e42 e43 e44 e45 dh SW_ROTARY_4X5 params: POS=5
+
+Vac ac 0 1
+Vbc bc 0 2
+Vcc cc 0 3
+Vdc dc 0 4
+Vae ae 0 1
+Vbe be 0 2
+Vce ce 0 3
+Vde de 0 4
+Vaf af 0 1
+Vbf bf 0 2
+Vcf cf 0 3
+Vdf df 0 4
+Vag ag 0 1
+Vbg bg 0 2
+Vcg cg 0 3
+Vdg dg 0 4
+Vah ah 0 1
+Vbh bh 0 2
+Vch ch 0 3
+Vdh dh 0 4
+
+R11 a11 0 1k
+R12 a12 0 1k
+R13 a13 0 1k
+R14 a14 0 1k
+R15 a15 0 1k
+R21 a21 0 1k
+R22 a22 0 1k
+R23 a23 0 1k
+R24 a24 0 1k
+R25 a25 0 1k
+R31 a31 0 1k
+R32 a32 0 1k
+R33 a33 0 1k
+R34 a34 0 1k
+R35 a35 0 1k
+R41 a41 0 1k
+R42 a42 0 1k
+R43 a43 0 1k
+R44 a44 0 1k
+R45 a45 0 1k
+
+R51 b11 0 1k
+R52 b12 0 1k
+R53 b13 0 1k
+R54 b14 0 1k
+R55 b15 0 1k
+R61 b21 0 1k
+R62 b22 0 1k
+R63 b23 0 1k
+R64 b24 0 1k
+R65 b25 0 1k
+R71 b31 0 1k
+R72 b32 0 1k
+R73 b33 0 1k
+R74 b34 0 1k
+R75 b35 0 1k
+R81 b41 0 1k
+R82 b42 0 1k
+R83 b43 0 1k
+R84 b44 0 1k
+R85 b45 0 1k
+
+R91 c11 0 1k
+R92 c12 0 1k
+R93 c13 0 1k
+R94 c14 0 1k
+R95 c15 0 1k
+R101 c21 0 1k
+R102 c22 0 1k
+R103 c23 0 1k
+R104 c24 0 1k
+R105 c25 0 1k
+R111 c31 0 1k
+R112 c32 0 1k
+R113 c33 0 1k
+R114 c34 0 1k
+R115 c35 0 1k
+R121 c41 0 1k
+R122 c42 0 1k
+R123 c43 0 1k
+R124 c44 0 1k
+R125 c45 0 1k
+
+R131 d11 0 1k
+R132 d12 0 1k
+R133 d13 0 1k
+R134 d14 0 1k
+R135 d15 0 1k
+R141 d21 0 1k
+R142 d22 0 1k
+R143 d23 0 1k
+R144 d24 0 1k
+R145 d25 0 1k
+R151 d31 0 1k
+R152 d32 0 1k
+R153 d33 0 1k
+R154 d34 0 1k
+R155 d35 0 1k
+R161 d41 0 1k
+R162 d42 0 1k
+R163 d43 0 1k
+R164 d44 0 1k
+R165 d45 0 1k
+
+R171 e11 0 1k
+R172 e12 0 1k
+R173 e13 0 1k
+R174 e14 0 1k
+R175 e15 0 1k
+R181 e21 0 1k
+R182 e22 0 1k
+R183 e23 0 1k
+R184 e24 0 1k
+R185 e25 0 1k
+R191 e31 0 1k
+R192 e32 0 1k
+R193 e33 0 1k
+R194 e34 0 1k
+R195 e35 0 1k
+R201 e41 0 1k
+R202 e42 0 1k
+R203 e43 0 1k
+R204 e44 0 1k
+R205 e45 0 1k
+
+.control
+op
+print v(a11) v(a21) v(a31) v(a41)
+print v(b12) v(b22) v(b32) v(b42)
+print v(c13) v(c23) v(c33) v(c43)
+print v(d14) v(d24) v(d34) v(d44)
+print v(e15) v(e25) v(e35) v(e45)
+echo SW_ROTARY_4X5_VALIDATION_COMPLETE
+quit
+.endc
+.end

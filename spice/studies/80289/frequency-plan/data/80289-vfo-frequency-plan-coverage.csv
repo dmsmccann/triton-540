@@ -1,0 +1,9 @@
+dial_band,s4_pos,s5_pos,conversion,crystal_or_path,pto_source_range_mhz,manual_output_range_mhz,simulated_low_mhz,simulated_mid_mhz,simulated_high_mhz,coverage_result,maximum_frequency_error_khz,desired_output_low_mvpp,desired_output_mid_mvpp,desired_output_high_mvpp,minimum_desired_output_mvpp,total_output_low_mvpp,total_output_mid_mvpp,total_output_high_mvpp
+3.5-4.0 MHz,1,,PTO + crystal,7.50 MHz (Y89-1),5.00-5.50,12.50-13.00,12.500000,12.750000,13.000000,PASS,0.000,54.637,42.456,29.047,29.047,60.609,48.745,32.421
+7.0-7.5 MHz,2,,PTO + crystal,11.00 MHz (Y89-2),5.00-5.50,16.00-16.50,16.000000,16.250000,16.500000,PASS,0.000,142.573,110.799,76.261,76.261,153.354,119.328,80.796
+14.0-14.5 MHz,3,,direct PTO,direct,5.00-5.50,5.00-5.50,5.000000,5.250000,5.500000,PASS,0.000,660.716,619.298,502.054,502.054,658.774,618.010,501.484
+21.0-21.5 MHz,4,,PTO + crystal,6.99 MHz (Y89-3),5.01-5.51 corrected,12.00-12.50,12.000000,12.250000,12.500000,PASS,0.000,106.167,81.146,55.928,55.928,111.922,85.371,58.732
+28.0-28.5 MHz,5,1,PTO + crystal,13.99 MHz (Y1/S5),5.01-5.51 corrected,19.00-19.50,19.000000,19.250000,19.500000,PASS,0.000,131.247,98.598,65.446,65.446,147.762,110.922,73.777
+28.5-29.0 MHz,5,2,PTO + crystal,14.49 MHz (Y2/S5),5.01-5.51 corrected,19.50-20.00,19.500000,19.750000,20.000000,PASS,0.000,124.629,95.145,64.379,64.379,143.073,109.307,74.480
+29.0-29.5 MHz,5,3,PTO + crystal,14.99 MHz (Y3/S5),5.01-5.51 corrected,20.00-20.50,20.000000,20.250000,20.500000,PASS,0.000,122.236,94.888,65.212,65.212,143.941,111.961,77.538
+29.5-30.0 MHz,5,4,PTO + crystal,15.49 MHz (Y4/S5),5.01-5.51 corrected,20.50-21.00,20.500000,20.750000,21.000000,PASS,0.000,123.750,97.681,68.286,68.286,150.851,118.827,83.901

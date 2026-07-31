@@ -1,0 +1,14 @@
+* Three-terminal linear potentiometer with an explicit fixed wiper position.
+*
+* Pins:
+*   1  r0 end
+*   2  wiper
+*   3  r1 end
+*
+* POS=0 places the wiper at pin 1; POS=1 places it at pin 3.
+* RMIN prevents a zero-ohm branch at the mechanical endpoints.
+
+.subckt POT_POSITION 1 2 3 params: R=1k POS=0.5 RMIN=1m
+R0 1 2 {max(R*POS,RMIN)}
+R1 2 3 {max(R*(1-POS),RMIN)}
+.ends POT_POSITION

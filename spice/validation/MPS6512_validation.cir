@@ -1,0 +1,56 @@
+* Nominal MPS6512 validation for functional VFO simulation.
+.include "../models/MPS6512.lib"
+
+* At 25 uA base drive, nominal hFE should put IC close to the data-sheet's
+* 2 mA test point and remain inside its 50..100 gain bin.
+VC2 c2 0 10
+IB2 0 b2drive 25u
+VB2SENSE b2drive b2 0
+Q2 c2 b2 0 MPS6512
+
+* The original Fairchild sheet also requires hFE >= 30 at IC=100 mA.
+* A 2.5 mA base drive exercises approximately that collector-current region.
+VC100 c100 0 10
+IB100 0 b100drive 2.5m
+VB100SENSE b100drive b100 0
+Q100 c100 b100 0 MPS6512
+
+* Approximate the Q89-5 DC bias network with its collector held at the
+* manual's documented 8.0 V.  The RF tank and feedback capacitors are open
+* at DC; R89-33=47k, R89-34=22k, and R89-35=2.2k.
+VC5 c5 0 8
+R33 c5 b5 47k
+R34 b5 0 22k
+Q5 c5 b5 e5 MPS6512
+R35 e5 0 2.2k
+
+.control
+op
+let ic2 = -i(VC2)
+let ib2 = i(VB2SENSE)
+let beta2 = ic2/ib2
+let ic100 = -i(VC100)
+let ib100 = i(VB100SENSE)
+let beta100 = ic100/ib100
+let ic5 = -i(VC5)
+print ic2 ib2 beta2
+print ic100 ib100 beta100
+print v(b5) v(e5) ic5
+
+if beta2 < 50
+  echo ERROR_MPS6512_GAIN_BELOW_DATASHEET_BIN
+  quit 1
+end
+if beta2 > 100
+  echo ERROR_MPS6512_GAIN_ABOVE_DATASHEET_BIN
+  quit 1
+end
+if beta100 < 30
+  echo ERROR_MPS6512_HIGH_CURRENT_GAIN_BELOW_DATASHEET_MINIMUM
+  quit 1
+end
+
+echo MPS6512_VALIDATION_COMPLETE
+quit
+.endc
+.end

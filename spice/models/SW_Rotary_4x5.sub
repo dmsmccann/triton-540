@@ -1,0 +1,47 @@
+* Parameter-selected four-pole, five-position rotary switch for the
+* Triton 540 VFO bandswitch S89-1.
+*
+* Pin order:
+*    1-5   wafer A throws 1-5
+*    6     wafer A common/wiper
+*    7-11  wafer B throws 1-5
+*   12     wafer B common/wiper
+*   13-17  wafer C throws 1-5
+*   18     wafer C common/wiper
+*   19-23  wafer D throws 1-5
+*   24     wafer D common/wiper
+*
+* POS is an integer from 1 through 5.  The same POS controls all four
+* wafers so the model represents the mechanically ganged switch.  S89-1
+* uses POS={S4_POS}, sharing the root-sheet parameter with S4A and S4B.
+*
+* RON and ROFF are stable simulation defaults, not measurements of the
+* original Ten-Tec switch.  Parasitics and switching transients are omitted.
+
+.subckt SW_ROTARY_4X5 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 params: POS=1 RON=20m ROFF=1T
+
+RA1 6 1 R={(POS==1) ? RON : ROFF}
+RA2 6 2 R={(POS==2) ? RON : ROFF}
+RA3 6 3 R={(POS==3) ? RON : ROFF}
+RA4 6 4 R={(POS==4) ? RON : ROFF}
+RA5 6 5 R={(POS==5) ? RON : ROFF}
+
+RB1 12 7  R={(POS==1) ? RON : ROFF}
+RB2 12 8  R={(POS==2) ? RON : ROFF}
+RB3 12 9  R={(POS==3) ? RON : ROFF}
+RB4 12 10 R={(POS==4) ? RON : ROFF}
+RB5 12 11 R={(POS==5) ? RON : ROFF}
+
+RC1 18 13 R={(POS==1) ? RON : ROFF}
+RC2 18 14 R={(POS==2) ? RON : ROFF}
+RC3 18 15 R={(POS==3) ? RON : ROFF}
+RC4 18 16 R={(POS==4) ? RON : ROFF}
+RC5 18 17 R={(POS==5) ? RON : ROFF}
+
+RD1 24 19 R={(POS==1) ? RON : ROFF}
+RD2 24 20 R={(POS==2) ? RON : ROFF}
+RD3 24 21 R={(POS==3) ? RON : ROFF}
+RD4 24 22 R={(POS==4) ? RON : ROFF}
+RD5 24 23 R={(POS==5) ? RON : ROFF}
+
+.ends SW_ROTARY_4X5

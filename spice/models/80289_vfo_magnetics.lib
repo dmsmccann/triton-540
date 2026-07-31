@@ -1,0 +1,124 @@
+* Ten-Tec Triton IV Model 540, VFO S/A 80289 magnetics.
+*
+* Documentary evidence:
+* - Owner's Manual PDF p.26 / printed p.3-10: the 80278 PTO covers
+*   5.0-5.5 MHz; L3 is the main permeability-tuned coil, L2 shunts L3,
+*   and L1 is in series.  L1 and L2 are slug adjusted for endpoints and
+*   linearity.
+* - Owner's Manual PDF p.27 / printed p.3-11: T1 is an overcoupled,
+*   double-tuned output transformer; C7-C12 tune the 3.5, 7, and 21 MHz
+*   ranges, while T1 is aligned across the 28-30 MHz range.
+* - Owner's Manual PDF p.29 / printed p.3-13: winding topology, four
+*   1 mH RFCs, L4 with C21=360 pF and C22=100 pF, and T1 with 10 pF
+*   fixed capacitors plus 5-60 pF trimmers on both windings.
+*
+* The manual does not give inductance, Q, coupling, winding resistance,
+* or parasitic capacitance for the tuned parts.  Every numeric default
+* other than the four 1 mH RFC values is an engineering starting estimate.
+
+
+* PTO 80278 composite coil network: L1 in series with L2 || L3.
+*
+* Pins:
+*   TANK  node connected to C33 and the D89-2 tuning branch
+*   GND   RF ground
+*
+* With the surrounding circuit providing about 140-150 pF effective tank
+* capacitance, defaults L1=.8 uH, L2=10 uH, and L3=13 uH give about
+* 6.45 uH total.  Sweeping L3 approximately 10-16 uH spans about
+* 5.8-7.0 uH total, suitable for a 5.0-5.5 MHz starting range.
+.subckt 80278_PTO_COILS TANK GND
++ params: L1=0.8u L2=10u L3=13u
++ Q1=60 Q2=60 Q3=60 FREF=5.25Meg
+
+.param R_PTO_L1 = {6.283185307179586*FREF*L1/Q1}
+.param R_PTO_L2 = {6.283185307179586*FREF*L2/Q2}
+.param R_PTO_L3 = {6.283185307179586*FREF*L3/Q3}
+
+R_PTO_L1 TANK N_PTO_L1 {R_PTO_L1}
+L_PTO_L1 N_PTO_L1 N_PTO_SHUNT {L1}
+R_PTO_L2 N_PTO_SHUNT N_PTO_L2 {R_PTO_L2}
+L_PTO_L2 N_PTO_L2 GND {L2}
+R_PTO_L3 N_PTO_SHUNT N_PTO_L3 {R_PTO_L3}
+L_PTO_L3 N_PTO_L3 GND {L3}
+.ends 80278_PTO_COILS
+
+
+* Two-pin implementations for the three separately drawn PTO inductors.
+* These retain the manual's visible L1 + (L2 || L3) schematic topology.
+.subckt 80278_PTO_L1 A B
++ params: L=0.8u Q=60 FREF=5.25Meg
+.param R_80278_L1 = {6.283185307179586*FREF*L/Q}
+R_80278_L1 A N_80278_L1 {R_80278_L1}
+L_80278_L1 N_80278_L1 B {L}
+.ends 80278_PTO_L1
+
+.subckt 80278_PTO_L2 A B
++ params: L=10u Q=60 FREF=5.25Meg
+.param R_80278_L2 = {6.283185307179586*FREF*L/Q}
+R_80278_L2 A N_80278_L2 {R_80278_L2}
+L_80278_L2 N_80278_L2 B {L}
+.ends 80278_PTO_L2
+
+.subckt 80278_PTO_L3 A B
++ params: L=13u Q=60 FREF=5.25Meg
+.param R_80278_L3 = {6.283185307179586*FREF*L/Q}
+R_80278_L3 A N_80278_L3 {R_80278_L3}
+L_80278_L3 N_80278_L3 B {L}
+.ends 80278_PTO_L3
+
+
+* L4 on oscillator circuit board 80277.
+*
+* C21=360 pF and C22=100 pF have a series-equivalent capacitance of
+* 78.3 pF.  Resonance at the 5.25 MHz PTO midpoint implies about 11.7 uH,
+* rounded to a 12 uH nominal model.
+.subckt 80277_L4 A B
++ params: L=12u Q=60 FREF=5.25Meg CPAR=2p
+
+.param R_80277_L4 = {6.283185307179586*FREF*L/Q}
+R_80277_L4 A N_80277_L4 {R_80277_L4}
+L_80277_L4 N_80277_L4 B {L}
+C_80277_L4 A B {CPAR}
+.ends 80277_L4
+
+
+* T1 coupled, double-tuned mixer-output transformer.
+*
+* Pins:
+*   P1 P2  primary winding, selected C7-C9 side
+*   S1 S2  secondary winding, selected C10-C12 side
+*
+* Loaded AC alignment of the complete KiCad circuit gives unequal values for
+* the two independently slug-tuned windings.  The fitted K produces the
+* manual's deliberately overcoupled, shallow double-peaked response.
+* These are inferred simulation values, not measured factory specifications.
+.subckt 80289_T1 P1 P2 S1 S2
++ params: LP=5.221u LS=4.567u K12=0.2463
++ QP=50 QS=50 FREF=16Meg CPP=2p CPS=2p
+
+.param RP_80289_T1 = {6.283185307179586*FREF*LP/QP}
+.param RS_80289_T1 = {6.283185307179586*FREF*LS/QS}
+
+R_80289_T1P P1 N_80289_T1P {RP_80289_T1}
+L_80289_T1P N_80289_T1P P2 {LP}
+R_80289_T1S S1 N_80289_T1S {RS_80289_T1}
+L_80289_T1S N_80289_T1S S2 {LS}
+K_80289_T1 L_80289_T1P L_80289_T1S {K12}
+C_80289_T1P P1 P2 {CPP}
+C_80289_T1S S1 S2 {CPS}
+.ends 80289_T1
+
+
+* Documented 1 mH RF choke.
+*
+* The 10 ohm winding resistance is inferred.  No parallel capacitance is
+* included because the original choke construction and self-resonant
+* frequency are unknown; an invented capacitance would create a false
+* resonance inside the VFO's 5-21 MHz operating range.
+.subckt 80289_RFC_1MH A B
++ params: L=1m RDC=10
+
+R_80289_RFC A N_80289_RFC {RDC}
+L_80289_RFC N_80289_RFC B {L}
+.ends 80289_RFC_1MH

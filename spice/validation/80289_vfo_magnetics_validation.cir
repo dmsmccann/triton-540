@@ -1,0 +1,151 @@
+* Standalone checks for the estimated VFO S/A 80289 magnetics.
+.include "../models/80289_vfo_magnetics.lib"
+
+* PTO endpoint fixtures.  148 pF approximates C33 in series with C34, the
+* small varactor branch, and proposed C89-35=3 pF.  A high source resistance
+* exposes the parallel resonance as a voltage peak.
+V_PTO_H SRC_PTO_H 0 DC 0 AC 1
+R_PTO_H SRC_PTO_H PTO_H 100k
+X_PTO_H PTO_H 0 80278_PTO_COILS params: L3=10u
+C_PTO_H PTO_H 0 148p
+
+V_PTO_L SRC_PTO_L 0 DC 0 AC 1
+R_PTO_L SRC_PTO_L PTO_L 100k
+X_PTO_L PTO_L 0 80278_PTO_COILS params: L3=16u
+C_PTO_L PTO_L 0 148p
+
+* L4 fixture using the documented 360 pF / 100 pF pi capacitors.
+V_L4 SRC_L4 0 DC 0 AC 1
+R_L4_SRC SRC_L4 L4_A 1k
+C21_TEST L4_A 0 360p
+X_L4 L4_A L4_B 80277_L4
+C22_TEST L4_B 0 100p
+R_L4_LOAD L4_B 0 10k
+
+* T1 fixtures use the simulation-aligned trimmer settings plus each winding's
+* documented fixed 10 pF capacitor. The model adds 2 pF parasitic. These
+* simple 50-ohm/12-kohm fixtures are syntax and resonance sanity checks only;
+* their peak frequencies differ from the loaded complete-circuit alignment.
+* 80 m VFO output: 12.5-13.0 MHz, C9=31.28 pF and C12=13.93 pF.
+V_T1_80 SRC_T1_80 0 DC 0 AC 1
+R_T1_80_SRC SRC_T1_80 T1_80_P1 50
+X_T1_80 T1_80_P1 0 T1_80_S1 0 80289_T1
+C_T1_80P T1_80_P1 0 41.28p
+C_T1_80S T1_80_S1 0 23.93p
+R_T1_80_LOAD T1_80_S1 0 12k
+
+* 40 m VFO output: 16.0-16.5 MHz, C8=6.697 pF and C11=7.050 pF.
+V_T1_40 SRC_T1_40 0 DC 0 AC 1
+R_T1_40_SRC SRC_T1_40 T1_40_P1 50
+X_T1_40 T1_40_P1 0 T1_40_S1 0 80289_T1
+C_T1_40P T1_40_P1 0 16.697p
+C_T1_40S T1_40_S1 0 17.050p
+R_T1_40_LOAD T1_40_S1 0 12k
+
+* 15 m VFO output: 12.0-12.5 MHz, C7=25.73 pF and C10=20.35 pF.
+V_T1_15 SRC_T1_15 0 DC 0 AC 1
+R_T1_15_SRC SRC_T1_15 T1_15_P1 50
+X_T1_15 T1_15_P1 0 T1_15_S1 0 80289_T1
+C_T1_15P T1_15_P1 0 35.73p
+C_T1_15S T1_15_S1 0 30.35p
+R_T1_15_LOAD T1_15_S1 0 12k
+
+* 10 m VFO output: about 19-21 MHz, no selected trimmer.
+V_T1_10 SRC_T1_10 0 DC 0 AC 1
+R_T1_10_SRC SRC_T1_10 T1_10_P1 50
+X_T1_10 T1_10_P1 0 T1_10_S1 0 80289_T1
+C_T1_10P T1_10_P1 0 10p
+C_T1_10S T1_10_S1 0 10p
+R_T1_10_LOAD T1_10_S1 0 12k
+
+* RFC impedance fixture.
+V_RFC RFC_A 0 DC 0 AC 1
+X_RFC RFC_A 0 80289_RFC_1MH
+
+.control
+set wr_singlescale
+set wr_vecnames
+ac dec 500 4Meg 25Meg
+
+meas ac PTO_HIGH_PEAK max vdb(PTO_H)
+meas ac PTO_HIGH_FREQ max_at vdb(PTO_H)
+meas ac PTO_LOW_PEAK max vdb(PTO_L)
+meas ac PTO_LOW_FREQ max_at vdb(PTO_L)
+meas ac L4_PEAK max vdb(L4_B)
+meas ac L4_FREQ max_at vdb(L4_B)
+meas ac T1_80_PEAK max vdb(T1_80_S1)
+meas ac T1_80_FREQ max_at vdb(T1_80_S1)
+meas ac T1_40_PEAK max vdb(T1_40_S1)
+meas ac T1_40_FREQ max_at vdb(T1_40_S1)
+meas ac T1_15_PEAK max vdb(T1_15_S1)
+meas ac T1_15_FREQ max_at vdb(T1_15_S1)
+meas ac T1_10_PEAK max vdb(T1_10_S1)
+meas ac T1_10_FREQ max_at vdb(T1_10_S1)
+let Z_RFC = mag(v(RFC_A)/i(V_RFC))
+meas ac RFC_ZMAG find Z_RFC at=5Meg
+
+if PTO_HIGH_FREQ < 5.4Meg
+  echo ERROR_80289_PTO_HIGH_END_TOO_LOW
+  quit 1
+end
+if PTO_HIGH_FREQ > 5.6Meg
+  echo ERROR_80289_PTO_HIGH_END_TOO_HIGH
+  quit 1
+end
+if PTO_LOW_FREQ < 4.9Meg
+  echo ERROR_80289_PTO_LOW_END_TOO_LOW
+  quit 1
+end
+if PTO_LOW_FREQ > 5.1Meg
+  echo ERROR_80289_PTO_LOW_END_TOO_HIGH
+  quit 1
+end
+if L4_FREQ < 4.8Meg
+  echo ERROR_80289_L4_RESONANCE_TOO_LOW
+  quit 1
+end
+if L4_FREQ > 5.5Meg
+  echo ERROR_80289_L4_RESONANCE_TOO_HIGH
+  quit 1
+end
+if T1_80_FREQ < 14Meg
+  echo ERROR_80289_T1_80M_RESONANCE_TOO_LOW
+  quit 1
+end
+if T1_80_FREQ > 16Meg
+  echo ERROR_80289_T1_80M_RESONANCE_TOO_HIGH
+  quit 1
+end
+if T1_40_FREQ < 17Meg
+  echo ERROR_80289_T1_40M_RESONANCE_TOO_LOW
+  quit 1
+end
+if T1_40_FREQ > 18.5Meg
+  echo ERROR_80289_T1_40M_RESONANCE_TOO_HIGH
+  quit 1
+end
+if T1_15_FREQ < 12.5Meg
+  echo ERROR_80289_T1_15M_RESONANCE_TOO_LOW
+  quit 1
+end
+if T1_15_FREQ > 14.5Meg
+  echo ERROR_80289_T1_15M_RESONANCE_TOO_HIGH
+  quit 1
+end
+if T1_10_FREQ < 21Meg
+  echo ERROR_80289_T1_10M_RESONANCE_TOO_LOW
+  quit 1
+end
+if T1_10_FREQ > 23Meg
+  echo ERROR_80289_T1_10M_RESONANCE_TOO_HIGH
+  quit 1
+end
+if RFC_ZMAG < 25k
+  echo ERROR_80289_RFC_IMPEDANCE_TOO_LOW
+  quit 1
+end
+
+echo 80289_VFO_MAGNETICS_VALIDATION_COMPLETE
+quit
+.endc
+.end

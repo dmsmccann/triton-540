@@ -1,0 +1,31 @@
+* MPS6514 validation at the two documented Triton VFO bias points.
+.include "../models/MPS6514.lib"
+
+* Q89-2 manual PDF page 28 / printed page 3-12:
+* C=12.8 V, B=7.1 V, E=6.4 V.  The schematic emitter resistor is 680 ohms.
+VC2 c2 0 12.8
+VB2 b2 0 7.1
+Q2 c2 b2 e2 MPS6514
+RE2 e2 0 680
+
+* Q89-4 on the same manual page:
+* C=5.4 V, B=1.2 V, E=0.5 V.  The schematic emitter resistor is 100 ohms.
+VC4 c4 0 5.4
+VB4 b4 0 1.2
+Q4 c4 b4 e4 MPS6514
+RE4 e4 0 100
+
+.control
+op
+let ic2 = -i(VC2)
+let ib2 = -i(VB2)
+let beta2 = ic2/ib2
+let ic4 = -i(VC4)
+let ib4 = -i(VB4)
+let beta4 = ic4/ib4
+print v(e2) ic2 ib2 beta2
+print v(e4) ic4 ib4 beta4
+echo MPS6514_VALIDATION_COMPLETE
+quit
+.endc
+.end
