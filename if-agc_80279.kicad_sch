@@ -1,0 +1,15 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "e63d0a57-a055-4f16-b28e-2662a39a2d01")
+	(paper "USLedger")
+	(title_block
+		(date "2026-07-26")
+		(rev "0.2")
+		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
+		(comment 2 "Original Design: Ten-Tec")
+		(comment 3 "Triton IV (Model 540)")
+	)
+	(lib_symbols)
+)
