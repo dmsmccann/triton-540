@@ -23,6 +23,11 @@ L2**, swamping the output tank.
 | `l1-only` | fitted | L1 alone |
 | `composite` | removed | L1 × Q1 × L2 |
 
+On 3.5 MHz that trimmer is **C19**; the L1 side of the stage carries the fixed
+620 pF C12 instead. The split — fixed capacitors across L1, adjustable trimmers
+across L2 — is what makes this work, and is set out per band in
+[`../80166.md`](../80166.md).
+
 Overlay the two and the offset between their peaks is the tracking error.
 
 > The manual writes this cap as ".01 mF". In 1978 US usage `mF`/`mfd` means
@@ -106,8 +111,8 @@ The RESONATE position is part of the measurement — L1 and L2 are ganged to the
 same rack, so the sweep only tells you about tracking at the rack position you
 left it in. Take both sweeps of a pair without moving RESONATE.
 
-1. Clip the `.01 µF` from the 3.5 MHz trimmer terminal (small trimmer board
-   beneath the amplifier board, Figure 2, p. 3-7) to chassis.
+1. Clip the `.01 µF` from the 3.5 MHz trimmer terminal — C19, on the small
+   trimmer board beneath the amplifier board, Figure 2, p. 3-7 — to chassis.
 2. Set RESONATE for peak response at 3.5 MHz. Easiest way is to run a quick
    coarse sweep and adjust until the peak lands on 3.5 MHz:
 
@@ -133,7 +138,7 @@ left it in. Take both sweeps of a pair without moving RESONATE.
    python plot_bode.py data/80166-80m-l1-only-*.csv data/80166-80m-composite-*.csv
    ```
 
-If the composite peak is off 3.5 MHz, adjust the **3.5 MHz trimmer** and repeat
+If the composite peak is off 3.5 MHz, adjust the **3.5 MHz trimmer C19** and repeat
 step 4. The 4.0 MHz end of the tracking is then set with the **L2 slug** — repeat
 the whole pair with RESONATE peaked at 4.0 MHz instead, and adjust the slug rather
 than the trimmer. Iterate the two ends as the manual's step 6 says, since each
