@@ -38,7 +38,7 @@ Overlay the two and the offset between their peaks is the tracking error.
 Control is SCPI over VXI-11 via `pyvisa` + `pyvisa-py`, so no NI-VISA install is
 needed:
 
-```
+```powershell
 python -m pip install pyvisa pyvisa-py matplotlib
 ```
 
@@ -47,21 +47,36 @@ If VXI-11 gives trouble, `--transport socket` falls back to raw TCP
 
 ## Connections
 
-```
-  SDG1032X CH1 ──coax──┬── BNC tee ──short adapter── 540 ANTENNA jack (SO-239)
-                       │
-                       └──coax── scope CH1        (1x, direct, no probe)
+Generator and scope CH1 both land on the antenna jack — that single node is where
+the drive has to be measured. A BNC tee is the tidy way to do it, but tapping the
+jack at two physical points works just as well at 3.5 MHz and needs no tee:
 
-  scope CH2 ── x10 probe ── 80166 OUT pin          ground clip to nearest
-                            (or 80287 "Rx In")     chassis point, short lead
+```text
+  SDG1032X CH1 ──clip leads── SO-239 centre solder lug   (inside the rear apron)
+                 (short, run together, ground clip to
+                  chassis right at the jack)
+
+  scope CH1 ──short coax──── 540 ANTENNA jack (SO-239)   1x direct, no probe
+
+  scope CH2 ── x10 probe ── 80166 OUT pin                ground clip to nearest
+                            (or 80287 "Rx In")           chassis point, short lead
 ```
 
-- **Tee at the DUT, not at the scope.** CH1 has to see the voltage that actually
-  reaches the antenna jack; the receiver input is not a flat 50 Ω across the
-  sweep, and letting CH1 measure the real drive is what makes the ratio a true
-  transfer function.
+- **Measure the drive, don't assume it.** The receiver input is not a flat 50 Ω
+  across the sweep, so CH1 has to see the voltage that actually reaches the jack.
+  That ratio is what makes the result a true transfer function.
+- **Clip leads are fine here.** A few inches is about 100 nH, roughly 2 Ω at
+  3.5 MHz against a 50 Ω source. Do not carry this arrangement up to 28 MHz.
+- **Keep the CH1 coax short.** It is an unterminated stub into the scope's 1 MΩ
+  input, so it hangs its own capacitance across the antenna input — RG-58 is
+  about 100 pF/m. See the loading note below.
 - **CH1 is a direct coax feed**, so run the script with `--ch1-attn 1` (the
-  default). CH2 uses a ×10 probe, `--ch2-attn 10` (also the default).
+  default). CH2 uses a ×10 probe, `--ch2-attn 10` (also the default). A ×10 probe
+  on CH1 would load less but divides the 10 mVpp reference down to two divisions
+  on screen; the direct feed gives a much cleaner reference and is the better
+  trade.
+- **Do not disturb the hookup between the two sweeps.** Same cable, same clip
+  positions, same routing for `l1-only` and `composite`.
 - **CH2 pickup point.** The 80166 `OUT` pin goes to `S4B` and on to the TX-RX
   mixer. The `Rx In` pin on the 80287 plug-in socket is the same net and is
   usually easier to reach. Access to the rf amp itself is on the RESONATE
@@ -96,25 +111,25 @@ left it in. Take both sweeps of a pair without moving RESONATE.
 2. Set RESONATE for peak response at 3.5 MHz. Easiest way is to run a quick
    coarse sweep and adjust until the peak lands on 3.5 MHz:
 
-   ```
+   ```powershell
    python bode_80166.py --label l1-only --points 61 --note "RESONATE set for 3.5 MHz peak"
    ```
 
 3. When the peak is on 3.5 MHz, take the reference sweep at full resolution:
 
-   ```
+   ```powershell
    python bode_80166.py --label l1-only --note "RESONATE at 3.5 MHz peak, .01uF fitted"
    ```
 
 4. Remove the `.01 µF`. **Leave RESONATE alone.** Take the composite sweep:
 
-   ```
+   ```powershell
    python bode_80166.py --label composite --note "RESONATE unchanged, .01uF removed"
    ```
 
 5. Overlay them:
 
-   ```
+   ```powershell
    python plot_bode.py data/80166-80m-l1-only-*.csv data/80166-80m-composite-*.csv
    ```
 
