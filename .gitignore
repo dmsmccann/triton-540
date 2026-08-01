@@ -3,6 +3,10 @@ spice/generated/
 spice/**/__pycache__/
 spice/**/.matplotlib/
 
+# Bench tooling caches. bench/data/ and bench/plots/ are the measurement
+# record and are deliberately tracked.
+bench/**/__pycache__/
+
 # KiCad local state, locks, and automatic backups
 *.kicad_prl
 *.wbk
