@@ -40,6 +40,20 @@ Run the 3.5 MHz normal-operation study from a fresh KiCad export:
 python spice\tools\run_80166_operation.py
 ```
 
+Run the 80287 receive/transmit conversion study and both mixer-balance sweeps:
+
+```powershell
+python spice\tools\run_80287_operation.py
+python spice\tools\run_80287_rx_balance.py
+python spice\tools\run_80287_tx_balance.py
+```
+
+Regenerate the settled 80287 MC1496 DC pin-voltage regression:
+
+```powershell
+python spice\tools\run_mc1496_dc_regression.py
+```
+
 Regenerate the 80289 frequency-plan and ten-meter alignment evidence from
 fresh KiCad exports:
 

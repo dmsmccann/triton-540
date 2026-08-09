@@ -5013,6 +5013,16 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 29.21) (xy 165.1 29.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "60999146-3cc8-438a-8055-3f643a6d796e")
+	)
+	(wire
+		(pts
 			(xy 48.26 63.5) (xy 48.26 64.77)
 		)
 		(stroke
@@ -5383,6 +5393,16 @@
 	)
 	(wire
 		(pts
+			(xy 165.1 29.21) (xy 165.1 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a816c3b6-c9cb-42b2-a9d7-841946734ff5")
+	)
+	(wire
+		(pts
 			(xy 383.54 200.66) (xy 383.54 203.2)
 		)
 		(stroke
@@ -5693,6 +5713,16 @@
 	)
 	(wire
 		(pts
+			(xy 165.1 21.59) (xy 166.37 21.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb3f51aa-8e84-4faf-b011-2578d2554ddf")
+	)
+	(wire
+		(pts
 			(xy 167.64 31.75) (xy 157.48 31.75)
 		)
 		(stroke
@@ -5861,7 +5891,7 @@
 		)
 		(uuid "fff9e115-8f3b-447d-961c-b41926a21db6")
 	)
-	(label "+13.28"
+	(label "+12"
 		(at 401.32 203.2 0)
 		(effects
 			(font
@@ -6338,7 +6368,7 @@
 		(at 353.06 214.63 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -6462,7 +6492,7 @@
 		(at 369.57 214.63 270)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -6556,6 +6586,85 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
 					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 166.37 21.59 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "1c8340d4-6167-4886-9850-1ccde717ffa4")
+		(property "Reference" "#PWR099"
+			(at 172.72 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 170.18 21.5899 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 166.37 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 166.37 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 166.37 21.59 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "09afb73c-465c-48d6-8c54-86e345290ce3")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "#PWR099")
 					(unit 1)
 				)
 			)
@@ -6665,7 +6774,7 @@
 				)
 			)
 		)
-		(property "Value" "L"
+		(property "Value" "10u"
 			(at 360.68 205.74 90)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8059,7 +8168,7 @@
 		(at 31.75 54.61 270)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -8749,7 +8858,7 @@
 		(at 403.86 95.25 0)
 		(unit 1)
 		(body_style 1)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(in_pos_files yes)
@@ -10916,7 +11025,7 @@
 	(sheet
 		(at 186.69 105.41)
 		(size 40.64 22.86)
-		(exclude_from_sim no)
+		(exclude_from_sim yes)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
@@ -11024,7 +11133,7 @@
 	(sheet
 		(at 167.64 25.4)
 		(size 40.64 21.59)
-		(exclude_from_sim yes)
+		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
@@ -11101,7 +11210,7 @@
 				(justify right)
 			)
 		)
-		(pin "Rx 9MHz" input
+		(pin "Rx 9MHz" output
 			(at 208.28 30.48 0)
 			(uuid "bac3df6f-4b3f-47b4-a5c4-b53e54a76093")
 			(effects
@@ -11121,7 +11230,7 @@
 				(justify left)
 			)
 		)
-		(pin "Rx VFO " input
+		(pin "Rx VFO" input
 			(at 167.64 31.75 180)
 			(uuid "078d1aba-0395-446d-b9dc-557114741ccb")
 			(effects

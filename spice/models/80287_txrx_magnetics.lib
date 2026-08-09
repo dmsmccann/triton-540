@@ -1,0 +1,16 @@
+* Ten-Tec 80287 TX-RX mixer magnetic starting models.
+*
+* L87-2 is the continuous center-tapped transmitter-mixer collector choke.
+* Pin order follows the project symbol: end 1, end 2, center tap.
+* The manual does not give inductance, winding resistance, coupling, core
+* material, or parasitic capacitance. The values below are explicitly
+* estimated starting values for functional simulation, not factory data.
+
+.subckt TXRX_L2_CT 1 2 3
+LTOP 1 NT 10u
+RTOP NT 3 1
+LBOT 3 NB 10u
+RBOT NB 2 1
+KCT LTOP LBOT 0.98
+CEND 1 2 2p
+.ends TXRX_L2_CT

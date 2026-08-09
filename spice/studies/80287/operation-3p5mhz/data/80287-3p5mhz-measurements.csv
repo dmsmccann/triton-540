@@ -1,0 +1,34 @@
+state,measurement,simulated_value,applied_or_expected,note
+receive,supply_dc_v,13.279999999986716,13.28,saved top-sheet ideal source
+receive,r_control_dc_v,12.799999999987197,12.8,manual receive state
+receive,t_control_dc_v,0.19999999999979995,0.2,manual receive state
+receive,rx_vfo_dc_v,-7.115633497673887e-07,0.05,manual board terminal
+receive,rx_9mhz_dc_v,0.0007144560730426847,0.0,manual board terminal
+receive,tx_9mhz_dc_v,1.1828885996796092e-05,0.0,manual board terminal
+receive,tx_vfo_dc_v,-7.115633497673887e-07,0.1,manual board terminal
+receive,out_dc_v,0.0012789507370462134,0.0,manual board terminal
+receive,rx_input_vpp,1.99999999999803e-05,2e-05,3.499 MHz
+receive,rx_if_9p001mhz_vpp,6.830659352159479e-07,nan,wanted difference product
+transmit,supply_dc_v,13.279999999986716,13.28,saved top-sheet ideal source
+transmit,r_control_dc_v,0.5999999999994,0.6,manual transmit state
+transmit,t_control_dc_v,10.399999999989602,10.4,manual transmit state
+transmit,rx_vfo_dc_v,-1.718828103112309e-07,0.05,manual board terminal
+transmit,rx_9mhz_dc_v,6.76513534649089e-05,0.0,manual board terminal
+transmit,tx_9mhz_dc_v,1.1286252646290856e-05,0.0,manual board terminal
+transmit,tx_vfo_dc_v,-1.718828103112309e-07,0.1,manual board terminal
+transmit,out_dc_v,0.0011626239051615937,0.0,manual board terminal
+transmit,tx_if_vpp,0.19999999999979995,0.2,9.001 MHz
+transmit,tx_signal_pin1_vpp,0.18652073911367023,nan,MC1496 pin 1 at 9.001 MHz
+transmit,tx_signal_pin4_vpp,0.0012793991937920563,nan,MC1496 pin 4 at 9.001 MHz
+transmit,tx_carrier_pin8_vpp,0.014097477025487656,nan,MC1496 pin 8 at 12.5 MHz
+transmit,tx_carrier_pin10_vpp,0.0011573653884403656,nan,MC1496 pin 10 at 12.5 MHz
+transmit,tx_output_differential_3p499mhz_vpp,0.011364639471907257,nan,MC1496 differential collectors
+transmit,tx_out_3p499mhz_vpp,0.005613481515787846,nan,wanted difference product into 50 ohms
+receive,rx_if_3.499mhz_vpp,1.7494961772761388e-06,nan,simultaneous product fit
+receive,rx_if_9.001mhz_vpp,6.827515760143846e-07,nan,simultaneous product fit
+receive,rx_if_12.500mhz_vpp,9.066734718992208e-07,nan,simultaneous product fit
+receive,rx_if_15.999mhz_vpp,3.83339146600802e-07,nan,simultaneous product fit
+transmit,tx_out_3.499mhz_vpp,0.005618338897363309,nan,simultaneous product fit
+transmit,tx_out_9.001mhz_vpp,0.008783057379950979,nan,simultaneous product fit
+transmit,tx_out_12.500mhz_vpp,0.0001633905302989607,nan,simultaneous product fit
+transmit,tx_out_21.501mhz_vpp,0.00553150876847545,nan,simultaneous product fit

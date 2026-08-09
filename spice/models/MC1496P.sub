@@ -9,7 +9,8 @@
 * Topology follows onsemi MC1496/D Figure 23:
 *   - four-transistor upper switching quad
 *   - two-transistor lower signal differential stage
-*   - three-transistor, emitter-degenerated current mirror
+*   - two emitter-degenerated current-source transistors
+*   - the Figure 23 bias diode represented by a diode-connected NPN
 *
 * Pins 7, 9, 11, and 13 are intentionally unused. The model includes a
 * nominal 0.2 percent mismatch in one switching transistor so an external
@@ -27,8 +28,9 @@ QSW4 6  10 NUP_B MC1496_NPN_MISMATCH
 QSIG1 NUP_A 1 2 MC1496_NPN
 QSIG2 NUP_B 4 3 MC1496_NPN
 
-* Internal three-device current mirror and the three nominal 500 ohm
-* emitter resistors shown in the manufacturer internal schematic.
+* Internal dual current sources and the three nominal 500 ohm resistors shown
+* in Figure 23.  QREF is wired as a diode, not used as an active gain stage;
+* this is the electrical proxy for the separately drawn internal bias diode.
 QTAIL1 2 5 NTAIL1 MC1496_NPN
 QTAIL2 3 5 NTAIL2 MC1496_NPN
 QREF   5 5 NREF   MC1496_NPN

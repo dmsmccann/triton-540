@@ -3,10 +3,12 @@
 ## MC1496P balanced modulator
 
 `MC1496P.sub` is a nominal transistor-level model for the MC1496P
-double-balanced mixer used as U89-1 in the Triton 540 VFO assembly 80289.
+double-balanced mixers used as U89-1 in VFO assembly 80289 and U87-1/U87-2
+in TX-RX mixer assembly 80287.
 It implements the onsemi internal topology: a four-transistor upper switching
-quad, a two-transistor signal stage, and a three-transistor current mirror with
-three internal 500 ohm emitter resistors.
+quad, a two-transistor signal stage, two emitter-degenerated current-source
+transistors, and the bias diode. The bias diode is represented electrically by
+a diode-connected NPN. Figure 23 shows three internal 500 ohm resistors.
 
 The subcircuit exposes all fourteen physical package pins:
 
@@ -49,10 +51,24 @@ injection-level studies, wanted/unwanted mixing products, and loading of the
 unit-to-unit spread, temperature drift, exact intercept points, or carrier
 feedthrough caused by physical PCB coupling.
 
+The settled schematic-native 80287 DC regression passes 33 of the 40 connected-
+pin/mode checks against the manual's stated 15 percent service tolerance. All
+U87-1 transmit points and every U87-2 point pass. Seven U87-1 receive points
+remain outside tolerance, while its two collector voltages pass. Because the
+same model reproduces U87-2 pin 5 but cannot simultaneously reproduce the
+documented U87-1 pin-5 value with the drawn R87-3 network, no global transistor
+parameter was fitted to those seven points. Absolute gain, balance, and
+feedthrough remain unvalidated.
+
 `../validation/MC1496P_validation.cir` checks DC operating current and
 5 MHz by 8 MHz mixer action with 3 MHz and 13 MHz differential outputs, then
 repeats at a 15 MHz carrier to check 10 MHz and 20 MHz products near the top
 of the 80289 operating range.
+
+`../tools/run_mc1496_dc_regression.py` exports the complete KiCad hierarchy,
+allows the 80287 bias capacitors to settle for 500 us, and compares all 40
+documented U87-1/U87-2 operating points. Add `--strict` when a nonzero exit is
+desired for any out-of-tolerance manual point.
 
 ### References
 
@@ -63,6 +79,24 @@ of the 80289 operating range.
 - onsemi, [MC1496/MC1496B data sheet](https://www.onsemi.com/download/data-sheet/pdf/mc1496-d.pdf):
   pinout, internal circuit, operating equations, test circuits, impedance,
   frequency response, and mixer applications.
+
+## TX-RX mixer 80287 magnetics
+
+`80287_txrx_magnetics.lib` contains `TXRX_L2_CT`, the simulation starting
+model for the center-tapped transmit-output transformer L87-2. It uses two
+10 uH halves, 1 ohm winding resistance in each half, coupling `K=0.98`, and
+2 pF end-to-end capacitance.
+
+The Ten-Tec manual shows the winding topology but supplies none of those
+quantities. They are explicit estimates chosen to make the schematic runnable,
+not recovered factory specifications. L87-2 needs measurement or original
+winding information before the model can support absolute output-level or
+balance claims.
+
+The receive load L87-3 is represented directly in the schematic as 2 uH. This
+is the rounded result of resonating the documented C87-5 value of 150 pF at
+9 MHz (2.08 uH before transistor, board, and winding capacitance). L87-1 is a
+1 uH inferred starting value and likewise remains unverified.
 
 ## RCA 40823 dual-gate MOSFET
 

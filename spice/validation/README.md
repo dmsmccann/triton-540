@@ -40,3 +40,14 @@ New-Item -ItemType Directory -Force ..\generated\validation | Out-Null
 
 Any CSVs created by the validation circuits go to
 `spice/generated/validation/` and are not versioned.
+
+The board-level MC1496 DC regression is a Python runner rather than a
+standalone `.cir` fixture because the KiCad hierarchy is the 80287 circuit
+source of truth. From the project root run:
+
+```powershell
+python spice\tools\run_mc1496_dc_regression.py
+```
+
+It writes the curated comparison to
+`spice/studies/80287/dc-regression/data/`.
