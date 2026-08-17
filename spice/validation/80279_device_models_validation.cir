@@ -1,0 +1,50 @@
+* Standalone sanity checks for the empirical 80279 active-device models.
+.include ../models/MPS3693.lib
+.include ../models/HP5082_3379.sub
+
+* MPS3693 at a representative 50 uA base drive and 10 V collector supply.
+VQC QC 0 10
+IBQ 0 QB DC 50u
+QTEST QC QB 0 MPS3693
+
+* Documented 80279 no-signal bias networks.  Inductors are DC shorts, so the
+* collector feeds reduce to the documented 100 ohm resistors.
+VBIAS_R VBIAS_R 0 12.1
+VBIAS_12 VBIAS_12 0 13.8
+RQ1C VBIAS_12 Q1C 100
+RQ1B1 VBIAS_R Q1B 22k
+RQ1B2 Q1B 0 2.2k
+RQ1E Q1E 0 220
+Q79_1_TEST Q1C Q1B Q1E MPS3693
+RQ2C VBIAS_12 Q2C 100
+RQ2B1 VBIAS_R Q2B 22k
+RQ2B2 Q2B 0 4.7k
+RQ2E Q2E 0 220
+Q79_2_TEST Q2C Q2B Q2E MPS3693
+
+* 5082-3379 at three forward-bias currents.  AC current is 1 A, so each
+* node-voltage magnitude directly reports small-signal impedance in ohms.
+I10U 0 A10U DC 10u AC 1
+X10U 0 A10U HP5082_3379
+I1M 0 A1M DC 1m AC 1
+X1M 0 A1M HP5082_3379
+I20M 0 A20M DC 20m AC 1
+X20M 0 A20M HP5082_3379
+
+.control
+set noaskquit
+op
+let mps3693_ic = -i(VQC)
+let mps3693_beta = mps3693_ic/50u
+print v(QB) mps3693_ic mps3693_beta
+print v(Q1C) v(Q1B) v(Q1E) v(Q2C) v(Q2B) v(Q2E)
+print v(A10U) v(A1M) v(A20M)
+ac lin 1 9Meg 9Meg
+let z10u_9mhz = mag(v(A10U))
+let z1m_9mhz = mag(v(A1M))
+let z20m_9mhz = mag(v(A20M))
+print z10u_9mhz z1m_9mhz z20m_9mhz
+quit
+.endc
+
+.end

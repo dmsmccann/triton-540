@@ -1,0 +1,47 @@
+* Hewlett-Packard 5082-3379 RF PIN diode -- empirical two-terminal model.
+*
+* External node order follows the KiCad diode symbol:
+*   1 = K (cathode), 2 = A (anode)
+*
+* Manufacturer-data anchors:
+*   Breakdown voltage:                 50 V minimum
+*   Total capacitance at 50 V, 1 MHz: 0.4 pF maximum
+*   Effective carrier lifetime:        1300 ns typical
+*   Package inductance/capacitance:    2.5 nH / 0.13 pF typical
+*   RF resistance: current controlled; approximately 8 ohms at 1 mA
+*                  and approximately 1000 ohms at 0.01 mA.
+*
+* RRF uses a 100 us low-pass estimate of forward current so its resistance
+* follows AGC bias but not the 9 MHz carrier.  The 8 mV/I law matches the two
+* tabulated RF-resistance endpoints.  A 0.4 ohm floor prevents an unrealistically
+* small resistance above the characterized current range.
+*
+* This is not an HP/Agilent factory SPICE model.  It is intended for AGC
+* attenuation trends at 9 MHz, not distortion, noise, switching-power, or
+* temperature-limit predictions.
+*
+*                    K A
+.SUBCKT HP5082_3379  1 2
+
+* Outline-15 package parasitics.
+LPKG 2 AINT 2.5n
+CPKG 2 1 0.13p
+
+* DC junction and stored charge.  CJO is chosen so junction plus package
+* capacitance is approximately 0.4 pF at 50 V reverse bias.
+DCORE AINT N1 HP5082_3379_CORE
+.MODEL HP5082_3379_CORE D(
++ IS=5p N=1.5 RS=0.2
++ CJO=1.0p VJ=1.0 M=0.33 FC=0.5
++ TT=1.3u BV=50 IBV=10u
++)
+
+* Sense diode current, remove its RF component, then set the conductivity-
+* modulated intrinsic-region resistance from the resulting bias current.
+VSENSE N1 N2 0
+BIMON ICTRL 0 V={abs(I(VSENSE))}
+RCTRL ICTRL IAVG 1k
+CCTRL IAVG 0 100n
+RRF N2 1 R={max(0.4,8m/max(V(IAVG),1n))}
+
+.ENDS HP5082_3379

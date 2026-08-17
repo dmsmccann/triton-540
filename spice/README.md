@@ -10,12 +10,26 @@ disposable simulator output.
 | [`tools/`](tools/) | Netlist runner and plotting utilities | Yes |
 | [`studies/`](studies/) | Curated CSV evidence, manifests, fixtures, and figures | Yes |
 | `generated/` | Exported netlists, ngspice raw files, logs, caches, and temporary CSVs | No |
+| `runtime/` | Local ngspice executable and runtime dependencies | No |
 
 The KiCad schematics are the circuit source of truth. The 80166 runner exports
 a fresh SPICE netlist from `triton_540.kicad_sch` before applying run-specific
 parameters to a generated copy.
 
 ## Common commands
+
+Run ngspice 46 outside KiCad through the project launcher:
+
+```powershell
+Push-Location spice\validation
+& ..\tools\ngspice.cmd -b -D ngbehavior=ltpsa 40823_validation.cir
+Pop-Location
+```
+
+The launcher prefers `spice/runtime/ngspice-46/bin/ngspice_con.exe`, then
+checks `C:\Tools\ngspice-46\Spice64\bin` and `PATH`. The local runtime is
+intentionally excluded from Git; simulation source and results remain
+independently curated.
 
 Check the project tools, KiCad exports, model regressions, and scanned-manual
 toolchain without modifying source schematics:

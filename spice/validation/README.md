@@ -5,6 +5,7 @@ complete Triton schematic.
 
 | Circuit | Purpose |
 |:--|:--|
+| `MC1747_validation.cir` | Both amplifier sections, separate VCC pins, DC followers, bandwidth, and slew rate |
 | `MC1496P_validation.cir` | DC bias and 3/13 MHz plus 10/20 MHz mixer products |
 | `40823_validation.cir` | Gate-1 transfer, gate-2 control, and manual bias point |
 | `80166_rf_magnetics_validation.cir` | L1/L2 continuity and 9 MHz trap response |
@@ -17,12 +18,14 @@ complete Triton schematic.
 | `MPS6514_validation.cir` | Q89-2 and Q89-4 documented bias points |
 | `MPS6512_validation.cir` | Datasheet gain bin and Q89-5 nominal DC bias |
 | `1N4154_validation.cir` | D89-1 forward clamp and reverse capacitance |
+| `80279_device_models_validation.cir` | MPS3693 nominal gain/bias and HP 5082-3379 current-controlled impedance at 9 MHz |
 | `80289_vfo_magnetics_validation.cir` | PTO/L4 estimates, T1 transfer/syntax sanity, and 1 mH RFC |
 
 Run them from this directory so their relative model paths resolve:
 
 ```powershell
 New-Item -ItemType Directory -Force ..\generated\validation | Out-Null
+& 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa MC1747_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa MC1496P_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 40823_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 80166_rf_magnetics_validation.cir
@@ -35,6 +38,7 @@ New-Item -ItemType Directory -Force ..\generated\validation | Out-Null
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa MPS6514_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa MPS6512_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 1N4154_validation.cir
+& 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 80279_device_models_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 80289_vfo_magnetics_validation.cir
 ```
 

@@ -1,0 +1,24 @@
+* MPS3693 NPN small-signal transistor -- empirical ngspice model.
+*
+* Intended use: Q79-1 and Q79-2 in the Ten-Tec 80279 9 MHz IF amplifier.
+*
+* Surviving published data used as constraints:
+*   VCEO = 45 V, VCBO = 45 V, VEBO = 4 V, IC(max) = 30 mA,
+*   hFE(min) = 40, fT(typ) = 200 MHz, Cob(typ) = 3.5 pF.
+* The Triton service manual gives approximately 1.3 mA and 5 mA emitter
+* currents for Q79-1 and Q79-2.  BF=60 gives a useful nominal fit to those
+* bias points with the documented divider and emitter-resistor values.
+*
+* This is not a Motorola factory SPICE model.  Production spread, noise,
+* distortion, temperature behavior, and breakdown behavior are not
+* validated.  TF and junction capacitances are chosen for a plausible
+* 9 MHz small-signal response consistent with the sparse fT/Cob data.
+
+.model MPS3693 NPN(
++ Is=5f Xti=3 Eg=1.11 Vaf=60 Bf=60 Ne=1.3
++ Ise=5f Ikf=20m Xtb=1.5 Br=2 Nc=2 Isc=0 Ikr=0
++ Rc=2 Re=0.5 Rb=20
++ Cjc=3.5p Mjc=.33 Vjc=.75 Fc=.5
++ Cje=10p Mje=.33 Vje=.75
++ Tf=.75n Tr=50n
++)

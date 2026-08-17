@@ -1,0 +1,73 @@
+* MC1747 / MC1747C dual operational-amplifier macromodel.
+*
+* Five-pin core source:
+*   C:\Ham Radio\KiCad-Spice-Library\Models\uncategorized\spice_complete\MOTOR.LIB
+*   Original source tag: MC1747; MC1747; Opamps; Motorola; Internal Comp.
+*   Core pins: noninverting input, inverting input, VCC, VEE, output.
+*
+* Project modification, 2026-08-16:
+*   The original five-pin core was renamed MC1747_CORE and instantiated twice
+*   in a fourteen-pin MC1747 package wrapper.  The wrapper preserves the
+*   Motorola DIP pinout, separate VCC A/VCC B pins, and common VEE pin.
+*   The source core does not model offset adjustment, so physical pins
+*   3, 5, 8, and 14 are retained through 1 teraohm stabilization resistors.
+*   Physical pin 11 is NC and is likewise stabilized without functional use.
+*
+* The source aggregator does not establish a license for this individual
+* model.  Preserve this provenance note and review redistribution separately
+* before including this file in a public release.
+
+* MC1747 single-amplifier core
+* Connections: 1=+IN, 2=-IN, 3=VCC, 4=VEE, 5=OUT
+.SUBCKT MC1747_CORE 1 2 3 4 5
+C1   11 12 10.50E-12
+C2    6  7 31.00E-12
+DC    5 53 DX
+DE   54  5 DX
+DLP  90 91 DX
+DLN  92 90 DX
+DP    4  3 DX
+EGND 99  0 POLY(2) 3 0 4 0 0 .5 .5
+FB    7 99 POLY(5) VB VC VE VLP VLN 0 23.81E6 -20E6 20E6 20E6 -20E6
+GA    6  0 11 12 224.0E-6
+GCM   0  6 10 99 7.083E-9
+IEE  10  4 DC 15.66E-6
+HLIM 90  0 VLIM 1K
+Q1   11  2 13 QX
+Q2   12  1 14 QX
+R2    6  9 100.0E3
+RC1   3 11 4.464E3
+RC2   3 12 4.464E3
+RE1  13 10 1.116E3
+RE2  14 10 1.116E3
+REE  10 99 12.77E6
+RO1   8  5 37.50
+RO2   7 99 37.50
+RP    3  4 18.17E3
+VB    9  0 DC 0
+VC    3 53 DC 2.6
+VE   54  4 DC 2.6
+VLIM  7  8 DC 0
+VLP  91  0 DC 25
+VLN   0 92 DC 25
+.MODEL DX D(IS=800.0E-18)
+.MODEL QX NPN(IS=800.0E-18 BF=96.87)
+.ENDS MC1747_CORE
+
+* Motorola fourteen-pin DIP order:
+*  1 -IN A       8 OFFSET B
+*  2 +IN A       9 VCC B
+*  3 OFFSET A   10 OUT B
+*  4 VEE        11 NC
+*  5 OFFSET B   12 OUT A
+*  6 +IN B      13 VCC A
+*  7 -IN B      14 OFFSET A
+.SUBCKT MC1747 1 2 3 4 5 6 7 8 9 10 11 12 13 14
+XA 2 1 13 4 12 MC1747_CORE
+XB 6 7 9 4 10 MC1747_CORE
+RNULLA1 3  4 1T
+RNULLB1 5  4 1T
+RNULLB2 8  4 1T
+RNC11   11 4 1T
+RNULLA2 14 4 1T
+.ENDS MC1747

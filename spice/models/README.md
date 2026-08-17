@@ -1,5 +1,114 @@
 # SPICE model reference
 
+## MC1747 dual operational amplifier
+
+`MC1747.sub` contains a five-terminal Motorola-style MC1747 op-amp core and
+a project-added fourteen-pin package wrapper. The wrapper instantiates the
+core twice, preserving the device's separate positive supplies and common
+negative supply:
+
+```spice
+XU inv_a noninv_a off_a1 vee off_b1 noninv_b inv_b off_b2 vcc_b out_b nc out_a vcc_a off_a2 MC1747
+```
+
+Use a one-to-one physical-pin mapping in KiCad:
+
+| Pin | Function | Pin | Function |
+|---:|---|---:|---|
+| 1 | Inverting input A | 8 | Offset adjust B |
+| 2 | Noninverting input A | 9 | VCC B |
+| 3 | Offset adjust A | 10 | Output B |
+| 4 | VEE, common | 11 | NC |
+| 5 | Offset adjust B | 12 | Output A |
+| 6 | Noninverting input B | 13 | VCC A |
+| 7 | Inverting input B | 14 | Offset adjust A |
+
+The `triton_iv:MC1747` symbol already selects
+`${KIPRJMOD}/spice/models/MC1747.sub`, subcircuit `MC1747`, with physical
+pins 1 through 14 mapped one-to-one.
+
+### Model basis and limits
+
+The five-pin core was extracted from the local KiCad-Spice-Library file
+`Models/uncategorized/spice_complete/MOTOR.LIB`, whose source tag identifies
+the entry as a Motorola internally compensated MC1747 model. The same
+electrical core appears as `MC1747` in the Bordodynovs `OPAMPS.LIB` and as
+`MC1747_MC` in `m_opamp.lib`.
+
+The source core models one amplifier only. The project modification renames
+it `MC1747_CORE`, instantiates it once for section A and once for section B,
+and adds high-value stabilization resistors to the four offset-adjust pins
+and pin 11. Consequently, offset-null adjustment is not modeled. DC bias,
+closed-loop gain, bandwidth, slew rate, output limiting, input bias current,
+and supply loading are modeled nominally; noise, device spread, temperature
+variation, and inter-section coupling are not validated.
+
+`../validation/MC1747_validation.cir` checks both sections on separate 13.8 V
+positive-supply pins. Its unity-follower regression gives 6.80002 V and
+7.00002 V DC outputs, approximately 1.595 MHz closed-loop bandwidth, and
+0.498 V/us large-signal slew rate under ngspice 46.
+
+The source aggregator's README states that its GPLv3 license covers its
+scripts, not the collected model files, and it does not establish the license
+of this individual model. Treat `MC1747.sub` as a local simulation asset and
+review or replace it before including it in a public release.
+
+### References
+
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, local PDF page 32 / printed
+  page 3-16: the two IC-1 amplifier functions on assembly 80279.
+- Same manual, local PDF page 33 / printed page 3-17: IC-1 connections and
+  operating-point voltages.
+- `datasheets/MC1747_MC1747C_Motorola_1976.pdf`, printed pages 3-83 through
+  3-86: package pinout and electrical characteristics.
+
+## 80279 discrete active-device models
+
+`MPS3693.lib` is an empirical NPN model for Q79-1 and Q79-2. No factory
+SPICE model was found. Its constraints are the surviving 45 V voltage
+ratings, 30 mA collector-current rating, minimum gain of 40, approximately
+200 MHz transition frequency, and approximately 3.5 pF collector
+capacitance. `BF=60` was selected as a nominal value compatible with the
+manual's approximately 1.3 mA and 5 mA emitter-current operating points.
+The model is intended for 9 MHz bias and small-signal studies, not noise,
+distortion, breakdown, temperature, or production-spread predictions.
+
+`HP5082_3379.sub` is an empirical two-terminal PIN-diode model for D79-1,
+D79-2, and D79-3. Its external order follows the KiCad diode symbol:
+
+```spice
+XD cathode anode HP5082_3379
+```
+
+The model uses the HP/Agilent data-sheet values of 50 V minimum breakdown,
+0.4 pF maximum total capacitance at 50 V, 1.3 us typical carrier lifetime,
+and typical Outline-15 package parasitics of 2.5 nH and 0.13 pF. A
+low-pass-controlled behavioral resistance follows the documented
+current-controlled RF resistance without following the 9 MHz carrier. Its
+8 mV/current relationship gives approximately 1000 ohms at 10 uA and 8 ohms
+at 1 mA; this is an engineering interpolation, not an HP compact model.
+
+`../validation/80279_device_models_validation.cir` gives nominal ngspice 46
+results of beta 55.4 for MPS3693 at 50 uA base drive. In the documented
+80279 bias networks it gives Q79-1 C/B/E = 13.64/1.046/0.362 V and Q79-2
+C/B/E = 13.32/1.788/1.070 V, compared with manual readings of
+13.7/1.0/0.3 V and 13.3/1.8/1.1 V. The PIN-diode impedance magnitudes are
+802 ohms, 8.22 ohms, and 0.611 ohm at 9 MHz for 10 uA, 1 mA, and 20 mA
+forward bias respectively.
+
+The existing `MPS6514.lib` model is assigned to Q79-4, Q79-5, and Q79-6.
+The existing `40823.sub` model is assigned to Q79-3 with one-to-one physical
+pin order `D, G2, G1, S`. The complete assignments are stored directly in
+`if-agc_80279.kicad_sch` so KiCad exports all required includes.
+
+### References
+
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, local PDF pages 32-33 /
+  printed pages 3-16 to 3-17: circuit functions and no-signal voltages.
+- HP/Agilent, *PIN Diodes for RF Switching and Attenuating*, technical data
+  5968-7182E: 5082-3379 capacitance, lifetime, breakdown, package parasitics,
+  and RF-resistance behavior.
+
 ## MC1496P balanced modulator
 
 `MC1496P.sub` is a nominal transistor-level model for the MC1496P

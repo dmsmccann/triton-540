@@ -1,0 +1,43 @@
+* MC1747 fourteen-pin wrapper regression fixture.
+* Checks both amplifier sections, separate VCC pins, follower DC operation,
+* closed-loop bandwidth, and large-signal slew response on a 13.8 V supply.
+
+.include ../models/MC1747.sub
+
+VCCA VCCA 0 13.8
+VCCB VCCB 0 13.8
+
+* Section A: unity follower with a 1 V transient step and AC=1 input.
+VINA INA 0 DC 6.8 AC 1 PULSE(6.8 7.8 100u 1n 1n 200u 400u)
+RLA OUTA 0 10k
+CLA OUTA 0 50p
+
+* Section B: independent unity follower at the manual's nominal 7 V region.
+VINB INB 0 DC 7.0
+RLB OUTB 0 10k
+CLB OUTB 0 50p
+
+* Physical package order, one-to-one with the KiCad symbol.
+XU1 OUTA INA OFFA1 0 OFFB1 INB OUTB OFFB2 VCCB OUTB NC11 OUTA VCCA OFFA2 MC1747
+
+.options reltol=1e-4 abstol=1e-12 vntol=1e-8
+
+.control
+set noaskquit
+op
+print v(outa) v(outb) @vcca[i] @vccb[i]
+
+ac dec 100 10 10Meg
+meas ac A_GAIN_10HZ find vdb(outa) at=10
+meas ac A_BW_3DB when vdb(outa)=-3 fall=1
+
+tran 50n 600u
+meas tran A_RISE_TIME trig v(outa) val=7.0 rise=1 targ v(outa) val=7.6 rise=1
+let A_SLEW_V_PER_US=0.6/A_RISE_TIME/1e6
+print A_SLEW_V_PER_US
+
+echo MC1747_VALIDATION_COMPLETE
+quit
+.endc
+
+.end

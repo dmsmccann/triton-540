@@ -119,6 +119,7 @@ $KiCadCli = Resolve-Executable 'kicad-cli' @(
     'C:\Program Files\KiCad\10.0\bin\kicad-cli.exe'
 )
 $Ngspice = Resolve-Executable 'ngspice_con' @(
+    (Join-Path $ProjectRoot 'spice\runtime\ngspice-46\bin\ngspice_con.exe'),
     'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe'
 )
 $Python = Resolve-Executable 'python'

@@ -8,9 +8,10 @@
 		(title "RF_Amp_80166")
 		(date "2026-07-26")
 		(rev "0.2")
-		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
-		(comment 2 "Original Design: Ten-Tec")
-		(comment 3 "Triton IV (Model 540)")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 3 "Seveirville TN")
+		(comment 4 "Original Design: Ten-Tec")
+		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols
 		(symbol "Device:C_Small_US"

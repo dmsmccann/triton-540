@@ -8,9 +8,10 @@
 		(title "Ten Tec Triton IV Model 540 Transceiver")
 		(date "2026-07-26")
 		(rev "0.2")
-		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
-		(comment 2 "Original Design: Ten-Tec")
-		(comment 3 "Triton IV (Model 540)")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 3 "Seveirville TN")
+		(comment 4 "Original Design: Ten-Tec")
+		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols
 		(symbol "Connector:Conn_Coaxial"
@@ -2507,6 +2508,45 @@
 				)
 			)
 			(symbol "Octal_Plug_1_1"
+				(polyline
+					(pts
+						(xy -7.62 -6.35) (xy 0 10.16)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+						(color 255 0 0 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.08 0) (xy 10.16 0)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+						(color 0 255 255 1)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 -6.35) (xy 5.08 0) (xy 7.62 6.35)
+					)
+					(stroke
+						(width 0)
+						(type solid)
+						(color 0 255 255 1)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
 					(at -10.16 0 0)
 					(length 0.0254)
@@ -4103,7 +4143,7 @@
 	)
 	(text "\n.tran 2n 100u 60u 2n"
 		(exclude_from_sim no)
-		(at 65.024 99.06 0)
+		(at 377.19 232.156 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4184,7 +4224,7 @@
 	)
 	(text ".param S4_POS=1\n.param S5_POS=1"
 		(exclude_from_sim no)
-		(at 64.516 97.028 0)
+		(at 376.682 230.124 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -4266,10 +4306,22 @@
 		(uuid "06c12c80-2bca-4f77-a95e-e0553792c755")
 	)
 	(junction
+		(at 407.67 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "08986864-9132-4f57-99f2-b77280d375f8")
+	)
+	(junction
 		(at 55.88 71.12)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "0a48432b-f747-419f-a827-0eb29bdbd0ac")
+	)
+	(junction
+		(at 294.64 91.44)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0b9bcc25-b38b-45a4-bf36-aa94d134dd51")
 	)
 	(junction
 		(at 130.81 68.58)
@@ -4282,6 +4334,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "147856ee-ff8b-4d0d-80db-8b0218853bed")
+	)
+	(junction
+		(at 317.5 208.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1c0b67b2-2155-482a-a394-cc349d7cb9f5")
 	)
 	(junction
 		(at 330.2 208.28)
@@ -4302,22 +4360,10 @@
 		(uuid "3dce03e8-97ce-4c4c-8d13-2e9cffb8e937")
 	)
 	(junction
-		(at 311.15 91.44)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4d06a448-2ea3-4590-8bd8-713b92ed1fa2")
-	)
-	(junction
 		(at 353.06 208.28)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "5ec9a3a5-65ee-404a-a657-93bdb8302a4c")
-	)
-	(junction
-		(at 317.5 208.28)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5f358941-bbcd-4898-a580-a824f5c609ad")
 	)
 	(junction
 		(at 63.5 71.12)
@@ -4368,6 +4414,12 @@
 		(uuid "b4d34d1d-80ad-4455-8d54-863f4b611dde")
 	)
 	(junction
+		(at 405.13 161.29)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b5b4759d-eb31-41a3-b3b4-82908516c6b5")
+	)
+	(junction
 		(at 107.95 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -4386,10 +4438,20 @@
 		(uuid "f1b12202-d1d4-4019-bbee-88ffa88b4e38")
 	)
 	(junction
+		(at 405.13 143.51)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fb306e9e-7e92-4e52-a020-91ff307c9164")
+	)
+	(junction
 		(at 100.33 80.01)
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ff2c111b-f1a9-4722-85dd-09fbf774a8af")
+	)
+	(no_connect
+		(at 396.24 88.9)
+		(uuid "ff58962f-3360-4d6b-a402-62512b4a3a7b")
 	)
 	(wire
 		(pts
@@ -4430,6 +4492,16 @@
 			(type default)
 		)
 		(uuid "05aeb075-2fff-4600-9309-2fcd27569091")
+	)
+	(wire
+		(pts
+			(xy 367.03 156.21) (xy 367.03 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "070bd8f2-73f8-4509-9ad4-7f00433fd1db")
 	)
 	(wire
 		(pts
@@ -4483,6 +4555,16 @@
 	)
 	(wire
 		(pts
+			(xy 222.25 97.79) (xy 83.82 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0de98c4c-011f-471c-83e1-3a7af07713b2")
+	)
+	(wire
+		(pts
 			(xy 167.64 41.91) (xy 163.83 41.91)
 		)
 		(stroke
@@ -4503,7 +4585,7 @@
 	)
 	(wire
 		(pts
-			(xy 191.77 91.44) (xy 311.15 91.44)
+			(xy 191.77 91.44) (xy 294.64 91.44)
 		)
 		(stroke
 			(width 0)
@@ -4693,6 +4775,16 @@
 	)
 	(wire
 		(pts
+			(xy 208.28 27.94) (xy 222.25 27.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34818c9c-f510-4ec0-beb1-8f25929d7bae")
+	)
+	(wire
+		(pts
 			(xy 382.27 69.85) (xy 414.02 69.85)
 		)
 		(stroke
@@ -4700,6 +4792,16 @@
 			(type default)
 		)
 		(uuid "352c0628-f1d8-4b92-83c8-a41eed5442fa")
+	)
+	(wire
+		(pts
+			(xy 405.13 143.51) (xy 407.67 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35992c58-ece5-4864-af7e-6edf22f3980a")
 	)
 	(wire
 		(pts
@@ -5003,7 +5105,7 @@
 	)
 	(wire
 		(pts
-			(xy 368.3 184.15) (xy 368.3 189.23)
+			(xy 372.11 184.15) (xy 372.11 189.23)
 		)
 		(stroke
 			(width 0)
@@ -5043,7 +5145,7 @@
 	)
 	(wire
 		(pts
-			(xy 311.15 91.44) (xy 311.15 208.28)
+			(xy 294.64 91.44) (xy 294.64 208.28)
 		)
 		(stroke
 			(width 0)
@@ -5053,7 +5155,7 @@
 	)
 	(wire
 		(pts
-			(xy 311.15 208.28) (xy 317.5 208.28)
+			(xy 294.64 208.28) (xy 317.5 208.28)
 		)
 		(stroke
 			(width 0)
@@ -5123,6 +5225,16 @@
 	)
 	(wire
 		(pts
+			(xy 157.48 36.83) (xy 157.48 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7784a000-4fb5-4c09-a00a-6f112183fac7")
+	)
+	(wire
+		(pts
 			(xy 127 83.82) (xy 127 86.36)
 		)
 		(stroke
@@ -5130,6 +5242,26 @@
 			(type default)
 		)
 		(uuid "77ece8d4-2e00-4793-9aea-20782f05ec59")
+	)
+	(wire
+		(pts
+			(xy 407.67 143.51) (xy 407.67 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "78940ccc-987f-4a90-ab86-3c14e9d7d68c")
+	)
+	(wire
+		(pts
+			(xy 83.82 97.79) (xy 83.82 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7bda93a0-b13c-49fa-a9c6-dc4dc904f4f6")
 	)
 	(wire
 		(pts
@@ -5223,6 +5355,16 @@
 	)
 	(wire
 		(pts
+			(xy 407.67 152.4) (xy 407.67 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8fbfe166-d1a4-4d9d-badc-d32ac39f1c93")
+	)
+	(wire
+		(pts
 			(xy 152.4 34.29) (xy 167.64 34.29)
 		)
 		(stroke
@@ -5230,6 +5372,16 @@
 			(type default)
 		)
 		(uuid "905b714e-08ec-40dd-ae1e-02b9c9c0521d")
+	)
+	(wire
+		(pts
+			(xy 353.06 208.28) (xy 353.06 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "908eed5b-b1c9-41b6-b219-6acd4e89d66f")
 	)
 	(wire
 		(pts
@@ -5280,6 +5432,16 @@
 			(type default)
 		)
 		(uuid "97f67e5b-4744-4ced-bdb9-0207490be78c")
+	)
+	(wire
+		(pts
+			(xy 353.06 200.66) (xy 367.03 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "985bb7b8-bcf2-4352-b41c-4a04dae7981a")
 	)
 	(wire
 		(pts
@@ -5360,6 +5522,16 @@
 			(type default)
 		)
 		(uuid "a5566bf9-2c7c-4c8c-b517-5997541980d9")
+	)
+	(wire
+		(pts
+			(xy 405.13 152.4) (xy 407.67 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5f0f48e-1e83-4c67-96b0-c41314e5ff80")
 	)
 	(wire
 		(pts
@@ -5473,6 +5645,26 @@
 	)
 	(wire
 		(pts
+			(xy 367.03 156.21) (xy 400.05 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b282dd97-963f-4103-8601-853b2280a8e4")
+	)
+	(wire
+		(pts
+			(xy 294.64 91.44) (xy 387.35 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b308417b-aa71-470e-ac32-de772fd6d7fe")
+	)
+	(wire
+		(pts
 			(xy 231.14 72.39) (xy 411.48 72.39)
 		)
 		(stroke
@@ -5513,6 +5705,16 @@
 	)
 	(wire
 		(pts
+			(xy 407.67 161.29) (xy 405.13 161.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c3d83ba4-fbe6-4186-85f0-15763e1068c5")
+	)
+	(wire
+		(pts
 			(xy 40.64 62.23) (xy 40.64 64.77)
 		)
 		(stroke
@@ -5533,6 +5735,26 @@
 	)
 	(wire
 		(pts
+			(xy 405.13 143.51) (xy 400.05 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c910e963-4a57-4dc1-995d-fd22a6a31b12")
+	)
+	(wire
+		(pts
+			(xy 83.82 34.29) (xy 78.74 34.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ca17af90-be6e-44fe-9032-259682e2d38b")
+	)
+	(wire
+		(pts
 			(xy 157.48 16.51) (xy 382.27 16.51)
 		)
 		(stroke
@@ -5550,6 +5772,16 @@
 			(type default)
 		)
 		(uuid "cb5838d5-d7fb-47e1-8232-f815374388a1")
+	)
+	(wire
+		(pts
+			(xy 369.57 142.24) (xy 369.57 208.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cee3f339-79fb-4d23-a021-84a0a9e1b2f8")
 	)
 	(wire
 		(pts
@@ -5603,6 +5835,26 @@
 	)
 	(wire
 		(pts
+			(xy 167.64 36.83) (xy 157.48 36.83)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4cfd103-c498-4b25-924d-7b9725ab6385")
+	)
+	(wire
+		(pts
+			(xy 222.25 27.94) (xy 222.25 97.79)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8751fd0-4513-4e7e-bea5-231564e83c12")
+	)
+	(wire
+		(pts
 			(xy 107.95 80.01) (xy 115.57 80.01)
 		)
 		(stroke
@@ -5620,6 +5872,16 @@
 			(type default)
 		)
 		(uuid "d9e8135d-aebe-4758-ae92-d8ec2ca04161")
+	)
+	(wire
+		(pts
+			(xy 384.81 147.32) (xy 400.05 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dbb8d726-fdba-478d-a34a-3c00a484d901")
 	)
 	(wire
 		(pts
@@ -5693,7 +5955,17 @@
 	)
 	(wire
 		(pts
-			(xy 383.54 184.15) (xy 368.3 184.15)
+			(xy 157.48 54.61) (xy 227.33 54.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e9733b68-dd44-4ac5-916c-d52ccdc199b7")
+	)
+	(wire
+		(pts
+			(xy 383.54 184.15) (xy 372.11 184.15)
 		)
 		(stroke
 			(width 0)
@@ -5800,16 +6072,6 @@
 			(type default)
 		)
 		(uuid "f5067b8e-18d6-42f4-bd17-f203db8754d3")
-	)
-	(wire
-		(pts
-			(xy 311.15 91.44) (xy 387.35 91.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "f630cfdb-4db4-4dbf-be12-920763cac1ed")
 	)
 	(wire
 		(pts
@@ -7761,6 +8023,89 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_Coaxial")
+		(at 405.13 156.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4c0127ec-af9c-4e55-b14e-e41ad4be3934")
+		(property "Reference" "J4"
+			(at 408.94 155.2331 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AUX 12V"
+			(at 408.94 157.7731 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 405.13 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 405.13 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 405.13 156.21 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "8fd75991-31d6-4634-b662-0aed7d3c79ad")
+		)
+		(pin "1"
+			(uuid "25a442f2-1b84-4fe1-81a7-a20489a3165b")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "J4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "triton_iv:SW_Rotary_1x5_multiunit")
 		(at 55.88 54.61 270)
 		(unit 1)
@@ -8076,6 +8421,89 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
 					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_Coaxial")
+		(at 405.13 138.43 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "5b5d4cba-c702-4c32-9f43-65871bae6ba4")
+		(property "Reference" "J6"
+			(at 408.94 137.4531 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "PTT"
+			(at 408.94 139.9931 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 405.13 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 405.13 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 405.13 138.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "886b5588-f6ff-4911-84fd-1f5042288d4e")
+		)
+		(pin "1"
+			(uuid "0a0dd3d1-27dd-4023-b508-eb0769dee5b8")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "J6")
 					(unit 1)
 				)
 			)
@@ -8854,6 +9282,89 @@
 		)
 	)
 	(symbol
+		(lib_id "Connector:Conn_Coaxial")
+		(at 405.13 147.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "91899fed-c271-4b53-b960-125935d55cef")
+		(property "Reference" "J5"
+			(at 408.94 146.3431 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "KEY"
+			(at 408.94 148.8831 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 405.13 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 405.13 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+			(at 405.13 147.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "4ffcebc4-6c18-4c86-b745-873f25d582b0")
+		)
+		(pin "1"
+			(uuid "1f18ca86-12c1-4c96-b737-84e81fc35718")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "J5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "triton_iv:Octal_Plug")
 		(at 403.86 95.25 0)
 		(unit 1)
@@ -9477,6 +9988,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small_US")
+		(at 400.05 140.97 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ab4e6702-a0aa-476d-a8a1-ea9ec4603848")
+		(property "Reference" "C8"
+			(at 397.51 139.8269 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" ".01u"
+			(at 397.51 142.3669 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 400.05 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 400.05 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "capacitor, small US symbol"
+			(at 400.05 140.97 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "f855a429-f3f7-403b-804e-7263a332e2b1")
+		)
+		(pin "2"
+			(uuid "3a947380-8eff-4db5-98eb-d96177c71179")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "C8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 55.88 71.12 0)
 		(unit 1)
@@ -9631,6 +10224,83 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
 					(reference "C10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 403.86 105.41 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b9070082-8296-492c-ad07-2e4a955c91d3")
+		(property "Reference" "#PWR0106"
+			(at 403.86 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 407.162 107.442 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 403.86 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 403.86 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 403.86 105.41 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "47567776-e68b-4862-bdf2-974c092cad1b")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "#PWR0106")
 					(unit 1)
 				)
 			)
@@ -10143,6 +10813,84 @@
 	)
 	(symbol
 		(lib_id "power:GND")
+		(at 405.13 161.29 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim yes)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "dbcb200f-feb5-4ef5-b74a-99c8a9173b38")
+		(property "Reference" "#PWR0107"
+			(at 405.13 167.64 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 405.13 166.37 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 405.13 161.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 405.13 161.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 405.13 161.29 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "166e0287-e5f4-4fbf-9271-4a91ff9c91f6")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "#PWR0107")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
 		(at 96.52 81.28 0)
 		(unit 1)
 		(body_style 1)
@@ -10624,7 +11372,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 368.3 189.23 0)
+		(at 372.11 189.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10635,7 +11383,7 @@
 		(fields_autoplaced yes)
 		(uuid "f5e9f82f-d636-4c03-baf0-f54f74556ef9")
 		(property "Reference" "#PWR092"
-			(at 368.3 195.58 0)
+			(at 372.11 195.58 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10646,7 +11394,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 368.3 194.31 0)
+			(at 372.11 194.31 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -10656,7 +11404,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 368.3 189.23 0)
+			(at 372.11 189.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10667,7 +11415,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 368.3 189.23 0)
+			(at 372.11 189.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)
@@ -10678,7 +11426,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 368.3 189.23 0)
+			(at 372.11 189.23 0)
 			(hide yes)
 			(show_name no)
 			(do_not_autoplace no)

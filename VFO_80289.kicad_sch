@@ -8,9 +8,10 @@
 		(title "VFO_80289")
 		(date "2026-07-26")
 		(rev "0.2")
-		(company "Andy McCann KA3KAF & DOug McCann KA3KAG")
-		(comment 2 "Original Design: Ten-Tec")
-		(comment 3 "Triton IV (Model 540)")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 3 "Seveirville TN")
+		(comment 4 "Original Design: Ten-Tec")
+		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols
 		(symbol "Device:C_Small_US"
@@ -8572,7 +8573,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "015d9c7e-5b22-479b-b718-d6e544ddc5a2")
-		(property "Reference" "L1"
+		(property "Reference" "L89-5"
 			(at 116.84 207.0099 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -8680,7 +8681,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/818ce5bb-55e6-4013-915b-e8afd4640f1a"
-					(reference "L1")
+					(reference "L89-5")
 					(unit 1)
 				)
 			)

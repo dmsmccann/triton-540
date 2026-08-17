@@ -1,5 +1,6 @@
 # Generated SPICE artifacts
 spice/generated/
+spice/runtime/
 spice/**/__pycache__/
 spice/**/.matplotlib/
 
