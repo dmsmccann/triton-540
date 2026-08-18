@@ -1,0 +1,10 @@
+metric,value,unit
+peak_frequency_hz,8999700.0,Hz
+peak_gain_db,55.066104169096334,dB
+gain_at_9mhz_db,55.06592481989627,dB
+lower_3db_hz,8962907.029424317,Hz
+upper_3db_hz,9046146.911873974,Hz
+bandwidth_3db_hz,83239.88244965672,Hz
+loaded_q,108.1176442727799,ratio
+winding_inductance,2.63,uH estimated
+coupling_k,0.25,estimated

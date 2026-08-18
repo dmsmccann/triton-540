@@ -1,0 +1,5 @@
+path,purpose
+data/80279-pin-agc-sweep-summary.csv,"9 MHz gain, attenuation, PIN currents, and modeled RF resistances"
+data/80279-pin-agc-response-family.csv,Complete 8.8-9.2 MHz response at every forced control voltage
+figures/80279-pin-agc-response-family.png,Representative IF-response family
+figures/80279-pin-agc-control-characteristic.png,9 MHz attenuation and D79-1 model characteristic

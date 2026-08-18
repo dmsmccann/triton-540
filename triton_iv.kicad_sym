@@ -402,7 +402,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "${KIPRJMOD}/datasheets/RCA_40823_SC-15_1971.pdf"
 			(at 5.08 -3.81 0)
 			(show_name no)
 			(do_not_autoplace no)
@@ -658,7 +658,7 @@
 				)
 			)
 			(pin passive line
-				(at 2.54 -5.08 90)
+				(at -5.08 -2.54 0)
 				(length 2.54)
 				(name "G2"
 					(effects
@@ -694,7 +694,7 @@
 				)
 			)
 			(pin passive line
-				(at -5.08 -2.54 0)
+				(at 2.54 -5.08 90)
 				(length 2.54)
 				(name "S"
 					(effects

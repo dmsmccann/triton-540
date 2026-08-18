@@ -1,0 +1,5 @@
+path,purpose
+data/80279-if-response.csv,Curated 8.8-9.2 MHz AC response
+data/80279-if-signal-walk.csv,9 MHz stage-by-stage gains
+data/80279-if-response-summary.csv,Peak and bandwidth measurements
+figures/80279-if-response.png,IF response and signal-walk figure

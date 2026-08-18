@@ -1,0 +1,38 @@
+section,device,terminal_or_pin,manual_v,simulated_v,error_percent,status,notes
+fixture,board,+12,13.8,13.8,0.00,PASS,Documented receive no-signal rail
+fixture,board,+REG,8.0,8.0,0.00,PASS,Documented regulated rail
+fixture,board,R,12.1,12.1,0.00,PASS,Documented receive rail
+fixture,board,T,0.2,0.2,0.00,PASS,Documented receive-mode T level
+fixture,board,BFO,6.5,6.5,0.00,PASS,DC terminal voltage; RF amplitude is irrelevant to .op
+terminal,board,IN,0.0,0.0,0.00,PASS,No-signal condition
+terminal,board,AUDIO,0.0,0.0,0.00,PASS,25 kohm simulation load
+terminal,board,S MTR,0.0,0.000000732,N/A,PASS,0.732 uV is effectively zero with 1 kohm load
+terminal,board,FILT IN/FILT OUT,0.0,0.0,0.00,PASS,Jumpered in the simulation fixture
+semiconductor,Q79-1,collector,13.7,13.638038,-0.45,PASS,Empirical MPS3693 model
+semiconductor,Q79-1,base,1.0,1.045900,4.59,PASS,Empirical MPS3693 model
+semiconductor,Q79-1,emitter,0.3,0.362268,20.76,REVIEW,Absolute difference is 62 mV
+semiconductor,Q79-2,collector,13.3,13.322535,0.17,PASS,Empirical MPS3693 model
+semiconductor,Q79-2,base,1.8,1.787721,-0.68,PASS,Empirical MPS3693 model
+semiconductor,Q79-2,emitter,1.1,1.069865,-2.74,PASS,Empirical MPS3693 model
+semiconductor,Q79-3,drain,3.0,3.349341,11.64,PASS,Corrected RCA 40823 lead-network wiring
+semiconductor,Q79-3,gate 1,0.6,0.640532,6.76,PASS,Corrected RCA 40823 lead-network wiring
+semiconductor,Q79-3,source,2.0,1.737360,-13.13,PASS,Corrected RCA 40823 lead-network wiring
+semiconductor,Q79-3,gate 2,2.0,1.737359,-13.13,PASS,Corrected RCA 40823 lead-network wiring
+semiconductor,Q79-4,collector,13.8,13.8,0.00,PASS,Collector is tied to +12
+semiconductor,Q79-4,base,1.2,1.068974,-10.92,PASS,AGC Darlington first stage
+semiconductor,Q79-4,emitter,0.8,0.617988,-22.75,REVIEW,Absolute difference is 182 mV
+semiconductor,Q79-5,collector,13.8,13.8,0.00,PASS,Collector is tied to +12
+semiconductor,Q79-5,base,0.8,0.617988,-22.75,REVIEW,Tracks Q79-4 emitter
+semiconductor,Q79-5,emitter,0.2,0.040191,-79.90,FAIL,AGC/PIN-bias output too low
+semiconductor,Q79-6,collector,1.2,1.068974,-10.92,PASS,Receive-mode AGC reset transistor
+semiconductor,Q79-6,base,0.05,0.047222,-5.56,PASS,Receive-mode T bias
+semiconductor,Q79-6,emitter,0.0,0.0,0.00,PASS,Tied to ground
+IC1,MC1747,pin 1,7.0,6.882009,-1.69,PASS,Section A inverting input; corrected surrounding wiring
+IC1,MC1747,pin 2,6.8,6.881989,1.21,PASS,Section A noninverting input; corrected surrounding wiring
+IC1,MC1747,pin 4,0.0,0.0,0.00,PASS,VEE
+IC1,MC1747,pin 6,7.0,6.889787,-1.57,PASS,Section B noninverting input; corrected surrounding wiring
+IC1,MC1747,pin 7,7.0,6.889807,-1.57,PASS,Section B inverting input; corrected surrounding wiring
+IC1,MC1747,pin 9,13.8,13.8,0.00,PASS,VCC B
+IC1,MC1747,pin 10,6.8,6.882202,1.21,PASS,Section B output; corrected surrounding wiring
+IC1,MC1747,pin 12,7.0,6.865885,-1.92,PASS,Section A output; corrected surrounding wiring
+IC1,MC1747,pin 13,13.8,13.8,0.00,PASS,VCC A
