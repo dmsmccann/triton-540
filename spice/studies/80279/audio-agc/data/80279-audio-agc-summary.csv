@@ -1,0 +1,11 @@
+metric,value,unit
+audio_gain_at_1khz,97.6354039,V/V
+audio_gain_at_1khz_db,39.792146543979435,dB
+audio_peak_gain_db,39.97418156326528,dB
+audio_lower_3db_hz,138.823113549135,Hz
+audio_upper_3db_hz,2965.0778189298762,Hz
+agc_gain_at_1khz,305.312852,V/V
+agc_gain_at_1khz_db,49.69490172208221,dB
+agc_peak_gain_db,49.875405644134425,dB
+agc_lower_3db_hz,140.38761057199167,Hz
+agc_upper_3db_hz,2966.5650097963776,Hz

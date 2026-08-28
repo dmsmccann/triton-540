@@ -1,0 +1,8 @@
+path,purpose
+data/80279-audio-frequency-response.csv,Small-signal response of both MC1747 paths
+data/80279-audio-level-sweep.csv,"1 kHz level, clipping, and AGC-control measurements"
+data/80279-audio-agc-summary.csv,Principal gain and bandwidth measurements
+data/80279-audio-nominal-waveform.csv,Retained 10 mV-peak transient waveform
+figures/80279-audio-frequency-response.png,Audio and AGC-section frequency response
+figures/80279-audio-level-agc-response.png,"Output, distortion, and AGC control versus input"
+figures/80279-audio-agc-waveforms.png,Nominal audio and control waveforms

@@ -1,0 +1,8 @@
+path,purpose
+data/80279-detector-sweep.csv,Per-case detector measurements across the BFO amplitude sweep
+data/80279-detector-rf-window.csv,bfo-400mv: 2 microseconds of settled 9 MHz waveforms
+data/80279-detector-audio-window.csv,bfo-400mv: 4 ms recovered-audio window on a 1.25 MHz grid
+data/80279-detector-spectrum.csv,bfo-400mv: recovered-audio spectrum at FILT IN/OUT to 10 kHz
+figures/80279-detector-waveforms.png,"Gate 1, gate 2, drain, and FILT IN/OUT waveforms"
+figures/80279-detector-spectrum.png,Recovered-audio spectrum showing the 1 kHz product and its harmonics
+figures/80279-detector-bfo-sensitivity.png,Recovered audio and distortion versus BFO injection amplitude

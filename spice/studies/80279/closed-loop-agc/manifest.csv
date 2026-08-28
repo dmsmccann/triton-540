@@ -1,0 +1,8 @@
+path,purpose
+data/80279-full-rf-agc-envelope.csv,One-millisecond envelopes from the complete 9 MHz circuit
+data/80279-full-rf-precharged-envelope.csv,Full-RF response with C79-22 held at the Sim 5 strong-control level
+data/80279-agc-envelope-timeline.csv,Ten-millisecond calibrated long-loop timeline
+data/80279-agc-summary.csv,"Attack, release, compression, and RF direction metrics"
+figures/80279-full-rf-agc-attack.png,Full-RF feedback direction and onset
+figures/80279-full-rf-control-crosscheck.png,Actual IF and PIN paths at baseline and precharged control states
+figures/80279-agc-attack-release.png,Calibrated multi-second AGC envelope

@@ -11,10 +11,10 @@ corresponding section as each simulation is completed.
 | 1 | Receive/no-signal DC operating point | **Completed — partial pass; IC1 corrected, Q79-5 discrepancy remains** | Are the board rails and semiconductor bias points consistent with the service manual? |
 | 2 | 9 MHz IF response and signal walk | **Completed — estimated transformer fit** | Do Q79-1, T79-1, Q79-2, and T79-2 amplify and select the 9 MHz IF? |
 | 3 | PIN-diode AGC attenuation sweep | **Completed — open-loop functional pass** | How much does IF gain change as D79-1, D79-2, and D79-3 forward bias increases? |
-| 4 | Product detector and audio recovery | Pending | Does Q79-3 convert a displaced 9 MHz IF and BFO into the expected audio difference frequency? |
-| 5 | Audio-amplifier and AGC-detector path | Pending | Do the two MC1747 sections provide audio output and sufficient AGC-detector drive? |
-| 6 | AGC attack, hold, and release | Pending | Does a strong-signal step reduce IF gain quickly and recover slowly without instability? |
-| 7 | S-meter calibration and transmit inhibit | Pending | Does R79-20 set meter sensitivity, and does the T line remove meter drive/reset AGC on transmit? |
+| 4 | Product detector and audio recovery | **Completed — functional pass** | Does Q79-3 convert a displaced 9 MHz IF and BFO into the expected audio difference frequency? |
+| 5 | Audio-amplifier and AGC-detector path | **Completed — functional pass** | Do the two MC1747 sections provide audio output and sufficient AGC-detector drive? |
+| 6 | AGC attack, hold, and release | **Completed — functional split-model pass** | Does a strong-signal step reduce IF gain quickly and recover slowly without instability? |
+| 7 | S-meter calibration and transmit inhibit | **Completed — functional pass; factory S9 calibration remains a whole-radio measurement** | Does R79-20 set meter sensitivity, and does the T line remove meter drive/reset AGC on transmit? |
 
 The primary sources are the Ten-Tec Model 540 owner/service manual, PDF page 32
 / printed page 3-16 for the functional description and voltage tables, and PDF
@@ -318,7 +318,38 @@ of recovered audio. The expected wanted product is 1 kHz.
 
 ### Results
 
-Pending; the Q79-3 operating-point prerequisite now passes.
+Completed from a fresh KiCad SPICE export with ngspice 46. The runner used a
+100 uV-peak board input at 9.001 MHz and swept the undocumented BFO RF
+amplitude from zero through 1.5 V peak while retaining the documented 6.5 V
+BFO DC level. The 400 mV-peak nominal case was repeated with the IF source
+turned off.
+
+The transient Q79-3 gate-1 amplitude was 112.240 mV peak-to-peak, 0.96% below
+the Simulation 2 AC prediction and inside the runner's 3% convergence limit.
+At the 400 mV-peak nominal BFO setting, the jumpered `FILT IN` / `FILT OUT`
+node contained a 34.490 mV peak-to-peak 1 kHz tone with 1.897% modeled total
+harmonic distortion. The same tone measured 0.0195 mV peak-to-peak with the
+BFO off and 0.307 mV peak-to-peak with the IF off.
+
+Recovered 1 kHz output increased from 2.690 mV peak-to-peak at 25 mV-peak BFO
+drive to 88.137 mV peak-to-peak at 1.5 V-peak drive. The increase becomes less
+than proportional at high drive, indicating modeled detector compression.
+
+**Functional pass.** The detector produces the calculated 1 kHz difference
+frequency and requires both RF inputs. Absolute conversion gain, distortion,
+compression, and the correct installed BFO amplitude remain unverified because
+the manual does not specify them and the RCA 40823 model is empirical.
+
+![80279 product-detector waveforms](product-detector/figures/80279-detector-waveforms.png)
+
+![80279 recovered-audio spectrum](product-detector/figures/80279-detector-spectrum.png)
+
+The complete method and retained evidence are in the
+[Simulation 4 README](product-detector/README.md). Regenerate the study with:
+
+```powershell
+python spice/tools/run_80279_product_detector.py
+```
 
 ## Simulation 5 — audio amplifier and AGC detector
 
@@ -332,7 +363,44 @@ separately from the optional external CW filter.
 
 ### Results
 
-Pending; the IC1 operating-point prerequisite now passes.
+Completed from a fresh KiCad SPICE export with ngspice 46. In disposable
+netlist copies, the existing red-box V79-SIM5 source is moved from board `IN`
+to the jumpered `FILT IN` / `FILT OUT` node. The saved schematic topology and
+all original component values remain unchanged.
+
+The small-signal sweep gives 97.635 V/V (39.792 dB) from the filter loop to
+`AUDIO` at 1 kHz, versus 101 V/V calculated from R79-31/R79-32. The complete
+gain to the AGC op-amp output is 305.313 V/V (49.695 dB), versus approximately
+316 V/V calculated for both cascaded sections. The modeled -3 dB band is
+138.8 Hz to 2.965 kHz at `AUDIO` and 140.4 Hz to 2.967 kHz at the AGC output.
+
+In the 1 kHz level sweep, AUDIO gain remains close to 97.6 V/V through
+50 mV-peak input, where output is 9.613 V peak-to-peak with 0.352% modeled
+THD. At 75 mV peak, output is 11.235 V peak-to-peak and THD rises to 12.75%,
+showing clipping. The AGC section reaches its modeled limits earlier, between
+15 and 20 mV peak input.
+
+After 120 ms at 10 mV-peak input, C79-22 is at 2.325 V, the PIN bus is at
+0.620 V, and one nominal PIN branch carries 20.8 uA. At 15 mV peak those
+values are 2.983 V, 1.106 V, and 393 uA. These are end-of-test values, not
+attack/release measurements.
+
+**Functional pass.** Both op-amp sections reproduce their resistor-calculated
+gain closely, AUDIO remains clean until expected rail limiting, and D79-6
+produces enough monotonic AGC control to cover the useful PIN-current region
+identified in Simulation 3. Absolute control values retain the Q79-5 model
+caveat.
+
+![80279 audio and AGC frequency response](audio-agc/figures/80279-audio-frequency-response.png)
+
+![80279 audio level and AGC response](audio-agc/figures/80279-audio-level-agc-response.png)
+
+The complete method and retained evidence are in the
+[Simulation 5 README](audio-agc/README.md). Regenerate the study with:
+
+```powershell
+python spice/tools/run_80279_audio_agc.py
+```
 
 ## Simulation 6 — closed-loop AGC attack and release
 
@@ -350,8 +418,43 @@ against the open-loop gain-versus-PIN-bias data from Simulation 3.
 
 ### Results
 
-Pending; the IC1 operating-point prerequisite now passes. Interpret absolute
-AGC levels cautiously until the Q79-5 low-current discrepancy is resolved.
+Completed from fresh KiCad SPICE exports with ngspice 46. The short full-RF
+run retains the complete 9 MHz signal and feedback topology. Its 6 ms strong
+interval raises C79-22 but is shorter than the measured model attack and does
+not yet turn on Q79-5 materially. A staged full-RF comparison therefore holds
+C79-22 at the 2.325 V control level established in Simulation 5. At 100 uV-
+peak board input this produces 20.60 uA per PIN branch and reduces Q79-3 gate-1
+IF from 115.486 to 12.819 mV peak-to-peak, a 19.09 dB reduction through the
+actual Q79-4/Q79-5, PIN-diode, transformer, and Q79-3 path.
+
+The multi-second envelope uses the Simulation 4 zero-control detector transfer
+and interpolates Simulation 3 attenuation versus PIN-bias voltage while
+retaining the physical IC1/D79-6/C79-22/Q79-4/Q79-5/S-meter circuitry. A
+1-to-100 uV-peak board-input step is 40 dB. AUDIO changes from 0.03366 to
+0.54825 V peak-to-peak, or 24.24 dB, so the modeled loop removes 15.76 dB of
+that change. The first strong AUDIO peak is 3.365 V peak-to-peak before the
+loop reacts.
+
+C79-22 moves from 1.074 to 2.336 V. PIN current rises from essentially zero
+to 22.98 uA per branch, and modeled S-meter current rises from essentially
+zero to 101.57 uA. The C79-22 10%-90% attack is 59.0 ms; 90%-10% release is
+1.991 s. Post-release AUDIO overshoot is only 0.0035%.
+
+**Functional pass with split-model qualification.** The actual RF/control
+path attenuates in the correct direction, and the calibrated long loop attacks
+faster than it releases without instability. Absolute timing and control
+levels remain model predictions and retain the Q79-5 caveat.
+
+![80279 full-RF control-state cross-check](closed-loop-agc/figures/80279-full-rf-control-crosscheck.png)
+
+![80279 modeled AGC attack and release](closed-loop-agc/figures/80279-agc-attack-release.png)
+
+The complete method and retained evidence are in the
+[Simulation 6 README](closed-loop-agc/README.md). Regenerate the study with:
+
+```powershell
+python spice/tools/run_80279_closed_loop_agc.py
+```
 
 ## Simulation 7 — S-meter calibration and transmit inhibit
 
@@ -368,7 +471,47 @@ bias, and meter current to demonstrate AGC reset and meter disconnection.
 
 ### Results
 
-Pending.
+Completed from a fresh KiCad SPICE export with ngspice 46. The meter sweep
+uses the calibrated Simulation 6 envelope while retaining the actual IC1,
+D79-6, C79-22, Q79-4/Q79-5, Q79-6, R79-20, D79-4, PIN-bias, and meter-load
+circuits.
+
+At the saved R79-20 midpoint, modeled meter current is 0.00087 uA at 1 uV,
+3.270 uA at 10 uV, 66.054 uA at 20 uV, 91.424 uA at 50 uV, 101.567 uA at
+100 uV, and 111.092 uA at 200 uV peak board input. These are 80279 `IN`
+levels, not antenna S units. At the 100 uV board test level, changing R79-20
+from position 0.05 to 0.95 changes meter current from 60.20 to 368.68 uA while
+changing PIN current by less than 1%.
+
+In the receive-to-transmit test, the supplies change from `R=12.1 V`,
+`T=0.2 V` to `R=0 V`, `T=10.4 V` while a strong test signal remains applied.
+Q79-6 base rises from 0.047 to 0.707 V, C79-22 falls from 2.336 to 0.0805 V,
+and one PIN branch falls from 22.96 uA to 0.00627 uA. Meter current falls from
+101.56 uA to the numerical leakage floor. The stored AGC completes 90% of its
+fall in 168 us.
+
+In a separate transmit-state isolation check, 1.000 V applied externally to
+`S MTR` leaves D79-4's board-side anode at only 3.01 uV, with C79-22 reset at
+0.0806 V. D79-4 therefore prevents transmit-side meter voltage from feeding
+back into the receive AGC model.
+
+**Functional pass with factory-calibration qualification.** Signal strength
+and R79-20 control the meter in the expected directions, and Q79-6/D79-4
+remove receive AGC and meter drive on transmit. The factory S9 adjustment
+cannot be reproduced without the antenna-to-board gain and original meter
+movement; the manual's 50 uV value applies at the radio antenna, not 80279
+`IN`.
+
+![80279 S-meter response](s-meter-tx/figures/80279-s-meter-sweep.png)
+
+![80279 receive-to-transmit reset](s-meter-tx/figures/80279-receive-to-transmit.png)
+
+Complete method and evidence are in the
+[Simulation 7 README](s-meter-tx/README.md). Regenerate with:
+
+```powershell
+python spice/tools/run_80279_s_meter_tx.py
+```
 
 ## Model limits and interpretation
 

@@ -1,0 +1,7 @@
+path,description
+README.md,"Hobbyist-level method, results, assessment, and limitations"
+data/80279-s-meter-sweep.csv,R79-20 and modeled board-input sweep
+data/80279-receive-to-transmit.csv,Downsampled receive/transmit timeline
+data/80279-sim7-summary.csv,Principal numerical results
+figures/80279-s-meter-sweep.png,Meter response and adjustment plot
+figures/80279-receive-to-transmit.png,AGC reset and meter-inhibit plot
