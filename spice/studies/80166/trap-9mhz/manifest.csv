@@ -1,0 +1,27 @@
+run_id,analysis,s4_pos,l_rack_uH,l2_adjustment,c7_pF,trap_qs,trap_coupling,status,source,data_file,notes
+baseline-q80,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,80,1e-9,final,ngspice 46 from KiCad export,data/no-trap-q80.csv,"Baseline: primary still in the antenna path, coupling removed"
+baseline-q40,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,40,1e-9,final,ngspice 46 from KiCad export,data/no-trap-q40.csv,"Baseline: primary still in the antenna path, coupling removed"
+baseline-q20,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,20,1e-9,final,ngspice 46 from KiCad export,data/no-trap-q20.csv,"Baseline: primary still in the antenna path, coupling removed"
+baseline-q10,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,10,1e-9,final,ngspice 46 from KiCad export,data/no-trap-q10.csv,"Baseline: primary still in the antenna path, coupling removed"
+baseline-q5,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,5,1e-9,final,ngspice 46 from KiCad export,data/no-trap-q5.csv,"Baseline: primary still in the antenna path, coupling removed"
+trap-c7-5p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,5,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-5p.csv,C7 sweep
+trap-c7-10p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,10,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-10p.csv,C7 sweep
+trap-c7-15p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,15,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-15p.csv,C7 sweep
+trap-c7-20p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-20p.csv,C7 sweep
+trap-c7-30p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,30,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-30p.csv,C7 sweep
+trap-c7-45p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,45,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-45p.csv,C7 sweep
+trap-c7-60p,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,60,80,model default 0.35,final,ngspice 46 from KiCad export,data/c7-60p.csv,C7 sweep
+trap-q40,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,40,model default 0.35,final,ngspice 46 from KiCad export,data/trap-q40.csv,Trap-Q sweep
+trap-q20,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,20,model default 0.35,final,ngspice 46 from KiCad export,data/trap-q20.csv,Trap-Q sweep
+trap-q10,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,10,model default 0.35,final,ngspice 46 from KiCad export,data/trap-q10.csv,Trap-Q sweep
+trap-q5,"ac 3-20 MHz, 20000/decade",2,3.43,C17=68p,20,5,model default 0.35,final,ngspice 46 from KiCad export,data/trap-q5.csv,Trap-Q sweep
+band-3p5,"ac 8-10 MHz, 20000/decade",1,17.2,C19=36p,20,80,1e-9,final,ngspice 46 from KiCad export,data/band-3p5.csv,"Band position, trap coupling removed"
+band-3p5-trapped,"ac 8-10 MHz, 20000/decade",1,17.2,C19=36p,20,80,model default 0.35,final,ngspice 46 from KiCad export,data/band-3p5-trapped.csv,"Band position, trap active"
+band-7p0,"ac 8-10 MHz, 20000/decade",2,3.43,C17=68p,20,80,1e-9,final,ngspice 46 from KiCad export,data/band-7p0.csv,"Band position, trap coupling removed"
+band-7p0-trapped,"ac 8-10 MHz, 20000/decade",2,3.43,C17=68p,20,80,model default 0.35,final,ngspice 46 from KiCad export,data/band-7p0-trapped.csv,"Band position, trap active"
+band-14p2,"ac 8-10 MHz, 20000/decade",3,2.84,C16=47.2p,20,80,1e-9,final,ngspice 46 from KiCad export,data/band-14p2.csv,"Band position, trap coupling removed"
+band-14p2-trapped,"ac 8-10 MHz, 20000/decade",3,2.84,C16=47.2p,20,80,model default 0.35,final,ngspice 46 from KiCad export,data/band-14p2-trapped.csv,"Band position, trap active"
+band-21p2,"ac 8-10 MHz, 20000/decade",4,2.06,C15=16.94p,20,80,1e-9,final,ngspice 46 from KiCad export,data/band-21p2.csv,"Band position, trap coupling removed"
+band-21p2-trapped,"ac 8-10 MHz, 20000/decade",4,2.06,C15=16.94p,20,80,model default 0.35,final,ngspice 46 from KiCad export,data/band-21p2-trapped.csv,"Band position, trap active"
+band-29p0,"ac 8-10 MHz, 20000/decade",5,1.4253,C13=5.787p,20,80,1e-9,final,ngspice 46 from KiCad export,data/band-29p0.csv,"Band position, trap coupling removed"
+band-29p0-trapped,"ac 8-10 MHz, 20000/decade",5,1.4253,C13=5.787p,20,80,model default 0.35,final,ngspice 46 from KiCad export,data/band-29p0-trapped.csv,"Band position, trap active"
