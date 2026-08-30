@@ -92,6 +92,8 @@ the meter indication without materially changing AGC action in this test.
 
 ![S-meter response and R79-20 range](figures/80279-s-meter-sweep.png)
 
+**Figure 79-1.** S-meter response and R79-20 range
+
 The horizontal axis is modeled voltage at the 80279 board input, not the radio
 antenna. The vertical axis is current through the 1 kOhm meter fixture. Each
 curve is one R79-20 setting.
@@ -114,6 +116,8 @@ collapse is caused by the documented T/R control action rather than removal of
 the test signal.
 
 ![Receive-to-transmit reset](figures/80279-receive-to-transmit.png)
+
+**Figure 79-2.** Receive-to-transmit reset
 
 The top plot shows the commanded R and T states and Q79-6 turning on. The
 middle plot shows stored AGC and PIN bias collapsing. The lower plot shows the

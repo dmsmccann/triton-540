@@ -122,6 +122,26 @@ and do not lead with simulator settings or unexplained numerical tables. A
 reader should understand why the tested circuit exists and recognize a healthy
 result before encountering the detailed simulation data.
 
+## Figure labeling
+
+Label every figure `Figure XX-Y`, where `XX` is the last two digits of the
+assembly number the document covers and `Y` is the figure's sequential position
+in that document, counting from 1. Put the label in a caption line directly
+beneath the image, followed by a short description of what the figure shows:
+
+```markdown
+![Changing the RESONATE rack moves the 3.5 MHz passband](figures/rack-tuning.png)
+
+**Figure 66-1.** Changing the RESONATE rack moves the 3.5 MHz passband
+```
+
+Numbering restarts in each document, so a study README and the board document
+that cites the same plot each number it from their own sequence, and two
+documents covering one assembly may both contain a `Figure 66-1`; the
+containing document is what distinguishes them. When a figure is added or
+removed, renumber the rest of that document so the sequence stays contiguous.
+Keep the image's alt text as well as the caption.
+
 ## Reusable workflow
 
 Use the project skill `$triton-540-restoration` for component identification, manual research, tuned-circuit estimates, custom-symbol decisions, schematic comparisons, and assembly validation.

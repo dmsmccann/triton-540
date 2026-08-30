@@ -54,6 +54,8 @@ Control values are averaged over the last 5 ms.
 
 ![Audio and AGC frequency response](figures/80279-audio-frequency-response.png)
 
+**Figure 79-1.** Audio and AGC frequency response
+
 The gain difference between the two curves is approximately 10 dB, or a
 3.16-times voltage ratio, matching section A's calculated 3.13-times gain.
 The lower corner is influenced strongly by movement of the C79-25 half-supply
@@ -76,7 +78,11 @@ roll-off.
 
 ![Audio output and AGC response](figures/80279-audio-level-agc-response.png)
 
+**Figure 79-2.** Audio output and AGC response
+
 ![Nominal 10 mV-peak waveforms](figures/80279-audio-agc-waveforms.png)
+
+**Figure 79-3.** Nominal 10 mV-peak waveforms
 
 The AUDIO path remains nearly proportional through 50 mV peak input and clips
 between 50 and 75 mV peak. The AGC op amp reaches its modeled output limits

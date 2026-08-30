@@ -84,9 +84,15 @@ manual's no-signal voltage condition.
 
 ![Gate and recovered-audio waveforms](figures/80279-detector-waveforms.png)
 
+**Figure 79-1.** Gate and recovered-audio waveforms
+
 ![Recovered-audio spectrum](figures/80279-detector-spectrum.png)
 
+**Figure 79-2.** Recovered-audio spectrum
+
 ![BFO-amplitude sensitivity](figures/80279-detector-bfo-sensitivity.png)
+
+**Figure 79-3.** BFO-amplitude sensitivity
 
 ## Assessment
 

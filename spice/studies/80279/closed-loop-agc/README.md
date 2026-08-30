@@ -63,6 +63,8 @@ nine-times voltage reduction.
 
 ![Full-RF control-state comparison](figures/80279-full-rf-control-crosscheck.png)
 
+**Figure 79-1.** Full-RF control-state comparison
+
 The Simulation 3 table predicts somewhat less attenuation at approximately
 20 uA. The 19.09 dB full-circuit result includes the tuned nonlinear path and
 is therefore used as a direction and order-of-magnitude cross-check, not an
@@ -86,6 +88,8 @@ exact regression target.
 | Post-release AUDIO overshoot | 0.0035% |
 
 ![Modeled AGC attack and release](figures/80279-agc-attack-release.png)
+
+**Figure 79-2.** Modeled AGC attack and release
 
 The 3.365 V peak-to-peak initial strong output is about 514% above the later
 regulated strong level. This is the expected momentary response before the

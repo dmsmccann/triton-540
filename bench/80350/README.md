@@ -7,6 +7,8 @@ mixer product on the 28.0 MHz band.
 
 ![Final VFO-output FFT](final-vfo-output-fft.svg)
 
+**Figure 50-1.** Final VFO-output FFT
+
 ## Result
 
 The final result is the mean of two consecutive captures made without moving

@@ -267,6 +267,8 @@ for the later nonlinear transient test.
 
 ![80279 estimated 9 MHz IF response](if-response-9mhz/figures/80279-if-response.png)
 
+**Figure 79-1.** 80279 estimated 9 MHz IF response
+
 Curated numerical outputs are in `if-response-9mhz/data/`. The peak alignment,
 absolute gain, bandwidth, and loaded Q are behavior of the estimated 2.63 uH,
 `K=0.25` transformer model. The manual documents that T79-1 and T79-2 are
@@ -292,6 +294,8 @@ zero-current response, those points provide 8.888, 35.705, 87.557, and
 132.659 dB of modeled attenuation respectively.
 
 ![80279 open-loop PIN-diode IF response family](pin-agc-sweep/figures/80279-pin-agc-response-family.png)
+
+**Figure 79-2.** 80279 open-loop PIN-diode IF response family
 
 **Functional pass.** Increasing PIN forward current produces increasing 9 MHz
 attenuation in the required AGC direction. The very large high-current figures
@@ -342,7 +346,11 @@ the manual does not specify them and the RCA 40823 model is empirical.
 
 ![80279 product-detector waveforms](product-detector/figures/80279-detector-waveforms.png)
 
+**Figure 79-3.** 80279 product-detector waveforms
+
 ![80279 recovered-audio spectrum](product-detector/figures/80279-detector-spectrum.png)
+
+**Figure 79-4.** 80279 recovered-audio spectrum
 
 The complete method and retained evidence are in the
 [Simulation 4 README](product-detector/README.md). Regenerate the study with:
@@ -393,7 +401,11 @@ caveat.
 
 ![80279 audio and AGC frequency response](audio-agc/figures/80279-audio-frequency-response.png)
 
+**Figure 79-5.** 80279 audio and AGC frequency response
+
 ![80279 audio level and AGC response](audio-agc/figures/80279-audio-level-agc-response.png)
+
+**Figure 79-6.** 80279 audio level and AGC response
 
 The complete method and retained evidence are in the
 [Simulation 5 README](audio-agc/README.md). Regenerate the study with:
@@ -447,7 +459,11 @@ levels remain model predictions and retain the Q79-5 caveat.
 
 ![80279 full-RF control-state cross-check](closed-loop-agc/figures/80279-full-rf-control-crosscheck.png)
 
+**Figure 79-7.** 80279 full-RF control-state cross-check
+
 ![80279 modeled AGC attack and release](closed-loop-agc/figures/80279-agc-attack-release.png)
+
+**Figure 79-8.** 80279 modeled AGC attack and release
 
 The complete method and retained evidence are in the
 [Simulation 6 README](closed-loop-agc/README.md). Regenerate the study with:
@@ -504,7 +520,11 @@ movement; the manual's 50 uV value applies at the radio antenna, not 80279
 
 ![80279 S-meter response](s-meter-tx/figures/80279-s-meter-sweep.png)
 
+**Figure 79-9.** 80279 S-meter response
+
 ![80279 receive-to-transmit reset](s-meter-tx/figures/80279-receive-to-transmit.png)
+
+**Figure 79-10.** 80279 receive-to-transmit reset
 
 Complete method and evidence are in the
 [Simulation 7 README](s-meter-tx/README.md). Regenerate with:
