@@ -5061,7 +5061,7 @@
 				(justify left)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "${KIPRJMOD}/datasheets/RCA_40823_SC-15_1971.pdf"
 			(at 165.1 97.79 0)
 			(hide yes)
 			(show_name no)

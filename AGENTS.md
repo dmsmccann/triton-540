@@ -60,6 +60,31 @@ accepted deliberately; the filenames carry the convention instead.
 - Keep board-specific netlist edits and result summaries in that board's own
   runner, where the net names and component references are already specific.
 
+## Component datasheets
+
+Every transistor, integrated circuit, and diode in the design must have its
+datasheet archived in `datasheets/` and linked from the schematic. Obsolete
+1970s semiconductors disappear from the web; an external URL is not an archive.
+
+- If the part has no local datasheet, find the original manufacturer document,
+  prefer literature contemporary with the radio, and save a copy into
+  `datasheets/`. Extract only the pages that cover the device and its package.
+- Name the file `<Manufacturer>_<Part>_<Document>_<Year>.pdf`.
+- Set the symbol's `Datasheet` field to `${KIPRJMOD}/datasheets/<file>` so the
+  link resolves on any machine. Never leave it pointing at a bare URL.
+- Set the field on the **placed symbol**, not only on the library symbol. KiCad
+  shows and exports the instance's property, and a sheet's cached `lib_symbols`
+  block can lag the library, so a part can look linked in the library and still
+  be blank in the schematic.
+- Add an entry to `datasheets/README.md` recording the file, manufacturer,
+  document title, original publication, the pages extracted, the assembly that
+  uses the part, the archive source URL, and the file's SHA-256. Verify the
+  hash after downloading, and confirm the document really covers the part
+  before linking it.
+- Crystals, magnetics, and other custom or made-to-order parts have no
+  manufacturer datasheet. Record what is known from the manual instead of
+  linking an unrelated document.
+
 ## KiCad conventions
 
 - Preserve Ten-Tec assembly numbers, reference designators, signal names, and connector labels.
