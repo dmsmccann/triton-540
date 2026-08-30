@@ -31,7 +31,7 @@ With KiCad closed, run from the project root:
 python spice/tools/run_80279_closed_loop_agc.py
 ```
 
-The runner exports `if-agc_80279.kicad_sch` afresh and writes only disposable
+The runner exports `80279_if_agc.kicad_sch` afresh and writes only disposable
 netlists below `spice/generated/80279-closed-loop-agc/`. The complete default
 run includes the long envelope, the 10 ms full-RF onset window, and the 3 ms
 precharged full-RF comparison. `--envelope-only`, `--rf-only`,

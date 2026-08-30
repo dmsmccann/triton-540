@@ -16,7 +16,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SCHEMATIC = ROOT / "if-agc_80279.kicad_sch"
+SCHEMATIC = ROOT / "80279_if_agc.kicad_sch"
 STUDY_DIR = ROOT / "spice" / "studies" / "80279" / "if-response-9mhz"
 DATA_DIR = STUDY_DIR / "data"
 FIGURE_DIR = STUDY_DIR / "figures"

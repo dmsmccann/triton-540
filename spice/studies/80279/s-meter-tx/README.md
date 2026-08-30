@@ -45,7 +45,7 @@ With KiCad closed, run from the project root:
 python spice/tools/run_80279_s_meter_tx.py
 ```
 
-The runner exports `if-agc_80279.kicad_sch` afresh. It reuses the sources in
+The runner exports `80279_if_agc.kicad_sch` afresh. It reuses the sources in
 the red **SIMULATION ONLY** box and alters them only in disposable netlists
 below `spice/generated/80279-s-meter-tx/`.
 

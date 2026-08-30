@@ -175,7 +175,7 @@ if (-not $SkipKicad) {
         Add-Failure 'kicad-cli was not found.'
     }
     else {
-        foreach ($SchematicName in @('RF_Amp_80166.kicad_sch', 'triton_540.kicad_sch')) {
+        foreach ($SchematicName in @('80166_rf_amp.kicad_sch', 'triton_540.kicad_sch')) {
             $SchematicPath = Join-Path $ProjectRoot $SchematicName
             $OutputName = [IO.Path]::GetFileNameWithoutExtension($SchematicName) + '-bom.csv'
             $BomPath = Join-Path $OutputRoot $OutputName

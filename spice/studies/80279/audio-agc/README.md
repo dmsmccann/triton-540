@@ -30,7 +30,7 @@ With KiCad closed, run from the project root:
 python spice/tools/run_80279_audio_agc.py
 ```
 
-The runner exports `if-agc_80279.kicad_sch` afresh. In disposable netlist
+The runner exports `80279_if_agc.kicad_sch` afresh. In disposable netlist
 copies it moves the existing simulation-only V79-SIM5 source from board `IN`
 to the jumpered filter node and changes it to an audio source. No original
 component or saved schematic connection is altered. BFO RF is set to zero

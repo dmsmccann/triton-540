@@ -13,7 +13,7 @@ belong to later simulations.
 
 ## KiCad fixture and method
 
-`if-agc_80279.kicad_sch` remains the circuit source of truth. The red dashed
+`80279_if_agc.kicad_sch` remains the circuit source of truth. The red dashed
 **SIMULATION ONLY** rectangle contains I79-SIM1, a disabled-by-default DC
 current source connected to the labeled `PIN_BIAS` bus. It is excluded from
 normal simulations so D79-5 and the original AGC circuit remain undisturbed.

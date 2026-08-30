@@ -12,12 +12,64 @@ Recreate the Ten-Tec Triton IV Model 540 faithfully in KiCad, one original assem
 - Cite the PDF page and printed manual page for significant findings.
 - Prefer original manufacturer literature and component datasheets for external research.
 
+## Repository layout and naming
+
+The assembly number is the organizing key. Every discipline directory uses it
+as its second level, so all of one board's material is reachable by number.
+
+| Path | Holds |
+|:--|:--|
+| `<assembly>.md` | the board document, at the repository root |
+| `<assembly>_<function>.kicad_sch` | the board's sub-sheet, at the root beside its document |
+| `spice/studies/<assembly>/<study>/` | curated CSV evidence, `manifest.csv`, fixtures, figures |
+| `spice/tools/run_<assembly>_<study>.py` | the runner that regenerates one study |
+| `bench/<assembly>/` | hardware measurements: procedure, scripts, `data/`, `plots/` |
+
+Schematic filenames are lowercase, assembly number first, so a board's document
+and schematic sort together. Do not rename a sub-sheet without updating its
+`Sheetfile` property in `triton_540.kicad_sch` and every runner that opens it
+by name.
+
+Simulation evidence and bench evidence are kept in separate trees on purpose.
+A simulated result must never be presentable as a measured one. `bench/*/data/`
+and `bench/*/plots/` are the measurement record and are deliberately versioned;
+`spice/generated/` and `spice/runtime/` are disposable and never versioned.
+
+`datasheets/` names the assembly that uses each part, so a device sheet can be
+traced back to the board that needs it.
+
+## Sheet names are load-bearing
+
+KiCad derives SPICE net prefixes from a sheet's `Sheetname` property, not from
+its filename. `RF_Amp_80166`, `IF-AGC_80279`, `VFO-80289`, and
+`TX RX Mixer 80287` therefore appear as `/rf_amp_80166/...` and similar in every
+exported netlist, are hard-coded in the study runners, and are baked into the
+retained study CSVs.
+
+Renaming a sheet invalidates that evidence and requires re-running every study
+that depends on it. Treat `Sheetname` as fixed. Their inconsistent styles are
+accepted deliberately; the filenames carry the convention instead.
+
+## Simulation tooling
+
+- Name a runner for the assembly it exercises: `run_<assembly>_<study>.py`.
+- A runner named for one assembly must never provide infrastructure to another.
+  Board-independent helpers — reading an ngspice ASCII raw file, converting a
+  voltage ratio to decibels — belong in `spice/tools/ngspice_raw.py`, which any
+  runner may import.
+- Keep board-specific netlist edits and result summaries in that board's own
+  runner, where the net names and component references are already specific.
+
 ## KiCad conventions
 
 - Preserve Ten-Tec assembly numbers, reference designators, signal names, and connector labels.
 - Use a stock symbol only when its electrical topology is correct. Create project-local symbols for legacy multi-tapped, permeability-tuned, or otherwise unusual components.
 - Keep custom symbols in project-local `.kicad_sym` libraries and maintain `sym-lib-table`.
 - Put estimated values in notes or fields that clearly say `estimated`; do not present them as factory specifications.
+- Every placed symbol carries a unique reference. If two share one, identify
+  from the manual which component genuinely owns it rather than assigning the
+  next free number; a wrong designator is a silent error in the reconstruction.
+  Multi-unit parts sharing one reference across units are correct and expected.
 - Do not modernize the circuit, rename nets, or substitute components unless the user requests it.
 
 ## Editing safety

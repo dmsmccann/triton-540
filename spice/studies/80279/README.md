@@ -19,7 +19,7 @@ corresponding section as each simulation is completed.
 The primary sources are the Ten-Tec Model 540 owner/service manual, PDF page 32
 / printed page 3-16 for the functional description and voltage tables, and PDF
 page 33 / printed page 3-17 for the schematic and IC-1 pin table. The KiCad
-source of truth is `if-agc_80279.kicad_sch`.
+source of truth is `80279_if_agc.kicad_sch`.
 
 ## How the board works
 
@@ -82,7 +82,7 @@ during transmit.
 
 ## Schematic-native simulation fixture
 
-The fixture is in the upper-right corner of `if-agc_80279.kicad_sch` inside a
+The fixture is in the upper-right corner of `80279_if_agc.kicad_sch` inside a
 red dashed rectangle marked **SIMULATION ONLY**. Its parts are excluded from
 the BOM and PCB.
 
@@ -112,7 +112,7 @@ the manual before RF gain or closed-loop AGC results are trusted.
 
 ### Analysis setup
 
-- Circuit source: fresh KiCad 10 SPICE export of `if-agc_80279.kicad_sch`
+- Circuit source: fresh KiCad 10 SPICE export of `80279_if_agc.kicad_sch`
 - Simulator: ngspice 46
 - Analysis: `.op`
 - Temperature: 27 degrees C
@@ -229,7 +229,7 @@ Run the study with:
 python spice/tools/run_80279_if_response.py
 ```
 
-The runner exports `if-agc_80279.kicad_sch` afresh, runs a 4001-point linear
+The runner exports `80279_if_agc.kicad_sch` afresh, runs a 4001-point linear
 AC sweep from 8.8 to 9.2 MHz, and writes disposable netlists and logs below
 `spice/generated/80279-if-response/`.
 

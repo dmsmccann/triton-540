@@ -11597,26 +11597,26 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ab4e6702-a0aa-476d-a8a1-ea9ec4603848")
-		(property "Reference" "C8"
-			(at 397.51 139.8269 0)
+		(property "Reference" "C2"
+			(at 402.59 139.8269 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Value" ".01u"
-			(at 397.51 142.3669 0)
+			(at 402.59 142.3669 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify right)
+				(justify left)
 			)
 		)
 		(property "Footprint" ""
@@ -11661,7 +11661,7 @@
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
-					(reference "C8")
+					(reference "C2")
 					(unit 1)
 				)
 			)
@@ -13356,7 +13356,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "if-agc_80279.kicad_sch"
+		(property "Sheetfile" "80279_if_agc.kicad_sch"
 			(at 236.22 47.5746 0)
 			(hide yes)
 			(show_name no)
@@ -13514,7 +13514,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "RF_Amp_80166.kicad_sch"
+		(property "Sheetfile" "80166_rf_amp.kicad_sch"
 			(at 38.1 38.6846 0)
 			(hide yes)
 			(show_name no)
@@ -13622,7 +13622,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "VFO_80289.kicad_sch"
+		(property "Sheetfile" "80289_vfo.kicad_sch"
 			(at 186.69 128.8546 0)
 			(hide yes)
 			(show_name no)
@@ -13730,7 +13730,7 @@
 				(justify left bottom)
 			)
 		)
-		(property "Sheetfile" "tx_rx_mixer_80287.kicad_sch"
+		(property "Sheetfile" "80287_tx_rx_mixer.kicad_sch"
 			(at 167.64 47.5746 0)
 			(hide yes)
 			(show_name no)

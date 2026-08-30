@@ -27,7 +27,7 @@ python spice/tools/run_80279_product_detector.py
 
 The script:
 
-1. exports a fresh SPICE netlist from `if-agc_80279.kicad_sch` with KiCad 10;
+1. exports a fresh SPICE netlist from `80279_if_agc.kicad_sch` with KiCad 10;
 2. verifies the expected Q79-3 wiring, transformer values, rails, and loads;
 3. changes only the fixture source waveforms in disposable netlist copies;
 4. runs ngspice 46 with `ngbehavior=ltpsa`;

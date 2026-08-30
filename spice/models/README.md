@@ -99,7 +99,7 @@ forward bias respectively.
 The existing `MPS6514.lib` model is assigned to Q79-4, Q79-5, and Q79-6.
 The existing `40823.sub` model is assigned to Q79-3 with one-to-one physical
 pin order `D, G2, G1, S`. The complete assignments are stored directly in
-`if-agc_80279.kicad_sch` so KiCad exports all required includes.
+`80279_if_agc.kicad_sch` so KiCad exports all required includes.
 
 ### References
 
@@ -220,7 +220,7 @@ XQ drain gate2 gate1 source RCA40823
 ```
 
 The custom project symbol is drawn using pin positions that do not correspond
-to its displayed pin names.  For the existing `RF_Amp_80166.kicad_sch`
+to its displayed pin names.  For the existing `80166_rf_amp.kicad_sch`
 connections, map the symbol pins to the subcircuit as follows:
 
 | KiCad symbol pin | Circuit terminal | Subcircuit node |
