@@ -17,7 +17,7 @@ from pathlib import Path
 
 import numpy as np
 
-import run_80166_headless as core
+import ngspice_raw
 import run_80289_frequency_plan as coverage
 
 
@@ -191,7 +191,7 @@ def run_case(
     if not row_match or int(row_match.group(1)) < 20_000:
         raise ValueError(f"{tag} did not produce at least 20,000 rows")
 
-    names, raw_rows = core.parse_ascii_raw(raw_path)
+    names, raw_rows = ngspice_raw.parse_ascii_raw(raw_path)
     indices = {name: index for index, name in enumerate(names)}
     required = {"time", *VECTORS.values()}
     missing = required - indices.keys()

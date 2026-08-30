@@ -17,7 +17,7 @@ from pathlib import Path
 import numpy as np
 from scipy.optimize import differential_evolution
 
-import run_80166_headless as core
+import ngspice_raw
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -156,7 +156,7 @@ def run_ac(
     log_text = log_path.read_text(encoding="utf-8", errors="replace")
     if "error" in log_text.lower():
         raise RuntimeError(f"ngspice error for {tag}; see {log_path}")
-    names, rows = core.parse_ascii_raw(raw_path)
+    names, rows = ngspice_raw.parse_ascii_raw(raw_path)
     indices = {name: index for index, name in enumerate(names)}
     required = {"frequency", FILTER_OUTPUT_VECTOR}
     missing = required - indices.keys()

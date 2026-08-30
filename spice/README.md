@@ -7,7 +7,7 @@ disposable simulator output.
 |:--|:--|:--:|
 | [`models/`](models/) | KiCad-facing subcircuits and model documentation | Yes |
 | [`validation/`](validation/) | Small standalone regression circuits | Yes |
-| [`tools/`](tools/) | Netlist runner and plotting utilities | Yes |
+| [`tools/`](tools/) | Study runners, shared ngspice helpers, and plotting utilities | Yes |
 | [`studies/`](studies/) | Curated CSV evidence, manifests, fixtures, and figures | Yes |
 | `generated/` | Exported netlists, ngspice raw files, logs, caches, and temporary CSVs | No |
 | `runtime/` | Local ngspice executable and runtime dependencies | No |
@@ -15,6 +15,12 @@ disposable simulator output.
 The KiCad schematics are the circuit source of truth. The 80166 runner exports
 a fresh SPICE netlist from `triton_540.kicad_sch` before applying run-specific
 parameters to a generated copy.
+
+Each study has its own runner named for the assembly it exercises. Helpers
+that are genuinely board-independent — reading an ngspice ASCII raw file and
+converting a voltage ratio to decibels — live in `tools/ngspice_raw.py`, which
+every runner imports. A runner named for one assembly never provides
+infrastructure to another.
 
 ## Common commands
 

@@ -16,7 +16,7 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 
-import run_80166_headless as core
+import ngspice_raw
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -130,7 +130,7 @@ def run_state(name: str, base: str, r_volts: float, t_volts: float):
     rows = re.search(r"No\. of Data Rows\s*:\s*(\d+)", log_text)
     if not rows or int(rows.group(1)) < 10_000 or "fatal error" in log_text.lower():
         raise ValueError(f"{name} did not complete; see {log}")
-    names, values = core.parse_ascii_raw(raw)
+    names, values = ngspice_raw.parse_ascii_raw(raw)
     indices = {vector: index for index, vector in enumerate(names)}
     missing = set(VECTORS.values()) - indices.keys()
     if missing:

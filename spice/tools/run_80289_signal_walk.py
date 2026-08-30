@@ -15,7 +15,7 @@ from pathlib import Path
 
 import numpy as np
 
-import run_80166_headless as core
+import ngspice_raw
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -116,7 +116,7 @@ def run_simulation() -> None:
 
 
 def load_data() -> tuple[np.ndarray, dict[str, np.ndarray]]:
-    names, rows = core.parse_ascii_raw(RAW_FILE)
+    names, rows = ngspice_raw.parse_ascii_raw(RAW_FILE)
     indices = {name: index for index, name in enumerate(names)}
     required = {"time", *VECTORS.values()}
     missing = required - indices.keys()

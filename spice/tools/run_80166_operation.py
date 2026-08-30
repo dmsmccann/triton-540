@@ -17,6 +17,7 @@ import subprocess
 from pathlib import Path
 from types import SimpleNamespace
 
+import ngspice_raw
 import run_80166_headless as core
 
 
@@ -207,7 +208,7 @@ def half_peak_to_peak(values: list[float]) -> float:
 
 def write_transient_data(raw_path: Path) -> list[dict[str, float | str]]:
     TRANSIENT_DATA_DIR.mkdir(parents=True, exist_ok=True)
-    names, raw_rows = core.parse_ascii_raw(raw_path)
+    names, raw_rows = ngspice_raw.parse_ascii_raw(raw_path)
     indices = {name: index for index, name in enumerate(names)}
     vectors = {
         "ant": "v(/rf_amp_80166/ant)",

@@ -17,7 +17,7 @@ from pathlib import Path
 
 import numpy as np
 
-import run_80166_headless as core
+import ngspice_raw
 import run_80289_frequency_plan as coverage
 
 
@@ -233,7 +233,7 @@ def run_case(
     if "error" in log_text.lower():
         raise ValueError(f"{tag} reported an error; see {log_path}")
 
-    names, rows = core.parse_ascii_raw(raw_path)
+    names, rows = ngspice_raw.parse_ascii_raw(raw_path)
     indices = {name: index for index, name in enumerate(names)}
     missing = {"time", *VECTORS.values()} - indices.keys()
     if missing:
