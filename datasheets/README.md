@@ -7,6 +7,8 @@ on external links remaining available.
 
 ## RCA 40823
 
+- Used by: `80166` receiver RF amplifier (Q1) and `80279` 9 MHz IF
+  amplifier stages
 - File: `RCA_40823_SC-15_1971.pdf`
 - Manufacturer: RCA Corporation, Solid-State Division
 - Document: *RCA Transistor, Thyristor & Diode Manual*, Technical Series SC-15
@@ -22,6 +24,7 @@ on external links remaining available.
 
 ## MC1747 / MC1747C
 
+- Used by: `80279` AGC and audio preamplifier
 - File: `MC1747_MC1747C_Motorola_1976.pdf`
 - Manufacturer: Motorola Semiconductor Products Inc.
 - Document: MC1747 / MC1747C dual operational amplifier, document DS 9254

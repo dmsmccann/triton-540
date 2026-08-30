@@ -17,6 +17,12 @@ of the project-level [`80166.md`](../../../../80166.md).
 The long original export filenames have been replaced by stable run IDs.
 Electrical settings and provenance belong in `manifest.csv`, not in filenames.
 
+`data/29mhz-iterations/` is the deliberate exception. Those files are a
+convergence sequence in a single variable, and the C13 value in each name is
+what distinguishes one iteration from the next; carrying it in the filename
+keeps the sequence readable in directory order and in the figure's legend.
+Every run, iterations included, still has a full row in `manifest.csv`.
+
 Regenerate both figures with:
 
 ```powershell

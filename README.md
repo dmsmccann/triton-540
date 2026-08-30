@@ -31,5 +31,11 @@ The KiCad hierarchy is the circuit source of truth. Reproducible runners,
 curated measurements, plots, and project-local models are under [`spice/`](spice/README.md).
 Generated netlists and simulator caches are intentionally not versioned.
 
+## Bench measurement
+
+Measurements taken on real hardware live under [`bench/`](bench/README.md),
+one directory per assembly. Simulation evidence and bench evidence are kept
+apart so that a simulated result is never mistaken for a measured one.
+
 The original Ten-Tec service manual is the primary source for this
 reconstruction but is not redistributed in this repository.
