@@ -36,6 +36,10 @@ KICAD_CLI = Path(r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe")
 SCHEMATIC = ROOT / "triton_540.kicad_sch"
 
 TARGET_HZ = 3.5e6
+# The antenna-drive source on the 80166 sub-sheet.  It was V3 when this study
+# was retained and is V7 since the sheet's designators were tidied; the retained
+# CSVs are unaffected, because only the source's name changed.
+ANTENNA_SOURCE = "V7"
 SOURCE_PEAK_V = 10e-6
 ALIGNED_RACK_UH = 17.2
 SELECTED_RACKS_UH = (15.4, 17.2, 19.4)
@@ -193,12 +197,12 @@ def build_transient_netlist() -> str:
     if count != 1:
         raise ValueError(f"Expected one AC directive; found {count}")
     text, count = re.subn(
-        r"(?m)^(V3\s+\S+\s+\S+\s+).*$",
+        rf"(?m)^({re.escape(ANTENNA_SOURCE)}\s+\S+\s+\S+\s+).*$",
         rf"\g<1>SIN(0 {SOURCE_PEAK_V:g} 3.5Meg)",
         text,
     )
     if count != 1:
-        raise ValueError(f"Expected one V3 source; found {count}")
+        raise ValueError(f"Expected one {ANTENNA_SOURCE} source; found {count}")
     return text
 
 
