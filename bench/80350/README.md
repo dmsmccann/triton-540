@@ -3,7 +3,7 @@
 This bench measurement documents adjustment of `R2 MIXER BAL.` in the
 Ten-Tec Model 544 `80350 VFO`. The final setting suppresses the selected
 crystal oscillator at the VFO output while preserving the wanted 19 MHz
-mixer product on the 28.0 MHz band.
+mixer product on the 28.0 MHz band. Figure 50-1 is the final capture.
 
 ![Final VFO-output FFT](final-vfo-output-fft.svg)
 

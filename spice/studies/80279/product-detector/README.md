@@ -82,17 +82,20 @@ informal 15% comparison band. The comparison is contextual rather than a
 failure because this case applies both IF and BFO RF drive, unlike the
 manual's no-signal voltage condition.
 
+Figure 79-3 shows the gate and recovered-audio waveforms, Figure 79-4 the
+recovered-audio spectrum, and Figure 79-13 the BFO-amplitude sensitivity.
+
 ![Gate and recovered-audio waveforms](figures/80279-detector-waveforms.png)
 
-**Figure 79-1.** Gate and recovered-audio waveforms
+**Figure 79-3.** Gate and recovered-audio waveforms
 
 ![Recovered-audio spectrum](figures/80279-detector-spectrum.png)
 
-**Figure 79-2.** Recovered-audio spectrum
+**Figure 79-4.** Recovered-audio spectrum
 
 ![BFO-amplitude sensitivity](figures/80279-detector-bfo-sensitivity.png)
 
-**Figure 79-3.** BFO-amplitude sensitivity
+**Figure 79-13.** BFO-amplitude sensitivity
 
 ## Assessment
 

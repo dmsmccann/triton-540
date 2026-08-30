@@ -54,9 +54,10 @@ Control values are averaged over the last 5 ms.
 
 ![Audio and AGC frequency response](figures/80279-audio-frequency-response.png)
 
-**Figure 79-1.** Audio and AGC frequency response
+**Figure 79-5.** Audio and AGC frequency response
 
-The gain difference between the two curves is approximately 10 dB, or a
+The gain difference between the two curves in Figure 79-5 is approximately
+10 dB, or a
 3.16-times voltage ratio, matching section A's calculated 3.13-times gain.
 The lower corner is influenced strongly by movement of the C79-25 half-supply
 reference at low frequency. C79-26 and the op-amp model establish the upper
@@ -78,13 +79,15 @@ roll-off.
 
 ![Audio output and AGC response](figures/80279-audio-level-agc-response.png)
 
-**Figure 79-2.** Audio output and AGC response
+**Figure 79-6.** Audio output and AGC response
 
 ![Nominal 10 mV-peak waveforms](figures/80279-audio-agc-waveforms.png)
 
-**Figure 79-3.** Nominal 10 mV-peak waveforms
+**Figure 79-12.** Nominal 10 mV-peak waveforms
 
-The AUDIO path remains nearly proportional through 50 mV peak input and clips
+Figure 79-6 plots output level and AGC response against input, and Figure 79-12
+shows the nominal 10 mV-peak waveforms. The AUDIO path remains nearly
+proportional through 50 mV peak input and clips
 between 50 and 75 mV peak. The AGC op amp reaches its modeled output limits
 between 15 and 20 mV peak, causing D79-6 storage and PIN current to level off.
 At 10 mV peak, the nominal 20.8 uA per PIN branch already lies in the useful

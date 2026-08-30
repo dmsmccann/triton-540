@@ -263,7 +263,8 @@ selects the 9 MHz signal. With the fixture's later transient-source amplitude
 of 1 mV peak, the linearized 9 MHz result corresponds to approximately 33 mV
 at Q79-1 collector, 27 mV at Q79-2 base, 1.07 V at Q79-2 collector, and
 0.567 V at Q79-3 G1. Those scaled values are AC predictions, not a substitute
-for the later nonlinear transient test.
+for the later nonlinear transient test. Figure 79-1 plots the estimated
+response.
 
 ![80279 estimated 9 MHz IF response](if-response-9mhz/figures/80279-if-response.png)
 
@@ -291,11 +292,12 @@ At zero current the gain from board `IN` to Q79-3 G1 is 55.066 dB. The result
 then falls monotonically: 10 uA per diode gives 46.178 dB, 100 uA gives
 19.361 dB, 1 mA gives -32.491 dB, and 12 mA gives -77.593 dB. Relative to the
 zero-current response, those points provide 8.888, 35.705, 87.557, and
-132.659 dB of modeled attenuation respectively.
+132.659 dB of modeled attenuation respectively. Figure 79-11 shows the response
+family.
 
 ![80279 open-loop PIN-diode IF response family](pin-agc-sweep/figures/80279-pin-agc-response-family.png)
 
-**Figure 79-2.** 80279 open-loop PIN-diode IF response family
+**Figure 79-11.** 80279 open-loop PIN-diode IF response family
 
 **Functional pass.** Increasing PIN forward current produces increasing 9 MHz
 attenuation in the required AGC direction. The very large high-current figures
@@ -343,6 +345,8 @@ than proportional at high drive, indicating modeled detector compression.
 frequency and requires both RF inputs. Absolute conversion gain, distortion,
 compression, and the correct installed BFO amplitude remain unverified because
 the manual does not specify them and the RCA 40823 model is empirical.
+Figure 79-3 shows the detector waveforms and Figure 79-4 the recovered-audio
+spectrum.
 
 ![80279 product-detector waveforms](product-detector/figures/80279-detector-waveforms.png)
 
@@ -397,7 +401,8 @@ attack/release measurements.
 gain closely, AUDIO remains clean until expected rail limiting, and D79-6
 produces enough monotonic AGC control to cover the useful PIN-current region
 identified in Simulation 3. Absolute control values retain the Q79-5 model
-caveat.
+caveat. Figure 79-5 plots the frequency response and Figure 79-6 the level and
+AGC response.
 
 ![80279 audio and AGC frequency response](audio-agc/figures/80279-audio-frequency-response.png)
 
@@ -455,7 +460,8 @@ zero to 101.57 uA. The C79-22 10%-90% attack is 59.0 ms; 90%-10% release is
 **Functional pass with split-model qualification.** The actual RF/control
 path attenuates in the correct direction, and the calibrated long loop attacks
 faster than it releases without instability. Absolute timing and control
-levels remain model predictions and retain the Q79-5 caveat.
+levels remain model predictions and retain the Q79-5 caveat. Figure 79-7
+cross-checks the control states and Figure 79-8 shows attack and release.
 
 ![80279 full-RF control-state cross-check](closed-loop-agc/figures/80279-full-rf-control-crosscheck.png)
 
@@ -516,7 +522,8 @@ and R79-20 control the meter in the expected directions, and Q79-6/D79-4
 remove receive AGC and meter drive on transmit. The factory S9 adjustment
 cannot be reproduced without the antenna-to-board gain and original meter
 movement; the manual's 50 uV value applies at the radio antenna, not 80279
-`IN`.
+`IN`. Figure 79-9 plots the S-meter response and Figure 79-10 the
+receive-to-transmit reset.
 
 ![80279 S-meter response](s-meter-tx/figures/80279-s-meter-sweep.png)
 

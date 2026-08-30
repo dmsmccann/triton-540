@@ -72,12 +72,13 @@ models; production diode and resistor mismatch is not represented.
 
 ![Representative 80279 IF responses as PIN current increases](figures/80279-pin-agc-response-family.png)
 
-**Figure 79-1.** Representative 80279 IF responses as PIN current increases
+**Figure 79-11.** Representative 80279 IF responses as PIN current increases
 
-The response family shows the intended action directly. At very small current
-the tuned 9 MHz response remains visible. As the modeled PIN resistance falls,
+The response family in Figure 79-11 shows the intended action directly. At very
+small current the tuned 9 MHz response remains visible. As the modeled PIN resistance falls,
 the three shunts progressively load the input, interstage, and detector-input
-nodes until almost no signal reaches Q79-3 gate 1.
+nodes until almost no signal reaches Q79-3 gate 1. Figure 79-2 plots the
+resulting control characteristic.
 
 ![80279 open-loop PIN-bias control characteristic](figures/80279-pin-agc-control-characteristic.png)
 

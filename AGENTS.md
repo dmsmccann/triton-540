@@ -125,22 +125,30 @@ result before encountering the detailed simulation data.
 ## Figure labeling
 
 Label every figure `Figure XX-Y`, where `XX` is the last two digits of the
-assembly number the document covers and `Y` is the figure's sequential position
-in that document, counting from 1. Put the label in a caption line directly
-beneath the image, followed by a short description of what the figure shows:
+assembly number and `Y` identifies the figure within that assembly. Put the
+label in a caption line directly beneath the image, followed by a short
+description of what the figure shows:
 
 ```markdown
-![Changing the RESONATE rack moves the 3.5 MHz passband](figures/rack-tuning.png)
+![Changing the RESONATE rack moves the 3.5 MHz passband](spice/studies/80166/operation-3p5mhz/figures/rack-tuning.png)
 
 **Figure 66-1.** Changing the RESONATE rack moves the 3.5 MHz passband
 ```
 
-Numbering restarts in each document, so a study README and the board document
-that cites the same plot each number it from their own sequence, and two
-documents covering one assembly may both contain a `Figure 66-1`; the
-containing document is what distinguishes them. When a figure is added or
-removed, renumber the rest of that document so the sequence stays contiguous.
-Keep the image's alt text as well as the caption.
+The number belongs to the image, not to the document. One sequence runs across
+every document covering an assembly, so a plot that appears in both a board
+document and a study README carries the same number in both, and `Figure 79-3`
+identifies one specific plot project-wide. A document therefore holds whatever
+subset of the sequence it happens to show, and its numbers need not be
+contiguous or start at 1.
+
+Assign numbers in order of first appearance, reading the board document first,
+then the study index README, then the sub-study READMEs. A new image takes the
+next free number for its assembly; do not renumber existing figures to close a
+gap, because their numbers are cited in prose.
+
+Refer to figures by number in the prose that discusses them, so a reader can
+find the plot being described. Keep the image's alt text as well as the caption.
 
 ## Reusable workflow
 

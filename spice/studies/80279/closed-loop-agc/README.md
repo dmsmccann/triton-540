@@ -59,11 +59,11 @@ The staged comparison holds C79-22 at 2.325351 V, the Simulation 5 result for
 | C79-22 held at 2.325 V | 20.60 uA | 12.819 mV p-p | 0.392 V p-p after settling |
 
 The controlled state reduces the actual Q79-3 gate-1 IF by 19.09 dB, about a
-nine-times voltage reduction.
+nine-times voltage reduction. Figure 79-7 compares the control states.
 
 ![Full-RF control-state comparison](figures/80279-full-rf-control-crosscheck.png)
 
-**Figure 79-1.** Full-RF control-state comparison
+**Figure 79-7.** Full-RF control-state comparison
 
 The Simulation 3 table predicts somewhat less attenuation at approximately
 20 uA. The 19.09 dB full-circuit result includes the tuned nonlinear path and
@@ -89,9 +89,10 @@ exact regression target.
 
 ![Modeled AGC attack and release](figures/80279-agc-attack-release.png)
 
-**Figure 79-2.** Modeled AGC attack and release
+**Figure 79-8.** Modeled AGC attack and release
 
-The 3.365 V peak-to-peak initial strong output is about 514% above the later
+In Figure 79-8, the 3.365 V peak-to-peak initial strong output is about 514%
+above the later
 regulated strong level. This is the expected momentary response before the
 control capacitor charges. It decays smoothly rather than ringing. After the
 signal returns weak, output approaches its original level without overshoot.
