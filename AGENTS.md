@@ -111,12 +111,74 @@ datasheet archived in `datasheets/` and linked from the schematic. Obsolete
 - After requested edits, run available KiCad CLI checks, ERC/exports, parsing checks, and `git diff --check` when applicable.
 - If this directory is not a valid Git worktree, report that instead of assuming version-control protection.
 
+## Board documents: audience and required content
+
+A board document (`<assembly>.md`) is written for a **hobbyist restorer**, not for
+an electrical engineer. Assume the reader knows what a resistor, capacitor, coil,
+and transistor are, and knows how to use a meter, a signal generator, and an
+oscilloscope. Assume nothing else.
+
+Engineering terms are welcome — "darlington pair", "common emitter", "cascode",
+"transconductance", "reactance" — but every one gets a short plain-language gloss
+the first time it appears, in the same sentence or the next one. Write the gloss
+for someone who will never look the term up.
+
+Every board document must answer, in this order:
+
+1. **What is this board for?** What job it does in the radio, and why the radio
+   needs it done. Lead with function, not with topology.
+2. **What are its pins?** A table of every board pin: name, what it carries, and
+   whether it is a usable probe point. Say which pin carries what the reader might
+   assume is a fixed supply but is not.
+3. **How does it work, component by component?** Walk the signal path and explain
+   the job of **every reference designator on the board** — not only the
+   interesting ones. Bypass capacitors, decoupling resistors, bias dividers, and
+   padding capacitors each get a sentence saying what they do and what would go
+   wrong without them. Where a value is chosen rather than arbitrary, show the
+   arithmetic that makes it obviously right (a capacitor's reactance at the
+   working frequency, a divider ratio, a time constant).
+4. **What does a healthy board look like?** A short checklist of observable
+   behaviour, before any simulation or measurement appears.
+5. **What is each alignment adjustment actually doing?** See below.
+6. **Simulation evidence**, in the structure given below, each with its bench
+   check.
+7. **Evidence status and open questions.**
+
+## Alignment sections
+
+Wherever the manual gives an alignment or adjustment procedure, the board document
+must explain what that procedure is *doing to the circuit*, not merely restate the
+steps. For each procedure:
+
+- Name the electrical problem the alignment exists to solve.
+- Identify how many independent adjustments there are and what each one physically
+  changes. If the procedure alternates between two settings, say why: usually two
+  adjustments satisfying two conditions.
+- Explain every instruction that looks arbitrary. Why a temporary component is
+  fitted; why the signal level is raised or lowered between steps; why a particular
+  band or frequency is used for a step that seems unrelated to it; why the manual
+  warns that a null is sharp or that a meter must not deflect.
+- Say what a *wrong* result looks like and which way to move which adjustment.
+- Give the manual's own step numbers and page citations alongside the explanation.
+
 ## Board README simulation documentation
 
-Write board-level simulation sections for a hobbyist who understands basic
-components but may not already know the circuit, the analysis type, or RF
-jargon. The board README explains how the radio works; detailed study READMEs
-and CSV files hold exhaustive setup and machine-readable evidence.
+The board README explains how the radio works; detailed study READMEs and CSV
+files hold exhaustive setup and machine-readable evidence.
+
+Simulations exist to **show how the board operates** and **show what an alignment
+is doing**. A simulation that only produces a number is not finished; it has to
+earn a place in the narrative of how the circuit works. Two rules follow:
+
+- **Model at the pins.** Any simulation that stands in for an oscilloscope
+  measurement must present its results at the board's pins, because that is where
+  a person can actually and safely put a probe. Internal nodes may be shown as
+  additional insight, but they must be labelled as simulation-only, and the
+  document must say why probing them on hardware is impractical (typically that a
+  probe's capacitance would detune the node being reported).
+- **Simulate the alignment itself.** Where the manual has an alignment procedure,
+  model the procedure — including any temporary components it calls for — so the
+  document can show the difference between the before and after states.
 
 For every new simulation, and whenever an existing simulation section is
 substantially revised, present the material in this order:
@@ -146,6 +208,50 @@ Define specialized terms on first use, explain plot axes and sign conventions,
 and do not lead with simulator settings or unexplained numerical tables. A
 reader should understand why the tested circuit exists and recognize a healthy
 result before encountering the detailed simulation data.
+
+Report the resolution of the evidence. A peak read off a swept CSV is quantized
+to that sweep's sample spacing, so do not quote an error smaller than one grid
+step without saying that the sweep resolves it. State the spacing, or round to it.
+
+## Every simulation gets a bench check
+
+Each simulation section ends with a **bench check**: a proposed hardware
+measurement that would corroborate it, followed by an empty results table. This is
+required for new simulations and for any simulation section being revised.
+
+A bench check contains:
+
+1. **A setup table** — instruments, where each one connects (naming the board pin),
+   drive level, radio control settings, and any safety constraint. Measure at board
+   pins. Say explicitly when a control setting is part of the measurement, such as a
+   gain control that supplies the stage under test.
+2. **A procedure** — the run order, and what must not be disturbed between runs.
+3. **An empty results table** with the simulated value already filled in beside a
+   blank measured column, so the comparison is obvious once the data exists.
+4. **A sentence on why the measurement matters** — which uncertain model parameter
+   it would pin down.
+
+Mark every unfilled bench check clearly, for example *"Not yet performed. This is
+the proposal."* A board document must never let a proposal read as a result.
+Keep the detailed instrument procedure in `bench/<assembly>/README.md` and
+cross-link rather than duplicating it.
+
+Gaps found during review are written up the same way, under a
+"Simulations still to be done" heading: what it would show, method, expected
+result, and the bench counterpart with its empty table. A documented factory
+figure that no simulation tests — a stated gain reduction, a stated attenuation —
+is always a gap worth listing.
+
+## Prefer retained data over new runs
+
+Before commissioning a new simulation to make a point, check whether the retained
+CSVs under `spice/studies/<assembly>/` already contain the answer. Existing sweeps
+frequently hold columns that were never plotted, and a new figure built from them
+costs a plotting function rather than a simulator run and a fresh netlist export.
+
+Add the new plotting function to that board's existing plot or run script, note
+the new figure in the study README, and leave the run `manifest.csv` alone unless
+new runs were actually made — the manifest records runs, not artifacts.
 
 ## Figure labeling
 

@@ -280,6 +280,124 @@ def plot_29mhz_adjustment() -> None:
     plt.close(figure)
 
 
+def minus_three_db_bandwidth(
+    trace: Trace, values: np.ndarray
+) -> tuple[float, float]:
+    """Return the -3 dB bandwidth and its peak frequency, in hertz.
+
+    Both edges are linearly interpolated between the two samples that
+    straddle the -3 dB level. NaN is returned when the retained sweep
+    window does not reach 3 dB below the peak on both sides.
+    """
+    index = int(np.argmax(values))
+    peak_db = values[index]
+    lower = upper = float("nan")
+    for step in range(index, 0, -1):
+        if values[step] < peak_db - 3.0:
+            lower = float(
+                np.interp(
+                    peak_db - 3.0,
+                    [values[step], values[step + 1]],
+                    [trace.frequency_hz[step], trace.frequency_hz[step + 1]],
+                )
+            )
+            break
+    for step in range(index, len(values) - 1):
+        if values[step] < peak_db - 3.0:
+            upper = float(
+                np.interp(
+                    peak_db - 3.0,
+                    [values[step], values[step - 1]],
+                    [trace.frequency_hz[step], trace.frequency_hz[step - 1]],
+                )
+            )
+            break
+    return upper - lower, trace.frequency_hz[index]
+
+
+def plot_alignment_split() -> None:
+    """Overlay the L1-only and full-stage responses seen at the board pins.
+
+    Both curves are the same ANT-to-OUT ratio a swept bench measurement
+    produces, so this figure is directly comparable to the overlay in
+    bench/80166. Each curve is normalized to its own peak because the
+    lightly loaded model's absolute gain is not yet credible.
+    """
+    selected = (BANDS[0], BANDS[-1])
+    windows = ((3.0, 4.2), (28.85, 29.18))
+    depths = ((-20.0, 3.0), (-6.0, 3.0))
+
+    figure, axes = plt.subplots(
+        2, 1, figsize=(10.5, 8.4), constrained_layout=True
+    )
+
+    for axis, band, window, depth in zip(axes, selected, windows, depths):
+        bypass = read_trace(band.bypass_csv)
+        final = read_trace(band.final_csv)
+        bypass_peak_hz, _ = peak(bypass, bypass.overall_db)
+        final_peak_hz, _ = peak(final, final.overall_db)
+
+        axis.plot(
+            bypass.frequency_hz / 1e6,
+            normalized(bypass.overall_db),
+            color="#2c3e50",
+            linestyle="--",
+            linewidth=2.1,
+            label="0.01 µF fitted — L1 alone",
+        )
+        axis.plot(
+            final.frequency_hz / 1e6,
+            normalized(final.overall_db),
+            color="#c0392b",
+            linewidth=2.1,
+            label="0.01 µF removed — L1, Q1 and L2 together",
+        )
+        axis.axvline(
+            band.target_hz / 1e6,
+            color="#222222",
+            linestyle=":",
+            linewidth=1.2,
+            label="Manual alignment frequency",
+        )
+        axis.plot(
+            [bypass_peak_hz / 1e6],
+            [0.0],
+            marker="v",
+            color="#2c3e50",
+            markersize=8,
+        )
+        axis.plot(
+            [final_peak_hz / 1e6],
+            [0.0],
+            marker="v",
+            color="#c0392b",
+            markersize=8,
+        )
+        axis.annotate(
+            f"peaks {abs(final_peak_hz - bypass_peak_hz) / 1e3:.1f} kHz apart",
+            xy=((bypass_peak_hz + final_peak_hz) / 2e6, 0.0),
+            xytext=(0, 14),
+            textcoords="offset points",
+            ha="center",
+            fontsize=9,
+            color="#555555",
+        )
+        axis.set_xlim(*window)
+        axis.set_ylim(*depth)
+        axis.set_xlabel("Frequency (MHz)")
+        axis.set_ylabel("ANT-to-OUT gain, relative to each peak (dB)")
+        rack = band.rack.replace("uH", "µH")
+        axis.set_title(f"{band.label} band position, rack at {rack}")
+        axis.grid(True, alpha=0.25)
+        axis.legend(loc="lower right", fontsize=8.7)
+
+    figure.suptitle(
+        "What the temporary 0.01 µF capacitor separates: L1 alone versus the whole stage"
+    )
+    figure.savefig(PLOT_DIR / "alignment-split.png", dpi=180)
+    plt.close(figure)
+
+
 def print_summary() -> None:
     print(
         "band,target_mhz,rack,output_adjustment,"
@@ -308,6 +426,7 @@ def main() -> None:
     PLOT_DIR.mkdir(parents=True, exist_ok=True)
     plot_all_bands()
     plot_29mhz_adjustment()
+    plot_alignment_split()
     print_summary()
 
 

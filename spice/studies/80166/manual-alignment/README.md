@@ -12,7 +12,12 @@ of the project-level [`80166.md`](../../../../80166.md).
   convergence figure.
 - `fixtures/` contains the corrected placement image for the temporary
   0.01 µF L2-bypass capacitor.
-- `figures/` contains plots generated from the retained CSVs.
+- `figures/` contains plots generated from the retained CSVs:
+  `all-bands.png` (normalized final response on every band),
+  `29mhz-adjustment.png` (the rack-then-C13 sequence), and
+  `alignment-split.png` (the ANT-to-OUT overlay of the L1-only and
+  full-stage responses, which is the same pin-to-pin ratio the bench
+  sweep in [`bench/80166`](../../../../bench/80166/README.md) produces).
 
 The long original export filenames have been replaced by stable run IDs.
 Electrical settings and provenance belong in `manifest.csv`, not in filenames.
