@@ -17,10 +17,16 @@ a fresh SPICE netlist from `triton_540.kicad_sch` before applying run-specific
 parameters to a generated copy.
 
 Each study has its own runner named for the assembly it exercises. Helpers
-that are genuinely board-independent — reading an ngspice ASCII raw file and
-converting a voltage ratio to decibels — live in `tools/ngspice_raw.py`, which
-every runner imports. A runner named for one assembly never provides
+that are genuinely board-independent — reading an ngspice ASCII raw file,
+converting a voltage ratio to decibels, and measuring a swept response for its
+peak, its −3 dB bandwidth and its sample spacing — live in `tools/ngspice_raw.py`,
+which every runner imports. A runner named for one assembly never provides
 infrastructure to another.
+
+Where several studies exercise the same board, that board's netlist editing lives
+in one place: `tools/run_80166_headless.py` holds the 80166's parameter,
+component, source and model-parameter edits, and the four new 80166 study runners
+import it.
 
 ## Common commands
 
@@ -54,11 +60,21 @@ Regenerate the documented 80166 figures:
 python spice\tools\plot_80166_manual_alignment.py
 ```
 
-Run the 3.5 MHz normal-operation study from a fresh KiCad export:
+Run the 80166 studies from fresh KiCad exports. Each one exports the netlist,
+applies its own state, runs ngspice, and rewrites its curated CSVs and figures:
 
 ```powershell
-python spice\tools\run_80166_operation.py
+python spice\tools\run_80166_operation.py            # 3.5 MHz normal operation
+python spice\tools\run_80166_defeat_gain.py          # DEFEAT gain reduction
+python spice\tools\run_80166_rf_gain_supply.py       # RF GAIN as the stage supply
+python spice\tools\run_80166_trap_9mhz.py            # 9 MHz trap
+python spice\tools\run_80166_loading_sensitivity.py  # output loading and coil Q
 ```
+
+The root schematic can only usefully simulate one assembly at a time. These
+runners need the `RF_Amp_80166` sheet included in simulation and the other three
+sub-sheets excluded, which is how `triton_540.kicad_sch` currently stands; a
+runner stops with a clear message if the export contains no 80166 nets.
 
 Run the 80287 receive/transmit conversion study and both mixer-balance sweeps:
 
