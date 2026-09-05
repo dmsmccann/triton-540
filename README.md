@@ -13,6 +13,7 @@ simulation studies, and explicit documentation of estimated values.
 | 80289 | Internal VFO and frequency conversion | [80289.md](80289.md) |
 | 80287 | Receive/transmit mixers | [80287.md](80287.md) |
 | 80279 | 9 MHz IF, AGC, product detector, and audio preamplifier | [80279.md](80279.md) |
+| 80274 | Audio power amplifier, transmit mute, and CW sidetone | [Schematic](80274_audio_power_amp.kicad_sch); manual pp. 3-18 and 3-19; simulation not yet implemented |
 
 The 80287 study demonstrates conversion between a 3.499 MHz SSB spectral
 component and the fixed 9.001 MHz IF in both directions. It includes settled
