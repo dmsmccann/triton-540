@@ -99,7 +99,7 @@ jack at two physical points works just as well at 3.5 MHz and needs no tee:
 | RF GAIN | **fully clockwise** (this is the supply to the stage) |
 | CALIBRATE | **OFF** — the calibrator's TTL gate pulls DEFEAT low and drops stage gain ~25 dB |
 | Blanker | off |
-| RESONATE | set as described in the run order below, then **do not touch it** for the rest of that pair of sweeps |
+| RESONATE | continuous and unmarked; peak it as described below, then **do not touch it** for the rest of that pair of sweeps |
 
 > **Do not transmit.** The generator is connected to the antenna jack; keying the
 > transmitter will destroy the SDG output stage. Keep the unit in receive
@@ -108,8 +108,9 @@ jack at two physical points works just as well at 3.5 MHz and needs no tee:
 ## Run order
 
 The RESONATE position is part of the measurement — L1 and L2 are ganged to the
-same rack, so the sweep only tells you about tracking at the rack position you
-left it in. Take both sweeps of a pair without moving RESONATE.
+same rack, so the sweep only tells you about tracking at the physical rack
+position you left it in. The front-panel control has no scale or detents, so do
+not try to record a dial setting; take both sweeps of a pair without moving it.
 
 1. Clip the `.01 µF` from the 3.5 MHz trimmer terminal — C19, on the small
    trimmer board beneath the amplifier board, Figure 2, p. 3-7 — to chassis.
