@@ -2,4 +2,5 @@
 	(version 7)
 	(lib (name "triton_iv") (type "KiCad") (uri "${KIPRJMOD}/triton_iv.kicad_sym") (options "") (descr ""))
 	(lib (name "VFO_80289") (type "KiCad") (uri "${KIPRJMOD}/VFO_80289.kicad_sym") (options "") (descr "VFO 80289 custom symbols"))
+	(lib (name "Audio_80274") (type "KiCad") (uri "${KIPRJMOD}/audio_80274.kicad_sym") (options "") (descr "80274 LM380 and original 2N4870 pin mapping"))
 )
