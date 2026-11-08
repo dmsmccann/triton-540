@@ -2638,6 +2638,16 @@
 		)
 		(uuid "4ce80aa4-2ea6-4b00-995a-31deee630c93")
 	)
+	(label "OUT"
+		(at 100.33 168.91 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5f2a1c04-9d6b-4f18-9e27-6c31be0a7f14")
+	)
 	(label "Q1_DRAIN"
 		(at 171.45 81.28 180)
 		(effects
@@ -2657,16 +2667,6 @@
 			(justify left bottom)
 		)
 		(uuid "9791145a-ba39-473e-9328-afbc4f872f5f")
-	)
-	(label "OUT"
-		(at 100.33 168.91 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "5f2a1c04-9d6b-4f18-9e27-6c31be0a7f14")
 	)
 	(label "ANT"
 		(at 83.82 167.64 0)
