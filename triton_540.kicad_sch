@@ -5386,7 +5386,7 @@
 		)
 		(uuid "e59b5ac5-3302-47ee-b148-0b14c866e26b")
 	)
-	(text "OUTPUT: speaker / phone wiring pending.\nSIDETONE: CW-only T feed; MODE wiring pending.\nManual PDF 21 / printed 3-4."
+	(text ""
 		(exclude_from_sim no)
 		(at 328.93 0.762 0)
 		(effects
@@ -5412,6 +5412,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "03808480-6b32-466a-b792-15e966c058c8")
+	)
+	(junction
+		(at 361.95 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "051e22b4-4bb7-4ef7-9a2a-68be4dd1037a")
 	)
 	(junction
 		(at 341.63 208.28)
@@ -6021,7 +6027,7 @@
 	)
 	(wire
 		(pts
-			(xy 318.77 62.23) (xy 391.16 62.23)
+			(xy 318.77 62.23) (xy 361.95 62.23)
 		)
 		(stroke
 			(width 0)
@@ -6308,6 +6314,16 @@
 			(type default)
 		)
 		(uuid "48f7684b-2d78-450a-9ad1-1b00664a4908")
+	)
+	(wire
+		(pts
+			(xy 361.95 62.23) (xy 391.16 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c0cf4fd-4852-4d85-b80b-103a12fda734")
 	)
 	(wire
 		(pts
@@ -11506,6 +11522,88 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:C_Small_US")
+		(at 361.95 64.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7d621c05-b9b9-4901-9339-59eabdfac99e")
+		(property "Reference" "C22"
+			(at 364.49 63.6269 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" ".01u"
+			(at 364.49 66.1669 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 361.95 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 361.95 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "capacitor, small US symbol"
+			(at 361.95 64.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "2"
+			(uuid "e5583029-b1e6-4e59-9ee7-d067fc6f3302")
+		)
+		(pin "1"
+			(uuid "e7912b5c-8e9e-4be7-a3fb-2c6ea4e2fbca")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "C22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "power:GND")
 		(at 24.13 45.72 0)
 		(unit 1)
@@ -14055,6 +14153,83 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
 					(reference "#PWR0128")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 361.95 67.31 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "efebf8f4-7ddd-4782-be1f-88adf6522ddb")
+		(property "Reference" "#PWR0130"
+			(at 361.95 73.66 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "GND"
+			(at 356.87 69.596 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 361.95 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 361.95 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 361.95 67.31 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "9915b74b-f415-4c61-801d-9aa785567404")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28"
+					(reference "#PWR0130")
 					(unit 1)
 				)
 			)
