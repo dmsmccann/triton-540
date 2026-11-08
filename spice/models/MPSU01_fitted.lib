@@ -1,0 +1,29 @@
+* MPS-U01 nominal fitted Gummel-Poon model
+* Model type: calculated/empirical, not a recovered Motorola factory model
+* Pin order for a Q device: collector, base, emitter
+*
+* Documentary constraints from the archived Motorola MPS-U01 data sheet:
+*   VCEO >= 30 V, VCBO >= 40 V, VEBO >= 5 V
+*   hFE >= 55 at IC=10 mA, VCE=1 V
+*   hFE >= 60 at IC=100 mA, VCE=1 V
+*   hFE >= 50 at IC=1 A, VCE=1 V
+*   VCE(sat) <= 0.5 V at IC=1 A, IB=0.1 A
+*   VBE(on) <= 1.2 V at IC=1 A, VCE=1 V
+*   fT >= 60 MHz at IC=50 mA, VCE=10 V
+*   Cob <= 20 pF at VCB=10 V, f=1 MHz
+*
+* BF and IKF fit a conservative nominal gain curve above the published
+* minima. CJC is a zero-bias value selected to give about 20 pF at 10 V.
+* TF is fitted to retain at least 60 MHz current-gain bandwidth near 50 mA.
+* VAF, resistances, CJE, reverse gain, and transit terms are engineering
+* estimates because Motorola did not publish enough data to determine them.
+* Breakdown, self-heating, secondary breakdown, and production spread are
+* not modeled.
+
+.model MPSU01_FITTED NPN(
++ IS=1.0e-13 NF=1.0 BF=220 VAF=70 IKF=0.35 ISE=2.0e-12 NE=1.55
++ BR=8 VAR=20 IKR=0.20 ISC=1.0e-12 NC=2
++ RB=3 RBM=0.5 IRB=0.10 RC=0.06 RE=0.025
++ CJE=90p VJE=0.75 MJE=0.33
++ CJC=48p VJC=0.75 MJC=0.33 FC=0.5
++ TF=1.6n XTF=1 VTF=10 ITF=0.5 TR=80n)

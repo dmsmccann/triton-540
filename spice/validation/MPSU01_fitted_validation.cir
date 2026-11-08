@@ -1,0 +1,44 @@
+* Regression checks for the empirical MPS-U01 model.
+.include ../models/MPSU01_fitted.lib
+
+* Forward-active gain checkpoints at VCE=1 V.
+VCE10 c10 0 1
+IB10 0 b10 75u
+Q10 c10 b10 0 MPSU01_FITTED
+
+VCE100 c100 0 1
+IB100 0 b100 850u
+Q100 c100 b100 0 MPSU01_FITTED
+
+VCE1A c1a 0 1
+IB1A 0 b1a 19.8m
+Q1A c1a b1a 0 MPSU01_FITTED
+
+* Forced 1 A collector current and 100 mA base drive saturation check.
+ICSAT 0 csat 1
+IBSAT 0 bsat 0.1
+QSAT csat bsat 0 MPSU01_FITTED
+
+* Current-gain bandwidth fixture near IC=50 mA, VCE=10 V.
+VCF cf 0 10
+IBF 0 bf DC 400u AC 1
+QF cf bf 0 MPSU01_FITTED
+
+.control
+op
+let IC10 = -i(VCE10)
+let HFE10 = IC10/75u
+let IC100 = -i(VCE100)
+let HFE100 = IC100/850u
+let IC1A = -i(VCE1A)
+let HFE1A = IC1A/19.8m
+let ICF = -i(VCF)
+print IC10 HFE10 IC100 HFE100 IC1A HFE1A v(csat) v(bsat) ICF
+ac dec 100 1k 1g
+let HFE_AC = mag(i(VCF))
+meas ac FT when HFE_AC=1 fall=1
+echo MPSU01_FITTED_VALIDATION_COMPLETE
+quit
+.endc
+
+.end

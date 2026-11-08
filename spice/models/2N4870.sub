@@ -1,0 +1,27 @@
+* 2N4870 PN unijunction-transistor model for Q74-2 on assembly 80274.
+*
+* Extracted from the user's local KiCad-Spice-Library:
+*   Models/uncategorized/spice_complete/SCR.LIB
+* Source tag: 2N4870; UN4870; UJTs; 35 V, 300 mW.
+* The source file identifies Copyright Intusoft 1992-1997, All Rights Reserved.
+* Preserve that notice and review redistribution rights before a public release.
+*
+* Subcircuit terminal order: emitter, base 1, base 2.
+* The project symbol uses physical pins 1=B1, 2=E, 3=B2, so KiCad must map
+* symbol pins as 1=2, 2=1, 3=3.
+* This is a library candidate, not a measurement of the installed transistor.
+
+.SUBCKT UN4870 1 2 3
+* Connections  Emitter Base1 Base2
+* Motorola IP=.3u IV=4.75m VB1(sat)=3.28 Rbb=5.23k Vob1=3.26 n=.57
+DE 1 4 EMITTER
+VE 4 5 DC 0
+HVE 6 0 VE 1k
+RVE 0 6 1meg
+GBB 5 7 POLY(2) 5 7 6 0 0 .333m 0 0 7.5m
+CBB 5 7 35p
+RB1 7 2 41.0 RMOD
+RB2 3 5 2.19k RMOD
+.MODEL RMOD R TC1=.015
+.MODEL EMITTER D (IS=21.3p N=1.7)
+.ENDS UN4870

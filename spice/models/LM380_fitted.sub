@@ -1,0 +1,50 @@
+* LM380N behavioral audio-power-amplifier model
+* Model type: calculated/empirical, not a National Semiconductor/TI model
+*
+* External order is the physical 14-pin DIP:
+*   1 BYPASS, 2 IN+, 3 GND, 4 GND, 5 GND, 6 IN-, 7 GND,
+*   8 OUTPUT, 9 NC, 10 GND, 11 GND, 12 GND, 13 NC, 14 VS
+*
+* Fitted to National Semiconductor DS006977 (August 2000):
+*   nominal gain 50 V/V; output at VS/2; input resistance 150 kOhm;
+*   100 kHz bandwidth at 2 W/8 Ohm; 14 Vpp output swing at 18 V/8 Ohm;
+*   7 mA nominal quiescent current; 100 nA input bias current;
+*   1.3 A short-circuit/current limit.
+*
+* The model is intended for board-level bias, gain, bandwidth, clipping,
+* loading, and waveform studies. It does not model THD accurately, thermal
+* shutdown, temperature rise, PSRR as a calibrated function of frequency,
+* noise, package thermal behavior, or production spread. Signal-output power
+* is produced by a behavioral source and is not reflected fully in VS current.
+
+.subckt LM380_FITTED BYPASS INP GND3 GND4 GND5 INN GND7 OUT NC9 GND10 GND11 GND12 NC13 VS
+
+* Bias the bypass terminal at half supply. An external capacitor on pin 1
+* filters this node and therefore the modeled output midpoint.
+RBP_TOP VS BYPASS 35k
+RBP_BOT BYPASS GND3 35k
+
+* Ground-referenced 150 kOhm inputs and nominal PNP-input bias currents.
+RINP INP GND3 150k
+RINN INN GND3 150k
+IBP GND3 INP 100n
+IBN GND3 INN 100n
+
+* One dominant pole at 100 kHz. Small-signal closed-loop gain is 50 V/V.
+BERR ERR GND3 V=V(INP,INN)
+RPOLE ERR FILT 1k
+CPOLE FILT GND3 1.59155n
+
+* Smooth symmetrical clipping. At VS=18 V, HEADROOM is 7 V, giving the
+* documented 14 V peak-to-peak output swing before the output resistance.
+BHEAD HEAD GND3 V=max(V(VS,GND3)/2-2,0.1)
+BDRIVE DRIVE GND3 V=V(BYPASS,GND3)+V(HEAD,GND3)*tanh(50*V(FILT,GND3)/V(HEAD,GND3))
+
+* Low output resistance with a symmetrical 1.3 A current clamp.
+BOUT OUT GND3 I=1.3*tanh((V(OUT,GND3)-V(DRIVE,GND3))/(0.05*1.3))
+ROUT_BLEED OUT GND3 100Meg
+
+* 6.74 mA plus the bypass divider gives approximately 7 mA at VS=18 V.
+BIQ VS GND3 I=6.74m
+
+.ends LM380_FITTED

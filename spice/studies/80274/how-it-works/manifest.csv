@@ -1,0 +1,7 @@
+path,description
+README.md,"Method, results, assessment, limitations, and bench proposal"
+data/80274-operation-timeline.csv,Downsampled receive/mute/sidetone timeline
+data/80274-operation-summary.csv,Principal numerical results
+data/80274-sidetone-controls.csv,R74-5 level and R74-7 pitch checks
+figures/80274-operating-states.png,Board operating-state waveform plot
+figures/80274-sidetone-controls.png,Sidetone control trends

@@ -1,0 +1,47 @@
+* Regression checks for the empirical LM380N behavioral model.
+.include ../models/LM380_fitted.sub
+
+VCC vcc 0 18
+VIN inp 0 DC 0 AC 1 SIN(0 10m 1k)
+CBYP byp 0 5u
+XU byp inp 0 0 0 0 0 out nc9 0 0 0 nc13 vcc LM380_FITTED
+COUT out load 1000u
+RLOAD load 0 8
+
+* Separate hard-short fixture for the 1.3 A output-current clamp.
+VCCS vccs 0 18
+CBYPS byps 0 5u
+XUS byps 0 0 0 0 0 0 outs nc9s 0 0 0 nc13s vccs LM380_FITTED
+VSHORT outs 0 0
+
+* Separate large-signal fixture for the documented 14 Vpp swing at 18 V.
+VCCC vccc 0 18
+VCLIP inpclip 0 SIN(0 0.5 1k)
+CBYPC bypc 0 5u
+XUC bypc inpclip 0 0 0 0 0 outc nc9c 0 0 0 nc13c vccc LM380_FITTED
+COUTC outc loadc 1000u
+RLOADC loadc 0 8
+
+.control
+op
+let IQ = -i(VCC)
+print v(out) v(byp) IQ
+let ISHORT = i(VSHORT)
+print ISHORT
+ac dec 100 10 10Meg
+meas ac GAIN_1KHZ find vm(load) at=1k
+meas ac F_3DB when vm(load)=35.355 fall=1
+tran 5u 20m 10m
+meas tran OUT_MAX max v(load) from=10m to=20m
+meas tran OUT_MIN min v(load) from=10m to=20m
+meas tran CLIP_MAX max v(loadc) from=10m to=20m
+meas tran CLIP_MIN min v(loadc) from=10m to=20m
+let OUT_VPP = OUT_MAX-OUT_MIN
+let GAIN_TRAN = OUT_VPP/0.020
+let CLIP_VPP = CLIP_MAX-CLIP_MIN
+print OUT_VPP GAIN_TRAN CLIP_VPP
+echo LM380_FITTED_VALIDATION_COMPLETE
+quit
+.endc
+
+.end

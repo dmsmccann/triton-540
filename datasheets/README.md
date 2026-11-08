@@ -107,6 +107,22 @@ power rating, and package are unknown. Its placed-symbol Datasheet field
 therefore remains blank; linking a named replacement would misrepresent the
 source. Its Evidence field records this limitation.
 
+For simulation only, D74-2 uses a Diodes Incorporated 1N4738A model as an
+explicitly identified 8.2 V stand-in. The following archived data sheet is
+linked through the placed symbol's `Simulation_Model_Datasheet` field, not
+its physical `Datasheet` field:
+
+- File: [DiodesInc_1N4728A-1N4761A_DS18007_2015.pdf](DiodesInc_1N4728A-1N4761A_DS18007_2015.pdf)
+- Manufacturer: Diodes Incorporated
+- Document: *1N4728A - 1N4761A, 1.0W Zener Diode*, DS18007 Rev. 20-4
+- Original publication: December 2015 document metadata; obsolete-device archive
+- Extracted pages: Complete three-page device document; page 1 ratings and
+  DO-41 package, page 2 electrical table including 1N4738A, page 3 curves
+- Used by: assembly 80274 D74-2 simulation stand-in only; not evidence of the
+  original installed part
+- Archive source: <https://www.diodes.com/datasheet/download/1N4728A%20%28Discontinued%29.pdf>
+- Archived file SHA-256: 85D9C5328B485E4BE02FFC474D69031423C9A2D6E548BFFC2F187CF97323627E
+
 ### LM380N / ULN2280B choice
 
 The manual explicitly lists LM380N / ULN2280B. The schematic represents the

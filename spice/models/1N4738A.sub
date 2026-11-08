@@ -1,0 +1,19 @@
+* 1N4738A 8.2 V, 1 W Zener model used only as a simulation stand-in for
+* unidentified D74-2 on assembly 80274.
+*
+* Extracted from the user's local KiCad-Spice-Library:
+*   Models/Diode/zener.lib
+* Source tag: Diodes Incorporated 1N4738A, 8.20 V, 1.00 W.
+* The Ten-Tec manual documents only an 8.2 V Zener; it does not identify
+* D74-2 as a 1N4738A or document its manufacturer, package, or power rating.
+*
+* Subcircuit terminal order: anode, cathode.
+
+.SUBCKT DI_1N4738A 1 2
+* Terminals          A K
+D1 1 2 DF
+DZ 3 1 DR
+VZ 2 3 7.33
+.MODEL DF D (IS=50.2p RS=0.620 N=1.10 CJO=92.8p VJ=0.750 M=0.330 TT=50.1n)
+.MODEL DR D (IS=10.0f RS=0.288 N=1.15)
+.ENDS DI_1N4738A

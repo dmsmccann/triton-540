@@ -1,0 +1,47 @@
+* Syntax and basic-behavior checks for newly attached 80274 discrete models.
+.include "../models/2N4870.sub"
+.include "../models/1N4738A.sub"
+
+* D74-2 simulation stand-in: 13.8 V through the board's documented 330 ohms.
+VZSUP vz_supply 0 13.8
+RZ vz_supply vz_cathode 330
+XZ 0 vz_cathode DI_1N4738A
+
+* Minimal 2N4870 relaxation oscillator. This is a model check, not the full
+* 80274 circuit and not a prediction of the board's sidetone frequency.
+VBB b2 0 8.2
+RB1 b1 0 100
+RCH b2 emitter 100k
+CE emitter b1 0.01u IC=0
+XU emitter b1 b2 UN4870
+
+.control
+op
+let izener = -i(VZSUP)
+print v(vz_cathode) izener
+if v(vz_cathode) < 7.8
+  echo ERROR_1N4738A_BREAKDOWN_TOO_LOW
+  quit 1
+end
+if v(vz_cathode) > 8.6
+  echo ERROR_1N4738A_BREAKDOWN_TOO_HIGH
+  quit 1
+end
+
+tran 2u 20m uic
+meas tran emitter_max max v(emitter) from=5m to=20m
+meas tran emitter_min min v(emitter) from=5m to=20m
+print emitter_max emitter_min
+if emitter_max < 4
+  echo ERROR_2N4870_NO_UJT_CHARGE_THRESHOLD
+  quit 1
+end
+if emitter_min > 3
+  echo ERROR_2N4870_NO_RELAXATION_DISCHARGE
+  quit 1
+end
+
+echo 80274_DISCRETE_MODELS_VALIDATION_COMPLETE
+quit
+.endc
+.end

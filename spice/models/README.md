@@ -1,5 +1,83 @@
 # SPICE model reference
 
+## 80274 audio-power-amplifier discrete models
+
+`2N4870.sub` contains the located `UN4870` unijunction-transistor model used
+by sidetone oscillator Q74-2. Its external order is emitter, base 1, base 2.
+The custom project symbol follows the archived Motorola package data instead:
+physical pin 1 is B1, pin 2 is E, and pin 3 is B2. The placed symbol therefore
+uses the KiCad mapping `1=2 2=1 3=3`; a one-to-one mapping would be wrong.
+
+The model was extracted from the user's local KiCad-Spice-Library file
+`Models/uncategorized/spice_complete/SCR.LIB`. Its source comment records
+Motorola values `IP=0.3 uA`, `IV=4.75 mA`, `VB1(sat)=3.28 V`,
+`RBB=5.23 kOhm`, `VOB1=3.26 V`, and intrinsic standoff ratio `n=0.57`.
+The enclosing source file identifies Copyright Intusoft 1992-1997, All Rights
+Reserved. Treat this as a local simulation asset and review or replace it
+before public redistribution. It has not yet been validated against an
+installed 2N4870 or the complete 80274 sidetone oscillator.
+
+`1N4738A.sub` is attached to D74-2 only as a clearly marked 8.2 V simulation
+stand-in. Its subcircuit order is anode, cathode, while the stock KiCad Zener
+symbol uses pin 1 as cathode and pin 2 as anode, so its mapping is `1=2 2=1`.
+The model was extracted from `Models/Diode/zener.lib` in the same local model
+collection and represents a Diodes Incorporated 1N4738A, 8.2 V, 1 W device.
+The Ten-Tec manual does **not** identify D74-2 as a 1N4738A or state its power
+rating, manufacturer, or package. Simulation results that depend on its knee
+or dynamic impedance therefore remain inferred.
+
+Q74-3 reuses the existing `MPS6514.lib` model with stock E-B-C symbol mapping,
+and D74-1 reuses the existing `1N4154.lib` model with the stock diode mapping.
+
+`MPSU01_fitted.lib` is a project-created nominal Gummel-Poon model for
+Q74-1. No factory SPICE model was located. The fit uses the original Motorola
+limits: 30 V VCEO, minimum hFE of 55 at 10 mA, 60 at 100 mA, and 50 at 1 A,
+0.5 V maximum VCE(sat) at 1 A/100 mA base drive, 60 MHz minimum fT, and
+20 pF maximum output capacitance. Unpublished Early voltage, series
+resistances, junction-capacitance shape, and transit terms are engineering
+estimates. The stock KiCad symbol is E-B-C, so its mapping is
+`1=E 2=B 3=C`.
+
+`../validation/MPSU01_fitted_validation.cir` gives modeled hFE of 135
+at 10.1 mA, 132 at 112 mA, and 50.2 at 994 mA. The forced 1 A/100 mA
+saturation check gives 0.150 V VCE(sat), and the modeled current-gain
+transition is 92.8 MHz near the data-sheet test current. These pass the
+published limits but are not measurements of Q74-1.
+
+`LM380_fitted.sub` is a project-created fourteen-pin behavioral model
+for U74-1. No usable manufacturer model was located. It preserves the physical
+DIP pin order and fits the National Semiconductor nominal gain of 50,
+half-supply output bias, 150 kOhm input resistance, 100 kHz bandwidth,
+14 V peak-to-peak swing at 18 V, 7 mA quiescent current, 100 nA input bias,
+and 1.3 A output-current limit. It does not predict thermal shutdown,
+calibrated distortion, noise, or power-supply current under signal load.
+
+`../validation/LM380_fitted_validation.cir` gives 9.000 V output bias
+and 6.997 mA supply current at 18 V, 49.68 V/V gain at 1 kHz, a 98.76 kHz
+-3 dB point, 49.67 V/V transient gain, 14.01 V peak-to-peak clipped swing,
+and a 1.300 A hard-short clamp.
+These are data-sheet-fit checks, not hardware measurements.
+
+`../validation/80274_discrete_models_validation.cir` checks that the 1N4738A
+stand-in breaks down near 8.2 V in the board's 330 ohm feed and that the
+2N4870 model produces charge-and-discharge action in a minimal relaxation
+oscillator. That fixture is a syntax and basic-behavior check, not a completed
+80274 sidetone simulation.
+
+### References
+
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, local PDF pages 34-35 /
+  printed pages 3-18 to 3-19: 80274 operation, voltages, and schematic.
+- `datasheets/Motorola_2N4870_ThyristorDeviceData_undated.pdf`: physical
+  B1/E/B2 pinout and device characteristics.
+- `datasheets/Motorola_MPSU01_TechnicalData_undated.pdf`: MPS-U01
+  package, ratings, gain limits, saturation limit, frequency, and capacitance.
+- `datasheets/National_LM380_DS006977_2000.pdf`: LM380 package, gain,
+  bias, bandwidth, output swing, input impedance, quiescent current, and
+  limiting.
+- `datasheets/DiodesInc_1N4728A-1N4761A_DS18007_2015.pdf`: 1N4738A stand-in
+  voltage, test current, impedance, package, and rating.
+
 ## MC1747 dual operational amplifier
 
 `MC1747.sub` contains a five-terminal Motorola-style MC1747 op-amp core and
