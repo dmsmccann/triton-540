@@ -61,7 +61,8 @@ lot or package revision fitted to this radio. No substitute parts are assigned.
 - Document: *MPS6512 through MPS6519 Amplifier Transistor*
 - Original publication: Undated device page; package supplement from 1991 DL126 Rev. 3
 - Extracted pages: Device printed page 2-204; appended package/style page 8-2 (PDF page 837) from 1991 DL126 Rev. 3. Style 1 is 1=E, 2=B, 3=C; the later case 29-04 outline is supplementary, while the device page specifies case 29-02
-- Used by: assembly 80274, Q74-3
+- Used by: assembly 80274, Q74-3; Model 249 noise blanker,
+  Q49-1 through Q49-5
 - Archive source: <https://datasheet4u.com/pdf/1115234/MPS6514.pdf>
 - Package supplement source: <https://www.bitsavers.org/components/motorola/_dataBooks/1991_DL126r3_Motorola_Small-Signal_Transistors_FETs_and_Diodes.pdf>
 - Archived file SHA-256: E9A2791869ED3FDE04CC2622717A615A8F2C78B47AEB910D0CD93B5A73E7CB82
@@ -130,3 +131,43 @@ documented LM380N alternative with all 14 physical pins. Pins 9 and 13 are
 internal NCs; pins 3, 4, 5, 7, 10, 11 and 12 are grounded. The local symbol
 changes the drawing arrangement, not the pinout. The ULN2280B is noted as a
 manual alternative, not silently substituted or modeled.
+
+## Model 249 noise blanker
+
+The following files support the Model 249 schematic. The MC1350 archive is
+contemporary Motorola literature. The MPN3404 and 2N5087 files are later
+onsemi revisions of the original Motorola device families and therefore
+document the parts, but not the production lots installed by Ten-Tec.
+
+### MC1350 (IC49-1)
+
+- File: [Motorola_MC1350_MC1350-D_1996.pdf](Motorola_MC1350_MC1350-D_1996.pdf)
+- Manufacturer: Motorola, Inc.
+- Document: *MC1350 Monolithic IF Amplifier*, MC1350/D, Revision 3
+- Original publication: 1996
+- Extracted pages: Complete five-page manufacturer device document
+- Used by: Model 249, IC49-1
+- Archive source: <https://w.mzentertainment.com/technical_archive/MC1350.pdf>
+- Archived file SHA-256: 56A84B1A37622FAC55CD05CC6D00237A0E290F2A287C839BE7E9E96C0B873C3F
+
+### MPN3404 (D49-1, D49-2)
+
+- File: [onsemi_MPN3404_MPN3404-D_2006.pdf](onsemi_MPN3404_MPN3404-D_2006.pdf)
+- Manufacturer: ON Semiconductor
+- Document: *MPN3404 Silicon PIN Diode*, MPN3404/D, Revision 3
+- Original publication: January 2006
+- Extracted pages: Complete four-page manufacturer device document
+- Used by: Model 249, D49-1 and D49-2
+- Archive source: <https://www.onsemi.com/download/data-sheet/pdf/mpn3404-d.pdf>
+- Archived file SHA-256: A9D3948D603C61F2F90E5CE06B0BC32F165466A0B5361107E6A405ED32F27B19
+
+### 2N5087 (Q49-6)
+
+- File: [onsemi_2N5087_2N5087-D_2013.pdf](onsemi_2N5087_2N5087-D_2013.pdf)
+- Manufacturer: ON Semiconductor
+- Document: *2N5087 Amplifier Transistor, PNP Silicon*, 2N5087/D, Revision 5
+- Original publication: April 2013
+- Extracted pages: Complete eight-page manufacturer device document
+- Used by: Model 249, Q49-6
+- Archive source: <https://www.onsemi.com/download/data-sheet/pdf/2n5087-d.pdf>
+- Archived file SHA-256: 09F53FA5AF33D916E4A248BAD31A40C9F5F5F4148FB29242BECC91EF31420D89

@@ -1,0 +1,99 @@
+* Motorola MC1350 monolithic IF amplifier -- repaired legacy macro-model.
+*
+* Physical pin order is preserved one-to-one:
+*   1 output, 2 V+, 3 ground, 4 input, 5 AGC, 6 input, 7 ground, 8 output.
+*
+* The transistor-level source was archived in the user's earlier Model 249
+* project and identifies SPICE modeling by Jim Thompson, 2014.  In that file
+* the two output-transistor collectors were mistakenly tied to pin 2, leaving
+* physical output pins 1 and 8 connected only to package capacitance.  This
+* project copy reconnects those collectors to pins 1 and 8, matching the
+* Motorola internal schematic and the requirement that collector voltage be
+* supplied through a center-tapped coil.
+*
+* Statistical LOT/DEV modifiers unsupported by ngspice were removed without
+* changing nominal component values.  Package parasitics remain estimates.
+* Validate absolute gain and AGC response against hardware before treating
+* simulated amplitudes as measured or factory performance.
+
+.SUBCKT MC1350 1 2 3 4 5 6 7 8 PARAMS: CP2P=2p CGND=2p
+X_Q11 2 N_1 N_2 0 NPN1
+R_R4 2 N_1 RB 1.47K
+X_Q17 N_3 N_3 N_4 0 NPN1
+R_R14 N_4 N_5 RB 5.6K
+X_Q20 N_6 N_6 N_7 0 NPN1
+R_R22 N_8 N_6 RB 1.9K
+R_R7 N_9 N_10 RB 66
+R_R8 6 N_11 RB 5K
+R_R9 4 N_11 RB 5K
+X_Q4 2 N_12 N_13 0 NPN1
+X_Q5 2 N_12 N_14 0 NPN1
+R_R6 N_12 N_15 RB 2K
+X_Q14 N_15 N_4 N_11 0 NPN1
+X_Q1 N_13 6 N_9 0 NPN1
+X_Q2 N_14 4 N_10 0 NPN1
+R_R15 2 N_8 RB 12.1K
+X_Q12 2 N_2 N_16 0 NPN1
+X_Q13 N_16 N_17 N_15 0 NPN1
+R_R3 N_16 N_18 RB 470
+R_R5 N_1 N_17 RB 5.53K
+X_Q6 N_18 N_15 N_14 0 NPN1
+X_Q15 N_19 N_8 N_20 0 NPN1
+X_Q16 N_19 N_20 N_21 0 NPN1
+R_R13 N_17 N_3 RB 1.4K
+R_R16 N_22 N_23 RB 45
+X_Q9 1 N_24 N_23 0 NPN1
+R_R19 N_24 N_19 2.8K
+R_R18 N_25 N_19 2.8K
+X_Q8 8 N_25 N_22 0 NPN1
+R_R20 N_22 N_19 200
+R_R21 N_23 N_19 200
+X_Q7 2 N_26 N_25 0 NPN1
+R_R2 N_16 N_26 RB 470
+X_Q3 N_26 N_15 N_13 0 NPN1
+X_Q10 2 N_18 N_24 0 NPN1
+R_R1 5 N_12 RB 70
+R_R17 N_21 3 RB 200
+C_C10 3 2 {CP2P}
+C_C11 4 3 {CP2P}
+C_C13 6 5 {CP2P}
+C_C14 3 6 {CP2P}
+C_C12 5 4 {CP2P/2}
+C_C9 2 1 {CP2P}
+C_C8 3 8 {CGND}
+C_C16 8 1 {CP2P/2}
+C_C15 8 3 {CP2P}
+R_RNOF 3 7 1G
+C_C1 3 1 {CGND}
+C_C5 3 5 {CGND}
+C_C4 3 4 {CGND}
+C_C3 3 7 {CGND}
+R_R11 N_10 3 RB 1.1K
+R_R23 N_11 3 RB 8.4K
+C_C2 3 2 {CGND}
+R_R10 N_9 3 RB 1.1K
+X_Q18 N_5 N_5 3 0 NPN1
+C_C6 3 6 {CGND}
+C_C7 7 3 {CGND}
+X_Q19 N_7 N_7 3 0 NPN1
+.ENDS MC1350
+
+.SUBCKT NPN1 1 2 3 4
+Q1 5 2 3 4 N1
+Q2 4 5 2 4 P1
+D1 2 3 DZ
+D2 4 5 DCS
+R1 1 5 50
+.ENDS NPN1
+
+.MODEL N1 NPN(
++ IS=5E-16 BF=220 BR=0.7 NR=1 ISE=3.5E-16 IKF=3E-3 IKR=3E-2
++ NE=1.4 NC=0.8 VAF=60 VAR=7 RC=15 RE=2 RB=200 RBM=100 IRB=3E-4
++ XTB=1.17 XTI=2.2 EG=1.235 TF=69.09E-12 TR=9E-9 XTF=0.3 VTF=6
++ ITF=5E-5 CJE=0.105E-12 MJE=0.8 VJE=0.8 ISC=1E-15 KF=2E-13 AF=1.4
++)
+.MODEL P1 PNP(IS=1E-15 BF=100 BR=.01 CJE=0.14E-12)
+.MODEL DZ D(IS=1E-16 RS=250 BV=5.9 TBV1=1.8E-4 VJ=.6 M=0.5
++ IBV=10u EG=1.11 XTI=3 N=1.75)
+.MODEL DCS D(IS=1E-17 CJO=0.7E-12)
+.MODEL RB RES(R=1 TC1=1.033E-3 TC2=6.67E-6)

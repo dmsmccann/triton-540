@@ -1,0 +1,40 @@
+* Motorola/onsemi MPN3404 RF PIN diode -- empirical two-terminal model.
+*
+* External subcircuit order:
+*   1 = anode, 2 = cathode
+*
+* Manufacturer-data anchors:
+*   Reverse breakdown:                    20 V minimum
+*   Total capacitance at 15 V, 1 MHz:    1.3 pF typical, 2.0 pF maximum
+*   RF series resistance at 10 mA:       0.7 ohm typical, 0.85 ohm maximum
+*   TO-92 package series inductance:      6 nH typical (1978 Motorola data)
+*
+* The 4 mV/I conductivity law plus a 0.3 ohm floor reproduces 0.7 ohm at
+* 10 mA and gives reasonable PIN-diode resistance scaling below that point.
+* The 0.5 us current average is an engineering choice: it lets the diode
+* respond to a noise-blanking pulse without following each 9 MHz RF cycle.
+* Carrier lifetime, low-current resistance, and pulse response are not
+* published for this part and require hardware validation.
+*
+* This is not a Motorola/onsemi factory SPICE model.  It is intended to show
+* switching and blanking trends at 9 MHz, not calibrated noise, distortion,
+* temperature behavior, or production spread.
+*
+*                 A K
+.SUBCKT MPN3404  1 2
+
+LPKG 1 AINT 6n
+DCORE AINT N1 MPN3404_CORE
+.MODEL MPN3404_CORE D(
++ IS=1n N=1.7 RS=0.2
++ CJO=4.8p VJ=0.7 M=0.45 FC=0.5
++ TT=100n BV=20 IBV=10u
++)
+
+VSENSE N1 N2 0
+BIMON ICTRL 0 V={max(I(VSENSE),0)}
+RCTRL ICTRL IAVG 1k
+CCTRL IAVG 0 500p
+RRF N2 2 R={max(0.3,4m/max(V(IAVG),1n))}
+
+.ENDS MPN3404

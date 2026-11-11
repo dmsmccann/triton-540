@@ -10,6 +10,7 @@
 		(rev "0.1")
 		(company "Ten-Tec Triton IV Model 540")
 		(comment 1 "Reconstructed from manual pp. 3-18 / 3-19")
+		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols
 		(symbol "Audio_80274:2N4870"

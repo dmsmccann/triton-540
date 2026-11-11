@@ -1,0 +1,73 @@
+* Standalone syntax and nominal-behavior checks for Model 249 models.
+.include ../models/MC1350.sub
+.include ../models/MPN3404.sub
+.include ../models/MPS6514.lib
+.include ../models/2N5087.lib
+.include ../models/249_noise_blanker_magnetics.lib
+
+* MC1350 at 12 V with 100 ohm DC collector feeds, matching the board order
+* of magnitude.  Pin 5 uses the data-sheet maximum-gain 5.1 kohm return.
+VMC mc_vcc 0 12
+RMC1 mc_vcc mc_out1 100
+RMC8 mc_vcc mc_out8 100
+RAGC mc_agc 0 5.1k
+VMCIN mc_src 0 DC 0 AC 1m
+CMC6 mc_src mc_in6 1n
+CMC4 0 mc_in4 1n
+XMC mc_out1 mc_vcc 0 mc_in4 mc_agc mc_in6 0 mc_out8 MC1350
+
+* Representative discrete-transistor bias checks.
+VQN qn_c 0 10
+IBQN 0 qn_b DC 10u
+QN qn_c qn_b 0 MPS6514
+VQP 0 qp_c 10
+IBQP qp_b 0 DC 10u
+QP qp_c qp_b 0 2N5087
+
+* MPN3404 forward-bias points.  The 1 A AC current makes voltage magnitude
+* equal impedance magnitude in ohms.
+I100U 0 d100u DC 100u AC 1
+XD100U d100u 0 MPN3404
+I1M 0 d1m DC 1m AC 1
+XD1M d1m 0 MPN3404
+I10M 0 d10m DC 10m AC 1
+XD10M d10m 0 MPN3404
+
+* End-to-end magnetic impedance and transformer-ratio checks.
+IL1 0 l1a AC 1
+XL1 l1a 0 l1ct NB249_L1_CT
+R1CT l1ct 0 1G
+IL2 0 l2a AC 1
+XL2 l2a 0 l2ct NB249_L2_CT
+R2CT l2ct 0 1G
+VT1 t1a 0 AC 1
+XT1 t1a 0 t1sa t1ct t1sb NB249_T1
+RT1A t1sa t1ct 1Meg
+RT1B t1ct t1sb 1Meg
+RT1CT t1ct 0 1G
+
+.control
+set noaskquit
+op
+let mc_iout = i(VMC) - (v(mc_out1)-v(mc_vcc))/100 - (v(mc_out8)-v(mc_vcc))/100
+let mps6514_ic = -i(VQN)
+let mps6514_beta = mps6514_ic/10u
+let q2n5087_ic = i(VQP)
+let q2n5087_beta = q2n5087_ic/10u
+print v(mc_out1) v(mc_out8) v(mc_in4) v(mc_in6) i(VMC)
+print mps6514_ic mps6514_beta q2n5087_ic q2n5087_beta
+print v(d100u) v(d1m) v(d10m)
+ac lin 1 9Meg 9Meg
+let mc_gain_diff = mag((v(mc_out1)-v(mc_out8))/v(mc_src))
+let z_mpn_100u = mag(v(d100u))
+let z_mpn_1m = mag(v(d1m))
+let z_mpn_10m = mag(v(d10m))
+let z_l1_e2e = mag(v(l1a))
+let z_l2_e2e = mag(v(l2a))
+let t1_ratio = mag(v(t1sa)-v(t1sb))
+print mc_gain_diff z_mpn_100u z_mpn_1m z_mpn_10m
+print z_l1_e2e z_l2_e2e t1_ratio
+quit
+.endc
+
+.end

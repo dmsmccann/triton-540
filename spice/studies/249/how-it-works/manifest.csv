@@ -1,0 +1,6 @@
+path,description
+README.md,"Method, results, assessment, limitations, and bench proposal"
+data/249-operation-summary.csv,Principal numerical results
+data/249-operation-timeline.csv,Disabled/enabled pin and control waveforms
+figures/249-normal-signal.png,Normal 9 MHz pin waveforms and control voltages
+figures/249-impulse-blanking.png,Enabled/disabled response to the IF burst

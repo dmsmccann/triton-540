@@ -1,0 +1,50 @@
+* Model 249 noise-blanker magnetic starting models.
+*
+* The 1976 drawing documents center taps and winding topology but not
+* inductance, Q, resistance, coupling, or parasitic capacitance.  Every
+* numeric value below is calculated or inferred for 9 MHz operation and is
+* not a Ten-Tec factory specification.
+
+* L49-1: diode-gate/output winding.  Two 0.80 uH equal-turn sections with
+* K=0.98 give about 3.17 uH end-to-end.  With C49-3=82 pF plus roughly
+* 16 pF of diode, winding, and board capacitance, the starting resonance is
+* near 9 MHz.  KiCad pin order: end A, end B, center tap.
+.SUBCKT NB249_L1_CT 1 2 3
+RA 1 NA 0.8
+LA NA 3 0.80u
+LB 3 NB 0.80u
+RB NB 2 0.8
+KAB LA LB 0.98
+CP 1 2 2p
+.ENDS NB249_L1_CT
+
+* L49-2: MC1350 differential-output tank.  Two 1.60 uH sections with
+* K=0.98 give about 6.34 uH end-to-end.  It resonates at 9 MHz with about
+* 49 pF total, within C49-18's 5-60 pF range after device/board capacitance.
+* KiCad pin order: output 1, output 8, center-tap supply.
+.SUBCKT NB249_L2_CT 1 2 3
+RA 1 NA 1.5
+LA NA 3 1.60u
+LB 3 NB 1.60u
+RB NB 2 1.5
+KAB LA LB 0.98
+CP 1 2 2p
+.ENDS NB249_L2_CT
+
+* T49-1: pulse transformer with one primary and a center-tapped secondary.
+* A 6.40 uH primary and 1.60 uH secondary halves make the full secondary
+* nominally 1:1 with the primary.  Pin order: primary A/B, secondary A/CT/B.
+.SUBCKT NB249_T1 1 2 3 4 5
+RP1 1 NP1 1.5
+LP NP1 NP2 6.40u
+RP2 NP2 2 1.5
+RS1 3 NS1 0.8
+LS1 NS1 4 1.60u
+LS2 4 NS2 1.60u
+RS2 NS2 5 0.8
+KPA LP LS1 0.98
+KPB LP LS2 0.98
+KSS LS1 LS2 0.98
+CPP 1 2 2p
+CPS 1 3 1p
+.ENDS NB249_T1

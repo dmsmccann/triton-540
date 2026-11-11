@@ -1,5 +1,62 @@
 # SPICE model reference
 
+## Model 249 noise-blanker models
+
+The Model 249 sheet now uses project-local models for every active device and
+all three magnetic parts:
+
+| References | Model file | Evidence status |
+|:--|:--|:--|
+| Q49-1 through Q49-5 | `MPS6514.lib` | Located Fairchild-attributed model from the user's older library |
+| Q49-6 | `2N5087.lib` | Located Fairchild-attributed model from the user's older library |
+| IC49-1 | `MC1350.sub` | Repaired legacy transistor-level macro-model |
+| D49-1, D49-2 | `MPN3404.sub` | Project-created empirical PIN-diode model |
+| L49-1, L49-2, T49-1 | `249_noise_blanker_magnetics.lib` | Calculated and inferred 9 MHz starting models |
+
+The Model 249 MPS6514 symbol uses physical pins 1=E, 2=B, 3=C, while a SPICE
+BJT instance is emitted in C-B-E order. Its placed-symbol mapping is therefore
+`1=3 2=2 3=1`. Q49-6's 2N5087 symbol is already C-B-E and remains one-to-one.
+The MPN3404 subcircuit order is anode, cathode; the stock diode symbols use
+the corresponding `2=1 1=2` mapping.
+
+The earlier MC1350 file left physical output pins 1 and 8 connected only to
+package capacitances because its two output-transistor collectors were tied
+to supply pin 2. `MC1350.sub` reconnects those collectors to pins 1 and 8,
+matching the Motorola internal schematic and its externally supplied,
+center-tapped collector load. Unsupported statistical modifiers were removed;
+nominal transistor values were otherwise retained. The standalone fixture
+draws 15.56 mA at 12 V, compared with the data sheet's 14 mA typical and
+17 mA maximum, and produces a nonzero differential 9 MHz output.
+
+`MPN3404.sub` is anchored to the published 20 V minimum breakdown,
+1.3 pF typical capacitance at 15 V and 1 MHz, and 0.7 ohm typical RF
+resistance at 10 mA. Its current-dependent resistance and 0.5 us bias-averaging
+time are engineering fits, not a recovered Motorola/onsemi compact model.
+
+The manual supplies the magnetic topology but not inductance, loss, coupling,
+or parasitic capacitance. The L49-1 and L49-2 defaults are calculated to place
+their external tuning networks near 9 MHz. T49-1 starts with a nominal 1:1
+primary-to-full-secondary turns ratio. These values may show circuit operation,
+but absolute selectivity, pulse amplitude, and blanking depth remain unverified
+until measured on an original board.
+
+`../validation/249_noise_blanker_models_validation.cir` checks model syntax,
+device bias, the MPN3404 impedance trend at 9 MHz, both center-tapped
+inductors, and the T49-1 voltage ratio. It is a component-model fixture, not
+a full-board simulation or bench measurement.
+
+### References
+
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, Model 249 schematic and
+  noise-blanker description.
+- `datasheets/Motorola_MC1350_MC1350-D_1996.pdf`: package pins, internal
+  schematic, collector-load connection, supply current, and gain data.
+- `datasheets/onsemi_MPN3404_MPN3404-D_2006.pdf`: breakdown, capacitance,
+  RF resistance, and package.
+- `datasheets/onsemi_2N5087_2N5087-D_2013.pdf`: PNP ratings and pinout.
+- `datasheets/Motorola_MPS6514_DeviceData_undated.pdf`: ratings and E-B-C
+  package pinout.
+
 ## 80274 audio-power-amplifier discrete models
 
 `2N4870.sub` contains the located `UN4870` unijunction-transistor model used
