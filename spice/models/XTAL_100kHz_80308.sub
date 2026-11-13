@@ -1,0 +1,15 @@
+* 100 kHz crystal model for Ten-Tec assembly 80308
+*
+* The manual documents only the nominal frequency.  Rm, Cm, Lm, and C0 below
+* are explicitly estimated starting values for a low-frequency crystal and must
+* be replaced or fitted when the original crystal can be measured.
+* The fitted starting values below reproduce sustained oscillation with the
+* documented Q1 circuit and let C1 trim through 100 kHz.  The 99.7908 kHz
+* series resonance is below the loaded oscillator frequency, as expected; all
+* motional values are operational fits, not measurements of the original Y1.
+.subckt XTAL_100kHz_80308 1 2 params: Rm=500 Lm=25.4366 Cm=100f C0=2p
+Rmot 1 XM {Rm}
+Lmot XM XN {Lm}
+Cmot XN 2 {Cm}
+Cshunt 1 2 {C0}
+.ends XTAL_100kHz_80308

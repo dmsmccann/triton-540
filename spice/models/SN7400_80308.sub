@@ -1,0 +1,45 @@
+* SN7400 behavioral model for Ten-Tec assembly 80308
+* Pin order follows the 14-pin package:
+* 1A 1B 1Y 2A 2B 2Y GND 3Y 3A 3B 4Y 4A 4B VCC
+*
+* This is a functional, fitted model, not a Texas Instruments transistor-level
+* macromodel.  It preserves TTL thresholds, finite output impedance, propagation
+* delay, floating-input-high behavior, and approximate package supply current.
+.subckt SN7400_80308 1A 1B 1Y 2A 2B 2Y GND 3Y 3A 3B 4Y 4A 4B VCC
+
+* Unconnected TTL inputs resolve high.  The resistance is a functional stand-in
+* for the input transistor bias network; it is not a measured IC parameter.
+R1A 1A VCC 50k
+R1B 1B VCC 50k
+R2A 2A VCC 50k
+R2B 2B VCC 50k
+R3A 3A VCC 50k
+R3B 3B VCC 50k
+R4A 4A VCC 50k
+R4B 4B VCC 50k
+
+* Smooth 1.4 V TTL decision level.  The internal 10 ns pole prevents ideal
+* discontinuities while remaining negligible beside the calibrator timing.
+B1T N1T GND V={max(V(VCC,GND),0)*(0.026786+0.598214*(1-(0.5*(1+tanh((V(1A,GND)-1.4)/0.08)))*(0.5*(1+tanh((V(1B,GND)-1.4)/0.08)))))}
+R1D N1T N1D 1
+C1D N1D GND 10n
+B1O N1D 1Y I={V(N1D,1Y)/(35+1e9/(1+exp((V(VCC,GND)-1)/0.1)))}
+
+B2T N2T GND V={max(V(VCC,GND),0)*(0.026786+0.598214*(1-(0.5*(1+tanh((V(2A,GND)-1.4)/0.08)))*(0.5*(1+tanh((V(2B,GND)-1.4)/0.08)))))}
+R2D N2T N2D 1
+C2D N2D GND 10n
+B2O N2D 2Y I={V(N2D,2Y)/(35+1e9/(1+exp((V(VCC,GND)-1)/0.1)))}
+
+B3T N3T GND V={max(V(VCC,GND),0)*(0.026786+0.598214*(1-(0.5*(1+tanh((V(3A,GND)-1.4)/0.08)))*(0.5*(1+tanh((V(3B,GND)-1.4)/0.08)))))}
+R3D N3T N3D 1
+C3D N3D GND 10n
+B3O N3D 3Y I={V(N3D,3Y)/(35+1e9/(1+exp((V(VCC,GND)-1)/0.1)))}
+
+B4T N4T GND V={max(V(VCC,GND),0)*(0.026786+0.598214*(1-(0.5*(1+tanh((V(4A,GND)-1.4)/0.08)))*(0.5*(1+tanh((V(4B,GND)-1.4)/0.08)))))}
+R4D N4T N4D 1
+C4D N4D GND 10n
+B4O N4D 4Y I={V(N4D,4Y)/(35+1e9/(1+exp((V(VCC,GND)-1)/0.1)))}
+
+* Typical-order package current so the board's 5.6 V zener regulator is loaded.
+BIcc VCC GND I={12m*tanh(max(V(VCC,GND),0)/0.5)}
+.ends SN7400_80308

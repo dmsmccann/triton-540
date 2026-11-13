@@ -5,6 +5,35 @@ historical components used in the Ten-Tec Triton IV Model 540 reconstruction.
 KiCad symbols should point to these local files so the design does not depend
 on external links remaining available.
 
+## 80308 crystal calibrator
+
+These Texas Instruments device sheets support IC-1 and IC-2 on manual PDF
+page 37 / printed page 3-21.  Their pin tables are the authority for the custom
+symbol pin numbers; the symbol graphics deliberately follow Ten-Tec's compact
+1977 drawing instead of TI's modern logic-symbol style.
+
+### SN7400 (IC-1)
+
+- File: [TexasInstruments_SN7400_SDLS025D_2017.pdf](TexasInstruments_SN7400_SDLS025D_2017.pdf)
+- Manufacturer: Texas Instruments
+- Document: *SNx400, SNx4LS00, and SNx4S00 Quadruple 2-Input Positive-NAND Gates*, SDLS025D
+- Original publication: December 1983; revised May 2017
+- Extracted pages: Source PDF pages 1 through 8, including the SN7400 function, 14-pin top-view pinout, pin table, ratings, operating conditions, and electrical characteristics
+- Used by: assembly 80308, IC-1
+- Archive source: <https://www.ti.com/lit/ds/symlink/sn7400.pdf>
+- Archived file SHA-256: `F14B6E12EE4EC2E4747F368A64996F36B7938D9229F27CC9AFFA7FC1C222F54B`
+
+### SN7476 (IC-2)
+
+- File: [TexasInstruments_SN7476_SDLS121_1988.pdf](TexasInstruments_SN7476_SDLS121_1988.pdf)
+- Manufacturer: Texas Instruments
+- Document: *Dual J-K Flip-Flops With Preset and Clear*, SDLS121
+- Original publication: December 1983; revised March 1988
+- Extracted pages: Source PDF pages 1 through 6, the complete device sheet including the SN7476 N-package top-view pinout, function table, ratings, operating conditions, and electrical characteristics
+- Used by: assembly 80308, IC-2
+- Archive source: <https://www.ti.com/lit/ds/symlink/sn5476.pdf>
+- Archived file SHA-256: `9B735D82BEC19D9AAFD87420BDBD82FC6C475281F6D70C7F770E0AF13895093B`
+
 ## RCA 40823
 
 - Used by: `80166` receiver RF amplifier (Q1) and `80279` 9 MHz IF

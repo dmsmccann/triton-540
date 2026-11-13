@@ -1,0 +1,4 @@
+* 1N752A 5.6 V zener model for Ten-Tec assembly 80308
+* Functional fitted model.  Manufacturer of the installed part is undocumented.
+* BV is documented by the 1N752A designation; dynamic parameters are estimates.
+.model 1N752A_80308 D(Is=5n Rs=4 N=1.5 Cjo=110p M=0.33 Vj=0.75 Bv=5.6 Ibv=5m Tt=50n)

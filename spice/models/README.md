@@ -816,3 +816,19 @@ The model demonstrates frequency conversion and selection but does not match
 the manual's absolute 200–300 mV alignment range on every band. It therefore
 does not validate oscillator amplitude, phase noise, startup margin, pulling,
 transformer loss/turns ratio, or production output level.
+
+# Assembly 80308 crystal calibrator
+
+- `SN7400_80308.sub` is a functional TTL NAND model with a 1.4 V threshold,
+  finite delay/output resistance, floating-input-high bias, and estimated package
+  current.  It is not a manufacturer transistor-level macromodel.
+- `SN7476_80308.sub` uses ngspice XSPICE primitives to reproduce the two
+  falling-edge J-K flip-flops, active-low preset/clear inputs, TTL levels,
+  floating-input-high behavior, and estimated package current.
+- `XTAL_100kHz_80308.sub` is a fitted 100 kHz motional crystal model.  Only the
+  frequency is documented; its motional values are an operational fit that
+  sustains the documented Q1 oscillator and remain bench-measurement targets.
+- `1N752A_80308.lib` is a fitted 5.6 V zener model.  The breakdown voltage follows
+  the documented part number; dynamic parameters are estimates.
+- `validate_80308_models.cir` is the ngspice regression fixture for NAND truth
+  states, both divider stages, zener voltage, and crystal resonance.

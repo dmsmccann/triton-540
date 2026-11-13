@@ -1,0 +1,13 @@
+artifact,type,provenance,description
+data/oscillator-tuning.csv,transient summary,ngspice 46 staged circuit checked against fresh KiCad export,C08-1 sweep with oscillator frequency and amplitude
+data/oscillator-waveform.csv,transient waveform,ngspice 46 staged circuit checked against fresh KiCad export,Final 200 microseconds of Q1 oscillator
+data/slow-gate-summary.csv,transient summary,ngspice 46 staged circuit checked against fresh KiCad export,R08-6 sweep with pulse rate and run-stop state
+data/slow-gate-waveform.csv,transient waveform,ngspice 46 staged circuit checked against fresh KiCad export,Representative slow multivibrator timing nodes
+data/output-waveforms.csv,transient waveform,ngspice 46 staged circuit checked against fresh KiCad export,OUT and divider nodes in 25 and 100 kHz modes
+data/regulator-sweep.csv,DC sweep,ngspice 46 staged circuit checked against fresh KiCad export,Logic rail and zener current versus switched supply
+data/measurements.csv,summary,calculated from retained ngspice results,Board operation measurements used by 80308.md
+figures/oscillator-100khz.png,figure,generated from retained transient data,Oscillator collector and logic-drive waveforms
+figures/c1-frequency-adjustment.png,figure,generated from retained transient data,C08-1 frequency adjustment
+figures/slow-gate-envelope.png,figure,generated from retained transient data,Slow multivibrator timing and gate enable
+figures/output-modes.png,figure,generated from retained transient data,Normal and grounded 25/100 output modes
+figures/logic-regulator.png,figure,generated from retained DC sweep,Logic regulation and zener current

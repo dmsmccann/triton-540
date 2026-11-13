@@ -1,0 +1,51 @@
+* SN7476 behavioral model for Ten-Tec assembly 80308
+* Pin order follows the 16-pin package:
+* 1CLK 1PREn 1CLRn 1J VCC 2CLK 2PREn 2CLRn 2J 2Qbar 2Q 2K GND 1Qbar 1Q 1K
+*
+* Functional XSPICE model, not a Texas Instruments transistor-level model.
+* The physical SN7476 changes state on the high-to-low clock transition; each
+* external clock is inverted before the rising-edge XSPICE J-K primitive.
+.subckt SN7476_80308 1CLK 1PREN 1CLRN 1J VCC 2CLK 2PREN 2CLRN 2J 2QB 2Q 2K GND 1QB 1Q 1K
+
+* Original TTL inputs were intentionally allowed to float high on assembly 80308.
+R1CLK 1CLK VCC 50k
+R1PRE 1PREN VCC 50k
+R1CLR 1CLRN VCC 50k
+R1J 1J VCC 50k
+R1K 1K VCC 50k
+R2CLK 2CLK VCC 50k
+R2PRE 2PREN VCC 50k
+R2CLR 2CLRN VCC 50k
+R2J 2J VCC 50k
+R2K 2K VCC 50k
+
+AADC [1CLK 1PREN 1CLRN 1J 1K 2CLK 2PREN 2CLRN 2J 2K] [D1CLK D1PREN D1CLRN D1J D1K D2CLK D2PREN D2CLRN D2J D2K] ADC_TTL_80308
+.model ADC_TTL_80308 adc_bridge(in_low=0.8 in_high=2.0 rise_delay=2n fall_delay=2n)
+
+* Active-low preset and clear become active-high set and reset.
+A1CLK D1CLK D1CLKF INV_80308
+A1PRE D1PREN D1SET INV_80308
+A1CLR D1CLRN D1RESET INV_80308
+A2CLK D2CLK D2CLKF INV_80308
+A2PRE D2PREN D2SET INV_80308
+A2CLR D2CLRN D2RESET INV_80308
+.model INV_80308 d_inverter(rise_delay=2n fall_delay=2n input_load=5p)
+
+* J K CLK SET RESET Q Qbar
+AJK1 D1J D1K D1CLKF D1SET D1RESET D1Q D1QB JK_80308
+AJK2 D2J D2K D2CLKF D2SET D2RESET D2Q D2QB JK_80308
+.model JK_80308 d_jkff(clk_delay=10n set_delay=15n reset_delay=15n ic=0 rise_delay=8n fall_delay=8n)
+
+ADAC [D2QB D2Q D1QB D1Q] [N2QB N2Q N1QB N1Q] DAC_TTL_80308
+.model DAC_TTL_80308 dac_bridge(out_low=0.15 out_high=3.5 out_undef=1.4 input_load=5p t_rise=10n t_fall=8n)
+
+* Scale the DAC levels with package supply so an unpowered calibrator cannot
+* drive the OUT or DEFEAT wiring through an ideal model source.
+B2QB 2QB GND V={V(N2QB,GND)*min(max(V(VCC,GND)/5.6,0),1)}
+B2Q  2Q  GND V={V(N2Q,GND)*min(max(V(VCC,GND)/5.6,0),1)}
+B1QB 1QB GND V={V(N1QB,GND)*min(max(V(VCC,GND)/5.6,0),1)}
+B1Q  1Q  GND V={V(N1Q,GND)*min(max(V(VCC,GND)/5.6,0),1)}
+
+* Approximate package current, included to load the zener regulator realistically.
+BIcc VCC GND I={48m*tanh(max(V(VCC,GND),0)/0.5)}
+.ends SN7476_80308

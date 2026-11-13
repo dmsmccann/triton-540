@@ -1,0 +1,39 @@
+* Regression fixture for assembly 80308 behavioral models
+.include SN7400_80308.sub
+.include SN7476_80308.sub
+.include XTAL_100kHz_80308.sub
+.include 1N752A_80308.lib
+
+VCC VCC 0 5.6
+
+* Gate 1 receives the two-bit truth-table sequence.  Unused gates are held high.
+VA A 0 pulse(0 5 1u 1n 1n 2u 4u)
+VB B 0 pulse(0 5 2u 1n 1n 1u 2u)
+X7400 A B Y VCC VCC Y2 VCC Y3 VCC VCC Y4 VCC VCC VCC SN7400_80308
+
+* Both J and K inputs float intentionally, just as on the Ten-Tec board.  The
+* first Qbar clocks the second stage; PRE/CLR also float high (inactive).
+VCLK CLK 0 pulse(0 5 0 1n 1n 5u 10u)
+X7476 CLK PRE1 CLR1 J1 VCC QB1 PRE2 CLR2 J2 QB2 Q2 K2 0 QB1 Q1 K1 SN7476_80308
+
+* Basic zener operating point and crystal AC resonance smoke checks.
+VZ ZS 0 12
+RZ ZS ZK 1k
+DZ 0 ZK 1N752A_80308
+VAC XI 0 ac 1
+XXTAL XI XO XTAL_100kHz_80308
+RXL XO 0 1
+
+.control
+set noaskquit
+tran 20n 85u
+meas tran nand_00 find v(Y) at=0.5u
+meas tran nand_11 find v(Y) at=2.5u
+meas tran q1_after_1_fall find v(Q1) at=6u
+meas tran q2_after_1_q1_fall find v(Q2) at=16u
+meas tran zener_v find v(ZK) at=0.5u
+ac lin 5 99780 99800
+print mag(i(VAC))
+quit
+.endc
+.end
