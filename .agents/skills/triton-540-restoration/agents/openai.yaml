@@ -1,0 +1,4 @@
+interface:
+  display_name: "Triton 540 Restoration"
+  short_description: "Analyze and rebuild Triton 540 circuits"
+  default_prompt: "Use $triton-540-restoration to analyze this Triton 540 circuit and recommend an accurate KiCad implementation."

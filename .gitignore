@@ -15,8 +15,6 @@ bench/**/__pycache__/
 ~*.lck
 *-backups/
 
-# Local research sources not cleared for redistribution
-literature/
 
-# Local Codex project tooling
-.agents/
+
+
