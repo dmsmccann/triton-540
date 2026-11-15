@@ -53,7 +53,8 @@ symbol pin numbers; the symbol graphics deliberately follow Ten-Tec's compact
 
 ## MC1747 / MC1747C
 
-- Used by: `80279` AGC and audio preamplifier
+- Used by: `80279` AGC and audio preamplifier; assembly `80282`, IC-2
+  two-stage microphone amplifier
 - File: `MC1747_MC1747C_Motorola_1976.pdf`
 - Manufacturer: Motorola Semiconductor Products Inc.
 - Document: MC1747 / MC1747C dual operational amplifier, document DS 9254
@@ -90,8 +91,8 @@ lot or package revision fitted to this radio. No substitute parts are assigned.
 - Document: *MPS6512 through MPS6519 Amplifier Transistor*
 - Original publication: Undated device page; package supplement from 1991 DL126 Rev. 3
 - Extracted pages: Device printed page 2-204; appended package/style page 8-2 (PDF page 837) from 1991 DL126 Rev. 3. Style 1 is 1=E, 2=B, 3=C; the later case 29-04 outline is supplementary, while the device page specifies case 29-02
-- Used by: assembly 80274, Q74-3; Model 249 noise blanker,
-  Q49-1 through Q49-5
+- Used by: assembly 80274, Q74-3; assembly 80282, Q1 through Q3;
+  Model 249 noise blanker, Q49-1 through Q49-5
 - Archive source: <https://datasheet4u.com/pdf/1115234/MPS6514.pdf>
 - Package supplement source: <https://www.bitsavers.org/components/motorola/_dataBooks/1991_DL126r3_Motorola_Small-Signal_Transistors_FETs_and_Diodes.pdf>
 - Archived file SHA-256: E9A2791869ED3FDE04CC2622717A615A8F2C78B47AEB910D0CD93B5A73E7CB82
@@ -160,6 +161,20 @@ documented LM380N alternative with all 14 physical pins. Pins 9 and 13 are
 internal NCs; pins 3, 4, 5, 7, 10, 11 and 12 are grounded. The local symbol
 changes the drawing arrangement, not the pinout. The ULN2280B is noted as a
 manual alternative, not silently substituted or modeled.
+
+## 80282 SSB generator
+
+### CA3053 (IC-1)
+
+- File: [Harris_CA3053_File382.3_1996.pdf](Harris_CA3053_File382.3_1996.pdf)
+- Manufacturer: Harris Semiconductor
+- Document: *CA3028A, CA3028B, CA3053 Differential/Cascode Amplifiers for Commercial and Industrial Equipment from DC to 120 MHz*, File Number 382.3
+- Original publication: November 1996
+- Extracted pages: Complete 12-page manufacturer device document, including the CA3053 metal-can top-view pinout, common internal schematic, ratings, operating conditions, electrical characteristics, and package outline
+- Used by: assembly 80282, IC-1 balanced modulator; the Ten-Tec drawing identifies the device as CA3053 on manual PDF page 40 / printed page 3-24
+- Archive source: <https://datasheet.octopart.com/CA3053-Intersil-datasheet-180131636.pdf>
+- Archived file SHA-256: `2EDD7BAF67EACE529B8F6E6E4E72DBAE1999BF82A48505AF3F2AE1B3D85C5ECF`
+- Evidence note: This is later manufacturer literature, not proof of the production date or lot fitted by Ten-Tec; it explicitly covers the documented CA3053 and its package pinout.
 
 ## Model 249 noise blanker
 

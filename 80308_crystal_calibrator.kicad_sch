@@ -3818,11 +3818,61 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\SN7400_80308.sub" (at 223.52 76.2 0) (hide yes) (effects))
-		(property "Sim.Name" "SN7400_80308" (at 223.52 76.2 0) (hide yes) (effects))
-		(property "Sim.Device" "SUBCKT" (at 223.52 76.2 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14" (at 223.52 76.2 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "Functional TTL model; threshold, timing, output resistance, and supply current are fitted" (at 223.52 76.2 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\SN7400_80308.sub"
+			(at 223.52 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SN7400_80308"
+			(at 223.52 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 223.52 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14"
+			(at 223.52 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "Functional TTL model; threshold, timing, output resistance, and supply current are fitted"
+			(at 223.52 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1422")
 		)
@@ -3941,11 +3991,61 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\SN7476_80308.sub" (at 215.9 127 0) (hide yes) (effects))
-		(property "Sim.Name" "SN7476_80308" (at 215.9 127 0) (hide yes) (effects))
-		(property "Sim.Device" "SUBCKT" (at 215.9 127 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16" (at 215.9 127 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "Functional XSPICE TTL model; timing and supply current are fitted, not factory transistor-level data" (at 215.9 127 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\SN7476_80308.sub"
+			(at 215.9 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SN7476_80308"
+			(at 215.9 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 215.9 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16"
+			(at 215.9 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "Functional XSPICE TTL model; timing and supply current are fitted, not factory transistor-level data"
+			(at 215.9 127 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "10"
 			(uuid "9b4bd755-66e6-46aa-b986-caa0be8e0bc6")
 		)
@@ -4068,11 +4168,61 @@
 				)
 			)
 		)
-		(property "Sim.Device" "C" (at 68.58 76.2 0) (hide yes) (effects))
-		(property "Sim.Type" "=" (at 68.58 76.2 0) (hide yes) (effects))
-		(property "Sim.Params" "c=30p" (at 68.58 76.2 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=+ 2=-" (at 68.58 76.2 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "30 pF is the simulation starting point within the documented 5-60 pF adjustment range" (at 68.58 76.2 0) (hide yes) (effects))
+		(property "Sim.Device" "C"
+			(at 68.58 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "="
+			(at 68.58 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Params" "c=30p"
+			(at 68.58 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=+ 2=-"
+			(at 68.58 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "30 pF is the simulation starting point within the documented 5-60 pF adjustment range"
+			(at 68.58 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "2"
 			(uuid "36cb09a7-4c73-461b-890a-b9e18505b31e")
 		)
@@ -4273,58 +4423,108 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\SN7476_80308.sub" (at 161.29 121.92 0) (hide yes) (effects))
-		(property "Sim.Name" "SN7476_80308" (at 161.29 121.92 0) (hide yes) (effects))
-		(property "Sim.Device" "SUBCKT" (at 161.29 121.92 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16" (at 161.29 121.92 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "Functional XSPICE TTL model; timing and supply current are fitted, not factory transistor-level data" (at 161.29 121.92 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\SN7476_80308.sub"
+			(at 161.29 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SN7476_80308"
+			(at 161.29 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 161.29 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14 15=15 16=16"
+			(at 161.29 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "Functional XSPICE TTL model; timing and supply current are fitted, not factory transistor-level data"
+			(at 161.29 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "10"
-			(uuid "9b4bd755-66e6-46aa-b986-caa0be8e0bc6")
+			(uuid "9b4bd755-66e6-46aa-b986-caa0be8e0bc7")
 		)
 		(pin "2"
-			(uuid "d65ea48f-f684-4dde-94fe-79680d9f63a6")
+			(uuid "d65ea48f-f684-4dde-94fe-79680d9f63a7")
 		)
 		(pin "6"
-			(uuid "fd0d502b-c70b-4911-866f-92da10faa91b")
+			(uuid "fd0d502b-c70b-4911-866f-92da10faa91c")
 		)
 		(pin "4"
-			(uuid "0a6e2fe4-a4ac-445d-bd4b-4931ec8646b7")
+			(uuid "0a6e2fe4-a4ac-445d-bd4b-4931ec8646b8")
 		)
 		(pin "9"
-			(uuid "78d35059-8356-45cf-a765-7fb98d3dd74d")
+			(uuid "78d35059-8356-45cf-a765-7fb98d3dd74e")
 		)
 		(pin "3"
-			(uuid "67a116ed-6477-4268-9156-cd35103e36c8")
+			(uuid "67a116ed-6477-4268-9156-cd35103e36c9")
 		)
 		(pin "14"
-			(uuid "4385c7bd-fd2b-4602-8442-97fbe5061200")
+			(uuid "4385c7bd-fd2b-4602-8442-97fbe5061201")
 		)
 		(pin "8"
-			(uuid "d27c2c78-a36b-4ac7-9a17-6c5565f4edb3")
+			(uuid "d27c2c78-a36b-4ac7-9a17-6c5565f4edb4")
 		)
 		(pin "7"
-			(uuid "7e89e9c5-52ca-4b92-9e04-1e99285ef9cf")
+			(uuid "7e89e9c5-52ca-4b92-9e04-1e99285ef9d0")
 		)
 		(pin "12"
-			(uuid "702502ff-142e-4f0b-b6ad-6904b6020f0d")
+			(uuid "702502ff-142e-4f0b-b6ad-6904b6020f0e")
 		)
 		(pin "1"
-			(uuid "8759fbec-a51a-4859-8957-fbd63021adb4")
+			(uuid "8759fbec-a51a-4859-8957-fbd63021adb5")
 		)
 		(pin "15"
-			(uuid "a3033c55-2958-42e9-ad00-42c1a5914557")
+			(uuid "a3033c55-2958-42e9-ad00-42c1a5914558")
 		)
 		(pin "16"
-			(uuid "b9f4be75-dd71-461a-86fa-6d6dc1d16864")
+			(uuid "b9f4be75-dd71-461a-86fa-6d6dc1d16865")
 		)
 		(pin "11"
-			(uuid "c85ab8cd-58b4-42a1-95b4-a280ddf39016")
+			(uuid "c85ab8cd-58b4-42a1-95b4-a280ddf39017")
 		)
 		(pin "13"
-			(uuid "83662195-0ee9-414b-b96a-853dfca6c1af")
+			(uuid "83662195-0ee9-414b-b96a-853dfca6c1b0")
 		)
 		(pin "5"
-			(uuid "0a7d69fc-11f9-4329-94a4-5ed80b9ea42e")
+			(uuid "0a7d69fc-11f9-4329-94a4-5ed80b9ea42f")
 		)
 		(instances
 			(project "triton_540"
@@ -4637,52 +4837,102 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\SN7400_80308.sub" (at 181.61 76.2 0) (hide yes) (effects))
-		(property "Sim.Name" "SN7400_80308" (at 181.61 76.2 0) (hide yes) (effects))
-		(property "Sim.Device" "SUBCKT" (at 181.61 76.2 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14" (at 181.61 76.2 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "Functional TTL model; threshold, timing, output resistance, and supply current are fitted" (at 181.61 76.2 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\SN7400_80308.sub"
+			(at 181.61 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SN7400_80308"
+			(at 181.61 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 181.61 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14"
+			(at 181.61 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "Functional TTL model; threshold, timing, output resistance, and supply current are fitted"
+			(at 181.61 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
-			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1422")
+			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1423")
 		)
 		(pin "3"
-			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f33")
+			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f34")
 		)
 		(pin "5"
-			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a6")
+			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a7")
 		)
 		(pin "8"
-			(uuid "536eca5f-017b-404f-99b2-5229474098d2")
+			(uuid "536eca5f-017b-404f-99b2-5229474098d3")
 		)
 		(pin "2"
-			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25a")
+			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25b")
 		)
 		(pin "4"
-			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf1d")
+			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf1e")
 		)
 		(pin "6"
-			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d054")
+			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d055")
 		)
 		(pin "11"
-			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df6")
+			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df7")
 		)
 		(pin "9"
-			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5a8")
+			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5a9")
 		)
 		(pin "14"
-			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa71")
+			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa72")
 		)
 		(pin "7"
-			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b015")
+			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b016")
 		)
 		(pin "13"
-			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5fc")
+			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5fd")
 		)
 		(pin "12"
-			(uuid "b767b407-3ad5-4538-9b38-60aa87101b76")
+			(uuid "b767b407-3ad5-4538-9b38-60aa87101b77")
 		)
 		(pin "10"
-			(uuid "16fccaef-d582-4675-b753-02ee47c228c1")
+			(uuid "16fccaef-d582-4675-b753-02ee47c228c2")
 		)
 		(instances
 			(project "triton_540"
@@ -4920,46 +5170,46 @@
 			)
 		)
 		(pin "1"
-			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1422")
+			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1424")
 		)
 		(pin "3"
-			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f33")
+			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f35")
 		)
 		(pin "5"
-			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a6")
+			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a8")
 		)
 		(pin "8"
-			(uuid "536eca5f-017b-404f-99b2-5229474098d2")
+			(uuid "536eca5f-017b-404f-99b2-5229474098d4")
 		)
 		(pin "2"
-			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25a")
+			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25c")
 		)
 		(pin "4"
-			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf1d")
+			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf1f")
 		)
 		(pin "6"
-			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d054")
+			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d056")
 		)
 		(pin "11"
-			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df6")
+			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df8")
 		)
 		(pin "9"
-			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5a8")
+			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5aa")
 		)
 		(pin "14"
-			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa71")
+			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa73")
 		)
 		(pin "7"
-			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b015")
+			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b017")
 		)
 		(pin "13"
-			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5fc")
+			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5fe")
 		)
 		(pin "12"
-			(uuid "b767b407-3ad5-4538-9b38-60aa87101b76")
+			(uuid "b767b407-3ad5-4538-9b38-60aa87101b78")
 		)
 		(pin "10"
-			(uuid "16fccaef-d582-4675-b753-02ee47c228c1")
+			(uuid "16fccaef-d582-4675-b753-02ee47c228c3")
 		)
 		(instances
 			(project "triton_540"
@@ -5197,9 +5447,39 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\1N752A_80308.lib" (at 124.46 111.76 0) (hide yes) (effects))
-		(property "Sim.Name" "1N752A_80308" (at 124.46 111.76 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "5.6 V breakdown documented by part number; dynamic parameters are fitted estimates" (at 124.46 111.76 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\1N752A_80308.lib"
+			(at 124.46 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "1N752A_80308"
+			(at 124.46 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "5.6 V breakdown documented by part number; dynamic parameters are fitted estimates"
+			(at 124.46 111.76 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(property "Sim.Device" "D"
 			(at 124.46 111.76 0)
 			(hide yes)
@@ -5624,52 +5904,52 @@
 			)
 		)
 		(pin "10"
-			(uuid "9b4bd755-66e6-46aa-b986-caa0be8e0bc6")
+			(uuid "9b4bd755-66e6-46aa-b986-caa0be8e0bc8")
 		)
 		(pin "2"
-			(uuid "d65ea48f-f684-4dde-94fe-79680d9f63a6")
+			(uuid "d65ea48f-f684-4dde-94fe-79680d9f63a8")
 		)
 		(pin "6"
-			(uuid "fd0d502b-c70b-4911-866f-92da10faa91b")
+			(uuid "fd0d502b-c70b-4911-866f-92da10faa91d")
 		)
 		(pin "4"
-			(uuid "0a6e2fe4-a4ac-445d-bd4b-4931ec8646b7")
+			(uuid "0a6e2fe4-a4ac-445d-bd4b-4931ec8646b9")
 		)
 		(pin "9"
-			(uuid "78d35059-8356-45cf-a765-7fb98d3dd74d")
+			(uuid "78d35059-8356-45cf-a765-7fb98d3dd74f")
 		)
 		(pin "3"
-			(uuid "67a116ed-6477-4268-9156-cd35103e36c8")
+			(uuid "67a116ed-6477-4268-9156-cd35103e36ca")
 		)
 		(pin "14"
-			(uuid "4385c7bd-fd2b-4602-8442-97fbe5061200")
+			(uuid "4385c7bd-fd2b-4602-8442-97fbe5061202")
 		)
 		(pin "8"
-			(uuid "d27c2c78-a36b-4ac7-9a17-6c5565f4edb3")
+			(uuid "d27c2c78-a36b-4ac7-9a17-6c5565f4edb5")
 		)
 		(pin "7"
-			(uuid "7e89e9c5-52ca-4b92-9e04-1e99285ef9cf")
+			(uuid "7e89e9c5-52ca-4b92-9e04-1e99285ef9d1")
 		)
 		(pin "12"
-			(uuid "702502ff-142e-4f0b-b6ad-6904b6020f0d")
+			(uuid "702502ff-142e-4f0b-b6ad-6904b6020f0f")
 		)
 		(pin "1"
-			(uuid "8759fbec-a51a-4859-8957-fbd63021adb4")
+			(uuid "8759fbec-a51a-4859-8957-fbd63021adb6")
 		)
 		(pin "15"
-			(uuid "a3033c55-2958-42e9-ad00-42c1a5914557")
+			(uuid "a3033c55-2958-42e9-ad00-42c1a5914559")
 		)
 		(pin "16"
-			(uuid "b9f4be75-dd71-461a-86fa-6d6dc1d16864")
+			(uuid "b9f4be75-dd71-461a-86fa-6d6dc1d16866")
 		)
 		(pin "11"
-			(uuid "c85ab8cd-58b4-42a1-95b4-a280ddf39016")
+			(uuid "c85ab8cd-58b4-42a1-95b4-a280ddf39018")
 		)
 		(pin "13"
-			(uuid "83662195-0ee9-414b-b96a-853dfca6c1af")
+			(uuid "83662195-0ee9-414b-b96a-853dfca6c1b1")
 		)
 		(pin "5"
-			(uuid "0a7d69fc-11f9-4329-94a4-5ed80b9ea42e")
+			(uuid "0a7d69fc-11f9-4329-94a4-5ed80b9ea430")
 		)
 		(instances
 			(project "triton_540"
@@ -6385,11 +6665,61 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\XTAL_100kHz_80308.sub" (at 55.88 76.2 0) (hide yes) (effects))
-		(property "Sim.Name" "XTAL_100kHz_80308" (at 55.88 76.2 0) (hide yes) (effects))
-		(property "Sim.Device" "SUBCKT" (at 55.88 76.2 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=1 2=2" (at 55.88 76.2 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "100 kHz is documented; Rm, Lm, Cm, and C0 are fitted for operation and remain pending measurement" (at 55.88 76.2 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\XTAL_100kHz_80308.sub"
+			(at 55.88 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "XTAL_100kHz_80308"
+			(at 55.88 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 55.88 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2"
+			(at 55.88 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "100 kHz is documented; Rm, Lm, Cm, and C0 are fitted for operation and remain pending measurement"
+			(at 55.88 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "d9da7ef6-72d0-44a9-9a26-9418995b34af")
 		)
@@ -6710,52 +7040,102 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\SN7400_80308.sub" (at 147.32 121.92 0) (hide yes) (effects))
-		(property "Sim.Name" "SN7400_80308" (at 147.32 121.92 0) (hide yes) (effects))
-		(property "Sim.Device" "SUBCKT" (at 147.32 121.92 0) (hide yes) (effects))
-		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14" (at 147.32 121.92 0) (hide yes) (effects))
-		(property "Simulation_Model_Status" "Functional TTL model; threshold, timing, output resistance, and supply current are fitted" (at 147.32 121.92 0) (hide yes) (effects))
+		(property "Sim.Library" "spice\\models\\SN7400_80308.sub"
+			(at 147.32 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SN7400_80308"
+			(at 147.32 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 147.32 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8 9=9 10=10 11=11 12=12 13=13 14=14"
+			(at 147.32 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Simulation_Model_Status" "Functional TTL model; threshold, timing, output resistance, and supply current are fitted"
+			(at 147.32 121.92 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
-			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1422")
+			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1425")
 		)
 		(pin "3"
-			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f33")
+			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f36")
 		)
 		(pin "5"
-			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a6")
+			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a9")
 		)
 		(pin "8"
-			(uuid "536eca5f-017b-404f-99b2-5229474098d2")
+			(uuid "536eca5f-017b-404f-99b2-5229474098d5")
 		)
 		(pin "2"
-			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25a")
+			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25d")
 		)
 		(pin "4"
-			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf1d")
+			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf20")
 		)
 		(pin "6"
-			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d054")
+			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d057")
 		)
 		(pin "11"
-			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df6")
+			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df9")
 		)
 		(pin "9"
-			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5a8")
+			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5ab")
 		)
 		(pin "14"
-			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa71")
+			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa74")
 		)
 		(pin "7"
-			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b015")
+			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b018")
 		)
 		(pin "13"
-			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5fc")
+			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5ff")
 		)
 		(pin "12"
-			(uuid "b767b407-3ad5-4538-9b38-60aa87101b76")
+			(uuid "b767b407-3ad5-4538-9b38-60aa87101b79")
 		)
 		(pin "10"
-			(uuid "16fccaef-d582-4675-b753-02ee47c228c1")
+			(uuid "16fccaef-d582-4675-b753-02ee47c228c4")
 		)
 		(instances
 			(project "triton_540"
@@ -7269,46 +7649,46 @@
 			)
 		)
 		(pin "1"
-			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1422")
+			(uuid "5854ff5f-463c-44f2-b4c2-0ef77c8e1426")
 		)
 		(pin "3"
-			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f33")
+			(uuid "a35dc3ff-3a4c-4ef9-8228-c9e782326f37")
 		)
 		(pin "5"
-			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212a6")
+			(uuid "a2ac074f-1e62-4e1c-a425-7adf6bd212aa")
 		)
 		(pin "8"
-			(uuid "536eca5f-017b-404f-99b2-5229474098d2")
+			(uuid "536eca5f-017b-404f-99b2-5229474098d6")
 		)
 		(pin "2"
-			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25a")
+			(uuid "43859978-fb1c-48f2-a8de-1f4e0bcfe25e")
 		)
 		(pin "4"
-			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf1d")
+			(uuid "20ca9e96-921f-49cd-b79a-e9e9d1a6cf21")
 		)
 		(pin "6"
-			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d054")
+			(uuid "01efb4dd-315f-405b-a73d-f9c2f478d058")
 		)
 		(pin "11"
-			(uuid "67d1fc75-524a-4b23-89f5-8db423f12df6")
+			(uuid "67d1fc75-524a-4b23-89f5-8db423f12dfa")
 		)
 		(pin "9"
-			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5a8")
+			(uuid "fea6ce17-20cb-4a90-b10b-cb342a49a5ac")
 		)
 		(pin "14"
-			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa71")
+			(uuid "2c9222b1-0b64-4b01-9a20-b30557f8fa75")
 		)
 		(pin "7"
-			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b015")
+			(uuid "ebf8ed9c-099b-4b97-9131-3825cef7b019")
 		)
 		(pin "13"
-			(uuid "ca899222-d787-4554-a9da-aa8fcb32b5fc")
+			(uuid "ca899222-d787-4554-a9da-aa8fcb32b600")
 		)
 		(pin "12"
-			(uuid "b767b407-3ad5-4538-9b38-60aa87101b76")
+			(uuid "b767b407-3ad5-4538-9b38-60aa87101b7a")
 		)
 		(pin "10"
-			(uuid "16fccaef-d582-4675-b753-02ee47c228c1")
+			(uuid "16fccaef-d582-4675-b753-02ee47c228c5")
 		)
 		(instances
 			(project "triton_540"
