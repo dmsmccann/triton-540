@@ -773,6 +773,50 @@
 				)
 			)
 		)
+		(property "Sim.Library" "spice\\models\\CA3053.sub"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "CA3053"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5 6=6 7=7 8=8"
+			(at 0 0 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(symbol "CA3053_1_1"
 			(rectangle
 				(start -2.54 5.08)
@@ -4026,6 +4070,68 @@
 					)
 				)
 			)
+		)
+		(embedded_fonts no)
+	)
+	(symbol "T1_80282_SPICE"
+		(pin_numbers (hide yes))
+		(pin_names (hide yes))
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(duplicate_pin_numbers_are_jumpers no)
+		(property "Reference" "T"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Value" "SSB80282_T1"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Footprint" ""
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Description" "Simulation-only adapter for the 80282 T1 coupled-winding model"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Sim.Name" "SSB80282_T1"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5"
+			(at 0 0 0)
+			(hide yes)
+			(effects (font (size 1.27 1.27)))
+		)
+		(symbol "T1_80282_SPICE_1_1"
+			(pin passive line (at -3.81 0 0) (length 0) (name "P1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 3.81 0 180) (length 0) (name "P2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 0 -2.54 90) (length 0) (name "PCT" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at -2.54 8.89 270) (length 0) (name "S1" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
+			(pin passive line (at 2.54 8.89 270) (length 0) (name "S2" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
 		)
 		(embedded_fonts no)
 	)

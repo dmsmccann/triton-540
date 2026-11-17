@@ -1,0 +1,28 @@
+* Syntax and resonance validation for the 80282 magnetics model
+.include ../models/80282_ssb_generator_magnetics.lib
+
+* Differential filter-coil test: a 1 A small-signal current exposes the
+* parallel-resonant voltage peak without imposing a source resistance.
+IFILTER f1 f2 AC 1
+XFILTER f1 f2 0 SSB80282_FILTER_L_CT
+CFILTER f1 f2 68p
+EFILTER_DIFF fdiff 0 f1 f2 1
+
+* Differential T1 test: 220 pF resonates with its 1.421 uH primary near 9 MHz.
+IT1 p1 p2 AC 1
+XT1 p1 p2 0 s1 0 SSB80282_T1
+CT1 p1 p2 220p
+RLOAD s1 0 1G
+ET1_DIFF tdiff 0 p1 p2 1
+
+.control
+set filetype=ascii
+ac dec 200 7Meg 11Meg
+meas ac filter_peak max vm(fdiff)
+meas ac filter_frequency max_at vm(fdiff)
+meas ac t1_peak max vm(tdiff)
+meas ac t1_frequency max_at vm(tdiff)
+print filter_peak filter_frequency t1_peak t1_frequency
+quit
+.endc
+.end

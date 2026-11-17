@@ -1,0 +1,27 @@
+* Ten-Tec 80282 crystal starting models
+*
+* The manual documents an eight-pole approximately 9 MHz crystal lattice
+* filter and a separate carrier-oscillator crystal, but gives no motional
+* parameters or individual crystal frequencies.  These are engineering
+* models fitted to the documented carrier-alignment behavior; they are not
+* factory crystal specifications.
+*
+* Pins: 1, 2 = crystal terminals
+* Parameters: FS = series resonance, RM = motional loss, CM = motional C,
+*             C0 = holder/static capacitance.  LM is derived from FS and CM.
+.SUBCKT SSB80282_XTAL 1 2 PARAMS: FS=9.0017MEG RM=22 CM=20F C0=3P
+Rmot 1 XM {RM}
+Lmot XM XN {1/((6.283185307179586*FS)**2*CM)}
+Cmot XN 2 {CM}
+Cshunt 1 2 {C0}
+.ENDS SSB80282_XTAL
+
+* Separate carrier crystal.  Its fitted motional values let the runner show
+* the direction and interaction of C1/C2/C3; absolute frequency still needs
+* a measurement from an original crystal.
+.SUBCKT SSB80282_BFO_XTAL 1 2 PARAMS: FS=9.0000MEG RM=25 CM=18F C0=3P
+Rmot 1 XM {RM}
+Lmot XM XN {1/((6.283185307179586*FS)**2*CM)}
+Cmot XN 2 {CM}
+Cshunt 1 2 {C0}
+.ENDS SSB80282_BFO_XTAL

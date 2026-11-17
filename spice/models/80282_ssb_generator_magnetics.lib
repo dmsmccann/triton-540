@@ -1,0 +1,32 @@
+* Ten-Tec 80282 SSB-generator magnetics starting model
+*
+* Evidence status:
+* - The manual schematic documents 68 pF across each crystal-filter coil and
+*   220 pF across T1's tuned winding; the circuit operates at 9 MHz.
+* - Filter value: L = 1/((2*pi*9 MHz)^2*68 pF) = 4.599 uH end-to-end.
+* - T1 primary: L = 1/((2*pi*9 MHz)^2*220 pF) = 1.421 uH end-to-end.
+* - Equal winding halves and KPP=0.98 are calculated/modeling assumptions.
+* - T1 secondary 0.36 uH and primary-secondary K=0.90 are inferred starting
+*   values, not Ten-Tec specifications. Bench or sweep data should replace them.
+
+.SUBCKT SSB80282_FILTER_L_CT 1 2 3
+* 1,2 = winding ends; 3 = center tap
+RA 1 NA 1
+LA NA 3 1.161318u
+LB 3 NB 1.161318u
+RB NB 2 1
+KCT LA LB 0.98
+.ENDS SSB80282_FILTER_L_CT
+
+.SUBCKT SSB80282_T1 1 2 3 4 5
+* 1,2 = tuned-primary ends; 3 = primary center tap; 4,5 = secondary
+RP1 1 NP1 0.5
+LP1 NP1 3 0.358953u
+LP2 3 NP2 0.358953u
+RP2 NP2 2 0.5
+RS 4 NS 0.5
+LS NS 5 0.36u
+KPP LP1 LP2 0.98
+KPS1 LP1 LS 0.90
+KPS2 LP2 LS 0.90
+.ENDS SSB80282_T1

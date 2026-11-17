@@ -5,10 +5,12 @@ complete Triton schematic.
 
 | Circuit | Purpose |
 |:--|:--|
+| `CA3053_validation.cir` | Figure 3 collector currents at 9 V and 12 V, plus 10.7 MHz single-ended voltage gain |
 | `MC1747_validation.cir` | Both amplifier sections, separate VCC pins, DC followers, bandwidth, and slew rate |
 | `MC1496P_validation.cir` | DC bias and 3/13 MHz plus 10/20 MHz mixer products |
 | `40823_validation.cir` | Gate-1 transfer, gate-2 control, and manual bias point |
 | `80166_rf_magnetics_validation.cir` | L1/L2 continuity and 9 MHz trap response |
+| `80282_magnetics_validation.cir` | L2/L3 and T1 coupled-winding syntax and 9 MHz resonance starting values |
 | `SW_Rotary_1x5_validation.cir` | All five switch positions |
 | `SW_Rotary_4x5_validation.cir` | All four S89-1 wafers in all five positions |
 | `SW_Rotary_1x4_validation.cir` | All four S5 ten-meter segment positions |
@@ -25,10 +27,12 @@ Run them from this directory so their relative model paths resolve:
 
 ```powershell
 New-Item -ItemType Directory -Force ..\generated\validation | Out-Null
+& 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa CA3053_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa MC1747_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa MC1496P_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 40823_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 80166_rf_magnetics_validation.cir
+& 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa 80282_magnetics_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa SW_Rotary_1x5_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa SW_Rotary_4x5_validation.cir
 & 'C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe' -b -D ngbehavior=ltpsa SW_Rotary_1x4_validation.cir

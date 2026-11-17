@@ -7,10 +7,11 @@
 - `triton_540.kicad_sch` — root schematic
 - `80166_rf_amp.kicad_sch` — receiver RF amplifier reconstruction
 - `80287_tx_rx_mixer.kicad_sch` — receiver/transmitter mixer reconstruction
+- `80282_ssb_generator.kicad_sch` — SSB generator and bidirectional crystal-filter reconstruction
 - `80308_crystal_calibrator.kicad_sch` — crystal-calibrator reconstruction
 - `triton_iv.kicad_sym` and other project-local `.kicad_sym` files — custom legacy symbols
 - `sym-lib-table` — project symbol-library mappings
-- `spice/models/` — project-local 40823, RF-magnetics, and bandswitch models
+- `spice/models/` — project-local active-device, RF-magnetics, and bandswitch models, including the 80282 filter/T1 model
 - `spice/validation/` — standalone regression fixtures for those models
 - `spice/studies/80166/manual-alignment/` — curated CSV evidence, manifest,
   placement fixture, and generated documentation figures
@@ -45,6 +46,8 @@ PDF page numbers below are one-based.
 - PDF page 37 / printed page 3-21 — 80308 crystal-calibrator schematic, board photograph, SN7400 gate-unit pin use, and SN7476 flip-flop-unit pin use
 - PDF page 23 / printed page 3-7 — installed Model 249 accessory-board location; the manual has no Model 249 theory or alignment section
 - PDF page 38 / printed page 3-22 — 80282 bidirectional crystal-filter and SSB-generator signal routing
+- PDF page 39 / printed page 3-23 — 80282 carrier-oscillator and balanced-modulator alignment
+- PDF page 40 / printed page 3-24 — 80282 schematic, board photograph, filter coils, and T1 topology
 - PDF page 41 / printed page 3-25 — 80291 switched filters following the transmit mixer
 - PDF page 42 / printed page 3-26 — 80285 low-level driver following the mixer and band filters
 
@@ -81,6 +84,32 @@ PDF page numbers below are one-based.
   specification.
 
 Treat calculated inductances and inferred winding ratios as estimates until supported by measurements or original construction data.
+
+## Established 80282 evidence
+
+- L2 and L3 are center-tapped 9 MHz crystal-filter coils, each shunted
+  end-to-end by a documented 68 pF N220 capacitor. Ideal resonance calculates
+  to 4.599 uH end-to-end before winding and board parasitics.
+- T1 has a center-tapped tuned primary shunted by C82-12 = 220 pF and a
+  separate secondary winding. Ideal 9 MHz resonance calculates to 1.421 uH
+  end-to-end for the primary.
+- The manual states that T1 was factory swept with the crystal lattice and
+  should not be field adjusted; its setting affects filter flatness and audio
+  character.
+- `spice/models/80282_ssb_generator_magnetics.lib` preserves the documented
+  topology. Equal winding halves and their K=0.98 are modeling assumptions;
+  the 0.36 uH secondary and primary-secondary K=0.90 are inferred starting
+  values, not Ten-Tec specifications.
+- The reconstructed sheet now grounds the Y82-2/Y82-3 common node, connects
+  `RX IF` to the L3/Y82-3/Y82-5 end of the first lattice, and uses the manual's
+  C82-28 = 220 pF between sections. These were topology/value corrections, not
+  simulation fitting.
+- `spice/tools/run_80282_operation.py` verifies a fresh KiCad export and sweeps
+  the filter at the accessible `Out` and `RX IF` pins on a 5 Hz grid. The
+  current fitted crystal model peaks at 9.001780 MHz, has a 605 Hz -3 dB width,
+  and places the documented +750 Hz CW point 4.12 dB below peak. This is a
+  partial functional result; original crystal and termination measurements
+  are still required.
 
 ## Established Model 249 evidence
 

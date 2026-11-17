@@ -1,0 +1,40 @@
+* CA3053 differential/cascode amplifier model.
+*
+* Model basis:
+*   Harris Semiconductor File 382.3, November 1996, page 7-6.
+*   The published internal schematic defines the three-transistor topology,
+*   physical terminal connections, and R1=5k, R2=2.8k, R3=500 ohms.
+*
+* Evidence boundary:
+*   Harris did not publish the three transistors' compact-model parameters.
+*   CA3053_NPN is therefore a nominal Gummel-Poon engineering fit chosen to
+*   reproduce the data-sheet current scale and useful RF behavior.  It is not
+*   a recovered Harris factory SPICE model and must not be treated as measured
+*   production-device behavior.
+*
+* Physical package order:
+*   1 Q1 base                5 Q2 base
+*   2 Q3 base / bias node    6 Q2 collector
+*   3 substrate and case     7 internal 5k bias-feed input
+*   4 Q3 emitter             8 Q1 collector
+*
+* Connections: 1 2 3 4 5 6 7 8 (physical terminal numbers)
+.SUBCKT CA3053 1 2 3 4 5 6 7 8
+Q1 8 1 NTAIL CA3053_NPN
+Q2 6 5 NTAIL CA3053_NPN
+Q3 NTAIL 2 4 CA3053_NPN
+R1 7 2 5k
+R2 2 3 2.8k
+R3 4 3 500
+
+* Nominal monolithic NPN fit.  Junction capacitances and transit terms are
+* engineering estimates constrained by the 10.7 MHz data-sheet curves.
+.MODEL CA3053_NPN NPN (
++ IS=2e-15 NF=1 BF=150 VAF=100 IKF=20m
++ ISE=1e-14 NE=1.5 BR=5 VAR=20 IKR=10m
++ RB=35 RBM=10 IRB=500u RE=0.5 RC=2
++ CJE=3p VJE=0.75 MJE=0.33
++ CJC=0.6p VJC=0.60 MJC=0.33 XCJC=1
++ TF=60p XTF=2 VTF=5 ITF=10m PTF=10
++ TR=10n CJS=0.5p VJS=0.75 MJS=0.5 FC=0.5)
+.ENDS CA3053

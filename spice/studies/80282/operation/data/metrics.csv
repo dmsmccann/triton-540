@@ -1,0 +1,11 @@
+measurement,value,evidence
+sweep_grid_hz,5.0,calculated from linear sweep
+peak_frequency_hz,9001780.0,grid-limited simulated value
+peak_gain_db,-4.4106321989335004,RX IF relative to 1 V source
+minus3_low_hz,9001516.838124458,interpolated crossing
+minus3_high_hz,9002120.493938968,interpolated crossing
+minus3_bandwidth_hz,603.6558145098388,model result
+minus26_low_hz,9000701.886805963,manual alignment skirt level
+minus26_high_hz,9003671.301804163,manual alignment skirt level
+cw_marker_hz,9001451.886805963,750 Hz above modeled low skirt
+cw_marker_relative_db,-4.1178870076730005,expected to return near passband

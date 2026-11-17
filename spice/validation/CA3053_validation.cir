@@ -1,0 +1,56 @@
+* CA3053 model regression fixture.
+* Reproduces the data-sheet Figure 3 DC connections at 9 V and 12 V, then
+* checks a single-ended differential-amplifier response at 10.7 MHz.
+.include ../models/CA3053.sub
+
+* Harris Figure 3: collectors and terminal 7 at VCC; both inputs at the
+* junction of the published external 1k/2k divider; substrate at ground.
+VCC9 VCC9 0 9
+V6_9 VCC9 P6_9 0
+V8_9 VCC9 P8_9 0
+V7_9 VCC9 P7_9 0
+RDIV9A VCC9 IN9 1k
+RDIV9B IN9 0 2k
+XDC9 IN9 BIAS9 0 EMIT9 IN9 P6_9 P7_9 P8_9 CA3053
+
+VCC12 VCC12 0 12
+V6_12 VCC12 P6_12 0
+V8_12 VCC12 P8_12 0
+V7_12 VCC12 P7_12 0
+RDIV12A VCC12 IN12 1k
+RDIV12B IN12 0 2k
+XDC12 IN12 BIAS12 0 EMIT12 IN12 P6_12 P7_12 P8_12 CA3053
+
+* Differential-amplifier voltage-gain check at the data-sheet's 9 V,
+* 10.7 MHz condition.  Terminal 1 receives 1 V AC; terminal 5 is AC-grounded.
+VACVCC ACVCC 0 9
+RLOAD6 ACVCC OUT6 1k
+RLOAD8 ACVCC OUT8 1k
+V7_AC ACVCC P7_AC 0
+VIN1 SRC1 0 DC 6 AC 1
+RSRC1 SRC1 IN1 50
+VIN5 IN5 0 DC 6 AC 0
+XAC IN1 BIASAC 0 EMITAC IN5 OUT6 P7_AC OUT8 CA3053
+
+.options reltol=1e-5 abstol=1e-13 vntol=1e-9
+
+.control
+set noaskquit
+op
+let I6_9 = abs(i(V6_9))
+let I8_9 = abs(i(V8_9))
+let I7_9 = abs(i(V7_9))
+let I6_12 = abs(i(V6_12))
+let I8_12 = abs(i(V8_12))
+let I7_12 = abs(i(V7_12))
+print I6_9 I8_9 I7_9 I6_12 I8_12 I7_12 v(BIAS9) v(EMIT9)
+
+ac dec 200 100k 300Meg
+meas ac GAIN_10P7_DB find vdb(OUT6) at=10.7Meg
+meas ac GAIN_10P7_VV find vm(OUT6) at=10.7Meg
+meas ac GAIN_PEAK_DB max vdb(OUT6)
+echo CA3053_VALIDATION_COMPLETE
+quit
+.endc
+
+.end

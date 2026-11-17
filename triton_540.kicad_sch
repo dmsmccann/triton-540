@@ -5507,12 +5507,6 @@
 		(uuid "1c0b67b2-2155-482a-a394-cc349d7cb9f5")
 	)
 	(junction
-		(at 284.48 101.6)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "231e0ad7-43f2-4973-8eee-afa52ec48d77")
-	)
-	(junction
 		(at 330.2 208.28)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -5529,6 +5523,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "3dce03e8-97ce-4c4c-8d13-2e9cffb8e937")
+	)
+	(junction
+		(at 285.75 101.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "565aa674-10bb-4ba4-9dc5-7e10e7c76bd5")
 	)
 	(junction
 		(at 353.06 208.28)
@@ -5988,7 +5988,7 @@
 	)
 	(wire
 		(pts
-			(xy 284.48 101.6) (xy 284.48 135.89)
+			(xy 285.75 101.6) (xy 285.75 135.89)
 		)
 		(stroke
 			(width 0)
@@ -6028,7 +6028,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 138.43) (xy 281.94 39.37)
+			(xy 283.21 138.43) (xy 283.21 39.37)
 		)
 		(stroke
 			(width 0)
@@ -6248,7 +6248,7 @@
 	)
 	(wire
 		(pts
-			(xy 284.48 135.89) (xy 323.85 135.89)
+			(xy 285.75 135.89) (xy 323.85 135.89)
 		)
 		(stroke
 			(width 0)
@@ -6298,7 +6298,7 @@
 	)
 	(wire
 		(pts
-			(xy 284.48 35.56) (xy 278.13 35.56)
+			(xy 285.75 35.56) (xy 278.13 35.56)
 		)
 		(stroke
 			(width 0)
@@ -6478,7 +6478,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 39.37) (xy 278.13 39.37)
+			(xy 283.21 39.37) (xy 278.13 39.37)
 		)
 		(stroke
 			(width 0)
@@ -7038,7 +7038,7 @@
 	)
 	(wire
 		(pts
-			(xy 284.48 101.6) (xy 284.48 35.56)
+			(xy 285.75 101.6) (xy 285.75 35.56)
 		)
 		(stroke
 			(width 0)
@@ -7248,7 +7248,7 @@
 	)
 	(wire
 		(pts
-			(xy 281.94 138.43) (xy 323.85 138.43)
+			(xy 283.21 138.43) (xy 323.85 138.43)
 		)
 		(stroke
 			(width 0)
@@ -7528,7 +7528,7 @@
 	)
 	(wire
 		(pts
-			(xy 198.12 101.6) (xy 284.48 101.6)
+			(xy 198.12 101.6) (xy 285.75 101.6)
 		)
 		(stroke
 			(width 0)
@@ -17319,7 +17319,7 @@
 			(color 0 0 0 0)
 		)
 		(uuid "a7867bf8-3980-4154-a2b2-907c27cdebac")
-		(property "Sheetname" "80282 SSB Generator"
+		(property "Sheetname" "SSB Generator 80282"
 			(at 323.85 114.8584 0)
 			(show_name no)
 			(do_not_autoplace no)

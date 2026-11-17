@@ -1,5 +1,89 @@
 # SPICE model reference
 
+## CA3053 differential/cascode amplifier
+
+`CA3053.sub` follows the eight-terminal internal schematic published by
+Harris Semiconductor in File 382.3.  It contains the documented Q1/Q2
+differential pair, Q3 controlled tail-current transistor, R1 = 5 kOhm,
+R2 = 2.8 kOhm, and R3 = 500 Ohm.  Its subcircuit pins are the physical
+package terminals 1 through 8 in one-to-one order.
+
+The data sheet does not publish compact-model parameters for Q1 through Q3.
+`CA3053_NPN` is therefore a nominal Gummel-Poon engineering fit, not a
+recovered Harris factory model.  The fit is constrained by the published
+CA3053 quiescent-current scale and 10.7 MHz voltage-gain behavior; transistor
+capacitances, transit time, Early voltage, and series resistances remain
+estimates until compared with an original device.
+
+`../validation/CA3053_validation.cir` reproduces the data-sheet Figure 3 DC
+connections.  It gives 2.368 mA in each collector at 9 V (data-sheet typical
+2.2 mA, published range 1.2 to 3.5 mA) and 3.373 mA at 12 V (typical 3.3 mA,
+published range 2.0 to 5.0 mA).  A 9 V differential-amplifier fixture gives
+31.20 dB single-ended voltage gain at 10.7 MHz versus the published 30 dB
+typical value.  These are model-fit checks, not hardware measurements.
+
+The `triton_iv:CA3053` library symbol and its placed 80282 instance select
+`spice/models/CA3053.sub`, subcircuit `CA3053`, with pins 1 through 8 mapped
+one-to-one.
+
+### References
+
+- `datasheets/Harris_CA3053_File382.3_1996.pdf`: internal schematic on local
+  PDF page 1 / printed page 7-6; CA3053 DC limits on local PDFs pages 2-4 /
+  printed pages 7-7 through 7-9; Figure 3 on local PDF page 5 / printed page
+  7-10; 10.7 MHz voltage-gain test circuits and typical value on local PDF
+  pages 6-7 / printed pages 7-11 through 7-12.
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, assembly 80282 schematic on
+  local PDF page 40 / printed page 3-24.
+
+## 80282 SSB-generator magnetics
+
+`80282_ssb_generator_magnetics.lib` supplies valid center-tapped subcircuits
+for crystal-filter coils L2/L3 and a five-terminal coupled-winding subcircuit
+for T82-1 (manual designator T1). The schematic's visible L82-4 and L82-5
+symbols retain the historical drawing but are excluded from simulation; an
+invisible, no-BOM T82-1 adapter connects the combined transformer subcircuit
+to the same five electrical nodes.
+
+The manual documents 68 pF across each 9 MHz filter coil and 220 pF across
+T1's 9 MHz tuned primary, but it does not state inductance, winding ratio,
+resistance, or coupling. Ideal resonance therefore gives 4.599 uH end-to-end
+for L2/L3 and 1.421 uH end-to-end for T1's primary. Each center-tapped winding
+is represented by equal halves with `K=0.98`. T1's 0.36 uH secondary and
+primary-secondary `K=0.90` are inferred starting values, not factory data.
+
+Because T1 has two primary-half inductors and one secondary in SPICE, its
+model contains three mutual-coupling statements: `KPP` between the primary
+halves and `KPS1`/`KPS2` from each primary half to the secondary.
+`../validation/80282_magnetics_validation.cir` checks model syntax and places
+both tuned windings' AC peaks on the 9.018 MHz sweep sample; the 200
+points-per-decade sweep resolves frequency only to about 0.5 percent.
+
+### References
+
+- Ten-Tec, *Triton IV Model 540 Owner's Manual*, local PDF page 38 / printed
+  page 3-22: 9 MHz bidirectional filter operation and factory-only T1 sweep
+  alignment warning.
+- Same manual, local PDF page 40 / printed page 3-24: L2/L3 68 pF networks and
+  T1/C82-12 220 pF schematic topology.
+
+## 80282 crystals
+
+`80282_crystals.lib` supplies a parameterized four-element motional crystal
+for the eight-pole lattice and a separate starting model for Y82-1. The manual
+documents the crystal count, approximate 9 MHz operation, and carrier-alignment
+behavior but not the individual resonances, losses, motional capacitance, or
+holder capacitance. The defaults are therefore fitted engineering values, not
+Ten-Tec or crystal-manufacturer specifications.
+
+`spice/tools/run_80282_operation.py` uses paired lattice resonances of
+9.00095 and 9.00245 MHz with 22 ohm motional resistance, 20 fF motional
+capacitance, and 3 pF holder capacitance. With the documented lattice topology
+and capacitors this gives a partial functional result: a 9.001780 MHz peak,
+605 Hz modeled -3 dB width, and a point 750 Hz above the low -26 dB skirt that
+is 4.12 dB below peak. These values demonstrate circuit action but do not
+establish the original filter bandwidth or insertion loss.
+
 ## Model 249 noise-blanker models
 
 The Model 249 sheet now uses project-local models for every active device and

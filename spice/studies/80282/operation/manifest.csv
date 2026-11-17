@@ -1,0 +1,2 @@
+run_id,analysis,command,source_schematic,grid_hz,status
+80282-operation-2026-11-17,AC linear filter sweep,python spice/tools/run_80282_operation.py,80282_ssb_generator.kicad_sch,5,partial-pass
