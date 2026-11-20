@@ -5,6 +5,13 @@
 Does the reconstructed Model 249 pass an ordinary 9 MHz IF signal and operate
 its balanced PIN-diode gate when the detector sees a much larger burst?
 
+The primary board source is the original
+[Model 249 instruction sheet](../../../../literature/Ten_Tec_249.pdf). PDF page
+2 / printed page -1 documents installation, operation, theory, and C49-18
+alignment, including the connector-voltage table. PDF page 1 / printed page -2
+documents the schematic and semiconductor-voltage tables; the pages are
+reversed in the PDF.
+
 ## How this part of the circuit works
 
 The ordinary IF path is `IN` through C49-1, Q49-1, Q49-2, C49-2, T49-1,
@@ -40,6 +47,11 @@ active-device and magnetic subcircuit appears in the netlist. It reads the live
 root-sheet V1 value, presently 13.28 V, and performs two otherwise identical
 transients:
 
+Ten-Tec's receive, no-signal, blanker-energized service table specifies 13.8 V
+at both `+12` and `+12_SW`. The retained run is therefore 0.52 V, or about 3.8%,
+below the documented service condition; 13.28 V remains a project-fixture value,
+not a factory voltage specification.
+
 | Case | `+12` | `+12_SW` | Meaning |
 |:--|--:|--:|:--|
 | Disabled | 13.28 V | 0 V | Signal path only |
@@ -58,8 +70,10 @@ The transient calculation grid is 2 ns. The retained timeline is reduced to
 
 Two model fixtures need explicit attention:
 
-- C49-18 is set to 40 pF, within its reconstructed 5-60 pF range. This is an
-  inferred 9 MHz setting, not a recovered alignment position.
+- C49-18 is set to 40 pF, within its documented 5-60 pF range. Ten-Tec aligns
+  it for maximum 9 MHz signal at the base of Q49-4 and describes the peak as
+  broad because the circuit has low Q. The 40 pF value remains a fitted model
+  setting, not a recovered physical position.
 - A 5.1 kohm **model-only** shunt is placed from MC1350 AGC pin 5 to ground.
   The archived transistor macro-model otherwise sources enough quiescent AGC
   current to cut itself off in the board's 4.7 kohm + 10 kohm return. Motorola's
@@ -117,11 +131,14 @@ gain, or complete installed-radio noise suppression.
 
 ## Limits and evidence status
 
-- **Documented:** topology, component values, 9 MHz operation, nominal 0 dB
-  signal gain, and front-panel disabling switch.
+- **Documented:** Models 540/544 compatibility; installation between the first
+  mixer and crystal filter; topology, values, 9 MHz operation, ALC-knob enable,
+  C49-18 alignment, and connector/transistor/IC service voltages. Nominal 0 dB
+  signal gain remains a historical catalog statement.
 - **Calculated:** voltage ratios and dB conversions from the retained CSV.
-- **Inferred:** L49-1, L49-2, T49-1, the 10 kohm installed load, and 15 pF
-  combined probe/following-stage capacitance.
+- **Inferred:** L49-1, L49-2, T49-1, the detailed Q49-5/Q49-6 sustained-signal
+  action, the 10 kohm installed load, and 15 pF combined probe/following-stage
+  capacitance.
 - **Fitted model parameters:** C49-18 = 40 pF and the 5.1 kohm MC1350 AGC
   model-only shunt.
 - **Unknown hardware behavior:** trigger threshold, leading-edge suppression,
@@ -141,7 +158,7 @@ must not be presented as a measured hardware value.
 | Item | Connection or setting |
 |:--|:--|
 | Board installation | Prefer the normal receiver socket so the real following IF stage loads `OUT` |
-| DC supply | Verify 13.28 V at `+12` and, when enabled, `+12_SW`, relative to board `GND` |
+| DC supply | Record the actual voltage at `+12` and, when enabled, `+12_SW`, relative to board `GND`; factory reference is 13.8 V and the retained simulation used 13.28 V |
 | Generator | 9 MHz burst generator through 50 ohms to board `IN`; begin at 10 mV peak or less |
 | Oscilloscope CH1 | Low-capacitance 10x probe at `IN` |
 | Oscilloscope CH2 | Low-capacitance 10x probe at `OUT` |
@@ -175,3 +192,16 @@ The full sequence is in [`bench/249/README.md`](../../../../bench/249/README.md)
 This check matters because it would replace the fitted AGC correction and
 inferred 10 kohm load with the real MC1350 bias, following-stage impedance,
 magnetics, diode capacitance, and installed-radio timing.
+
+## Manual-informed follow-up studies
+
+The instruction sheet adds two objective checks that this study does not yet
+perform:
+
+1. A 13.8 V, receive, no-signal DC regression against every documented
+   Q49-1 through Q49-6 terminal and IC49-1 pin.
+2. A 5-60 pF C49-18 sweep with a 9 MHz input, observing the Q49-4-base signal
+   for the broad maximum specified by Ten-Tec.
+
+Both are gaps, not completed results. Their proposed bench counterparts are in
+[`bench/249/README.md`](../../../../bench/249/README.md).

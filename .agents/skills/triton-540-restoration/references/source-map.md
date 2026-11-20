@@ -3,6 +3,8 @@
 ## Local artifacts
 
 - `literature/540 Triton Owner Manual.pdf` — primary service and alignment source
+- `literature/Ten_Tec_249.pdf` — original Model 249 instruction sheet; installation,
+  operation, theory, alignment, schematic, photograph, and service voltages
 - `triton_540.kicad_pro` — project configuration
 - `triton_540.kicad_sch` — root schematic
 - `80166_rf_amp.kicad_sch` — receiver RF amplifier reconstruction
@@ -44,7 +46,8 @@ PDF page numbers below are one-based.
 - PDF page 35 / printed page 3-19 — 80274 schematic, parts, and semiconductor voltage table
 - PDF page 36 / printed page 3-20 — 80308 theory, terminal voltages, and semiconductor voltages
 - PDF page 37 / printed page 3-21 — 80308 crystal-calibrator schematic, board photograph, SN7400 gate-unit pin use, and SN7476 flip-flop-unit pin use
-- PDF page 23 / printed page 3-7 — installed Model 249 accessory-board location; the manual has no Model 249 theory or alignment section
+- PDF page 23 / printed page 3-7 — installed Model 249 accessory-board location;
+  the Model 540 manual itself has no Model 249 theory or alignment section
 - PDF page 38 / printed page 3-22 — 80282 bidirectional crystal-filter and SSB-generator signal routing
 - PDF page 39 / printed page 3-23 — 80282 carrier-oscillator and balanced-modulator alignment
 - PDF page 40 / printed page 3-24 — 80282 schematic, board photograph, filter coils, and T1 topology
@@ -113,6 +116,20 @@ Treat calculated inductances and inferred winding ratios as estimates until supp
 
 ## Established Model 249 evidence
 
+- `literature/Ten_Tec_249.pdf` is scanned in reverse printed-page order. PDF
+  page 2 / printed page -1 gives installation, operation, theory, C49-18
+  alignment, and connector voltages. PDF page 1 / printed page -2 gives the
+  schematic, board photograph, transistor voltages, and IC voltages.
+- Ten-Tec identifies the Model 249 as a plug-in IF noise blanker for Models 540
+  and 544, installed between the first-mixer output and crystal-filter input.
+  Pulling the ALC knob out energizes it.
+- C49-18 is the only on-board adjustment. With 9 MHz applied at `IN`, it is set
+  for the broad maximum at Q49-4's base. After board installation, TX-RX mixer
+  L3 is separately retuned for maximum S-meter indication on a station no
+  stronger than S5; the blanker may be on or off.
+- The factory receive/no-signal/blanker-energized table gives 13.8 V at `+12`
+  and `+12_SW`, 5.5 V at IC49-1 pin 5, and complete Q49-1 through Q49-6 and
+  IC49-1 pin 1-8 service voltages.
 - The original Model 249 drawing dated 1976-06-02 documents a 9 MHz signal
   path through Q49-1/Q49-2, T49-1, D49-1/D49-2, and L49-1/C49-3, with a
   parallel MC1350 detector and Q49-3/Q49-4 gate-control path.

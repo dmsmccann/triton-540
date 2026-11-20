@@ -2288,32 +2288,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "triton_iv:T1_80282_SPICE"
-			(pin_numbers (hide yes))
-			(pin_names (hide yes))
-			(exclude_from_sim no)
-			(in_bom no)
-			(on_board no)
-			(in_pos_files no)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "T" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Value" "SSB80282_T1" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Footprint" "" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Datasheet" "" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Description" "Simulation-only adapter for the 80282 T1 coupled-winding model" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Sim.Name" "SSB80282_T1" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Sim.Device" "SUBCKT" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5" (at 0 0 0) (hide yes) (effects (font (size 1.27 1.27))))
-			(symbol "T1_80282_SPICE_1_1"
-				(pin passive line (at -3.81 0 0) (length 0) (name "P1" (effects (font (size 1.27 1.27)))) (number "1" (effects (font (size 1.27 1.27)))))
-				(pin passive line (at 3.81 0 180) (length 0) (name "P2" (effects (font (size 1.27 1.27)))) (number "2" (effects (font (size 1.27 1.27)))))
-				(pin passive line (at 0 -2.54 90) (length 0) (name "PCT" (effects (font (size 1.27 1.27)))) (number "3" (effects (font (size 1.27 1.27)))))
-				(pin passive line (at -2.54 8.89 270) (length 0) (name "S1" (effects (font (size 1.27 1.27)))) (number "4" (effects (font (size 1.27 1.27)))))
-				(pin passive line (at 2.54 8.89 270) (length 0) (name "S2" (effects (font (size 1.27 1.27)))) (number "5" (effects (font (size 1.27 1.27)))))
-			)
-			(embedded_fonts no)
-		)
 		(symbol "triton_iv:MC1747"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -2686,6 +2660,211 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "triton_iv:T1_80282_SPICE"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board no)
+			(in_pos_files no)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "T"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SSB80282_T1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Simulation-only adapter for the 80282 T1 coupled-winding model"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Name" "SSB80282_T1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Device" "SUBCKT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "T1_80282_SPICE_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 0)
+					(name "P1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 0)
+					(name "P2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -2.54 90)
+					(length 0)
+					(name "PCT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 8.89 270)
+					(length 0)
+					(name "S1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 8.89 270)
+					(length 0)
+					(name "S2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(rectangle
 		(start 179.07 65.405)
@@ -2699,16 +2878,6 @@
 		)
 		(uuid "bfbe3f89-aede-48fd-a8e9-b0fd15cf3179")
 	)
-	(text "T82-1"
-		(exclude_from_sim no)
-		(at 174.244 65.532 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "bd2cdee3-1ee7-44bc-9fa3-65d2a522df86")
-	)
 	(text "SIMULATION STARTING VALUES — NOT FACTORY SPECIFICATIONS\nL2/L3: 4.60 uH end-to-end, calculated from 68 pF at 9 MHz.\nT82-1: 1.42 uH primary calculated from 220 pF; 0.36 uH secondary and K=0.90 inferred."
 		(exclude_from_sim yes)
 		(at 163.83 53.34 0)
@@ -2719,6 +2888,16 @@
 			(justify left bottom)
 		)
 		(uuid "a8200000-0002-4820-8000-000000000001")
+	)
+	(text "T82-1"
+		(exclude_from_sim no)
+		(at 174.244 65.532 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "bd2cdee3-1ee7-44bc-9fa3-65d2a522df86")
 	)
 	(text_box ""
 		(exclude_from_sim no)
@@ -2765,30 +2944,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "07534be7-f48b-4b91-8f49-86ba6c12ba29")
-	)
-	(junction
-		(at 254 66.04)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a8200000-0004-4820-8000-000000000001")
-	)
-	(junction
-		(at 254 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a8200000-0004-4820-8000-000000000003")
-	)
-	(junction
-		(at 290.83 76.2)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a8200000-0004-4820-8000-000000000004")
-	)
-	(junction
-		(at 274.32 66.04)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a8200000-0004-4820-8000-000000000002")
 	)
 	(junction
 		(at 228.6 95.25)
@@ -2983,16 +3138,34 @@
 		(uuid "a770fd5e-c30d-4926-af7c-41df5c8f6bd2")
 	)
 	(junction
-		(at 293.37 215.9)
+		(at 254 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "badf2d25-97e1-4a89-94d8-f4caeeac244f")
+		(uuid "a8200000-0004-4820-8000-000000000001")
+	)
+	(junction
+		(at 274.32 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a8200000-0004-4820-8000-000000000002")
 	)
 	(junction
 		(at 254 76.2)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "bd5437a0-e3c0-4bc0-be46-8dde91744d75")
+		(uuid "a8200000-0004-4820-8000-000000000003")
+	)
+	(junction
+		(at 290.83 76.2)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a8200000-0004-4820-8000-000000000004")
+	)
+	(junction
+		(at 293.37 215.9)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "badf2d25-97e1-4a89-94d8-f4caeeac244f")
 	)
 	(junction
 		(at 228.6 104.14)
@@ -3173,16 +3346,6 @@
 			(type default)
 		)
 		(uuid "06a80ae2-4fb7-446a-890d-1213db5a7e5e")
-	)
-	(wire
-		(pts
-			(xy 254 66.04) (xy 274.32 66.04)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8200000-0003-4820-8000-000000000001")
 	)
 	(wire
 		(pts
@@ -3583,16 +3746,6 @@
 			(type default)
 		)
 		(uuid "3e888df5-c261-4032-bb3a-8a6ffc8f91d7")
-	)
-	(wire
-		(pts
-			(xy 254 76.2) (xy 290.83 76.2)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a8200000-0003-4820-8000-000000000002")
 	)
 	(wire
 		(pts
@@ -4543,6 +4696,26 @@
 			(type default)
 		)
 		(uuid "a77eec5f-50c6-44dc-addd-921530ce1c87")
+	)
+	(wire
+		(pts
+			(xy 254 66.04) (xy 274.32 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8200000-0003-4820-8000-000000000001")
+	)
+	(wire
+		(pts
+			(xy 254 76.2) (xy 290.83 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a8200000-0003-4820-8000-000000000002")
 	)
 	(wire
 		(pts
@@ -8671,10 +8844,50 @@
 				)
 			)
 		)
-		(property "Sim.Name" "MPS6514" (at 83.82 128.27 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Device" "NPN" (at 83.82 128.27 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Type" "GUMMELPOON" (at 83.82 128.27 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Pins" "1=E 2=B 3=C" (at 83.82 128.27 0) (hide yes) (effects (font (size 1.27 1.27))))
+		(property "Sim.Name" "MPS6514"
+			(at 83.82 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "NPN"
+			(at 83.82 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Type" "GUMMELPOON"
+			(at 83.82 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=E 2=B 3=C"
+			(at 83.82 128.27 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "b3eb9db1-ddb5-4780-9ea8-50de45cd4f81")
 		)
@@ -11544,10 +11757,50 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib" (at 240.03 76.2 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Name" "SSB80282_FILTER_L_CT" (at 240.03 76.2 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Device" "SUBCKT" (at 240.03 76.2 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Pins" "1=1 2=2 3=3" (at 240.03 76.2 0) (hide yes) (effects (font (size 1.27 1.27))))
+		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib"
+			(at 240.03 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SSB80282_FILTER_L_CT"
+			(at 240.03 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 240.03 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3"
+			(at 240.03 76.2 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "7e038500-65da-47ad-b6b9-22314f2f80e6")
 		)
@@ -11561,6 +11814,140 @@
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/a7867bf8-3980-4154-a2b2-907c27cdebac"
 					(reference "L3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "triton_iv:T1_80282_SPICE")
+		(at 189.23 77.47 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board no)
+		(in_pos_files no)
+		(dnp no)
+		(uuid "a8200000-0001-4820-8000-000000000001")
+		(property "Reference" "T82-1"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SSB80282_T1"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Simulation-only adapter for the 80282 T1 coupled-winding model"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SSB80282_T1"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5"
+			(at 189.23 77.47 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "a8200000-0001-4820-8000-000000000011")
+		)
+		(pin "2"
+			(uuid "a8200000-0001-4820-8000-000000000012")
+		)
+		(pin "3"
+			(uuid "a8200000-0001-4820-8000-000000000013")
+		)
+		(pin "4"
+			(uuid "a8200000-0001-4820-8000-000000000014")
+		)
+		(pin "5"
+			(uuid "a8200000-0001-4820-8000-000000000015")
+		)
+		(instances
+			(project "triton_540"
+				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/a7867bf8-3980-4154-a2b2-907c27cdebac"
+					(reference "T82-1")
 					(unit 1)
 				)
 			)
@@ -11870,40 +12257,6 @@
 		)
 	)
 	(symbol
-		(lib_id "triton_iv:T1_80282_SPICE")
-		(at 189.23 77.47 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom no)
-		(on_board no)
-		(in_pos_files no)
-		(dnp no)
-		(uuid "a8200000-0001-4820-8000-000000000001")
-		(property "Reference" "T82-1" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Value" "SSB80282_T1" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Footprint" "" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Datasheet" "" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Description" "Simulation-only adapter for the 80282 T1 coupled-winding model" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Name" "SSB80282_T1" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Device" "SUBCKT" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Pins" "1=1 2=2 3=3 4=4 5=5" (at 189.23 77.47 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(pin "1" (uuid "a8200000-0001-4820-8000-000000000011"))
-		(pin "2" (uuid "a8200000-0001-4820-8000-000000000012"))
-		(pin "3" (uuid "a8200000-0001-4820-8000-000000000013"))
-		(pin "4" (uuid "a8200000-0001-4820-8000-000000000014"))
-		(pin "5" (uuid "a8200000-0001-4820-8000-000000000015"))
-		(instances
-			(project "triton_540"
-				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/a7867bf8-3980-4154-a2b2-907c27cdebac"
-					(reference "T82-1")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
 		(lib_id "triton_iv:L_Trim_cntr_tap")
 		(at 189.23 77.47 270)
 		(mirror x)
@@ -12134,10 +12487,50 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib" (at 241.3 123.19 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Name" "SSB80282_FILTER_L_CT" (at 241.3 123.19 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Device" "SUBCKT" (at 241.3 123.19 0) (hide yes) (effects (font (size 1.27 1.27))))
-		(property "Sim.Pins" "1=1 2=2 3=3" (at 241.3 123.19 0) (hide yes) (effects (font (size 1.27 1.27))))
+		(property "Sim.Library" "spice\\models\\80282_ssb_generator_magnetics.lib"
+			(at 241.3 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Name" "SSB80282_FILTER_L_CT"
+			(at 241.3 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Device" "SUBCKT"
+			(at 241.3 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Sim.Pins" "1=1 2=2 3=3"
+			(at 241.3 123.19 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
 		(pin "1"
 			(uuid "207ce65c-595f-4e85-bc18-ffaaf87b6f17")
 		)

@@ -73,18 +73,18 @@ The manufacturer documents are primary evidence; the hosting sites are archives.
 Later datasheet revisions are identified below and are not proof of the production
 lot or package revision fitted to this radio. No substitute parts are assigned.
 
-### MPSU01 (Q74-1)
+### MPSU01 (Q74-1, Q80-4, Q80-7)
 
 - File: [Motorola_MPSU01_TechnicalData_undated.pdf](Motorola_MPSU01_TechnicalData_undated.pdf)
 - Manufacturer: Motorola Semiconductor Products
 - Document: *MPS-U01 / MPS-U01A NPN Silicon Audio Transistors, Semiconductor Technical Data*
 - Original publication: Undated original; scan creation date is not the publication year
 - Extracted pages: Both device pages; case 152-02 and E-B-C lead numbering appear on page 1
-- Used by: assembly 80274, Q74-1
+- Used by: assembly 80274, Q74-1; assembly 80280, Q80-4 and Q80-7
 - Archive source: <https://datasheet4u.com/pdf/505844/MPSU01.pdf>
 - Archived file SHA-256: 36074E59597EBAD8F55A46C62B235A8F31B9F6712FD52B6E3EC39E4E847FE000
 
-### MPS6514 (Q74-3)
+### MPS6514
 
 - File: [Motorola_MPS6514_DeviceData_undated.pdf](Motorola_MPS6514_DeviceData_undated.pdf)
 - Manufacturer: Motorola Semiconductor Products
@@ -92,7 +92,8 @@ lot or package revision fitted to this radio. No substitute parts are assigned.
 - Original publication: Undated device page; package supplement from 1991 DL126 Rev. 3
 - Extracted pages: Device printed page 2-204; appended package/style page 8-2 (PDF page 837) from 1991 DL126 Rev. 3. Style 1 is 1=E, 2=B, 3=C; the later case 29-04 outline is supplementary, while the device page specifies case 29-02
 - Used by: assembly 80274, Q74-3; assembly 80282, Q1 through Q3;
-  Model 249 noise blanker, Q49-1 through Q49-5
+  Model 249 noise blanker, Q49-1 through Q49-5; assembly 80280,
+  Q80-1, Q80-2, Q80-5, Q80-8, and Q80-9
 - Archive source: <https://datasheet4u.com/pdf/1115234/MPS6514.pdf>
 - Package supplement source: <https://www.bitsavers.org/components/motorola/_dataBooks/1991_DL126r3_Motorola_Small-Signal_Transistors_FETs_and_Diodes.pdf>
 - Archived file SHA-256: E9A2791869ED3FDE04CC2622717A615A8F2C78B47AEB910D0CD93B5A73E7CB82
@@ -120,14 +121,14 @@ lot or package revision fitted to this radio. No substitute parts are assigned.
 - Archive source: <https://datasheet.octopart.com/LM380N-National-Semiconductor-datasheet-7275687.pdf>
 - Archived file SHA-256: 2A93CBCC4B527A974060AC2FE1396408B5B9E5A819E0162A482459EF5F6C0398
 
-### 1N4154 (D74-1)
+### 1N4154 (D74-1, D80-1, D80-2)
 
 - File: [Fairchild_1N4154_DiscretePowerAndSignal_1998.pdf](Fairchild_1N4154_DiscretePowerAndSignal_1998.pdf)
 - Manufacturer: Fairchild Semiconductor
 - Document: *1N4154 High Conductance Fast Diode, Discrete Power and Signal Technologies*
 - Original publication: Revision A, September 21, 1998 (copyright 1997)
 - Extracted pages: Source PDF page 1, including DO-35 dimensions and cathode band; trademark page omitted
-- Used by: assembly 80274, D74-1
+- Used by: assembly 80274, D74-1; assembly 80280, D80-1 and D80-2
 - Archive source: <https://www.sm0vpo.com/_pdf/1N/1N4154.pdf>
 - Archived file SHA-256: 0F6607CE3231C1A442E40ED800AEFC8D2FCE1A501A83BF57C706B4C019EE583B
 
@@ -205,13 +206,13 @@ document the parts, but not the production lots installed by Ten-Tec.
 - Archive source: <https://www.onsemi.com/download/data-sheet/pdf/mpn3404-d.pdf>
 - Archived file SHA-256: A9D3948D603C61F2F90E5CE06B0BC32F165466A0B5361107E6A405ED32F27B19
 
-### 2N5087 (Q49-6)
+### 2N5087 (Q49-6, Q80-3, Q80-6)
 
 - File: [onsemi_2N5087_2N5087-D_2013.pdf](onsemi_2N5087_2N5087-D_2013.pdf)
 - Manufacturer: ON Semiconductor
 - Document: *2N5087 Amplifier Transistor, PNP Silicon*, 2N5087/D, Revision 5
 - Original publication: April 2013
 - Extracted pages: Complete eight-page manufacturer device document
-- Used by: Model 249, Q49-6
+- Used by: Model 249, Q49-6; assembly 80280, Q80-3 and Q80-6
 - Archive source: <https://www.onsemi.com/download/data-sheet/pdf/2n5087-d.pdf>
 - Archived file SHA-256: 09F53FA5AF33D916E4A248BAD31A40C9F5F5F4148FB29242BECC91EF31420D89
