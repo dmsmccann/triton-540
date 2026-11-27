@@ -1,0 +1,11 @@
+(kicad_sch
+	(version 20260306)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "58eef321-5baa-46bf-a021-b8fa35c9fa6c")
+	(paper "A4")
+	(title_block
+		(comment 5 "Triton IV (Model 540)")
+	)
+	(lib_symbols)
+)

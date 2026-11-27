@@ -1,0 +1,15 @@
+* Board-specific functional envelope based on Motorola pp. 358-359.
+* DIP wiring used by the 80280, including external feedback and compensation.
+* Reference, error amplifier, pass stage and 4.7 ohm current sensing.
+* Drive gain/pole and pass resistance are estimates. The 3 V specification
+* is used as a headroom boundary, not fitted to a measured dropout curve.
+.subckt MC1723CL_envelope limit sense minus plus ref vee out vc vcc comp
+Breference ref vee V=7.15*min(1,max(0,V(vcc,vee)/9.5))
+Berror ve vee V=max(0,min(V(vc,vee)-3,8+2000*V(plus,minus)))
+Rdrive ve comp 100k
+Bpass drive vee V=max(0,V(comp,vee)-100*max(0,V(limit,sense)-0.65))
+Dpass drive out PassDiode
+Rleak out vee 1Meg
+.model PassDiode D(Is=1m N=0.01 Rs=1)
+.ends MC1723CL_envelope
+X80-reg pass reg feedback plus ref 0 pass supply supply comp MC1723CL_envelope

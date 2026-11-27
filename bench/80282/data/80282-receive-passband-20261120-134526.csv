@@ -1,0 +1,19 @@
+# Ten-Tec 540 80282 end-to-end receive-passband sweep
+# This is measured whole-receiver evidence, not a bare-filter trace.
+# timestamp,2026-11-20T13:45:26
+# generator,Siglent Technologies,SDG1032X,SDG1XCAX4R1344,1.01.01.33R8
+# scope,Siglent Technologies,SDS1202X-E,SDS1EDEX4R2573,1.3.28
+# sdg_amplitude_vpp,0.002
+# external_attenuation_db,60.0
+# predicted_antenna_vpp,2e-06
+# start_hz,14099300.0
+# stop_hz,14099500.0
+# points,3
+# spacing_hz,100.0
+# scope_probe_attenuation,10.0
+# scope_averages,8
+# agc_linearity_wait_s,3.0
+mode,rf_frequency_hz,audio_frequency_hz,audio_rms_v,audio_vpp,relative_db,rf_offset_from_inferred_zero_hz
+SBR,14099300.0,2290.0,0.01207,0.0504,0.0,1098.6300000008196
+SBR,14099400.0,998.63,0.0094,0.0408,-2.171588329953012,998.6300000008196
+SBR,14099500.0,726.09,0.00846,0.0428,-3.086738141166514,898.6300000008196

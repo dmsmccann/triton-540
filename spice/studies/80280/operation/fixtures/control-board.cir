@@ -1,0 +1,74 @@
+* Ten-Tec 80280, owner manual PDF 52 / printed 3-36.
+* Nodes tcmd, r, t, td, supply, reg, ot, ot_switch, pot_top, pot_w, pot_bottom
+* correspond to board terminals. Transistor order is collector/base/emitter.
+R80-1 tcmd c1 27
+R80-2 supply tcmd 47k
+R80-3 tcmd q2b 6.8k
+R80-4 supply t_drive 1k
+C80-1 c1 0 1u
+Q80-2 t_drive q2b 0 MPS6514
+Q80-3 0 t_drive q3e 2N5087
+Q80-4 supply t_drive q4e MPSU01_FITTED
+R80-5 q3e t 10
+R80-6 q4e t 10
+R80-10 t q5b 22k
+Q80-5 r_drive q5b 0 MPS6514
+R80-13 supply r_drive 1k
+Q80-6 0 r_drive r 2N5087
+Q80-7 supply r_drive q7e MPSU01_FITTED
+R80-14 q7e r 10
+R80-9 t td 1k
+Q80-1 td q1b 0 MPS6514
+R80-8 t c2 4.7k
+C80-2 c2 q1b {timing_cap}
+R80-7 q1b 0 22k
+
+R80-11 t q9b 10k
+R80-12 q9b 0 6.8k
+R80-17 reg trim_top 10k
+B80-16A trim_top zero I=V(trim_top,zero)/(1+9998*(1-V(trim)))
+B80-16B zero trim_bottom I=V(zero,trim_bottom)/(1+9998*V(trim))
+R80-15 trim_bottom 0 10k
+D80-1 zero ot 1N4154
+D80-2 pot_w ot 1N4154
+Q80-8 zero q8b 0 MPS6514
+R80-18 pot_w q8b 220k
+Q80-9 pot_w q9b 0 MPS6514
+R80-19 ot_switch q9b 10k
+R80-20 reg ot_switch 10k
+R80-21 pot_bottom 0 10k
+R80-22 ot 0 100k
+R80-23 reg pot_top 10k
+
+R80-24 feedback 0 2.2k
+R80-25 reg feedback 270
+R80-26 ref plus 180
+R80-27 pass reg 4.7
+C80-3 comp feedback 150p
+C80-4 plus 0 4.7u
+C80-5 supply 0 0.1u
+
+* Chassis contacts and the external 10 k front-panel pot.
+Skey tcmd 0 key 0 contact
+Soffset ot_switch t enabled 0 contact
+.model contact sw(Ron=0.1 Roff=1e10 Vt=0.5 Vh=0)
+Bfront_upper pot_top pot_w I=V(pot_top,pot_w)/(1+9998*(1-V(knob)))
+Bfront_lower pot_w pot_bottom I=V(pot_w,pot_bottom)/(1+9998*V(knob))
+
+* Known portions of the driver and OT-TR loads. The two residual rail loads
+* are service-voltage-based estimates, and are varied for the timing check.
+Rrx r 0 {220*load_scale}
+Rtx t 0 {82*load_scale}
+Rdriver12 t drive_late 470
+Rdriver15 td drive_first 470
+Ddriver1 drive_late drive_late_mid DriverSi
+Ddriver2 drive_late_mid 0 DriverSi
+Ddriver3 drive_first drive_first_mid DriverSi
+Ddriver4 drive_first_mid 0 DriverSi
+.model DriverSi D(Is=20n N=1.7 Rs=0.1)
+Cdriver9 drive_late 0 0.1u
+Drelay t relay_hold 1N4154
+Crelay relay_hold td {relay_cap}
+Rrelay_adjust relay_hold 0 5.68k
+Rrelay_base relay_hold relay_b 22k
+Qrelay 0 relay_b 0 MPS6514

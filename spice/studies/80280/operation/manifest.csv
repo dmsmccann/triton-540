@@ -1,0 +1,19 @@
+run,analysis,contact,offset_enabled,knob_position,trim_position,rail_load_scale,C80-2,relay_C3,regulator,external_load,supply
+dc-rx,op,0,1,0.5,0.5,1,0.1u,32u,ideal 8 V,0.03,13.8
+dc-tx,op,1,1,0.5,0.5,1,0.1u,32u,ideal 8 V,0.03,13.8
+keying,tran 2u 205m 0 2u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,1,0.1u,32u,ideal 8 V,0.03,13.8
+light-load,tran 2u 205m 0 2u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,1.5,0.1u,32u,ideal 8 V,0.03,13.8
+heavy-load,tran 2u 205m 0 2u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,0.75,0.1u,32u,ideal 8 V,0.03,13.8
+kicad-c2,tran 2u 205m 0 2u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,1,0.01u,32u,ideal 8 V,0.03,13.8
+driver-only-td,tran 2u 205m 0 2u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,1,0.1u,1a,ideal 8 V,0.03,13.8
+driver-only-kicad-c2,tran 2u 205m 0 2u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,1,0.01u,1a,ideal 8 V,0.03,13.8
+offset-zero,dc Vtrim 0 1 0.01,0,0,0.5,0.5,1,0.1u,32u,ideal 8 V,0.03,13.8
+receive-engaged,dc Vknob 0 1 0.01,0,1,0.5,0.46,1,0.1u,32u,ideal 8 V,0.03,13.8
+receive-disengaged-before,dc Vknob 0 1 0.01,0,0,0.5,0.25,1,0.1u,32u,ideal 8 V,0.03,13.8
+receive-disengaged-aligned,dc Vknob 0 1 0.01,0,0,0.5,0.46,1,0.1u,32u,ideal 8 V,0.03,13.8
+transmit-aligned,dc Vknob 0 1 0.01,1,1,0.5,0.46,1,0.1u,32u,ideal 8 V,0.03,13.8
+reg-line-10ma,dc Vinput 9.5 15 0.05,0,1,0.5,0.5,1,0.1u,32u,MC1723CL envelope,10m,13.8
+reg-line-30ma,dc Vinput 9.5 15 0.05,0,1,0.5,0.5,1,0.1u,32u,MC1723CL envelope,30m,13.8
+reg-line-60ma,dc Vinput 9.5 15 0.05,0,1,0.5,0.5,1,0.1u,32u,MC1723CL envelope,60m,13.8
+reg-load,dc Iexternal 0.001 0.15 0.001,0,1,0.5,0.5,1,0.1u,32u,MC1723CL envelope,0.03,13.8
+reg-keying,tran 10u 105m 0 10u / linearize,PWL(0 0 10m 0 10.001m 1 90m 1 90.001m 0 120m 0 120.001m 1 140m 1 140.001m 0 160m 0 160.001m 1 180m 1 180.001m 0),1,0.5,0.5,1,0.1u,32u,MC1723CL envelope,PWL(0 30m 10m 30m 10.001m 60m 90m 60m 90.001m 30m),13.8

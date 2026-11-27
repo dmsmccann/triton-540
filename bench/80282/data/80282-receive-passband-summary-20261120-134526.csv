@@ -1,0 +1,2 @@
+mode,peak_rf_frequency_hz,peak_audio_rms_v,half_drive_output_change_db,linearity_expectation_db,evidence_status,inferred_zero_reference_hz,zero_reference_sign
+SBR,14099300.0,0.01207,3.4805619698381567,6.0206,invalid_agc_compression_or_noise,14100398.63,1
