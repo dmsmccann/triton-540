@@ -7,6 +7,7 @@ its Ten-Tec assembly number.
 | Assembly | Radio | Measurement | Status |
 |---|---|---|---|
 | [`80166/`](80166/) | Triton IV Model 540 | Receiver RF amplifier L1/L2 tracking on 80 m | Procedure written, sweeps not yet captured |
+| [`80291/`](80291/) | Triton IV Model 540 | Band-filter pin resistance, passbands, and mixer-product rejection | Procedure written, not yet performed |
 | [`80350/`](80350/) | **Model 544** | VFO mixer-balance adjustment of `R2 MIXER BAL.` | Complete |
 
 The 80350 VFO belongs to a Ten-Tec Model 544, not to the Model 540 this

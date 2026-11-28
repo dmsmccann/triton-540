@@ -5790,7 +5790,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\modelsN4154.lib"
+		(property "Sim.Library" "spice\\models\\1N4154.lib"
 			(at 205.74 191.77 0)
 			(hide yes)
 			(show_name no)
@@ -8183,7 +8183,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\modelsN5087.lib"
+		(property "Sim.Library" "spice\\models\\2N5087.lib"
 			(at 162.56 154.94 0)
 			(hide yes)
 			(show_name no)
@@ -9142,7 +9142,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\modelsN5087.lib"
+		(property "Sim.Library" "spice\\models\\2N5087.lib"
 			(at 110.49 142.24 0)
 			(hide yes)
 			(show_name no)
@@ -9280,7 +9280,7 @@
 				)
 			)
 		)
-		(property "Sim.Library" "spice\\modelsN4154.lib"
+		(property "Sim.Library" "spice\\models\\1N4154.lib"
 			(at 218.44 191.77 0)
 			(hide yes)
 			(show_name no)

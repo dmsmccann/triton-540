@@ -1,0 +1,11 @@
+pin,simulated_ohms,manual_expectation
+3_5-I,1e+12,infinite (blocking capacitors)
+3_5-O,47,47 ohms
+7.0-I,0.02174,zero
+7.0-O,0.02174,zero
+14_0-I,0.02175,zero
+14_0-O,0.02175,zero
+21_0-I,0.02174,zero
+21_0-O,0.02174,zero
+28_0-I,0.02173,zero
+28_0-O,0.02173,zero

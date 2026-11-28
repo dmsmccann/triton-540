@@ -1,0 +1,24 @@
+band,product,frequency_mhz,output_db,relative_to_wanted_db
+b80,wanted (VFO - 9),3.75,-4.98,0.00
+b80,sum (VFO + 9),21.75,-83.20,-78.22
+b80,VFO leak,12.75,-59.73,-54.75
+b80,9 MHz IF leak,9.00,-44.04,-39.06
+b40,wanted (VFO - 9),7.25,-2.49,0.00
+b40,sum (VFO + 9),25.25,-77.56,-75.07
+b40,VFO leak,16.25,-61.60,-59.11
+b40,9 MHz IF leak,9.00,-30.68,-28.19
+b20,wanted (VFO + 9),14.25,-2.46,0.00
+b20,difference (9 - VFO),3.75,-53.52,-51.06
+b20,VFO leak,5.25,-49.33,-46.87
+b20,9 MHz IF leak,9.00,-38.40,-35.94
+b15,wanted (VFO + 9),21.25,-2.50,0.00
+b15,difference (VFO - 9),3.25,-59.07,-56.56
+b15,VFO leak,12.25,-41.02,-38.51
+b15,9 MHz IF leak,9.00,-47.24,-44.73
+b10,"wanted, 28.0 segment",28.25,-1.60,0.00
+b10,"difference, 28.0 segment",10.25,-49.92,-48.32
+b10,"VFO leak, 28.0 segment",19.25,-36.75,-35.15
+b10,"wanted, 29.5 segment",29.75,-1.88,-0.28
+b10,"difference, 29.5 segment",11.75,-47.94,-46.35
+b10,"VFO leak, 29.5 segment",20.75,-33.73,-32.14
+b10,9 MHz IF leak,9.00,-51.60,-50.00

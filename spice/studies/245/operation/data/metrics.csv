@@ -1,0 +1,28 @@
+measurement,value,note
+sweep spacing near 750 Hz (Hz),0.864,resolution of every frequency below
+CW-1 (pin 7) peak frequency (Hz),748.2,grid point
+CW-1 (pin 7) peak gain from pin 1 (dB),2.039,simulated
+CW-1 (pin 7) width at -3 dB (Hz),134.1,edges 684.3 / 818.4 Hz
+CW-1 (pin 7) width at -6 dB (Hz),198.3,edges 655.8 / 854.1 Hz
+CW-1 (pin 7) width at -20 dB (Hz),454.1,edges 555.1 / 1009.2 Hz
+CW-1 (pin 7) width at -60 dB (Hz),1710.1,edges 281.3 / 1991.5 Hz
+CW-2 (pin 4) peak frequency (Hz),749.0,grid point
+CW-2 (pin 4) peak gain from pin 1 (dB),0.344,simulated
+CW-2 (pin 4) width at -3 dB (Hz),313.1,edges 609.2 / 922.3 Hz
+CW-2 (pin 4) width at -6 dB (Hz),541.9,edges 526.6 / 1068.5 Hz
+CW-2 (pin 4) width at -20 dB (Hz),3124.1,edges 179.7 / 3303.8 Hz
+CW-2 (pin 4) width at -60 dB (Hz),outside sweep,
+OUT 2 (pin 5) peak frequency (Hz),749.0,grid point
+OUT 2 (pin 5) peak gain from pin 1 (dB),0.909,simulated
+OUT 2 (pin 5) width at -3 dB (Hz),199.4,edges 655.6 / 855.0 Hz
+OUT 3 (pin 6) peak frequency (Hz),748.2,grid point
+OUT 3 (pin 6) peak gain from pin 1 (dB),1.474,simulated
+OUT 3 (pin 6) width at -3 dB (Hz),157.4,edges 673.9 / 831.3 Hz
+CW-1 shape factor 60 dB / 6 dB,8.62,ratio of the two widths
+"largest response change, 13 V vs 8 V supply (dB)",0.0000,"any pin, any frequency"
+"OUT 2 / OUT 1 at 750 Hz, R45-9 = 220k (dB)",0.565,pins 5 / 4
+"OUT 2 / OUT 1 at 750 Hz, R45-9 = 120k (dB)",5.708,pins 5 / 4
+"OUT 2 / OUT 1 peak, R45-9 = 220k (Hz, dB)","748.2, 0.565",grid point
+"OUT 2 / OUT 1 peak, R45-9 = 120k (Hz, dB)","775.4, 5.830",grid point
+"CW-1 peak with R45-9 = 120k (Hz, dB)","755.1, 7.201",grid point
+CW-1 -3 dB width with R45-9 = 120k (Hz),135.2,

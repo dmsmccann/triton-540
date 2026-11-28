@@ -1,0 +1,112 @@
+* Ten-Tec 80291 band-pass filter magnetics starting model
+*
+* Source: 540 Triton Owner Manual, PDF page 41 / printed page 3-25.
+* T91-1..T91-4 (manual T1-T4) are double-tuned, overcoupled band-pass
+* transformers. Each shield can holds two slug-tuned windings. Each winding
+* has its documented tuning capacitor (C91-5..C91-12) from the hot end to
+* ground and is tapped near the grounded end for the signal connection. The
+* manual gives no inductance, tap, Q, or coupling data.
+*
+* Evidence status:
+* - Documented: tuning capacitors 82, 56, 22, 10 pF; topology; band coverage
+*   3.5-4.0, 7.0-7.5, 14.0-14.5, 21.0-21.5, 28.0-30.0 MHz (PDF page 4).
+* - Calculated: end-to-end inductance resonating the documented capacitor
+*   plus CSTRAY at the band centre, L = 1/((2*pi*f0)^2*(C+4 pF)):
+*     T1 7.25 MHz  82 pF -> 5.604 uH     T2 14.25 MHz 56 pF -> 2.079 uH
+*     T3 21.25 MHz 22 pF -> 2.157 uH     T4 29.00 MHz 10 pF -> 2.151 uH
+*   T2-T4 needing nearly the same ~2.1 uH suggests one coil part (inferred).
+* - Estimated: CSTRAY 4 pF (likely 2-8 pF), unloaded Q 100 at f0 (likely
+*   60-120), tap-segment coupling 0.98, and the tap position. The tap is
+*   chosen so that a 50 ohm termination on each tap gives loaded Q = 18.75.
+*   With winding-to-winding K = 0.08 that is k*Q = 1.5: mildly overcoupled,
+*   as the manual states. None of these are Ten-Tec data.
+*
+* Pin order follows the two-unit triton_iv:T_Trim_dual_tap symbol:
+*   unit A (mixer / input winding):  1 = hot end, 2 = cold end, 3 = tap
+*   unit B (driver / output winding): 4 = hot end, 5 = cold end, 6 = tap
+* K is the coupling coefficient between the two windings. The sheet sets it
+* per transformer from .param K_T1..K_T4.
+
+.SUBCKT BP80291_T1 1 2 3 4 5 6 PARAMS: K=0.08
+* 7.25 MHz centre, 82 pF documented tuning capacitor per winding
+* 5.604 uH end to end per winding; tap at 0.092 of the turns from cold end
+RAT 1 NAT 2.111
+LAT NAT 3 4.6341e-06
+RAB 3 NAB 0.02174
+LAB NAB 2 4.7723e-08
+CSA 1 2 4p
+RBT 4 NBT 2.111
+LBT NBT 6 4.6341e-06
+RBB 6 NBB 0.02174
+LBB NBB 5 4.7723e-08
+CSB 4 5 4p
+KA LAT LAB 0.98
+KB LBT LBB 0.98
+KTT LAT LBT {K}
+KTB LAT LBB {K}
+KBT LAB LBT {K}
+KBB LAB LBB {K}
+.ENDS BP80291_T1
+
+.SUBCKT BP80291_T2 1 2 3 4 5 6 PARAMS: K=0.08
+* 14.25 MHz centre, 56 pF documented tuning capacitor per winding
+* 2.079 uH end to end per winding; tap at 0.108 of the turns from cold end
+RAT 1 NAT 1.487
+LAT NAT 3 1.661e-06
+RAB 3 NAB 0.02175
+LAB NAB 2 2.4293e-08
+CSA 1 2 4p
+RBT 4 NBT 1.487
+LBT NBT 6 1.661e-06
+RBB 6 NBB 0.02175
+LBB NBB 5 2.4293e-08
+CSB 4 5 4p
+KA LAT LAB 0.98
+KB LBT LBB 0.98
+KTT LAT LBT {K}
+KTB LAT LBB {K}
+KBT LAB LBT {K}
+KBB LAB LBB {K}
+.ENDS BP80291_T2
+
+.SUBCKT BP80291_T3 1 2 3 4 5 6 PARAMS: K=0.08
+* 21.25 MHz centre, 22 pF documented tuning capacitor per winding
+* 2.157 uH end to end per winding; tap at 0.087 of the turns from cold end
+RAT 1 NAT 2.41
+LAT NAT 3 1.8052e-06
+RAB 3 NAB 0.02174
+LAB NAB 2 1.6279e-08
+CSA 1 2 4p
+RBT 4 NBT 2.41
+LBT NBT 6 1.8052e-06
+RBB 6 NBB 0.02174
+LBB NBB 5 1.6279e-08
+CSB 4 5 4p
+KA LAT LAB 0.98
+KB LBT LBB 0.98
+KTT LAT LBT {K}
+KTB LAT LBB {K}
+KBT LAB LBT {K}
+KBB LAB LBB {K}
+.ENDS BP80291_T3
+
+.SUBCKT BP80291_T4 1 2 3 4 5 6 PARAMS: K=0.08
+* 29 MHz centre, 10 pF documented tuning capacitor per winding
+* 2.151 uH end to end per winding; tap at 0.074 of the turns from cold end
+RAT 1 NAT 3.368
+LAT NAT 3 1.8485e-06
+RAB 3 NAB 0.02173
+LAB NAB 2 1.1924e-08
+CSA 1 2 4p
+RBT 4 NBT 3.368
+LBT NBT 6 1.8485e-06
+RBB 6 NBB 0.02173
+LBB NBB 5 1.1924e-08
+CSB 4 5 4p
+KA LAT LAB 0.98
+KB LBT LBB 0.98
+KTT LAT LBT {K}
+KTB LAT LBB {K}
+KBT LAB LBT {K}
+KBB LAB LBB {K}
+.ENDS BP80291_T4

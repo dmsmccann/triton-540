@@ -281,31 +281,38 @@
         "wire_width": 6
       },
       {
+        "name": "+REG",
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0,
+        "schematic_color": "rgb(194, 0, 0)",
+        "tuning_profile": ""
+      },
+      {
         "name": "Power",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 3,
+        "priority": 4,
         "schematic_color": "rgb(255, 0, 0)",
         "tuning_profile": ""
       },
       {
         "name": "RSignal",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 1,
+        "priority": 2,
         "schematic_color": "rgb(255, 255, 255)",
         "tuning_profile": ""
       },
       {
         "name": "RcvPath",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 0,
+        "priority": 1,
         "schematic_color": "rgb(0, 194, 194)",
         "tuning_profile": ""
       },
       {
         "name": "TSignal",
         "pcb_color": "rgba(0, 0, 0, 0.000)",
-        "priority": 2,
-        "schematic_color": "rgb(255, 153, 0)",
+        "priority": 3,
+        "schematic_color": "rgb(255, 255, 0)",
         "tuning_profile": ""
       }
     ],
@@ -342,6 +349,10 @@
       {
         "netclass": "Power",
         "pattern": "/Accessory Noise Blanker Mod 249/+12_SW"
+      },
+      {
+        "netclass": "+REG",
+        "pattern": "*/+REG"
       }
     ]
   },
@@ -590,7 +601,7 @@
         "uuid": "2d45daab-5f60-4e97-8c02-32b0054eab28"
       }
     ],
-    "used_designators": "SW1-3,R79\\-4-11,R79\\-14-15,R79\\-21-23,R79\\-29-31,S4B1,U1-2,R66\\-6-13,V1-10,C66\\-9-17,#PWR1-65,#PWR72-209,T1,Y1-13,Q1-7,MES1,R87\\-6-8,R87\\-20-21,D1-5,D9,LA1-4,S3,C79\\-5-14,C79\\-23-25,C87\\-3-7,C87\\-12-17,C87\\-20-21,C89\\-2-5,C89\\-8-15,C89\\-20-25,C89\\-27-28,C89\\-36-39,F1,RV1-3,L66\\-3-4,C1-7,C13-43,C82\\-27-29,L1-7,L89-103,#FLG1-2,R1-10,R12,R15-32,R99,J1-10,IC2-3,IC9-10,R89\\-2-3,R89\\-5-7,R89\\-9-12,R89\\-16-21,R89\\-25-27,R89\\-29-31,R89\\-36-37,LS1,H1-4,TP1-19,TP21-26,Q08\\-2-3,Q80\\-10",
+    "used_designators": "SW1-3,R79\\-4-11,R79\\-14-15,R79\\-21-23,R79\\-29-31,S4B1,U1-2,R66\\-6-13,V1-10,C66\\-9-17,#PWR1-65,#PWR72-209,#PWR216-229,T1,Y1-13,Q1-7,MES1,C91\\-13-16,R87\\-6-8,R87\\-20-21,D1-5,D9,LA1-4,S3,S6,C79\\-5-14,C79\\-23-25,C87\\-3-7,C87\\-12-17,C87\\-20-21,C89\\-2-5,C89\\-8-15,C89\\-20-25,C89\\-27-28,C89\\-36-39,F1,RV1-3,L66\\-3-4,C1-7,C13-43,C82\\-27-29,L1-13,L89-103,#FLG1-2,R1-10,R12,R15-32,R99,J1-10,IC2-3,IC9-10,R89\\-2-3,R89\\-5-7,R89\\-9-12,R89\\-16-21,R89\\-25-27,R89\\-29-31,R89\\-36-37,LS1,H1-4,TP1-19,TP21-26,Q08\\-2-3",
     "variants": []
   },
   "sheets": [
@@ -637,6 +648,10 @@
     [
       "8baa0a3e-6abf-4bbb-8cca-861c73c3c0b4",
       "Model 245 CW Filter"
+    ],
+    [
+      "227855c0-0390-422a-a756-8f97db901e56",
+      "Bandpass 80291"
     ]
   ],
   "text_variables": {},

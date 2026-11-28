@@ -54,7 +54,12 @@ symbol pin numbers; the symbol graphics deliberately follow Ten-Tec's compact
 ## MC1747 / MC1747C
 
 - Used by: `80279` AGC and audio preamplifier; assembly `80282`, IC-2
-  two-stage microphone amplifier
+  two-stage microphone amplifier; Model `245` CW filter, IC45-1 and IC45-2
+  (symbol `triton_iv:uA747C`)
+- Note for Model 245: Ten-Tec specifies the µA747/C. This Motorola sheet
+  states the MC1747CL is "functionally, electrically, and pin-for-pin
+  equivalent to the µA747C" (printed page 3-83), so it serves as the
+  archived document for that part until a Fairchild µA747 sheet is archived.
 - File: `MC1747_MC1747C_Motorola_1976.pdf`
 - Manufacturer: Motorola Semiconductor Products Inc.
 - Document: MC1747 / MC1747C dual operational amplifier, document DS 9254

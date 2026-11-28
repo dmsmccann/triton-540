@@ -3,6 +3,8 @@
 ## Local artifacts
 
 - `literature/540 Triton Owner Manual.pdf` — primary service and alignment source
+- `literature/Model 245.pdf` — original Model 245 CW filter instruction sheet;
+  specifications, installation, operational check, voltages, schematic, photograph
 - `literature/Ten_Tec_249.pdf` — original Model 249 instruction sheet; installation,
   operation, theory, alignment, schematic, photograph, and service voltages
 - `triton_540.kicad_pro` — project configuration
@@ -22,7 +24,11 @@
 - `spice/studies/80308/operation/` — staged crystal-oscillator, pulse-gate,
   divider/mode, regulator, and DEFEAT study
 - `mod_249.kicad_sch` — Model 249 optional 9 MHz IF noise-blanker reconstruction
+- `245_cw_filt.kicad_sch` — Model 245 optional 750 Hz audio CW-filter reconstruction
 - `spice/studies/249/how-it-works/` — normal transfer and PIN-diode gate study
+- `bandpass_80291.kicad_sch` — 80291 transmit band-filter reconstruction; T91-1..T91-4 use the two-unit `T_Trim_dual_tap` symbol
+- `spice/studies/80291/operation/` — 80291 passband, mixer-product, termination, detune and pin-resistance study (`spice/tools/run_80291_operation.py`)
+- `spice/studies/245/operation/` — Model 245 DC, CW-1/CW-2, stage-by-stage and R45-9 study (`spice/tools/run_245_operation.py`)
 - `triton_540-backups/` — user backups; inspect but do not restore over current work without approval
 
 ## Known manual map
@@ -316,3 +322,78 @@ assembly.
   R87-19 position 0.77. Each improves simulated VFO rejection by about 36 dB
   from midpoint without reducing the wanted product. These normalized model
   positions are not physical or factory adjustment settings.
+
+## Established Model 245 evidence
+
+- `literature/Model 245.pdf`: PDF page 1 gives specifications and installation;
+  PDF page 2 / printed page 3-41 gives the operational check, board-pin and
+  IC-pin voltages and the 14-pin top view; PDF page 3 / printed page 3-42 gives
+  the board photograph and schematic. PDF page 4 is bleed-through only.
+- The 540 manual shows the socket on main chassis wiring PDF page 21 / printed
+  page 3-4 (pins IN, GND, +REG, CW2, -, -, CW1, with "remove blue jumper to
+  install 245"), the location on PDF page 23 / printed page 3-7, and the
+  FILT IN / FILT OUT routing on PDF page 32 / printed page 3-16.
+- Four identical multiple-feedback bandpass stages in two uA747C duals:
+  220k input, 15k + 6.8k series leg to a half-supply bias rail, 0.0022 uF to
+  the output, 0.0022 uF to the inverting input, 470k feedback. The 15k/6.8k
+  junctions are not connected to the non-inverting line; the drawing has no
+  dots there.
+- Bias rail: R4 = R6 = 15k from +12 V, C7 = 32 uF 10 V. Manual reads 6.5 V on
+  all inputs and outputs with 13 V on the supply pins.
+- OUT 1 (stage 1, CW-2) and OUT 4 (all stages, CW-1) are AC-coupled through
+  0.1 uF with 220k / 470k pull-downs; the manual reads 0 V on them. OUT 2 and
+  OUT 3 are direct op-amp outputs at 6.5 V and are unused by the 540 socket.
+- Calculated: f0 = 1/(2 pi C sqrt(470k x (220k || 21.8k))) = 750 Hz;
+  single-stage Q of about 2.4 (BW about 310 Hz) and four-stage BW of about
+  135 Hz, against the manual's 260 Hz and 150 Hz. Stage gain 470k/(2 x 220k)
+  gives about +2.3 dB over four stages, against the manual's "app. 2.5 dB".
+- Inferred: R9's leading digit is illegible in the scan ("?20K"). 220k fits
+  the other three stages, the 750 Hz center, and the insertion gain; 120k
+  would give about 777 Hz and about 7.5 dB of gain.
+- Inferred: board pin numbers 1-7 = INPUT, GND, +12V, OUT 1-4, from the
+  socket order and the instruction to clip the jumper between pins 1 and 4.
+- KiCad sheet pins use the 540 chassis-wiring names: IN, +REG, CW2 (board
+  OUT 1), CW1 (board OUT 4). Socket pins 5 and 6 are drawn unnamed and
+  unwired, so the sheet keeps the board names OUT 2 / OUT 3 with no-connect
+  flags on the root sheet.
+- Traced on PDF page 21: socket +REG runs about 1 mm below the driver/80280 T
+  line for most of its length but has no junction with it; it ends on the
+  80280 Control Board +REG pin, not T. T is a transmit-only supply, which
+  would leave the receive filter unpowered.
+- Traced on PDF page 21: 80279 FILT IN (shielded) -> socket IN and S1B
+  positions 1 (SB-R) and 4 (SB-N); S1B position 2 (CW1) -> socket CW1;
+  position 3 (CW2) -> socket CW2; position 5 (LOCK) open; S1B common
+  -> 80279 FILT OUT. Root KiCad S1B pins 7-11 are positions 1-5, pin 12 the
+  common. As shipped, the blue IN-CW2 jumper makes CW-2 a bypass and CW-1
+  silent, matching the manual's "receive CW only in the CW-2 position".
+- The 80279 sheet still contains a FILT IN-FILT OUT wire standing in for the
+  no-filter case; while it exists the full-project netlist bypasses the 245.
+- Open question: 80280 +REG is about 8 V, while the 245 sheet lists 13 V on
+  "+12" and 6.5 V bias. In a 540 the bias rail should sit near 4 V. The 245
+  sheet appears to describe the filter for TRITONs generally.
+- Manual designators R1-R20, C1-C12, IC1, IC2 are prefixed `45-` in KiCad to
+  remain unique against the root sheet's R1, C1, and so on.
+- Simulated (fresh KiCad export, MC1747 macromodel, +REG 8 V, unloaded pins):
+  centre 748-749 Hz; CW-1 +2.0 dB, 134 Hz at -3 dB, 1710 Hz at -60 dB,
+  shape factor 8.6; CW-2 +0.3 dB, 313 Hz at -3 dB, 3124 Hz at -20 dB. Manual:
+  150 / 1450 Hz, 7.2, 260 / 2800 Hz, app. 2.5 dB. Identical stages force a
+  CW-1/CW-2 width ratio of about 0.43; the manual implies 0.58 (open).
+- R45-9 = 120k would give +7.2 dB CW-1 insertion gain and +5.7 dB at pin 5
+  relative to pin 4 at 750 Hz, against +2.0 dB and +0.57 dB for 220k.
+
+## Established 80291 evidence
+
+- PDF page 41 / printed page 3-25 is the only 80291 page: theory, schematic,
+  photograph, and the resistance check. No alignment or voltage table.
+- Right-hand manual pins are the input from 80287 `OUT` (S4F); left-hand pins
+  go to the 80285 driver (S4E). KiCad labels: `-I` = mixer side, `-O` = driver.
+- Manual T1-T4 are KiCad T91-1..T91-4 (40, 20, 15, 10 m). Unit A is the
+  mixer-side winding, unit B the driver-side winding. Manual C1-C12, L1-L2, R1
+  are C91-n, L91-n, R91-1.
+- Documented: tuning capacitors 82/56/22/10 pF, low-pass C 1500/1500/1500/750 pF,
+  R1 47 ohm; pin resistance zero (band-pass), infinite (3.5 in), 47 ohm (3.5 out).
+- Calculated: 5.60, 2.08, 2.16, 2.15 uH per winding at 7.25/14.25/21.25/29.0 MHz
+  with 4 pF stray. Estimated: taps, Qu 100, k 0.08, L91-1/L91-2 2.7 uH.
+- VFO plan for spur frequencies: PDF page 26 / printed page 3-10.
+- The passband depends strongly on the undocumented 80287 output and 80285
+  input impedances; both must be low (tens to hundreds of ohms).

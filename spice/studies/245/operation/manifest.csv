@@ -1,0 +1,6 @@
+run,analysis,+REG_V,R45-9,source,load,purpose
+dc-540,op,8,220k,ideal 1 V AC at pin 1,pins 4-7 unloaded,operating point
+dc-manual,op,13,220k,ideal 1 V AC at pin 1,pins 4-7 unloaded,operating point
+ac-nominal,ac dec 2000 100 10k,8,220k,ideal 1 V AC at pin 1,pins 4-7 unloaded,"nominal, +REG as in the 540"
+ac-13v,ac dec 2000 100 10k,13,220k,ideal 1 V AC at pin 1,pins 4-7 unloaded,supply-dependence check
+ac-r9-120k,ac dec 2000 100 10k,8,120k,ideal 1 V AC at pin 1,pins 4-7 unloaded,R45-9 alternative reading
