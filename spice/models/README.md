@@ -1,5 +1,28 @@
 # SPICE model reference
 
+## 80285 low-level driver
+
+| References | Model | Basis |
+|:--|:--|:--|
+| Q85-1, Q85-2 | [MPS6514.lib](MPS6514.lib) | Existing Fairchild-attributed model |
+| Q85-3, Q85-4 | [80285_driver_semiconductors.lib](80285_driver_semiconductors.lib) | 2N3866 approximation from RCA File 80 |
+| Q85-5 | [80285_driver_semiconductors.lib](80285_driver_semiconductors.lib) | PT3647 bias approximation based on the Ten-Tec voltage table |
+| D85-1 through D85-4 | [80285_driver_semiconductors.lib](80285_driver_semiconductors.lib) | 1N4002 forward-voltage and capacitance approximation from onsemi 1N4001/D |
+| L85-1, L85-2, T85-1 | [80285_driver_magnetics.lib](80285_driver_magnetics.lib) | Factory winding connections with estimated winding parameters |
+
+The models are assigned to the placed symbols on the 80285 sheet. The
+[Model 540 manual](../../literature/540%20Triton%20Owner%20Manual.pdf) gives
+the DC voltages in PDF page 42 / printed 3-26 and shows the winding connections
+in PDF page 43 / printed 3-27. Measure the winding inductances, tap and turns
+ratios, and transistor RF behavior before using these models to predict gain,
+output power, or distortion.
+
+For an isolated-board SPICE fixture, connect schematic GND to node 0 and
+drive +12, T, tD, and ALC from independent voltage sources. The manual lists
+13.0 V, 10.4 V, 4.4 V, and 4.3 V at those terminals in transmit. In receive,
+T and tD fall to 0.2 V. An RF source at IN and a load at OUT complete the
+fixture. A 50-ohm source and load are test assumptions.
+
 ## CA3053 differential/cascode amplifier
 
 `CA3053.sub` follows the eight-terminal internal schematic published by

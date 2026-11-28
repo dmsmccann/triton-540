@@ -1,0 +1,107 @@
+case,analysis,fixture
+receive,op,T=0.2 V; tD=0.2 V; ALC=4.3 V; +12=13 V
+t-only,op,T=10.4 V; tD=0.2 V; ALC=4.3 V; +12=13 V
+transmit,op,T=10.4 V; tD=4.4 V; ALC=4.3 V; +12=13 V
+alc-02,ac,ALC=0.2 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-02-op,op,ALC=0.2 V; Q85-1 and Q85-2 collector nodes
+alc-03,ac,ALC=0.3 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-03-op,op,ALC=0.3 V; Q85-1 and Q85-2 collector nodes
+alc-04,ac,ALC=0.4 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-04-op,op,ALC=0.4 V; Q85-1 and Q85-2 collector nodes
+alc-05,ac,ALC=0.5 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-05-op,op,ALC=0.5 V; Q85-1 and Q85-2 collector nodes
+alc-06,ac,ALC=0.6 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-06-op,op,ALC=0.6 V; Q85-1 and Q85-2 collector nodes
+alc-07,ac,ALC=0.7 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-07-op,op,ALC=0.7 V; Q85-1 and Q85-2 collector nodes
+alc-08,ac,ALC=0.8 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-08-op,op,ALC=0.8 V; Q85-1 and Q85-2 collector nodes
+alc-09,ac,ALC=0.9 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-09-op,op,ALC=0.9 V; Q85-1 and Q85-2 collector nodes
+alc-10,ac,ALC=1 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-10-op,op,ALC=1 V; Q85-1 and Q85-2 collector nodes
+alc-11,ac,ALC=1.1 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-11-op,op,ALC=1.1 V; Q85-1 and Q85-2 collector nodes
+alc-12,ac,ALC=1.2 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-12-op,op,ALC=1.2 V; Q85-1 and Q85-2 collector nodes
+alc-13,ac,ALC=1.3 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-13-op,op,ALC=1.3 V; Q85-1 and Q85-2 collector nodes
+alc-14,ac,ALC=1.4 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-14-op,op,ALC=1.4 V; Q85-1 and Q85-2 collector nodes
+alc-15,ac,ALC=1.5 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-15-op,op,ALC=1.5 V; Q85-1 and Q85-2 collector nodes
+alc-16,ac,ALC=1.6 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-16-op,op,ALC=1.6 V; Q85-1 and Q85-2 collector nodes
+alc-17,ac,ALC=1.7 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-17-op,op,ALC=1.7 V; Q85-1 and Q85-2 collector nodes
+alc-18,ac,ALC=1.8 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-18-op,op,ALC=1.8 V; Q85-1 and Q85-2 collector nodes
+alc-19,ac,ALC=1.9 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-19-op,op,ALC=1.9 V; Q85-1 and Q85-2 collector nodes
+alc-20,ac,ALC=2 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-20-op,op,ALC=2 V; Q85-1 and Q85-2 collector nodes
+alc-21,ac,ALC=2.1 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-21-op,op,ALC=2.1 V; Q85-1 and Q85-2 collector nodes
+alc-22,ac,ALC=2.2 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-22-op,op,ALC=2.2 V; Q85-1 and Q85-2 collector nodes
+alc-23,ac,ALC=2.3 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-23-op,op,ALC=2.3 V; Q85-1 and Q85-2 collector nodes
+alc-24,ac,ALC=2.4 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-24-op,op,ALC=2.4 V; Q85-1 and Q85-2 collector nodes
+alc-25,ac,ALC=2.5 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-25-op,op,ALC=2.5 V; Q85-1 and Q85-2 collector nodes
+alc-26,ac,ALC=2.6 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-26-op,op,ALC=2.6 V; Q85-1 and Q85-2 collector nodes
+alc-27,ac,ALC=2.7 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-27-op,op,ALC=2.7 V; Q85-1 and Q85-2 collector nodes
+alc-28,ac,ALC=2.8 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-28-op,op,ALC=2.8 V; Q85-1 and Q85-2 collector nodes
+alc-29,ac,ALC=2.9 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-29-op,op,ALC=2.9 V; Q85-1 and Q85-2 collector nodes
+alc-30,ac,ALC=3 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-30-op,op,ALC=3 V; Q85-1 and Q85-2 collector nodes
+alc-31,ac,ALC=3.1 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-31-op,op,ALC=3.1 V; Q85-1 and Q85-2 collector nodes
+alc-32,ac,ALC=3.2 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-32-op,op,ALC=3.2 V; Q85-1 and Q85-2 collector nodes
+alc-33,ac,ALC=3.3 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-33-op,op,ALC=3.3 V; Q85-1 and Q85-2 collector nodes
+alc-34,ac,ALC=3.4 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-34-op,op,ALC=3.4 V; Q85-1 and Q85-2 collector nodes
+alc-35,ac,ALC=3.5 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-35-op,op,ALC=3.5 V; Q85-1 and Q85-2 collector nodes
+alc-36,ac,ALC=3.6 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-36-op,op,ALC=3.6 V; Q85-1 and Q85-2 collector nodes
+alc-37,ac,ALC=3.7 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-37-op,op,ALC=3.7 V; Q85-1 and Q85-2 collector nodes
+alc-38,ac,ALC=3.8 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-38-op,op,ALC=3.8 V; Q85-1 and Q85-2 collector nodes
+alc-39,ac,ALC=3.9 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-39-op,op,ALC=3.9 V; Q85-1 and Q85-2 collector nodes
+alc-40,ac,ALC=4 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-40-op,op,ALC=4 V; Q85-1 and Q85-2 collector nodes
+alc-41,ac,ALC=4.1 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-41-op,op,ALC=4.1 V; Q85-1 and Q85-2 collector nodes
+alc-42,ac,ALC=4.2 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-42-op,op,ALC=4.2 V; Q85-1 and Q85-2 collector nodes
+alc-43,ac,ALC=4.3 V; 3.5–30 MHz at 100 kHz; 50 ohm load
+alc-43-op,op,ALC=4.3 V; Q85-1 and Q85-2 collector nodes
+tap-L1-0.2,ac,load=50 ohm; instance overrides={'XL85-1': ['F=0.2']}
+tap-L1-0.45,ac,load=50 ohm; instance overrides={'XL85-1': ['F=0.45']}
+tap-L2-0.2,ac,load=50 ohm; instance overrides={'XL85-2': ['F=0.2']}
+tap-L2-0.45,ac,load=50 ohm; instance overrides={'XL85-2': ['F=0.45']}
+inductance-L1-6u,ac,load=50 ohm; instance overrides={'XL85-1': ['LEND=6u']}
+inductance-L1-16u,ac,load=50 ohm; instance overrides={'XL85-1': ['LEND=16u']}
+inductance-L2-6u,ac,load=50 ohm; instance overrides={'XL85-2': ['LEND=6u']}
+inductance-L2-16u,ac,load=50 ohm; instance overrides={'XL85-2': ['LEND=16u']}
+ratio-1.5,ac,load=50 ohm; instance overrides={'XT85-1': ['LS=4.4444444u']}
+ratio-3,ac,load=50 ohm; instance overrides={'XT85-1': ['LS=1.1111111u']}
+load-25,ac,load=25 ohm; instance overrides={}
+load-100,ac,load=100 ohm; instance overrides={}
+simultaneous-down,tran,"Simultaneous T and tD; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"
+simultaneous-up,tran,"Simultaneous T and tD; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"
+delayed-down,tran,"tD delayed by 1.73 ms; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"
+80280-driver-only-down,tran,"80280 replay, driver branch; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"
+80280-driver-only-up,tran,"80280 replay, driver branch; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"
+80280-with-80281-down,tran,"80280 replay, with 80281 branch; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"
+80280-with-80281-up,tran,"80280 replay, with 80281 branch; 3.5 MHz, 10 uV peak source; 50 ohm source/load; 32-cycle envelope"

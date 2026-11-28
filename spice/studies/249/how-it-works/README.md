@@ -42,7 +42,7 @@ Run from the project root with KiCad closed:
 python spice/tools/run_249_how_it_works.py
 ```
 
-The runner exports `mod_249.kicad_sch` afresh and verifies that every expected
+The runner exports `249_noise_blanker.kicad_sch` afresh and verifies that every expected
 active-device and magnetic subcircuit appears in the netlist. It reads the live
 root-sheet V1 value, presently 13.28 V, and performs two otherwise identical
 transients:

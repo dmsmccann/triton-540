@@ -19,7 +19,7 @@ The board explanation is in [`80291.md`](../../../../80291.md).
 
 ## Circuit and evidence
 
-The runner exports `bandpass_80291.kicad_sch` and refuses to run unless the
+The runner exports `80291_bandpass.kicad_sch` and refuses to run unless the
 export contains every documented capacitor, R91-1, both low-pass coils, and
 the four transformers with their windings connected to the correct pins.
 Mixer-side windings (unit A) must go to the `-I` pins and driver-side windings

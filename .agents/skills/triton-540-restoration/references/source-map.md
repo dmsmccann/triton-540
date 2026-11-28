@@ -23,10 +23,10 @@
   small-signal transient study showing normal 3.5 MHz board operation
 - `spice/studies/80308/operation/` — staged crystal-oscillator, pulse-gate,
   divider/mode, regulator, and DEFEAT study
-- `mod_249.kicad_sch` — Model 249 optional 9 MHz IF noise-blanker reconstruction
+- `249_noise_blanker.kicad_sch` — Model 249 optional 9 MHz IF noise-blanker reconstruction
 - `245_cw_filt.kicad_sch` — Model 245 optional 750 Hz audio CW-filter reconstruction
 - `spice/studies/249/how-it-works/` — normal transfer and PIN-diode gate study
-- `bandpass_80291.kicad_sch` — 80291 transmit band-filter reconstruction; T91-1..T91-4 use the two-unit `T_Trim_dual_tap` symbol
+- `80291_bandpass.kicad_sch` — 80291 transmit band-filter reconstruction; T91-1..T91-4 use the two-unit `T_Trim_dual_tap` symbol
 - `spice/studies/80291/operation/` — 80291 passband, mixer-product, termination, detune and pin-resistance study (`spice/tools/run_80291_operation.py`)
 - `spice/studies/245/operation/` — Model 245 DC, CW-1/CW-2, stage-by-stage and R45-9 study (`spice/tools/run_245_operation.py`)
 - `triton_540-backups/` — user backups; inspect but do not restore over current work without approval
@@ -58,7 +58,9 @@ PDF page numbers below are one-based.
 - PDF page 39 / printed page 3-23 — 80282 carrier-oscillator and balanced-modulator alignment
 - PDF page 40 / printed page 3-24 — 80282 schematic, board photograph, filter coils, and T1 topology
 - PDF page 41 / printed page 3-25 — 80291 switched filters following the transmit mixer
-- PDF page 42 / printed page 3-26 — 80285 low-level driver following the mixer and band filters
+- PDF page 42 / printed page 3-26 — 80285 low-level driver theory, terminal voltages, and transistor voltages
+- PDF page 43 / printed page 3-27 — 80285 low-level driver schematic dated 1976-01-21 and board photograph
+- PDF page 21 / printed page 3-4 — the chassis drawing dated 10-78 labels this board position LL DRIVER 80286. The KiCad reconstruction follows the detailed 80285 assembly drawing.
 
 ## Established 80166 evidence
 

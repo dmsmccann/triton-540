@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Run the Model 249 normal-signal and impulse-blanking study.
 
-The runner exports mod_249.kicad_sch afresh, adds only the two supplies,
+The runner exports 249_noise_blanker.kicad_sch afresh, adds only the two supplies,
 source/load, documented model-fit fixture, and analysis commands, then retains
 pin-level waveforms and figures under spice/studies/249/how-it-works/.
 """
@@ -19,7 +19,7 @@ import numpy as np
 
 
 ROOT = Path(__file__).resolve().parents[2]
-SCHEMATIC = ROOT / "mod_249.kicad_sch"
+SCHEMATIC = ROOT / "249_noise_blanker.kicad_sch"
 ROOT_SCHEMATIC = ROOT / "triton_540.kicad_sch"
 STUDY_DIR = ROOT / "spice" / "studies" / "249" / "how-it-works"
 DATA_DIR = STUDY_DIR / "data"

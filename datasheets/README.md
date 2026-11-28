@@ -98,7 +98,7 @@ lot or package revision fitted to this radio. No substitute parts are assigned.
 - Extracted pages: Device printed page 2-204; appended package/style page 8-2 (PDF page 837) from 1991 DL126 Rev. 3. Style 1 is 1=E, 2=B, 3=C; the later case 29-04 outline is supplementary, while the device page specifies case 29-02
 - Used by: assembly 80274, Q74-3; assembly 80282, Q1 through Q3;
   Model 249 noise blanker, Q49-1 through Q49-5; assembly 80280,
-  Q80-1, Q80-2, Q80-5, Q80-8, and Q80-9
+  Q80-1, Q80-2, Q80-5, Q80-8, and Q80-9; assembly 80285, Q85-1 and Q85-2
 - Archive source: <https://datasheet4u.com/pdf/1115234/MPS6514.pdf>
 - Package supplement source: <https://www.bitsavers.org/components/motorola/_dataBooks/1991_DL126r3_Motorola_Small-Signal_Transistors_FETs_and_Diodes.pdf>
 - Archived file SHA-256: E9A2791869ED3FDE04CC2622717A615A8F2C78B47AEB910D0CD93B5A73E7CB82
@@ -221,3 +221,32 @@ document the parts, but not the production lots installed by Ten-Tec.
 - Used by: Model 249, Q49-6; assembly 80280, Q80-3 and Q80-6
 - Archive source: <https://www.onsemi.com/download/data-sheet/pdf/2n5087-d.pdf>
 - Archived file SHA-256: 09F53FA5AF33D916E4A248BAD31A40C9F5F5F4148FB29242BECC91EF31420D89
+
+### 2N3866
+
+- File: [RCA_2N3866_File80_1974.pdf](RCA_2N3866_File80_1974.pdf)
+- Manufacturer: RCA Solid State Division
+- Document: *2N3866 Silicon N-P-N Overlay Transistor*, File No. 80, dated September 1974
+- Original publication: *RCA RF/Microwave Devices* (1975)
+- Extracted pages: PDF 69–72, printed 67–70. JEDEC TO-39, 1=E, 2=B, 3=C
+- Used by: assembly 80285, Q85-3 and Q85-4
+- Archive source: <https://bitsavers.trailing-edge.com/components/rca/_dataBooks/1975_RCA_RF_Microwave_Devices.pdf>
+- Archived file SHA-256: 63BC03269E810A2EA5700CDA69C6A6EDBDB0EF77367F74116A70FC63B58D9192
+
+### 1N4002
+
+- File: [onsemi_1N4002_1N4001-D_Rev18_2024.pdf](onsemi_1N4002_1N4001-D_Rev18_2024.pdf)
+- Manufacturer: onsemi
+- Document: *Axial-Lead Glass Passivated Standard Recovery Rectifiers*, 1N4001/D, Rev. 18 (June 2024)
+- Original publication: onsemi 1N4001/D device datasheet
+- Extracted pages: PDF 1–6, including the 1N4002 ratings and case 59–10 outline
+- Used by: assembly 80285, D85-1 through D85-4
+- Archive source: <https://www.onsemi.com/pdf/datasheet/1n4001-d.pdf>
+- Archived file SHA-256: 6C326837B8136FBB35062067174DFB1DF6781751F89DEEEF765D67A0C0983DA3
+
+### PT3647
+
+- Used by: assembly 80285, Q85-5
+- Ten-Tec Model 540 Owner Manual PDF pages 42–43 (printed 3-26–3-27) identify the device, show its circuit terminals and provide service voltages.
+- Contemporary and later reports attribute the PT3647 to TRW. A manufacturer datasheet and package pin numbering remain unverified.
+- Contemporary reference: [CQ, March 1982, Argonaut 515 review](https://msr.zapto.org/radio/CQ-AR/1982/03%20March%201982.pdf)

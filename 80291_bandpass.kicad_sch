@@ -1106,6 +1106,28 @@
 		)
 		(uuid "f76db085-0c3e-4ddc-bbd7-0573c2d511b9")
 	)
+	(text "80291 SIMULATION VALUES - calculated/estimated, NOT Ten-Tec data\nManual PDF p.41 / printed p.3-25. -I labels = mixer side (input, manual right-hand pins);\n-O labels = 80285 driver side (output). Unit A = input winding, unit B = output winding.\nT91-1 (T1) 7.25 MHz: 5.60 uH per winding, C91-5/6 82 pF\nT91-2 (T2) 14.25 MHz: 2.08 uH per winding, C91-7/8 56 pF\nT91-3 (T3) 21.25 MHz: 2.16 uH per winding, C91-9/10 22 pF\nT91-4 (T4) 29.0 MHz: 2.15 uH per winding, C91-11/12 10 pF\nL resonates documented C + 4 pF stray at band centre (calculated).\nTaps, Qu=100 and K=0.08 between windings are estimates for\n50 ohm tap terminations: loaded Q 18.75, kQ = 1.5 (overcoupled).\nL91-1, L91-2 2.7 uH: fitted to documented C91-2/3/4 for a flat\n3.5-4.0 MHz passband, 47 ohm terminations (estimated, 2.4-3.1 uH).\nModel: spice/models/80291_bandpass_magnetics.lib"
+		(exclude_from_sim yes)
+		(at 20.32 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "934ff725-0e45-4eb6-a696-25dea54f51c2")
+	)
+	(text ".param K_T1=0.08 K_T2=0.08 K_T3=0.08 K_T4=0.08\n* Winding-to-winding coupling of T91-1..T91-4 (estimated).\n* Each transformer passes k={K_Tn} into its BP80291_Tn model."
+		(exclude_from_sim no)
+		(at 120.65 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "b7d3f24f-d56e-4f6c-b65b-7a98c2e822dd")
+	)
 	(junction
 		(at 168.91 129.54)
 		(diameter 0)
@@ -1280,6 +1302,16 @@
 	)
 	(wire
 		(pts
+			(xy 144.78 138.43) (xy 144.78 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "20694a43-2f3c-4364-8da3-40a9c238d3c3")
+	)
+	(wire
+		(pts
 			(xy 153.67 59.69) (xy 153.67 57.15)
 		)
 		(stroke
@@ -1417,6 +1449,16 @@
 			(type default)
 		)
 		(uuid "5a4251b1-9ba5-47d1-ae90-07a00d859bcf")
+	)
+	(wire
+		(pts
+			(xy 123.19 138.43) (xy 123.19 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a74d426-2791-42b2-a5c8-f4b8fdc47a1f")
 	)
 	(wire
 		(pts
@@ -2070,6 +2112,16 @@
 	)
 	(wire
 		(pts
+			(xy 168.91 138.43) (xy 168.91 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec8da0ba-243c-4e33-926a-6623d4b605f1")
+	)
+	(wire
+		(pts
 			(xy 153.67 95.25) (xy 153.67 92.71)
 		)
 		(stroke
@@ -2535,6 +2587,15 @@
 		(pin "6"
 			(uuid "2ea8b587-c7a1-4b9b-a25d-5e451a691435")
 		)
+		(pin "3"
+			(uuid "01e30980-7d23-482b-8727-bd3b2ba9b0d5")
+		)
+		(pin "1"
+			(uuid "ec543a69-0b2b-443e-ae64-1c65e48941b3")
+		)
+		(pin "2"
+			(uuid "b8573377-0e9a-4ceb-948e-1bfd90f62f85")
+		)
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/227855c0-0390-422a-a756-8f97db901e56"
@@ -2754,6 +2815,15 @@
 		)
 		(pin "3"
 			(uuid "68297aaf-b089-4f1f-8de8-e07a659ffe8a")
+		)
+		(pin "4"
+			(uuid "42f41e1c-fcd6-49f1-870b-6f3647062a62")
+		)
+		(pin "5"
+			(uuid "4112250a-d204-4403-890c-78d2fdcab5cd")
+		)
+		(pin "6"
+			(uuid "0878b112-59e2-4d5f-92d5-e00c6cf9c7b9")
 		)
 		(instances
 			(project "triton_540"
@@ -3134,6 +3204,15 @@
 		)
 		(pin "3"
 			(uuid "52650d83-bfdc-46ad-831a-169fc628010e")
+		)
+		(pin "4"
+			(uuid "6c568368-f4ac-41f7-b768-2c7671ad22ba")
+		)
+		(pin "5"
+			(uuid "2fec1039-4800-4de9-ac78-0aadd94ef22f")
+		)
+		(pin "6"
+			(uuid "376f5cf9-e48a-4840-94b7-861c7143e815")
 		)
 		(instances
 			(project "triton_540"
@@ -3516,6 +3595,15 @@
 		)
 		(pin "6"
 			(uuid "66113dc9-de56-453e-81c4-0faa5c06d120")
+		)
+		(pin "3"
+			(uuid "6ef894bf-4611-404f-baa7-b55087710410")
+		)
+		(pin "1"
+			(uuid "8d49eed9-25de-4b94-bd73-176de0ad9b15")
+		)
+		(pin "2"
+			(uuid "9522b109-e393-4f51-a04b-d694201f9af0")
 		)
 		(instances
 			(project "triton_540"
@@ -4202,6 +4290,15 @@
 		)
 		(pin "6"
 			(uuid "ab6fdcc8-93db-41b2-b9fa-8a034bb82b10")
+		)
+		(pin "1"
+			(uuid "65500e66-717d-4882-af1e-b4d1fdd242c5")
+		)
+		(pin "3"
+			(uuid "e37f9ed2-bac1-48c0-b4ba-2ed7580538e2")
+		)
+		(pin "2"
+			(uuid "5a96f5c6-93a1-4412-b61f-5ad28ed79b9c")
 		)
 		(instances
 			(project "triton_540"
@@ -4913,6 +5010,15 @@
 		(pin "3"
 			(uuid "7150cdef-2c0b-4909-a6dc-9453145bbe90")
 		)
+		(pin "4"
+			(uuid "6c5d40e6-ebe2-40a1-bba7-f5b3a320a1d9")
+		)
+		(pin "6"
+			(uuid "480c875d-f04d-4eba-954f-331995d311a4")
+		)
+		(pin "5"
+			(uuid "86e1896e-d9e5-4814-9c83-518afe30f557")
+		)
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/227855c0-0390-422a-a756-8f97db901e56"
@@ -5132,6 +5238,15 @@
 		)
 		(pin "3"
 			(uuid "31453689-8191-4bcf-bbbc-322d69799c9b")
+		)
+		(pin "5"
+			(uuid "b7ae8f5f-6abb-4161-9dd5-5a76b5fe5f07")
+		)
+		(pin "4"
+			(uuid "2135ad87-b9fe-4c92-b3ec-b5643b6ca30d")
+		)
+		(pin "6"
+			(uuid "8ce74d2d-b8cd-4bdc-88ca-42eea3e95a78")
 		)
 		(instances
 			(project "triton_540"
@@ -5436,6 +5551,15 @@
 		(pin "6"
 			(uuid "60bf88cb-2466-4f0e-8ab5-79529f808e69")
 		)
+		(pin "1"
+			(uuid "c72bd34b-e66f-4b63-a509-6e6528c85099")
+		)
+		(pin "2"
+			(uuid "9bcc211c-719b-40ad-b842-e41193cdf5fc")
+		)
+		(pin "3"
+			(uuid "27b953c5-7d0c-4695-a4ac-8b287e5704db")
+		)
 		(instances
 			(project "triton_540"
 				(path "/2d45daab-5f60-4e97-8c02-32b0054eab28/227855c0-0390-422a-a756-8f97db901e56"
@@ -5605,57 +5729,5 @@
 				)
 			)
 		)
-	)
-	(wire
-		(pts
-			(xy 123.19 138.43) (xy 123.19 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5a74d426-2791-42b2-a5c8-f4b8fdc47a1f")
-	)
-	(wire
-		(pts
-			(xy 144.78 138.43) (xy 144.78 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "20694a43-2f3c-4364-8da3-40a9c238d3c3")
-	)
-	(wire
-		(pts
-			(xy 168.91 138.43) (xy 168.91 139.7)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ec8da0ba-243c-4e33-926a-6623d4b605f1")
-	)
-	(text "80291 SIMULATION VALUES - calculated/estimated, NOT Ten-Tec data\nManual PDF p.41 / printed p.3-25. -I labels = mixer side (input, manual right-hand pins);\n-O labels = 80285 driver side (output). Unit A = input winding, unit B = output winding.\nT91-1 (T1) 7.25 MHz: 5.60 uH per winding, C91-5/6 82 pF\nT91-2 (T2) 14.25 MHz: 2.08 uH per winding, C91-7/8 56 pF\nT91-3 (T3) 21.25 MHz: 2.16 uH per winding, C91-9/10 22 pF\nT91-4 (T4) 29.0 MHz: 2.15 uH per winding, C91-11/12 10 pF\nL resonates documented C + 4 pF stray at band centre (calculated).\nTaps, Qu=100 and K=0.08 between windings are estimates for\n50 ohm tap terminations: loaded Q 18.75, kQ = 1.5 (overcoupled).\nL91-1, L91-2 2.7 uH: fitted to documented C91-2/3/4 for a flat\n3.5-4.0 MHz passband, 47 ohm terminations (estimated, 2.4-3.1 uH).\nModel: spice/models/80291_bandpass_magnetics.lib"
-		(exclude_from_sim yes)
-		(at 20.32 152.4 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "934ff725-0e45-4eb6-a696-25dea54f51c2")
-	)
-	(text ".param K_T1=0.08 K_T2=0.08 K_T3=0.08 K_T4=0.08\n* Winding-to-winding coupling of T91-1..T91-4 (estimated).\n* Each transformer passes k={K_Tn} into its BP80291_Tn model."
-		(exclude_from_sim no)
-		(at 120.65 152.4 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "b7d3f24f-d56e-4f6c-b65b-7a98c2e822dd")
 	)
 )

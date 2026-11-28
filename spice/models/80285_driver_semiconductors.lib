@@ -1,0 +1,44 @@
+* Ten-Tec 80285 low-level driver semiconductor models
+*
+* These three cards are engineering approximations. The two MPS6514s use
+* the project's existing MPS6514.lib separately.
+*
+* Q85-3/Q85-4: 2N3866 starting model from RCA File 80 (September 1974).
+* See datasheets/RCA_2N3866_File80_1974.pdf, printed pp. 67-70.
+* RCA specifies hFE 10-200 at 50 mA, at least 5 at 360 mA, and uses
+* f=200 MHz and |hfe|>=2.5 at 50 mA (roughly 500 MHz fT). The DC gain curve
+* within those limits, junction capacitance shape, and ohmic resistances
+* are approximate. CJC is set for about 3 pF at 28 V reverse bias.
+.model T540_2N3866_EST NPN(
++ IS=1.3p BF=80 IKF=.12 VAF=80 BR=2
++ RB=4 RC=.4 RE=.1 CJE=18p VJE=.75 MJE=.33
++ CJC=9.7p VJC=.75 MJC=.333 TF=.30n TR=25n
++)
+*
+* D85-1..D85-4: onsemi 1N4001/D Rev. 18 pp. 2-3, figs. 1 and 3.
+* The 25 C curve is near 0.79 V at 100 mA and 0.93 V at 1 A.
+* Forward parameters approximate those values; the low-mA bias range is
+* an extrapolation. CJO approximates the zero-bias capacitance curve.
+* The TT value is an unverified slow-rectifier assumption. The 100 V
+* parameter uses the part's reverse rating as a nominal model value.
+.model T540_1N4002_EST D(
++ IS=22n N=2 RS=.024 CJO=19p VJ=.7 M=.35 TT=2u BV=100 IBV=10u
++)
+*
+* Q85-5: PT3647 placeholder constrained by the board's nominal transmit
+* voltages (manual PDF p. 42 / printed 3-26): base 1.2 V, emitter 0.6 V,
+* collector 13.8 V. R85-6=3.3 ohms implies about 0.18 A emitter current.
+* The MRF476 is only a general RF-power reference: CQ (March 1982, p. 38)
+* reports Ten-Tec used it in the Argonaut 515 final amp where the 509 used
+* PT3647. The ASI MRF476 sheet gives typical hFE 50 and Cob 25 pF at 12.5 V.
+* IS sets the approximate forward drop. The RF capacitances, transit time,
+* series resistances, and large-signal behavior remain unverified.
+* The Central Semiconductor 2N3647 switching-transistor entry is a
+* different designation and supplies no parameters for this card.
+* Ref: https://www.communication-concepts.com/content/Data_Sheets/MRF476.pdf
+* Ref: https://msr.zapto.org/radio/CQ-AR/1982/03%20March%201982.pdf
+.model PT3647_BIAS_EST NPN(
++ IS=25p BF=65 IKF=.6 VAF=70 BR=2
++ RB=.45 RC=.12 RE=.05 CJE=100p VJE=.75 MJE=.33
++ CJC=65p VJC=.75 MJC=.333 TF=.70n TR=50n
++)

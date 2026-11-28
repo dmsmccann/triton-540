@@ -2,7 +2,7 @@
 """Reproduce the 80291 band-filter operation study.
 
 The KiCad sheet is the component and topology source.  This runner exports a
-fresh SPICE netlist from bandpass_80291.kicad_sch, asserts that every filter
+fresh SPICE netlist from 80291_bandpass.kicad_sch, asserts that every filter
 part and board-pin connection matches the manual (PDF page 41, printed page
 3-25), and then places pin-level test fixtures around that exported circuit:
 
@@ -41,7 +41,7 @@ import ngspice_raw
 ROOT = Path(__file__).resolve().parents[2]
 KICAD_CLI = Path(r"C:\Program Files\KiCad\10.0\bin\kicad-cli.exe")
 NGSPICE = Path(r"C:\Tools\ngspice-46\Spice64\bin\ngspice_con.exe")
-SCHEMATIC = ROOT / "bandpass_80291.kicad_sch"
+SCHEMATIC = ROOT / "80291_bandpass.kicad_sch"
 MAGNETICS = ROOT / "spice" / "models" / "80291_bandpass_magnetics.lib"
 GENERATED = ROOT / "spice" / "generated" / "80291-operation"
 STUDY = ROOT / "spice" / "studies" / "80291" / "operation"

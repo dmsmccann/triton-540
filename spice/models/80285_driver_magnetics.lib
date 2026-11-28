@@ -1,0 +1,33 @@
+* Ten-Tec 80285 broadband magnetics starting models
+* Source for topology only: Model 540 manual PDF p. 43 / printed 3-27.
+* The winding inductances, turns ratios, DCR, capacitance and coupling are
+* not published. All defaults below are estimates for initial simulation.
+*
+* L85-1/L85-2 use one continuous winding each, with a tap; the split
+* inductances scale as the square of the fraction of turns. End-to-end
+* 10 uH gives about 220 ohms at 3.5 MHz. The tap starts one third of the
+* turns from the supply end, as suggested by its position on the drawing.
+* Coupling near unity represents the two sections sharing one core.
+* Pins: 1 supply end, 2 collector end, 3 tap.
+.subckt DRV80285_TAPPED 1 2 3 params: LEND=10u F=0.333333 KCOUP=0.99 RDC=0.25 CP=3p
+Rtop 1 winding_top {RDC*F}
+Ltop winding_top 3 {LEND*F*F}
+Lbottom 3 winding_bottom {LEND*(1-F)*(1-F)}
+Rbottom winding_bottom 2 {RDC*(1-F)}
+Ktap Ltop Lbottom {KCOUP}
+Cwinding 1 2 {CP}
+.ends DRV80285_TAPPED
+*
+* T85-1 has separate primary and secondary windings. Starting ratio
+* Np:Ns=2:1 reflects a 50-ohm fixture load as about 200 ohms at midband.
+* The factory drawing does not specify relative winding polarity.
+* Pins: 1 supply, 2 collector, 3 secondary return, 4 secondary OUT.
+.subckt DRV80285_OUTPUT 1 2 3 4 params: LP=10u LS=2.5u KCOUP=0.97 RP=0.2 RS=0.1 CP=4p CS=4p
+Rprimary 1 primary {RP}
+Lprimary primary 2 {LP}
+Rsecondary 4 secondary {RS}
+Lsecondary secondary 3 {LS}
+Kwindings Lprimary Lsecondary {KCOUP}
+Cprimary 1 2 {CP}
+Csecondary 4 3 {CS}
+.ends DRV80285_OUTPUT
