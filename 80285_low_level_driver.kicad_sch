@@ -6,6 +6,8 @@
 	(paper "A4")
 	(title_block
 		(title "80285 Low Level Driver")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 4 "Original Design: Ten-Tec")
 		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols

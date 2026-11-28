@@ -8,7 +8,8 @@
 		(title "80280 Control Board")
 		(date "2026-11-17")
 		(rev "0.1")
-		(company "Ten-Tec Triton IV Model 540")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 4 "Original Design: Ten-Tec")
 		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols

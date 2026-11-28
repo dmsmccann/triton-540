@@ -7,6 +7,8 @@
 	(title_block
 		(title "Model 249 Noise Blanker")
 		(date "1976-06-02")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 4 "Original Design: Ten-Tec")
 		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols

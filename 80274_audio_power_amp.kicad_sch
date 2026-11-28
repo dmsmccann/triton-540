@@ -8,8 +8,9 @@
 		(title "80274 Audio Power Amplifier")
 		(date "2026-09-05")
 		(rev "0.1")
-		(company "Ten-Tec Triton IV Model 540")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
 		(comment 1 "Reconstructed from manual pp. 3-18 / 3-19")
+		(comment 4 "Original Design: Ten-Tec")
 		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols

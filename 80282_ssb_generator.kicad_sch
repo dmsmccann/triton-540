@@ -8,6 +8,8 @@
 		(title "SSB Generator 80282")
 		(date "2/3/77")
 		(rev "0")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
+		(comment 4 "Original Design: Ten-Tec")
 		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols

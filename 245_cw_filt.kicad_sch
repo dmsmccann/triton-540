@@ -6,9 +6,10 @@
 	(paper "A4")
 	(title_block
 		(title "Model 245 CW Filter")
-		(company "Ten-Tec, Inc.")
+		(company "Andy McCann KA3KAF & Doug McCann KA3KAG")
 		(comment 1 "Accessory 750 Hz audio CW filter; plugs into the 7-pin socket near the 80308 calibrator")
 		(comment 2 "Source: Model 245 instruction sheet, PDF p.3 / printed p.3-42")
+		(comment 4 "Original Design: Ten-Tec")
 		(comment 5 "Triton IV (Model 540)")
 	)
 	(lib_symbols
